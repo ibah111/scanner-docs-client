@@ -17,8 +17,6 @@ const useStyles = makeStyles((theme: Theme) =>
 function Home() {
   const classes = useStyles({});
   const [open, setOpen] = React.useState(false);
-  const handleClose = () => setOpen(false);
-  const handleClick = () => setOpen(true);
 
   return (
     <React.Fragment>
