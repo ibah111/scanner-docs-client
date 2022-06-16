@@ -1,9 +1,11 @@
 import {
   Button,
   FormControl,
+  Grid,
   InputLabel,
   MenuItem,
   Select,
+  Stack,
   Typography,
 } from "@mui/material";
 import { ipcRenderer } from "electron";
@@ -32,39 +34,46 @@ export default function ScanPage() {
   }, []);
   return (
     <>
-      <Button component={Link} href="/home">
-        Вернуться
-      </Button>
-      <FormControl fullWidth>
-        <InputLabel id="port-label">Порты</InputLabel>
-        <Select
-          labelId={"port-label"}
-          label={"Порты"}
-          value={port}
-          onChange={(event) => {
-            setPort(event.target.value);
-          }}
-        >
-          <MenuItem key={0} value="">
-            <em>None</em>
-          </MenuItem>
-          {ports.map((port, index) => (
-            <MenuItem key={index + 1} value={port.path}>
-              {port.path}
+      <Grid
+        container
+        direction="column"
+        justifyContent="space-around"
+        alignItems="center"
+      >
+        <FormControl sx={{ width: "75ch" }} fullWidth>
+          <InputLabel id="port-label">Порты</InputLabel>
+          <Select
+            labelId={"port-label"}
+            label={"Порты"}
+            value={port}
+            onChange={(event) => {
+              setPort(event.target.value);
+            }}
+          >
+            <Button component={Link} href="/home">
+              Вернуться
+            </Button>
+            <MenuItem key={0} value="">
+              <em>None</em>
             </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      {port !== "" && (
-        <Button
-          onClick={() => {
-            ipcRenderer.send("connectPort", port);
-          }}
-        >
-          Подключить порт
-        </Button>
-      )}
-      <Typography>{content}</Typography>
+            {ports.map((port, index) => (
+              <MenuItem key={index + 1} value={port.path}>
+                {port.path}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        {port !== "" && (
+          <Button
+            onClick={() => {
+              ipcRenderer.send("connectPort", port);
+            }}
+          >
+            Подключить порт
+          </Button>
+        )}
+        <Typography>{content}</Typography>
+      </Grid>
     </>
   );
 }

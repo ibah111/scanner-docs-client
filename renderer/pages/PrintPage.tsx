@@ -14,7 +14,7 @@ import {
 export default function PrintPage() {
     return (<>
         <Button component={Link} href="/home"> Вернуться</Button>
-        <Button>Введите идентификационные данные</Button>
+        <Button component ={Link} href="/MainPage">Введите идентификационные данные</Button>
     </>
     )
 };

@@ -33,7 +33,7 @@ function Home() {
           <Button component={Link} variant="outlined" href="/ScanPage">
             Сканировать
           </Button>
-          <Button component={Link} variant="outlined" href="PrintPage">
+          <Button component={Link} variant="outlined" href="MainPage">
             Вывести информацию
           </Button>
         </Grid>

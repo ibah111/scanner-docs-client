@@ -11,6 +11,8 @@
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
+    "@mui/x-data-grid": "^5.12.1",
+    "@mui/x-data-grid-pro": "^5.12.1",
     "electron-serve": "^1.1.0",
     "electron-store": "^8.0.1",
     "node-gyp": "^9.0.0",
