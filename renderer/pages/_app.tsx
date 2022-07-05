@@ -4,6 +4,9 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { theme } from "../lib/theme";
 import type { AppProps } from "next/app";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 export default function (props: AppProps) {
   const { Component, pageProps } = props;
@@ -24,8 +27,10 @@ export default function (props: AppProps) {
         />
       </Head>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </LocalizationProvider>
       </ThemeProvider>
     </React.Fragment>
   );
