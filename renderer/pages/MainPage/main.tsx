@@ -1,5 +1,6 @@
 import { Box, Button, Grid, Link } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
+import { getData } from "../../api/connect";
 import Article from "./Components/article";
 import Borrower from "./Components/borrower";
 import CurrentHolder from "./Components/currentHolder";
@@ -12,6 +13,12 @@ import SendingForm from "./Components/sendingForm";
 import WhereSend from "./Components/whereSend";
 
 export default function Main() {
+  // const[data, setData] = React.useState([])
+  // React.useEffect(()=> {
+  //   getData(code).then((res) => {
+  //       setData(res.code)
+  //     })
+  // })
   return (
     <Box>
       <Grid
