@@ -71,7 +71,7 @@ export default function ScanPage() {
           >
             Подключить порт
           </Button>
-        )}
+        )} 
         <Typography>{content}</Typography>
       </Grid>
     </>

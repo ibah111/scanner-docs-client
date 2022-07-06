@@ -6,8 +6,10 @@ import { theme } from "../lib/theme";
 import type { AppProps } from "next/app";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-
+import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
+import { Provider } from "react-redux";
+import { store } from "../Reducer";
+import "moment/locale/ru";
 export default function (props: AppProps) {
   const { Component, pageProps } = props;
 
@@ -26,12 +28,17 @@ export default function (props: AppProps) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <ThemeProvider theme={theme}>
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <CssBaseline />
-          <Component {...pageProps} />
-        </LocalizationProvider>
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <LocalizationProvider
+            adapterLocale={"ru"}
+            dateAdapter={AdapterMoment}
+          >
+            <CssBaseline />
+            <Component {...pageProps} />
+          </LocalizationProvider>
+        </ThemeProvider>
+      </Provider>
     </React.Fragment>
   );
 }

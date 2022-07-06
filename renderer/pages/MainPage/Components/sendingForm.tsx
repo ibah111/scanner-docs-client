@@ -1,6 +1,9 @@
 import { Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
+import { Moment } from "moment";
 import React from "react";
+import { useAppDispatch, useAppSelector } from "../../../Reducer";
+import { setData } from "../../../Reducer/Send";
 
 interface SendingForm {
   date_send: Date;
@@ -8,7 +11,10 @@ interface SendingForm {
 }
 
 export default function SendingForm() {
-  const [date_send, setDateSend] = React.useState<Date | null>(null);
+  const data = useAppSelector((state) => state.Send);
+  const dispatch = useAppDispatch();
+  React.useEffect(() => {
+  }, [data.WhereSend, data.DateSend]);
   return (
     <React.Fragment>
       <Paper>
@@ -25,15 +31,21 @@ export default function SendingForm() {
           </Typography>
           <DatePicker
             label="Выберите дату"
-            value={date_send}
-            onChange={(newValue) => {
-              setDateSend(newValue);
+            value={data.DateSend}
+            onChange={(newValue: Moment) => {
+              dispatch(setData(["DateSend", newValue.toISOString()]));
             }}
             renderInput={(params) => <TextField {...params} />}
           />
-          <Typography>
-            <TextField id="where_send" label="отправлено" variant="outlined" />
-          </Typography>
+          <TextField
+            id="where_send"
+            label="отправлено"
+            variant="outlined"
+            value={data.WhereSend}
+            onChange={(event) => {
+              dispatch(setData(["WhereSend", event.target.value]));
+            }}
+          />
         </Box>
       </Paper>
     </React.Fragment>

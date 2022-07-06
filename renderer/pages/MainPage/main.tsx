@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Button, Grid, Link } from "@mui/material";
 import React from "react";
 import Article from "./Components/article";
 import Borrower from "./Components/borrower";
@@ -17,8 +17,9 @@ export default function Main() {
       <Grid
         container
         direction="column"
-        justifyContent="space-between"
         alignItems="center"
+        spacing={7}
+       
       >
         <Grid
           item
@@ -41,6 +42,12 @@ export default function Main() {
         </Grid>
         <Grid item>
           <SendingForm />
+        </Grid>
+        <Grid item>
+          <Button component={Link} href="/home">
+            {" "}
+            Вернуться
+          </Button>
         </Grid>
       </Grid>
     </Box>

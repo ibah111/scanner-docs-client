@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import React from "react";
 
-interface Enumerate {
+interface EnumerateProps {
   id: number;
 }
 export default function Enumerate() {

@@ -25,10 +25,11 @@ const columns: GridColDef[] = [
 export default function MainPage() {
     return (
       <div style={{ height: 300, width: '100%' }}>
-        <DataGrid rows={rows} columns={columns} />
         <Button component={Link} href="/home"> Вернуться</Button>
+        <DataGrid rows={rows} columns={columns} />
+       
       </div>
-      
+       
     );
   }
 
