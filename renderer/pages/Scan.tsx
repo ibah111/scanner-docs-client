@@ -12,17 +12,23 @@ import { ipcRenderer } from "electron";
 import React from "react";
 import { PortInfo } from "@serialport/bindings-cpp";
 import Link from "../components/Link";
+import { getData } from "../api/connect";
+import { useAppDispatch } from "../Reducer";
+import { setData } from "../Reducer/Data";
 
-export default function ScanPage() {
+export default function Scan() {
   const [ports, setPorts] = React.useState<PortInfo[]>([]);
   const [port, setPort] = React.useState("");
-  const [content, setContent] = React.useState("");
+  const dispatch = useAppDispatch();
   React.useEffect(() => {
     ipcRenderer.on("ports", (event, args) => {
       setPorts(args);
     });
-    ipcRenderer.on("content", (event, args) => {
-      setContent(args);
+    ipcRenderer.on("content", (event, args: string) => {
+      getData(args.replace("\r", "")).then((res) => {
+        console.log(res);
+        dispatch(setData(res));
+      });
     });
     ipcRenderer.on("errorConnect", (event, args) => {
       console.log(args);
@@ -71,8 +77,7 @@ export default function ScanPage() {
           >
             Подключить порт
           </Button>
-        )} 
-        <Typography>{content}</Typography>
+        )}
       </Grid>
     </>
   );

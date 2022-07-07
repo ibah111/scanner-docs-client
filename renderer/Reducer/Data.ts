@@ -1,0 +1,15 @@
+import { ActionTypes } from "@mui/base";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Barcode } from "../Schemas/Barcode.model";
+const initialState: Barcode = null;
+const DataSlice = createSlice({
+  name: "data",
+  initialState,
+  reducers: {
+    setData(state, action: PayloadAction<Barcode>) {
+      return action.payload;
+    },
+  },
+});
+export const { setData } = DataSlice.actions;
+export default DataSlice.reducer;

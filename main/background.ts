@@ -11,6 +11,15 @@ if (isProd) {
 }
 
 (async () => {
+  app.on(
+    "certificate-error",
+    (event, webContents, url, error, certificate, callback) => {
+      // On certificate error we disable default behaviour (stop loading the page)
+      // and we then say "it is all fine - true" to the callback
+      event.preventDefault();
+      callback(true);
+    }
+  );
   await app.whenReady();
   const mainWindow = createWindow("main", {
     width: 1000,

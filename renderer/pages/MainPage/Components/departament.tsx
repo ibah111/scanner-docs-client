@@ -2,17 +2,18 @@ import { Typography } from "@mui/material";
 import React from "react";
 import { useAppSelector } from "../../../Reducer";
 
-interface Enumerate {
-  id: number;
+interface Departamet {
+  depart: string;
 }
-export default function Enumerate() {
-  const data = useAppSelector((state) => state.Data?.Doc.mail_id);
+
+export default function Departament() {
+  const data = useAppSelector((state) => state.Data?.depart);
   return (
     <React.Fragment>
       <Typography>
-        № <br />
-        {data}
+        Департамент <br /> {data}
       </Typography>
+      <Typography></Typography>
     </React.Fragment>
   );
 }
