@@ -1,4 +1,4 @@
-
+import { Type } from "class-transformer";
 
 export class Result {
   /**
@@ -9,6 +9,7 @@ export class Result {
   /**
    * Дата поступления
    */
+  @Type(() => Date)
   date_post: Date;
 
   /**
@@ -114,6 +115,7 @@ export class Result {
   /**
    * Когда обработано
    */
+  @Type(() => Date)
   kogda_otdano: Date;
 
   /**
@@ -159,11 +161,13 @@ export class Result {
   /**
    * Дата обработки архива
    */
+  @Type(() => Date)
   data_obrabotki_arhive: Date;
 
   /**
    * Дата обработки архива ИД
    */
+  @Type(() => Date)
   data_obrabotki_arhive_id: Date;
 
   /**
@@ -209,6 +213,7 @@ export class Result {
   /**
    * Дата вынесения документа
    */
+  @Type(() => Date)
   dateDoc: Date;
 
   /**

@@ -2,6 +2,7 @@ import { app } from "electron";
 import serve from "electron-serve";
 import { createWindow } from "./helpers";
 import events from "./events";
+import { tz } from "moment-timezone";
 
 const isProd: boolean = process.env.NODE_ENV === "production";
 if (isProd) {

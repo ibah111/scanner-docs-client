@@ -9,7 +9,10 @@ const DataSlice = createSlice({
     setData(state, action: PayloadAction<Barcode>) {
       return action.payload;
     },
+    resetData() {
+      return null;
+    },
   },
 });
-export const { setData } = DataSlice.actions;
+export const { setData, resetData } = DataSlice.actions;
 export default DataSlice.reducer;

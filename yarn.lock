@@ -3379,6 +3379,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"class-transformer@npm:^0.5.1":
+  version: 0.5.1
+  resolution: "class-transformer@npm:0.5.1"
+  checksum: f191c8b4cc4239990f5efdd790cabdd852c243ed66248e39f6616a349c910c6eed2d9fd1fbf7ee6ea89f69b4f1d0b493b27347fe0cd0ae26b47c3745a805b6d3
+  languageName: node
+  linkType: hard
+
 "clean-stack@npm:^2.0.0":
   version: 2.2.0
   resolution: "clean-stack@npm:2.2.0"
@@ -5596,6 +5603,7 @@ __metadata:
     "@types/node": ^17.0.41
     "@types/react": ^18.0.12
     axios: ^0.27.2
+    class-transformer: ^0.5.1
     electron: ^19.0.3
     electron-builder: ^23.0.3
     electron-serve: ^1.1.0
@@ -5608,6 +5616,7 @@ __metadata:
     react: ^18.1.0
     react-dom: ^18.1.0
     react-redux: ^8.0.2
+    reflect-metadata: ^0.1.13
     serialport: ^10.4.0
     typescript: ^4.7.3
   languageName: unknown
@@ -6319,6 +6328,13 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.9.2
   checksum: 75f3955c89b3f18edf5411e5fb482aa2e4f41a416183e8802a6bf6472c4fc3d47675b8b321d147f8af8e0f616436ac507bf5a25f1c4d6180e797b549c7db2c1d
+  languageName: node
+  linkType: hard
+
+"reflect-metadata@npm:^0.1.13":
+  version: 0.1.13
+  resolution: "reflect-metadata@npm:0.1.13"
+  checksum: 798d379a7b6f6455501145419505c97dd11cbc23857a386add2b9ef15963ccf15a48d9d15507afe01d4cd74116df8a213247200bac00320bd7c11ddeaa5e8fb4
   languageName: node
   linkType: hard
 

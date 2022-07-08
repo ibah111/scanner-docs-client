@@ -1,3 +1,5 @@
+import { Type } from "class-transformer";
+
 export class Doc {
   id: number;
   title: string;
@@ -5,5 +7,6 @@ export class Doc {
   mail_id: number;
   law_act_id: number;
   law_exec_id: number;
+  @Type(() => Date)
   date: Date;
 }

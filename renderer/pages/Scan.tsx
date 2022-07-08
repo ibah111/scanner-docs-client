@@ -5,16 +5,15 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  Stack,
-  Typography,
 } from "@mui/material";
 import { ipcRenderer } from "electron";
 import React from "react";
 import { PortInfo } from "@serialport/bindings-cpp";
 import Link from "../components/Link";
-import { getData } from "../api/connect";
 import { useAppDispatch } from "../Reducer";
-import { setData } from "../Reducer/Data";
+import { resetData, setData } from "../Reducer/Data";
+import getData from "../api/getData";
+import { resetSend } from "../Reducer/Send";
 
 export default function Scan() {
   const [ports, setPorts] = React.useState<PortInfo[]>([]);
@@ -25,8 +24,9 @@ export default function Scan() {
       setPorts(args);
     });
     ipcRenderer.on("content", (event, args: string) => {
+      dispatch(resetData());
+      dispatch(resetSend());
       getData(args.replace("\r", "")).then((res) => {
-        console.log(res);
         dispatch(setData(res));
       });
     });

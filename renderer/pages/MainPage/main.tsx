@@ -1,14 +1,16 @@
 import { Box, Button, Grid, Link } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import React, { } from "react";
+import { plainToInstance } from "class-transformer";
+import React from "react";
 import { useAppSelector } from "../../Reducer";
+import { Barcode } from "../../Schemas/Barcode.model";
 import Scan from "../Scan";
 import columns from "./columns";
 import SendingForm from "./Components/sendingForm";
 
 export default function Main() {
   const data = useAppSelector((state) => state.Data);
-  
+  console.log(data);
   const rows = data ? [data] : [];
   return (
     <Box>
@@ -24,12 +26,10 @@ export default function Main() {
             autoHeight={Boolean(data)}
             columns={columns}
             rows={rows}
-            hideFooter         
+            hideFooter
           />
         </Grid>
-        <Grid item>
-          {rows.length>0&&<SendingForm />}
-        </Grid>
+        <Grid item>{rows.length > 0 && <SendingForm />}</Grid>
         <Grid item>
           <Scan />
         </Grid>

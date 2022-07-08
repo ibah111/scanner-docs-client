@@ -1,21 +1,22 @@
 import { GridColumns } from "@mui/x-data-grid";
+import moment from "moment";
 import { Barcode } from "../../Schemas/Barcode.model";
+import { generateName } from "../../utils/generateName";
 
 const columns: GridColumns<Barcode> = [
   {
     field: "id",
     headerName: "№",
     width: 5,
-    editable: true,
   },
   {
     field: "date_post",
     headerName: "Дата поступления",
     valueGetter: (params) => {
-      return params.row.doc.date_post;
+      return moment(params.row.doc.date_post).toDate();
     },
+    type: "dateTime",
     width: 200,
-    editable: true,
   },
   {
     field: "st_pnkt",
@@ -24,7 +25,6 @@ const columns: GridColumns<Barcode> = [
       return params.row.doc.st_pnkt;
     },
     width: 130,
-    editable: true,
   },
   {
     field: "kd",
@@ -33,7 +33,6 @@ const columns: GridColumns<Barcode> = [
       return params.row.doc.kd;
     },
     width: 200,
-    editable: true,
   },
   {
     field: "reestr",
@@ -42,7 +41,6 @@ const columns: GridColumns<Barcode> = [
       return params.row.doc.reestr;
     },
     width: 200,
-    editable: true,
   },
   {
     field: "fio_dol",
@@ -51,25 +49,26 @@ const columns: GridColumns<Barcode> = [
       return params.row.doc.fio_dol;
     },
     width: 200,
-    editable: true,
   },
   {
     field: "fio",
     headerName: "Текущий держатель",
     valueGetter: (params) => {
-      return params.row.User.f + " " + params.row.User.i;
+      return generateName(
+        params.row.User.f,
+        params.row.User.i,
+        params.row.User.o
+      );
     },
     width: 200,
-    editable: true,
   },
   {
-    field: "title",
-    headerName: "Департамент",
+    field: "depart",
+    headerName: "Подразделение",
     valueGetter: (params) => {
       return params.row.Depart.title;
     },
     width: 200,
-    editable: true,
   },
   {
     field: "where_send",
@@ -79,8 +78,8 @@ const columns: GridColumns<Barcode> = [
         params.row.Transmits[0].date_send;
       }
     },
+    type: "dateTime",
     width: 200,
-    editable: true,
   },
   {
     field: "whereSend",
@@ -91,7 +90,26 @@ const columns: GridColumns<Barcode> = [
       }
     },
     width: 200,
-    editable: true,
+  },
+  {
+    field: "fio_old",
+    headerName: "Предыдущий держатель",
+    valueGetter: (params) => {
+      return generateName(
+        params.row.UserOld?.f,
+        params.row.UserOld?.i,
+        params.row.UserOld?.o
+      );
+    },
+    width: 200,
+  },
+  {
+    field: "depart_old",
+    headerName: "передыдущее подразделение",
+    valueGetter: (params) => {
+      return params.row.DepartOld?.title;
+    },
+    width: 200,
   },
 ];
 

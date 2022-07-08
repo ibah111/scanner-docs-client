@@ -5,15 +5,14 @@ interface MessageState {
   message: string;
   params: OptionsObject;
 }
-const startMessageState: MessageState = { message: "", params: {} };
+const startMessageState: MessageState[] = [];
 const initialState = startMessageState;
 const MessageSlice = createSlice({
   name: "Message",
   initialState,
   reducers: {
     callError(state, action: PayloadAction<string>) {
-      state.message = action.payload;
-      state.params.variant = "error";
+      state.push({ message: action.payload, params: { variant: "error" } });
     },
     resetMessage() {
       return startMessageState;

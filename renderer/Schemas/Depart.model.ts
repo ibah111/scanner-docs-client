@@ -4,5 +4,4 @@ export class Depart {
   name: string;
   title: string;
   parent_id: number;
-  
 }

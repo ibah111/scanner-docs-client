@@ -4,7 +4,7 @@ import { Moment } from "moment";
 import React from "react";
 import SendData from "../../../api/SendData";
 import { useAppDispatch, useAppSelector } from "../../../Reducer";
-import { setData } from "../../../Reducer/Send";
+import { setSend } from "../../../Reducer/Send";
 
 interface SendingForm {
   date_send: Date;
@@ -32,7 +32,7 @@ export default function SendingForm() {
             label="Дата отправки"
             value={data.DateSend}
             onChange={(newValue: Moment) => {
-              dispatch(setData(["DateSend", newValue.toISOString()]));
+              dispatch(setSend(["DateSend", newValue.toISOString()]));
             }}
             renderInput={(params) => <TextField {...params} />}
           />
@@ -42,7 +42,7 @@ export default function SendingForm() {
             variant="outlined"
             value={data.WhereSend}
             onChange={(event) => {
-              dispatch(setData(["WhereSend", event.target.value]));
+              dispatch(setSend(["WhereSend", event.target.value]));
             }}
           />
           <Button onClick={SendData}>Отправить</Button>
