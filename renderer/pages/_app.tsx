@@ -10,6 +10,8 @@ import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { Provider } from "react-redux";
 import { store } from "../Reducer";
 import "moment/locale/ru";
+import { SnackbarProvider } from "notistack";
+import MessageShow from "../components/MessageShow";
 export default function (props: AppProps) {
   const { Component, pageProps } = props;
 
@@ -34,8 +36,11 @@ export default function (props: AppProps) {
             adapterLocale={"ru"}
             dateAdapter={AdapterMoment}
           >
-            <CssBaseline />
-            <Component {...pageProps} />
+            <SnackbarProvider maxSnack={3}>
+              <MessageShow />
+              <CssBaseline />
+              <Component {...pageProps} />
+            </SnackbarProvider>
           </LocalizationProvider>
         </ThemeProvider>
       </Provider>

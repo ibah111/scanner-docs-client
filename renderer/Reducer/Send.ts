@@ -1,4 +1,5 @@
 import { createSlice, Draft, PayloadAction } from "@reduxjs/toolkit";
+import { Transmit } from "../Schemas/Transmit.model";
 
 interface SendData {
   DateSend?: string;
@@ -17,7 +18,7 @@ const SendSlice = createSlice({
     ) {
       state[action.payload[0]] = action.payload[1];
     },
-  },
+   },
 });
 export const { setData } = SendSlice.actions;
 export default SendSlice.reducer;

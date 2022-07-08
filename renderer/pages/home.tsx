@@ -30,9 +30,6 @@ function Home() {
           justifyContent="space-around"
           alignItems="center"
         >
-          <Button component={Link} variant="outlined" href="/ScanPage">
-            Сканировать
-          </Button>
           <Button component={Link} variant="outlined" href="/MainPage/main">
             Вывести информацию
           </Button>

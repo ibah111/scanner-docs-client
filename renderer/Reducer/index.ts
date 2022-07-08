@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import Data from "./Data";
+import Message from "./Message";
 import Send from "./Send";
 import User from "./User";
 
-export const store = configureStore({ reducer: { User, Send, Data } });
+export const store = configureStore({ reducer: { User, Send, Data, Message } });
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch: () => AppDispatch = useDispatch;

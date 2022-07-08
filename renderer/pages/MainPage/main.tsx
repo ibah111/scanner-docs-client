@@ -28,7 +28,7 @@ export default function Main() {
           />
         </Grid>
         <Grid item>
-          <SendingForm />
+          {rows.length>0&&<SendingForm />}
         </Grid>
         <Grid item>
           <Scan />
