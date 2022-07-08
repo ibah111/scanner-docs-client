@@ -1,21 +1,15 @@
 import { Box, Button, Grid, Link } from "@mui/material";
-import { idID } from "@mui/material/locale";
-import React, { useEffect } from "react";
-import { getData } from "../../api/connect";
+import { DataGrid } from "@mui/x-data-grid";
+import React, { } from "react";
+import { useAppSelector } from "../../Reducer";
 import Scan from "../Scan";
-import Article from "./Components/article";
-import Borrower from "./Components/borrower";
-import CurrentHolder from "./Components/currentHolder";
-import DateReceiving from "./Components/dateReceiving";
-import DateSend from "./Components/dateSend";
-import Departament from "./Components/departament";
-import Enumerate from "./Components/enumerate";
-import KD from "./Components/kd";
-import Registry from "./Components/registry";
+import columns from "./columns";
 import SendingForm from "./Components/sendingForm";
-import WhereSend from "./Components/whereSend";
 
 export default function Main() {
+  const data = useAppSelector((state) => state.Data);
+  
+  const rows = data ? [data] : [];
   return (
     <Box>
       <Grid container direction="column" alignItems="center" spacing={7}>
@@ -26,18 +20,12 @@ export default function Main() {
           justifyContent="space-around"
           alignItems="center"
         >
-          <Grid item>
-            <Enumerate />
-          </Grid>
-          <DateReceiving />
-          <Article />
-          <KD />
-          <Registry />
-          <Borrower />
-          <CurrentHolder />
-          <Departament/>
-          <DateSend />
-          <WhereSend />
+          <DataGrid
+            autoHeight={Boolean(data)}
+            columns={columns}
+            rows={rows}
+            hideFooter         
+          />
         </Grid>
         <Grid item>
           <SendingForm />

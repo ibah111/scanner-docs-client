@@ -1,5 +1,8 @@
+import { Depart } from "./Depart.model";
 import { Doc } from "./Doc.model";
 import { Result } from "./Result.model";
+import { Transmit } from "./Transmit.model";
+import { User } from "./User.model";
 
 export class Barcode {
   id: number;
@@ -7,7 +10,8 @@ export class Barcode {
   doc_id: number;
   Doc: Doc;
   status: number;
-  user: number;
-  depart: number;
+  User: User;
+  Depart: Depart;
   doc: Result;
+  Transmits: Transmit[];
 }

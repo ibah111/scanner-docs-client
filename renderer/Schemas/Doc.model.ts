@@ -1,5 +1,3 @@
-import { Barcode } from "./Barcode.model";
-
 export class Doc {
   id: number;
   title: string;
@@ -8,5 +6,4 @@ export class Doc {
   law_act_id: number;
   law_exec_id: number;
   date: Date;
-  Barcode: Barcode;
 }
