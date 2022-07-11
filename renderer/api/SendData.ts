@@ -9,9 +9,6 @@ export default async function SendData() {
   const data = store.getState().Send;
   const id = store.getState().Data.id;
   const addons: any = {};
-  if (!data.DateSend) {
-    addons.DateSend = moment().toISOString();
-  }
   try {
     const result = await axios.post(server() + "/send", {
       ...getToken(),
@@ -25,8 +22,16 @@ export default async function SendData() {
       if (e.code === "ERR_BAD_REQUEST") {
         if (Array.isArray(e.response.data?.message)) {
           for (const value of e.response.data?.message) {
-            console.log(value);
-            store.dispatch(callError(value));
+            switch (value) {
+              case "DateSend must be a Date instance":
+                store.dispatch(callError("Заполните поле: 'Дата отправки'"));
+                break;
+              case "WhereSend should not be empty":
+                store.dispatch(callError("Заполните поле: 'Куда'"));
+                break;
+              default:
+                store.dispatch(callError(value));
+            }
           }
         }
       } else {

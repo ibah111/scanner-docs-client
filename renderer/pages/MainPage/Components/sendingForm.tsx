@@ -6,11 +6,6 @@ import SendData from "../../../api/SendData";
 import { useAppDispatch, useAppSelector } from "../../../Reducer";
 import { setSend } from "../../../Reducer/Send";
 
-interface SendingForm {
-  date_send: Date;
-  where_send: string;
-}
-
 export default function SendingForm() {
   const data = useAppSelector((state) => state.Send);
   const dispatch = useAppDispatch();
@@ -32,7 +27,16 @@ export default function SendingForm() {
             label="Дата отправки"
             value={data.DateSend}
             onChange={(newValue: Moment) => {
-              dispatch(setSend(["DateSend", newValue.toISOString()]));
+              dispatch(
+                setSend([
+                  "DateSend",
+                  newValue
+                    ? newValue.isValid()
+                      ? newValue.toISOString()
+                      : newValue.toString()
+                    : "",
+                ])
+              );
             }}
             renderInput={(params) => <TextField {...params} />}
           />
