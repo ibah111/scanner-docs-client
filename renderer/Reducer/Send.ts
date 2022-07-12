@@ -1,10 +1,11 @@
 import { createSlice, Draft, PayloadAction } from "@reduxjs/toolkit";
 
 interface SendData {
-  DateSend?: string;
+  DateSend: string;
   WhereSend: string;
 }
 export const startSendState: SendData = {
+  DateSend: "",
   WhereSend: "",
 };
 const initialState = startSendState;

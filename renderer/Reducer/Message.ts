@@ -14,10 +14,13 @@ const MessageSlice = createSlice({
     callError(state, action: PayloadAction<string>) {
       state.push({ message: action.payload, params: { variant: "error" } });
     },
+    callSuccess(state, action: PayloadAction<string>) {
+      state.push({ message: action.payload, params: { variant: "success" } });
+    },
     resetMessage() {
       return startMessageState;
     },
   },
 });
-export const { callError, resetMessage } = MessageSlice.actions;
+export const { callError, callSuccess, resetMessage } = MessageSlice.actions;
 export default MessageSlice.reducer;
