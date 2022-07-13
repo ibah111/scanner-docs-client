@@ -2412,6 +2412,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/mime-types@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "@types/mime-types@npm:2.1.1"
+  checksum: 106b5d556add46446a579ad25ff15d6b421851790d887edcad558c90c1e64b1defc72bfbaf4b08f208916e21d9cc45cdb951d77be51268b18221544cfe054a3c
+  languageName: node
+  linkType: hard
+
 "@types/minimatch@npm:*":
   version: 3.0.5
   resolution: "@types/minimatch@npm:3.0.5"
@@ -5379,7 +5386,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mime-types@npm:^2.1.12, mime-types@npm:^2.1.27":
+"mime-types@npm:^2.1.12, mime-types@npm:^2.1.27, mime-types@npm:^2.1.35":
   version: 2.1.35
   resolution: "mime-types@npm:2.1.35"
   dependencies:
@@ -5600,6 +5607,7 @@ __metadata:
     "@mui/x-data-grid-pro": ^5.12.1
     "@mui/x-date-pickers": ^5.0.0-alpha.7
     "@reduxjs/toolkit": ^1.8.3
+    "@types/mime-types": ^2.1.1
     "@types/node": ^17.0.41
     "@types/react": ^18.0.12
     axios: ^0.27.2
@@ -5608,6 +5616,7 @@ __metadata:
     electron-builder: ^23.0.3
     electron-serve: ^1.1.0
     electron-store: ^8.0.1
+    mime-types: ^2.1.35
     moment: ^2.29.3
     moment-timezone: ^0.5.34
     next: ^12.1.6
