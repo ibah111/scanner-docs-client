@@ -26,15 +26,14 @@ if (isProd) {
     width: 1000,
     height: 600,
   });
-
+  events(mainWindow.webContents);
   if (isProd) {
-    await mainWindow.loadURL("app://./home.html");
+    await mainWindow.loadURL("app://./MainPage.html");
   } else {
     const port = process.argv[2];
-    await mainWindow.loadURL(`http://localhost:${port}/home`);
+    await mainWindow.loadURL(`http://localhost:${port}/MainPage`);
     mainWindow.webContents.openDevTools();
   }
-  events(mainWindow.webContents);
 })();
 
 app.on("window-all-closed", () => {

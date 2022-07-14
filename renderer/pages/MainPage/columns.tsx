@@ -1,9 +1,18 @@
-import { GridColumns } from "@mui/x-data-grid";
+import { GridColumns } from "@mui/x-data-grid-premium";
 import moment from "moment";
 import { Barcode } from "../../Schemas/Barcode.model";
 import { generateName } from "../../utils/generateName";
+import OpenDoc from "./Components/openDoc";
 
 const columns: GridColumns<Barcode> = [
+  {
+    field: "actions",
+    headerName: "Действия",
+    type: "actions",
+    getActions: (params) => {
+      return [<OpenDoc />];
+    },
+  },
   {
     field: "id",
     headerName: "№",

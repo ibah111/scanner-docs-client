@@ -9,7 +9,7 @@ import {
 import { ipcRenderer } from "electron";
 import React from "react";
 import { PortInfo } from "@serialport/bindings-cpp";
-import Link from "../components/Link";
+import Link from "./Link";
 import { useAppDispatch } from "../Reducer";
 import { resetData, setData } from "../Reducer/Data";
 import getData from "../api/getData";
@@ -56,11 +56,8 @@ export default function Scan() {
               setPort(event.target.value);
             }}
           >
-            <Button component={Link} href="/home">
-              Вернуться
-            </Button>
             <MenuItem key={0} value="">
-              <em>None</em>
+              <em>Нет</em>
             </MenuItem>
             {ports.map((port, index) => (
               <MenuItem key={index + 1} value={port.path}>

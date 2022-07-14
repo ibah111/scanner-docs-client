@@ -1,30 +1,16 @@
 import axios, { AxiosError } from "axios";
 import { store } from "../Reducer";
 import { callError } from "../Reducer/Message";
+import { Barcode } from "../Schemas/Barcode.model";
 import { getToken } from "../utils/getToken";
 import server from "../utils/server";
-import mime from "mime-types";
-function toArrayBuffer(buf: number[]) {
-  const ab = new ArrayBuffer(buf.length);
-  const view = new Uint8Array(ab);
-  for (let i = 0; i < buf.length; ++i) {
-    view[i] = buf[i];
-  }
-  return ab;
-}
-function toFile(value: { name: string; data: number[] }) {
-  const type = mime.lookup(value.name) as string;
-  const file = new Blob([toArrayBuffer(value.data)], {
-    type,
-  });
-  return file;
-}
-export default async function getData(code: string) {
+export default async function getData(code: string): Promise<Barcode> {
   try {
-    const result = await axios.post(server() + "/data", {
+    const result = await axios.post<Barcode>(server() + "/data", {
       ...getToken(),
       code,
     });
+
     console.log(result.data);
     return result.data;
   } catch (e) {

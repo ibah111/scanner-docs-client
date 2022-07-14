@@ -4,6 +4,7 @@ import { Doc } from "./Doc.model";
 import { Result } from "./Result.model";
 import { Transmit } from "./Transmit.model";
 import { User } from "./User.model";
+import { File } from "./File.model";
 
 export class Barcode {
   id: number;
@@ -24,4 +25,6 @@ export class Barcode {
   doc: Result;
   @Type(() => Transmit)
   Transmits: Transmit[];
+  @Type(() => File)
+  file: File;
 }

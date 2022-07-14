@@ -13,17 +13,14 @@ import "moment/locale/ru";
 import { SnackbarProvider } from "notistack";
 import MessageShow from "../components/MessageShow";
 import "moment-timezone";
-import moment from "moment";
+import "../utils/crack";
 export default function (props: AppProps) {
   const { Component, pageProps } = props;
-
-  moment.tz.setDefault("Australia/Sydney");
   React.useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
-    console.log(moment.tz);
   }, []);
 
   return (

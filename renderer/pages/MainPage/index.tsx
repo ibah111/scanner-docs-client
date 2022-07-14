@@ -1,11 +1,10 @@
 import { Box, Button, Grid, Link } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
-import { plainToInstance } from "class-transformer";
+import { DataGridPremium } from "@mui/x-data-grid-premium";
 import React from "react";
 import { useAppSelector } from "../../Reducer";
-import { Barcode } from "../../Schemas/Barcode.model";
-import Scan from "../Scan";
+import Scan from "../../components/Scan";
 import columns from "./columns";
+import OpenDoc from "./Components/openDoc";
 import SendingForm from "./Components/sendingForm";
 
 export default function Main() {
@@ -22,7 +21,7 @@ export default function Main() {
           justifyContent="space-around"
           alignItems="center"
         >
-          <DataGrid
+          <DataGridPremium
             autoHeight={Boolean(data)}
             columns={columns}
             rows={rows}
