@@ -1,11 +1,4 @@
-import {
-  Button,
-  FormControl,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-} from "@mui/material";
+import { Button, Menu, MenuItem } from "@mui/material";
 import { ipcRenderer } from "electron";
 import React from "react";
 import { PortInfo } from "@serialport/bindings-cpp";
@@ -18,6 +11,7 @@ export default function Scan() {
   const [ports, setPorts] = React.useState<PortInfo[]>([]);
   const [port, setPort] = React.useState("");
   const [connected, setConnected] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const dispatch = useAppDispatch();
   React.useEffect(() => {
     ipcRenderer.on("ports", (event, args) => {
@@ -41,48 +35,54 @@ export default function Scan() {
     });
     ipcRenderer.send("requestPort");
   }, []);
+
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
-    <>
-      <Grid
-        container
-        direction="column"
-        justifyContent="space-around"
-        alignItems="center"
-      >
-        {!connected && (
-          <>
-            <FormControl sx={{ width: "75ch" }} fullWidth>
-              <InputLabel id="port-label">Порты</InputLabel>
-              <Select
-                labelId={"port-label"}
-                label={"Порты"}
-                value={port}
-                onChange={(event) => {
-                  setPort(event.target.value);
-                }}
-              >
-                <MenuItem key={0} value="">
-                  <em>Нет</em>
-                </MenuItem>
-                {ports.map((port, index) => (
-                  <MenuItem key={index + 1} value={port.path}>
-                    {port.path}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            {port !== "" && (
-              <Button
+    <div>
+      {!connected ? (
+        <>
+          <Button
+            id="basic-button"
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+          >
+            Подключить порт
+          </Button>
+
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            <MenuItem key={0} value="" onClick={handleClose}>
+              <em>Нет</em>
+            </MenuItem>
+            {ports.map((port, index) => (
+              <MenuItem
+                key={index}
                 onClick={() => {
-                  ipcRenderer.send("connectPort", port);
+                  ipcRenderer.send("connectPort", port.path);
                 }}
               >
-                Подключить порт
-              </Button>
-            )}
-          </>
-        )}
-        {connected && (
+                {port.path}
+              </MenuItem>
+            ))}
+          </Menu>
+        </>
+      ) : (
+        <>
           <Button
             onClick={() => {
               ipcRenderer.send("disconnectPort");
@@ -90,8 +90,8 @@ export default function Scan() {
           >
             Отключить порт
           </Button>
-        )}
-      </Grid>
-    </>
+        </>
+      )}
+    </div>
   );
 }
