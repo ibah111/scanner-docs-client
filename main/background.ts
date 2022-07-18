@@ -1,8 +1,7 @@
-import { app } from "electron";
+import { app, ipcMain, webContents } from "electron";
 import serve from "electron-serve";
 import { createWindow } from "./helpers";
 import events from "./events";
-import { tz } from "moment-timezone";
 
 const isProd: boolean = process.env.NODE_ENV === "production";
 if (isProd) {
@@ -25,7 +24,10 @@ if (isProd) {
   const mainWindow = createWindow("main", {
     width: 1000,
     height: 600,
+    autoHideMenuBar: true,
+    frame: false,
   });
+
   events(mainWindow.webContents);
   if (isProd) {
     await mainWindow.loadURL("app://./MainPage.html");
@@ -34,6 +36,18 @@ if (isProd) {
     await mainWindow.loadURL(`http://localhost:${port}/MainPage`);
     mainWindow.webContents.openDevTools();
   }
+
+  ipcMain.on("close", () => {
+    mainWindow.close();
+  });
+
+  ipcMain.on("minimize", () => {
+    mainWindow.minimize();
+  });
+
+  ipcMain.on("size", () => {
+    mainWindow.isMaximized() ? mainWindow.unmaximize() : mainWindow.maximize();
+  });
 })();
 
 app.on("window-all-closed", () => {

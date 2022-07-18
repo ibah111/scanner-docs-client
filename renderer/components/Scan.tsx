@@ -9,7 +9,6 @@ import {
 import { ipcRenderer } from "electron";
 import React from "react";
 import { PortInfo } from "@serialport/bindings-cpp";
-import Link from "./Link";
 import { useAppDispatch } from "../Reducer";
 import { resetData, setData } from "../Reducer/Data";
 import getData from "../api/getData";
