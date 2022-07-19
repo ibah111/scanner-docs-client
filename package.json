@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@date-io/moment": "^2.14.0",
+    "@mui/icons-material": "^5.8.4",
     "@mui/x-data-grid-premium": "^5.12.1",
     "@mui/x-date-pickers": "^5.0.0-alpha.7",
     "@reduxjs/toolkit": "^1.8.3",

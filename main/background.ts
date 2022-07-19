@@ -1,4 +1,4 @@
-import { app, ipcMain, webContents } from "electron";
+import { app, ipcMain } from "electron";
 import serve from "electron-serve";
 import { createWindow } from "./helpers";
 import events from "./events";
