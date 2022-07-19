@@ -9,10 +9,10 @@ import {
 import { DatePicker } from "@mui/x-date-pickers";
 import { Moment } from "moment";
 import React from "react";
-import SendData from "../../../api/SendData";
-import { useAppDispatch, useAppSelector } from "../../../Reducer";
-import { setSend } from "../../../Reducer/Send";
-import errorDate from "../../../utils/errorDate";
+import SendData from "../../api/SendData";
+import { useAppDispatch, useAppSelector } from "../../Reducer";
+import { setSend } from "../../Reducer/Send";
+import errorDate from "../../utils/errorDate";
 
 export default function SendingForm() {
   const data = useAppSelector((state) => state.Send);

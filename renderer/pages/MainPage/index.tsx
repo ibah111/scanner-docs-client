@@ -3,8 +3,8 @@ import { DataGridPremium } from "@mui/x-data-grid-premium";
 import React from "react";
 import { useAppSelector } from "../../Reducer";
 import Scan from "../../components/Scan";
-import columns from "./columns";
-import SendingForm from "./Components/sendingForm";
+import columns from "../../components/MainPage/columns";
+import SendingForm from "../../components/MainPage/sendingForm";
 import MenuBar from "../../components/menuBar";
 
 export default function Main() {
