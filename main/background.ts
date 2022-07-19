@@ -49,7 +49,6 @@ if (isProd) {
     mainWindow.isMaximized() ? mainWindow.unmaximize() : mainWindow.maximize();
   });
 })();
-
 app.on("window-all-closed", () => {
   app.quit();
 });

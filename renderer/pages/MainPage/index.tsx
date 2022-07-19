@@ -20,9 +20,6 @@ export default function Main() {
         spacing={4}
         height="100%"
       >
-        <Grid item>
-          <MenuBar />
-        </Grid>
         <Grid
           item
           container

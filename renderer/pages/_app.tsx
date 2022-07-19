@@ -14,6 +14,7 @@ import { SnackbarProvider } from "notistack";
 import MessageShow from "../components/MessageShow";
 import "moment-timezone";
 import "../utils/crack";
+import MenuBar from "../components/menuBar";
 export default function (props: AppProps) {
   const { Component, pageProps } = props;
   React.useEffect(() => {
@@ -38,6 +39,7 @@ export default function (props: AppProps) {
             dateAdapter={AdapterMoment}
           >
             <SnackbarProvider maxSnack={3}>
+              <MenuBar />
               <MessageShow />
               <CssBaseline />
               <Component {...pageProps} />
