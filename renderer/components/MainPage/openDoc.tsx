@@ -8,7 +8,6 @@ export default function OpenDoc() {
   const [fileUrl, setUrl] = React.useState("");
   const Click = () => {
     const file = fileConvert(data);
-    console.log(file);
     setUrl(URL.createObjectURL(file));
     setOpen(true);
   };

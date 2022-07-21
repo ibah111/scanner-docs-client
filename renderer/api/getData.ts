@@ -10,8 +10,6 @@ export default async function getData(code: string): Promise<Barcode> {
       ...getToken(),
       code,
     });
-
-    console.log(result.data);
     return result.data;
   } catch (e) {
     if (e instanceof AxiosError) {

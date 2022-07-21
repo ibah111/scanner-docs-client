@@ -22,7 +22,8 @@ export default function autoUpdaters(app: App, webContents: WebContents) {
     webContents.send("update-downloaded");
   });
 
-  app.on("ready", function () {
+  ipcMain.on("check_version", function () {
+    webContents.send("version", app.getVersion());
     autoUpdater.checkForUpdates();
   });
 }

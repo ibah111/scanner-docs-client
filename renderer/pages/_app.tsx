@@ -15,7 +15,7 @@ import MessageShow from "../components/MessageShow";
 import "moment-timezone";
 import "../utils/crack";
 import MenuBar from "../components/menuBar";
-import Version from "../components/version";
+import Update from "../components/Update";
 export default function (props: AppProps) {
   const { Component, pageProps } = props;
   React.useEffect(() => {
@@ -42,7 +42,7 @@ export default function (props: AppProps) {
             <SnackbarProvider maxSnack={3}>
               <MenuBar />
               <MessageShow />
-              <Version />
+              <Update />
               <CssBaseline />
               <Component {...pageProps} />
             </SnackbarProvider>

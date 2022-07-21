@@ -8,7 +8,6 @@ import SendingForm from "../../components/MainPage/sendingForm";
 
 export default function Main() {
   const data = useAppSelector((state) => state.Data);
-  console.log(data);
   const rows = data ? [data] : [];
   return (
     <Box>

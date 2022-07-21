@@ -4,7 +4,6 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
   LinearProgress,
   LinearProgressProps,
@@ -12,6 +11,9 @@ import {
 } from "@mui/material";
 import { ipcRenderer } from "electron";
 import React from "react";
+import store from "../lib/store";
+import { useAppDispatch } from "../Reducer";
+import { callSuccess } from "../Reducer/Message";
 
 function LinearProgressWithLabel(
   props: LinearProgressProps & { value: number }
@@ -30,12 +32,13 @@ function LinearProgressWithLabel(
   );
 }
 
-export default function Version() {
+export default function Update() {
   const [downloading, setDownloading] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [message, setMessage] = React.useState("");
   const [progress, setProgress] = React.useState(0);
   const [downloaded, setDownloaded] = React.useState(false);
+  const dispatch = useAppDispatch();
   React.useEffect(() => {
     ipcRenderer.on("update-available", (event, text: string) => {
       setOpen(true);
@@ -51,6 +54,13 @@ export default function Version() {
       setDownloading(false);
       setDownloaded(true);
     });
+    ipcRenderer.on("version", (event, params) => {
+      const version = store.get("version");
+      if (version !== params)
+        dispatch(callSuccess("Обновление произошло успешно"));
+      store.set("version", params);
+    });
+    ipcRenderer.send("check_version");
   }, []);
 
   const handleClose = () => {

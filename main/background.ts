@@ -1,5 +1,5 @@
 import { app, ipcMain } from "electron";
-import { autoUpdater } from "electron-updater";
+import Store from "electron-store";
 import serve from "electron-serve";
 import { createWindow } from "./helpers";
 import events from "./events";
@@ -29,7 +29,7 @@ if (isProd) {
     autoHideMenuBar: true,
     frame: false,
   });
-
+  Store.initRenderer();
   events(mainWindow.webContents);
   autoUpdaters(app, mainWindow.webContents);
   if (isProd) {
