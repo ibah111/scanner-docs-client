@@ -1,8 +1,9 @@
 import { app, ipcMain } from "electron";
+import { autoUpdater } from "electron-updater";
 import serve from "electron-serve";
 import { createWindow } from "./helpers";
 import events from "./events";
-import "./updater";
+import autoUpdaters from "./autoUpdaters";
 const isProd: boolean = process.env.NODE_ENV === "production";
 if (isProd) {
   serve({ directory: "app" });
@@ -20,6 +21,7 @@ if (isProd) {
       callback(true);
     }
   );
+
   await app.whenReady();
   const mainWindow = createWindow("main", {
     width: 1000,
@@ -29,6 +31,7 @@ if (isProd) {
   });
 
   events(mainWindow.webContents);
+  autoUpdaters(app, mainWindow.webContents);
   if (isProd) {
     await mainWindow.loadURL("app://./MainPage.html");
   } else {

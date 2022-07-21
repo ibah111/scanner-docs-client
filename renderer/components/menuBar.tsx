@@ -1,8 +1,7 @@
-import { Box, Button, Grid, IconButton, Typography } from "@mui/material";
+import { Box, Grid, IconButton, Typography } from "@mui/material";
 import { Close } from "@mui/icons-material";
 import { ipcRenderer } from "electron";
 import React from "react";
-import ZoomInMapIcon from "@mui/icons-material/ZoomInMap";
 import SettingsOverscanIcon from "@mui/icons-material/SettingsOverscan";
 import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
 
