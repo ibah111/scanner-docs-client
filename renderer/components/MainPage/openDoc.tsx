@@ -1,7 +1,8 @@
-import { Button, Dialog } from "@mui/material";
+import { Button, Dialog, IconButton } from "@mui/material";
 import React from "react";
 import { useAppSelector } from "../../Reducer";
 import fileConvert from "../../utils/fileConvert";
+import MenuBar from "../MenuBar";
 export default function OpenDoc() {
   const data = useAppSelector((state) => state.Data?.file);
   const [open, setOpen] = React.useState(false);
@@ -13,10 +14,10 @@ export default function OpenDoc() {
   };
   return (
     <>
-      <Button onClick={Click}>Открыть документ</Button>
+      <Button onClick={Click}>Открыть</Button>
       <Dialog open={open} fullScreen onClose={() => setOpen(false)}>
+        <MenuBar back={() => setOpen(false)} />
         <iframe src={fileUrl} height="100%" width="100%"></iframe>
-        <Button onClick={() => setOpen(false)}>Вернуться назад</Button>
       </Dialog>
     </>
   );

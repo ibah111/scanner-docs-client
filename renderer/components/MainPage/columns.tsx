@@ -2,21 +2,21 @@ import { GridColumns } from "@mui/x-data-grid-premium";
 import moment from "moment";
 import { Barcode } from "../../Schemas/Barcode.model";
 import { generateName } from "../../utils/generateName";
-import OpenDoc from "./openDoc";
+import OpenDoc from "./OpenDoc";
 
 const columns: GridColumns<Barcode> = [
-  {
-    field: "actions",
-    headerName: "Действия",
-    type: "actions",
-    getActions: (params) => {
-      return [<OpenDoc />];
-    },
-  },
   {
     field: "id",
     headerName: "№",
     width: 5,
+  },
+  {
+    field: "actions",
+    headerName: "Документ",
+    type: "actions",
+    getActions: (params) => {
+      return [<OpenDoc />];
+    },
   },
   {
     field: "date_post",
@@ -114,7 +114,7 @@ const columns: GridColumns<Barcode> = [
   },
   {
     field: "depart_old",
-    headerName: "передыдущее подразделение",
+    headerName: "Предыдущее подразделение",
     valueGetter: (params) => {
       return params.row.DepartOld?.title;
     },

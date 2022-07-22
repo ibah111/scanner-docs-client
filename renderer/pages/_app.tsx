@@ -14,7 +14,7 @@ import { SnackbarProvider } from "notistack";
 import MessageShow from "../components/MessageShow";
 import "moment-timezone";
 import "../utils/crack";
-import MenuBar from "../components/menuBar";
+import MenuBar from "../components/MenuBar";
 import Update from "../components/Update";
 export default function (props: AppProps) {
   const { Component, pageProps } = props;

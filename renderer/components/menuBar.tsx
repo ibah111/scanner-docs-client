@@ -3,16 +3,31 @@ import { Close } from "@mui/icons-material";
 import { ipcRenderer } from "electron";
 import React from "react";
 import SettingsOverscanIcon from "@mui/icons-material/SettingsOverscan";
+import ReplayIcon from "@mui/icons-material/Replay";
+import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
-
-export default function MenuBar() {
+interface MenuBarProps {
+  back?: () => void;
+}
+export default function MenuBar({ back }: MenuBarProps) {
   return (
     <Box sx={{ pl: 3, width: "100%" }}>
       <Grid container direction="row" justifyContent="space-between">
         <Grid item sx={{ pt: 1 }}>
-          <Typography>Документооборот</Typography>
+          <Grid item container direction="row">
+            <Grid item sx={{ mt: -1 }}>
+              {back && (
+                <IconButton onClick={back}>
+                  <KeyboardReturnIcon />
+                </IconButton>
+              )}
+            </Grid>
+            <Grid item>
+              <Typography>Scanner Docs</Typography>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item sx={{ WebkitAppRegion: "drag" }} xs></Grid>
+        <Grid item sx={{ WebkitAppRegion: "drag" }} xs />
         <Grid item>
           <Grid item container direction="row">
             <Grid item>

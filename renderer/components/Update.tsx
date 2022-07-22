@@ -4,6 +4,7 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
+  DialogContentText,
   DialogTitle,
   LinearProgress,
   LinearProgressProps,
@@ -14,6 +15,7 @@ import React from "react";
 import store from "../lib/store";
 import { useAppDispatch } from "../Reducer";
 import { callSuccess } from "../Reducer/Message";
+import { UpdateInfo } from "electron-updater";
 
 function LinearProgressWithLabel(
   props: LinearProgressProps & { value: number }
@@ -35,15 +37,20 @@ function LinearProgressWithLabel(
 export default function Update() {
   const [downloading, setDownloading] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const [mandatory, setMandatory] = React.useState(false);
   const [message, setMessage] = React.useState("");
   const [progress, setProgress] = React.useState(0);
   const [downloaded, setDownloaded] = React.useState(false);
   const dispatch = useAppDispatch();
   React.useEffect(() => {
-    ipcRenderer.on("update-available", (event, text: string) => {
-      setOpen(true);
-      setMessage("Доступно обновление. Скачать обновление сейчас?");
-    });
+    ipcRenderer.on(
+      "update-available",
+      (event, text: UpdateInfo & { mandatory: boolean }) => {
+        setOpen(true);
+        setMandatory(text.mandatory);
+        setMessage("Доступно обновление. Скачать обновление сейчас?");
+      }
+    );
     ipcRenderer.on("message-error", (event, text: string) => {
       setMessage("Ошибка при обновлении");
     });
@@ -66,20 +73,34 @@ export default function Update() {
   const handleClose = () => {
     setOpen(false);
   };
-
   return (
     <div>
       <>
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          PaperProps={{
+            style: {
+              backgroundColor: "#cfe8fc",
+            },
+          }}
+        >
           <DialogTitle>{message}</DialogTitle>
           <DialogContent>
-            {downloading && <LinearProgressWithLabel value={progress} />}
+            {downloading && (
+              <>
+                <DialogContentText>Скачивается обновление</DialogContentText>
+                <LinearProgressWithLabel value={progress} />
+              </>
+            )}
             {downloaded && (
               <>
                 <Button
                   onClick={() => {
                     ipcRenderer.send("update-install");
                   }}
+                  variant="contained"
+                  color="primary"
                 >
                   Установить
                 </Button>
@@ -94,11 +115,21 @@ export default function Update() {
                     ipcRenderer.send("update-download");
                     setDownloading(true);
                   }}
+                  variant="contained"
+                  color="primary"
                 >
                   Да
                 </Button>
 
-                <Button onClick={handleClose}>Нет</Button>
+                {!mandatory && (
+                  <Button
+                    onClick={handleClose}
+                    variant="contained"
+                    color="secondary"
+                  >
+                    Нет
+                  </Button>
+                )}
               </>
             )}
           </DialogActions>

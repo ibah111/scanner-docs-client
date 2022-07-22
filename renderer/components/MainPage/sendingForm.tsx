@@ -61,7 +61,14 @@ export default function SendingForm() {
             helperText={!Boolean(data.WhereSend) ? "Заполните поле" : " "}
             variant="outlined"
           />
-          <Button onClick={SendData}>Отправить</Button>
+          <Button
+            onClick={SendData}
+            color="primary"
+            variant="contained"
+            sx={{ float: "right", mr: "13px" }}
+          >
+            Отправить
+          </Button>
         </Box>
       </Paper>
     </React.Fragment>

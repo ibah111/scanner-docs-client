@@ -47,10 +47,13 @@ export default function Scan() {
         <>
           <Button
             id="basic-button"
+            color="primary"
+            sx={{ width: "180px" }}
             aria-controls={open ? "basic-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
             onClick={handleClick}
+            variant="contained"
           >
             Подключить порт
           </Button>
@@ -64,7 +67,7 @@ export default function Scan() {
               "aria-labelledby": "basic-button",
             }}
           >
-            <MenuItem key={0} value="" onClick={handleClose}>
+            <MenuItem onClick={handleClose} sx={{ width: "180px" }}>
               <em>Нет</em>
             </MenuItem>
             {ports.map((port, index) => (
@@ -77,6 +80,14 @@ export default function Scan() {
                 {port.path}
               </MenuItem>
             ))}
+            <MenuItem
+              onClick={() => {
+                ipcRenderer.send("requestPort");
+              }}
+              sx={{ width: "180px" }}
+            >
+              <em>Обновить</em>
+            </MenuItem>
           </Menu>
         </>
       ) : (
@@ -85,6 +96,9 @@ export default function Scan() {
             onClick={() => {
               ipcRenderer.send("disconnectPort");
             }}
+            color="secondary"
+            sx={{ width: "180px" }}
+            variant="contained"
           >
             Отключить порт
           </Button>
