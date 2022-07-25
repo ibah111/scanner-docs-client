@@ -16,6 +16,7 @@ import "moment-timezone";
 import "../utils/crack";
 import MenuBar from "../components/MenuBar";
 import Update from "../components/Update";
+import Connect from "../components/Connect";
 export default function (props: AppProps) {
   const { Component, pageProps } = props;
   React.useEffect(() => {
@@ -44,7 +45,9 @@ export default function (props: AppProps) {
               <MessageShow />
               <Update />
               <CssBaseline />
-              <Component {...pageProps} />
+              <Connect>
+                <Component {...pageProps} />
+              </Connect>
             </SnackbarProvider>
           </LocalizationProvider>
         </ThemeProvider>
