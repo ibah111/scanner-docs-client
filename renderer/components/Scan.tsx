@@ -6,7 +6,6 @@ import { useAppDispatch } from "../Reducer";
 import { resetData, setData } from "../Reducer/Data";
 import getData from "../api/getData";
 import { resetSend } from "../Reducer/Send";
-import Connect from "./Connect";
 
 export default function Scan() {
   const [ports, setPorts] = React.useState<PortInfo[]>([]);

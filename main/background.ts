@@ -4,6 +4,7 @@ import serve from "electron-serve";
 import { createWindow } from "./helpers";
 import events from "./events";
 import autoUpdaters from "./autoUpdaters";
+import { singleEvents } from "./singleEvents";
 const isProd: boolean = process.env.NODE_ENV === "production";
 if (isProd) {
   serve({ directory: "app" });
@@ -32,6 +33,7 @@ if (isProd) {
   Store.initRenderer();
   events(mainWindow.webContents);
   autoUpdaters(app, mainWindow.webContents);
+  singleEvents(mainWindow.webContents);
   if (isProd) {
     await mainWindow.loadURL("app://./MainPage.html");
   } else {
