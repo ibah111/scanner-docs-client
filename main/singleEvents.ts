@@ -10,7 +10,9 @@ export const singleEvents = (webContents: WebContents) => {
     const server = http.createServer(async (req, res) => {
       const query = url.parse(req.url, true).query;
       webContents.send("getToken", query.token);
-      res.writeHead(200);
+      res.writeHead(200, {
+        "Content-Type": "text/plain; charset=utf-8",
+      });
       res.end("Вход успешно выполнен");
       error = false;
       await httpTerminator.terminate();

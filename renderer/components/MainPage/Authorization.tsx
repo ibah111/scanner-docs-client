@@ -1,5 +1,7 @@
 import { Button } from "@mui/material";
 import { ipcRenderer } from "electron";
+import store from "../../lib/store";
+import { getToken } from "../../utils/getToken";
 
 const OpenInBrowser = () => {
   return new Promise<string>((resolve, reject) => {
@@ -22,7 +24,9 @@ export default function Authorization() {
   return (
     <Button
       onClick={() => {
-        OpenInBrowser().then(console.log);
+        OpenInBrowser().then((value) => {
+          store.set("token", value);
+        });
       }}
     >
       Авторизация

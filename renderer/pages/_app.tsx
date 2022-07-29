@@ -18,6 +18,7 @@ import MenuBar from "../components/MenuBar";
 import Update from "../components/Update";
 import Connect from "../components/Connect";
 import Authorization from "../components/MainPage/Authorization";
+import Login from "../components/Login";
 export default function (props: AppProps) {
   const { Component, pageProps } = props;
   React.useEffect(() => {
@@ -46,10 +47,11 @@ export default function (props: AppProps) {
               <MessageShow />
               <Update />
               <CssBaseline />
-
-              <Connect>
-                <Component {...pageProps} />
-              </Connect>
+              <Login>
+                <Connect>
+                  <Component {...pageProps} />
+                </Connect>
+              </Login>
             </SnackbarProvider>
           </LocalizationProvider>
         </ThemeProvider>

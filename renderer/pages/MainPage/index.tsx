@@ -38,9 +38,6 @@ export default function Main() {
         </Grid>
         <Grid item>{rows.length > 0 && <SendingForm />}</Grid>
         <Grid item>
-          <Authorization />
-        </Grid>
-        <Grid item>
           <Scan />
         </Grid>
       </Grid>
