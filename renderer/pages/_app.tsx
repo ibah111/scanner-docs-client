@@ -47,12 +47,12 @@ export default function (props: AppProps) {
               <MessageShow />
               <Update />
               <CssBaseline />
-              <Login>
-                <Connect>
+              <Connect>
+                <Login>
                   <Component {...pageProps} />
                   <Exit />
-                </Connect>
-              </Login>
+                </Login>
+              </Connect>
             </SnackbarProvider>
           </LocalizationProvider>
         </ThemeProvider>

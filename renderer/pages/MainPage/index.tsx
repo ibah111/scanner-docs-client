@@ -5,11 +5,10 @@ import { useAppSelector } from "../../Reducer";
 import Scan from "../../components/Scan";
 import columns from "../../components/MainPage/columns";
 import SendingForm from "../../components/MainPage/SendingForm";
-import Authorization from "../../components/MainPage/Authorization";
-import Exit from "../../components/Exit";
 
 export default function Main() {
   const data = useAppSelector((state) => state.Data);
+  const User = useAppSelector((state) => state.User);
   const rows = data ? [data] : [];
   return (
     <Box>
@@ -37,7 +36,9 @@ export default function Main() {
             />
           )}
         </Grid>
-        <Grid item>{rows.length > 0 && <SendingForm />}</Grid>
+        <Grid item>
+          {User.roles.includes("sender") && rows.length > 0 && <SendingForm />}
+        </Grid>
         <Grid item>
           <Scan />
         </Grid>

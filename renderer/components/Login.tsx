@@ -4,6 +4,7 @@ import React from "react";
 import { store, useAppDispatch, useAppSelector } from "../Reducer";
 import { callError } from "../Reducer/Message";
 import { resetLogin, setState } from "../Reducer/State";
+import { setUser } from "../Reducer/User";
 import { AuthUserSuccess } from "../Schemas/Auth";
 import { getToken } from "../utils/getToken";
 import server from "../utils/server";
@@ -17,6 +18,7 @@ const connect = async (callback: (value: boolean) => void) => {
         ...token,
       });
       if (result.data.login_result === true) {
+        store.dispatch(setUser(result.data));
         callback(true);
       } else {
         callback(false);
