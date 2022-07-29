@@ -6116,18 +6116,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mui-image@npm:^1.0.7":
-  version: 1.0.7
-  resolution: "mui-image@npm:1.0.7"
-  peerDependencies:
-    "@emotion/react": ^11.4.1
-    "@emotion/styled": ^11.3.0
-    "@mui/material": ^5.0.1
-    prop-types: ^15.7.2
-    react: ^17.0.2 || ^18.0.0
-  checksum: 7512777d0a83a108a9403f4175874f07d65a31282d33e4cb8334af8242ae5827c478b73cd7adce727a75a73c8ca76f236781881f74e6c303e81e1bfcca232512
-  languageName: node
-  linkType: hard
 
 "my-nextron-app@workspace:.":
   version: 0.0.0-use.local
@@ -6158,7 +6146,6 @@ __metadata:
     mime-types: ^2.1.35
     moment: ^2.29.4
     moment-timezone: ^0.5.34
-    mui-image: ^1.0.7
     next: ^12.2.2
     notistack: ^2.0.5
     open: ^8.4.0
