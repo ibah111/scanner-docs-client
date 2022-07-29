@@ -6,7 +6,7 @@ export default function Exit() {
   const dispatch = useAppDispatch();
   return (
     <Button
-      sx={{ position: "absolute", bottom: "15px", left: "85%" }}
+      sx={{ position: "absolute", top: "15px", left: "85%" }}
       variant="outlined"
       color="secondary"
       onClick={() => {

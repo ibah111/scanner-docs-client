@@ -3,7 +3,6 @@ import { Close } from "@mui/icons-material";
 import { ipcRenderer } from "electron";
 import React from "react";
 import SettingsOverscanIcon from "@mui/icons-material/SettingsOverscan";
-import ReplayIcon from "@mui/icons-material/Replay";
 import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
 interface MenuBarProps {
