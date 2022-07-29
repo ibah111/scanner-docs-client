@@ -14,11 +14,11 @@ import { SnackbarProvider } from "notistack";
 import MessageShow from "../components/MessageShow";
 import "moment-timezone";
 import "../utils/crack";
-import MenuBar from "../components/MenuBar";
 import Update from "../components/Update";
 import Connect from "../components/Connect";
-import Authorization from "../components/MainPage/Authorization";
 import Login from "../components/Login";
+import MenuBar from "../components/menuBar";
+import Exit from "../components/Exit";
 export default function (props: AppProps) {
   const { Component, pageProps } = props;
   React.useEffect(() => {
@@ -50,6 +50,7 @@ export default function (props: AppProps) {
               <Login>
                 <Connect>
                   <Component {...pageProps} />
+                  <Exit />
                 </Connect>
               </Login>
             </SnackbarProvider>

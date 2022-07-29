@@ -2,7 +2,8 @@ import { Button, Dialog, IconButton } from "@mui/material";
 import React from "react";
 import { useAppSelector } from "../../Reducer";
 import fileConvert from "../../utils/fileConvert";
-import MenuBar from "../MenuBar";
+import MenuBar from "../menuBar";
+
 export default function OpenDoc() {
   const data = useAppSelector((state) => state.Data?.file);
   const [open, setOpen] = React.useState(false);

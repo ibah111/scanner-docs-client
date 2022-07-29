@@ -25,6 +25,7 @@
     "mime-types": "^2.1.35",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.34",
+    "mui-image": "^1.0.7",
     "notistack": "^2.0.5",
     "open": "^8.4.0",
     "react-redux": "^8.0.2",

@@ -1,7 +1,8 @@
 import { Button } from "@mui/material";
 import { ipcRenderer } from "electron";
 import store from "../../lib/store";
-import { getToken } from "../../utils/getToken";
+import { useAppDispatch } from "../../Reducer";
+import { resetLogin } from "../../Reducer/State";
 
 const OpenInBrowser = () => {
   return new Promise<string>((resolve, reject) => {
@@ -21,11 +22,15 @@ const OpenInBrowser = () => {
 };
 
 export default function Authorization() {
+  const dispatch = useAppDispatch();
   return (
     <Button
+      variant="outlined"
+      color="primary"
       onClick={() => {
         OpenInBrowser().then((value) => {
           store.set("token", value);
+          dispatch(resetLogin());
         });
       }}
     >
