@@ -1,4 +1,3 @@
-import { ActionTypes } from "@mui/base";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Barcode } from "../Schemas/Barcode.model";
 const initialState: Barcode = null;

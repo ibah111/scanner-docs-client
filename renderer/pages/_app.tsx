@@ -19,6 +19,8 @@ import Connect from "../components/Connect";
 import Login from "../components/Login";
 import MenuBar from "../components/menuBar";
 import Exit from "../components/Exit";
+import Docs from "../components/Docs/Docs";
+import UpdateDocs from "../components/Docs/updateDocs";
 export default function (props: AppProps) {
   const { Component, pageProps } = props;
   React.useEffect(() => {
@@ -49,6 +51,8 @@ export default function (props: AppProps) {
               <CssBaseline />
               <Connect>
                 <Login>
+                  <UpdateDocs />
+                  <Docs />
                   <Component {...pageProps} />
                   <Exit />
                 </Login>
