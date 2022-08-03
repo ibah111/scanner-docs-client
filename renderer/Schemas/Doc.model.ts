@@ -1,4 +1,7 @@
 import { Type } from "class-transformer";
+import { Depart } from "./Depart.model";
+import { Transmit } from "./Transmit.model";
+import { User } from "./User.model";
 
 export class Doc {
   id: number;

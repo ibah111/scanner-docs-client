@@ -1,5 +1,6 @@
 import { GridColumns } from "@mui/x-data-grid-premium";
 import { Doc } from "../../Schemas/Doc.model";
+import { generateName } from "../../utils/generateName";
 import OpenDocuments from "./OpenDocuments";
 
 const columns: GridColumns<Doc> = [
@@ -14,21 +15,15 @@ const columns: GridColumns<Doc> = [
     valueGetter: (params) => {
       return params.row?.contact_doc_id;
     },
+    width: 150,
   },
   {
     field: "doc_name",
-    headerName: "Название документа",
+    headerName: "Открыть документ",
     valueGetter: (params) => {
       return params.row?.title;
     },
-  },
-  {
-    field: "actions",
-    headerName: "Документ",
-    type: "actions",
-    getActions: (params) => {
-      return [<OpenDocuments />];
-    },
+    width: 350,
   },
 ];
 

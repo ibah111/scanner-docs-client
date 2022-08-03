@@ -2,7 +2,7 @@ import { GridColumns } from "@mui/x-data-grid-premium";
 import moment from "moment";
 import { Barcode } from "../../Schemas/Barcode.model";
 import { generateName } from "../../utils/generateName";
-import OpenDoc from "./OpenDoc";
+import OpenDoc from "./openDoc";
 
 const columns: GridColumns<Barcode> = [
   {
