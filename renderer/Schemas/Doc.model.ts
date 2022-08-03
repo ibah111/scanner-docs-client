@@ -12,4 +12,10 @@ export class Doc {
   law_exec_id: number;
   @Type(() => Date)
   date: Date;
+  @Type(() => User)
+  User: User;
+  @Type(() => Depart)
+  Depart: Depart;
+  @Type(() => Transmit)
+  Transmits: Transmit[];
 }
