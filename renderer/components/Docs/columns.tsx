@@ -1,6 +1,6 @@
 import { GridColumns } from "@mui/x-data-grid-premium";
 import { Doc } from "../../Schemas/Doc.model";
-import { generateName } from "../../utils/generateName";
+import OpenDocuments from "./OpenDocuments";
 
 const columns: GridColumns<Doc> = [
   {
@@ -27,7 +27,7 @@ const columns: GridColumns<Doc> = [
     headerName: "Документ",
     type: "actions",
     getActions: (params) => {
-      return [];
+      return [<OpenDocuments />];
     },
   },
 ];

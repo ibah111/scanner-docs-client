@@ -1,5 +1,4 @@
 import { Type } from "class-transformer";
-import { Barcode } from "./Barcode.model";
 
 export class Doc {
   id: number;
