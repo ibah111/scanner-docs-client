@@ -5,6 +5,7 @@ import { useAppSelector } from "../../Reducer";
 import Scan from "../../components/Scan";
 import columns from "../../components/MainPage/columns";
 import SendingForm from "../../components/MainPage/SendingForm";
+import Docs from "../../components/Docs/Docs";
 
 export default function Main() {
   const data = useAppSelector((state) => state.Data);
@@ -38,9 +39,6 @@ export default function Main() {
         </Grid>
         <Grid item>
           {User.roles.includes("sender") && rows.length > 0 && <SendingForm />}
-        </Grid>
-        <Grid item>
-          <Scan />
         </Grid>
       </Grid>
     </Box>

@@ -1,8 +1,10 @@
-import { Button, Dialog } from "@mui/material";
+import { Dialog } from "@mui/material";
+import { GridActionsCellItem } from "@mui/x-data-grid-premium";
 import React from "react";
 import { useAppSelector } from "../../Reducer";
 import fileConvert from "../../utils/fileConvert";
 import MenuBar from "../menuBar";
+import PanoramaIcon from "@mui/icons-material/Panorama";
 
 export default function OpenDoc() {
   const data = useAppSelector((state) => state.Data?.file);
@@ -15,7 +17,11 @@ export default function OpenDoc() {
   };
   return (
     <>
-      <Button onClick={Click}>Открыть</Button>
+      <GridActionsCellItem
+        icon={<PanoramaIcon />}
+        onClick={Click}
+        label="Открыть документы"
+      />
       <Dialog open={open} fullScreen onClose={() => setOpen(false)}>
         <MenuBar back={() => setOpen(false)} />
         <iframe src={fileUrl} height="100%" width="100%"></iframe>

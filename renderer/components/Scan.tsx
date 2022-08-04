@@ -47,7 +47,7 @@ export default function Scan() {
         <>
           <Button
             id="basic-button"
-            color="primary"
+            color="secondary"
             sx={{ width: "180px" }}
             aria-controls={open ? "basic-menu" : undefined}
             aria-haspopup="true"

@@ -18,8 +18,8 @@ import Update from "../components/Update";
 import Connect from "../components/Connect";
 import Login from "../components/Login";
 import MenuBar from "../components/menuBar";
-import Exit from "../components/Exit";
-import UpdateDocs from "../components/Docs/updateDocs";
+import NavBar from "../components/NavBar/NavBar";
+import Docs from "../components/Docs/Docs";
 export default function (props: AppProps) {
   const { Component, pageProps } = props;
   React.useEffect(() => {
@@ -50,9 +50,9 @@ export default function (props: AppProps) {
               <CssBaseline />
               <Connect>
                 <Login>
-                  <UpdateDocs />
+                  <NavBar />
                   <Component {...pageProps} />
-                  <Exit />
+                  <Docs />
                 </Login>
               </Connect>
             </SnackbarProvider>

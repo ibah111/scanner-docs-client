@@ -1,4 +1,4 @@
-import { Button, Dialog } from "@mui/material";
+import { Dialog } from "@mui/material";
 import { GridActionsCellItem } from "@mui/x-data-grid-premium";
 import React from "react";
 import getDocuments from "../../api/getDocuments";
