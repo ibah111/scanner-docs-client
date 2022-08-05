@@ -13,13 +13,7 @@ export default function Main() {
   const rows = data ? [data] : [];
   return (
     <Box>
-      <Grid
-        container
-        direction="column"
-        alignItems="center"
-        spacing={4}
-        height="100%"
-      >
+      <Grid container direction="column" alignItems="center" height="100%">
         <Grid
           item
           container

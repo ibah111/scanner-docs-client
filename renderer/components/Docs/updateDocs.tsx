@@ -4,6 +4,7 @@ import getDocs from "../../api/getDocs";
 import store from "../../lib/store";
 import { useAppDispatch } from "../../Reducer";
 import { resetDocs, setDocs } from "../../Reducer/Docs";
+import DialogFilter from "./DialogFilter";
 
 export default function UpdateDocs() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -39,17 +40,19 @@ export default function UpdateDocs() {
           "aria-labelledby": "basic-button",
         }}
       >
-        {" "}
+        <MenuItem>
+          <DialogFilter />
+        </MenuItem>
         {!connected ? (
           <MenuItem
             onClick={() => {
-              getDocs().then((res) => {
+              getDocs(null, null, null).then((res) => {
                 dispatch(setDocs(res));
               });
               setConnected(true);
             }}
           >
-            <em>Открыть</em>
+            <em>Открыть все</em>
           </MenuItem>
         ) : (
           <MenuItem
