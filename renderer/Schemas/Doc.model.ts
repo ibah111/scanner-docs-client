@@ -10,6 +10,8 @@ export class Doc {
   mail_id: number;
   law_act_id: number;
   law_exec_id: number;
+  page: number;
+  pageSize: number;
   @Type(() => Date)
   date: Date;
   @Type(() => User)

@@ -46,7 +46,7 @@ export default function UpdateDocs() {
         {!connected ? (
           <MenuItem
             onClick={() => {
-              getDocs(null, null, null).then((res) => {
+              getDocs(null, null, null, 0, 25).then((res) => {
                 dispatch(setDocs(res));
               });
               setConnected(true);
@@ -57,7 +57,6 @@ export default function UpdateDocs() {
         ) : (
           <MenuItem
             onClick={() => {
-              store.set("docs", null);
               dispatch(resetDocs());
               setConnected(false);
             }}

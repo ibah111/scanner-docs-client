@@ -1,15 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Doc } from "../Schemas/Doc.model";
-const initialState: Doc[] = [];
+export interface DocsState {
+  count: number;
+  rows: Doc[];
+}
+
+const initialState: DocsState = { count: 0, rows: [] };
 const DocsSlice = createSlice({
   name: "docs",
   initialState,
   reducers: {
-    setDocs(state, action: PayloadAction<Doc[]>) {
+    setDocs(state, action: PayloadAction<DocsState>) {
       return action.payload;
     },
     resetDocs() {
-      return null;
+      return initialState;
     },
   },
 });

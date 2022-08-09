@@ -2,23 +2,30 @@ import { Close } from "@mui/icons-material";
 import { Box, Button, Grid, IconButton } from "@mui/material";
 import { DataGridPremium, GridToolbar } from "@mui/x-data-grid-premium";
 import React from "react";
-import store from "../../lib/store";
+import getDocs from "../../api/getDocs";
 import { useAppDispatch, useAppSelector } from "../../Reducer";
-import { resetDocs } from "../../Reducer/Docs";
+import { resetDocs, setDocs } from "../../Reducer/Docs";
 import columns from "./columns";
 
 export default function Docs() {
   const data = useAppSelector((state) => state.Docs);
-  const rows = data ? data : [];
   const [pageSize, setPageSize] = React.useState<number>(25);
+  const [page, setPage] = React.useState<number>(1);
   const dispatch = useAppDispatch();
+
+  React.useEffect(() => {
+    if (setPage) {
+      getDocs(null, null, null, page + 1, pageSize).then((res) => {
+        dispatch(setDocs(res));
+      });
+    }
+  }, [page]);
   return (
     <>
-      {rows.length > 0 && (
+      {data.count > 0 && (
         <Box>
           <IconButton
             onClick={() => {
-              store.set("docs", null);
               dispatch(resetDocs());
             }}
             sx={{ float: "right" }}
@@ -38,11 +45,17 @@ export default function Docs() {
               <DataGridPremium
                 autoHeight
                 columns={columns}
-                rows={rows}
-                pageSize={pageSize}
-                onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-                rowsPerPageOptions={[25, 50, 100]}
+                rows={data.rows}
+                paginationMode="server"
                 pagination
+                page={page}
+                onPageChange={(newPage) => setPage(newPage)}
+                rowCount={data.count}
+                pageSize={pageSize}
+                onPageSizeChange={(newPage) => setPageSize(newPage)}
+                components={{
+                  Toolbar: GridToolbar,
+                }}
               />
             </Grid>
           </Grid>

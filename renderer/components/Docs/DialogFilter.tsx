@@ -23,20 +23,11 @@ export default function DialogFilter() {
   const handleClose = () => {
     setOpen(false);
   };
-  const [filter, setFilter] = React.useState(false);
   const [title, setTitle] = React.useState<null | string>(null);
   const [contactId, setContactId] = React.useState<null | number>(null);
   const [lawAct, setLawAct] = React.useState<null | number>(null);
   const dispatch = useAppDispatch();
-  React.useEffect(() => {
-    if (filter) {
-      getDocs(title, contactId, lawAct).then((res) => {
-        dispatch(setDocs(res));
-        setFilter(false);
-        console.log(res);
-      });
-    }
-  }, [filter]);
+
   return (
     <>
       <IconButton
@@ -74,7 +65,9 @@ export default function DialogFilter() {
         <DialogActions>
           <Button
             onClick={() => {
-              setFilter(true);
+              getDocs(title, contactId, lawAct, 0, 25).then((res) => {
+                dispatch(setDocs(res));
+              });
               handleClose();
             }}
             color="primary"
