@@ -1,10 +1,9 @@
 import { Button, Menu, MenuItem } from "@mui/material";
 import React from "react";
 import getDocs from "../../api/getDocs";
-import store from "../../lib/store";
 import { useAppDispatch } from "../../Reducer";
 import { resetDocs, setDocs } from "../../Reducer/Docs";
-import DialogFilter from "./DialogFilter";
+import Link from "../Link";
 
 export default function UpdateDocs() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -40,15 +39,12 @@ export default function UpdateDocs() {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem>
-          <DialogFilter />
-        </MenuItem>
+        <MenuItem></MenuItem>
         {!connected ? (
           <MenuItem
+            component={Link}
+            href="../GridData"
             onClick={() => {
-              getDocs(null, null, null, 0, 25).then((res) => {
-                dispatch(setDocs(res));
-              });
               setConnected(true);
             }}
           >
@@ -56,8 +52,9 @@ export default function UpdateDocs() {
           </MenuItem>
         ) : (
           <MenuItem
+            component={Link}
+            href="../MainPage"
             onClick={() => {
-              dispatch(resetDocs());
               setConnected(false);
             }}
           >

@@ -1,21 +1,24 @@
 import { Close } from "@mui/icons-material";
-import { Box, Button, Grid, IconButton } from "@mui/material";
-import { DataGridPremium, GridToolbar } from "@mui/x-data-grid-premium";
+import { Box, Grid, IconButton } from "@mui/material";
+import { DataGridPremium, GridFilterModel } from "@mui/x-data-grid-premium";
 import React from "react";
 import getDocs from "../../api/getDocs";
 import { useAppDispatch, useAppSelector } from "../../Reducer";
 import { resetDocs, setDocs } from "../../Reducer/Docs";
+import { setComponents } from "../../Reducer/DocsComponent";
 import columns from "./columns";
 
 export default function Docs() {
   const data = useAppSelector((state) => state.Docs);
   const [pageSize, setPageSize] = React.useState<number>(25);
-  const [page, setPage] = React.useState<number>(1);
+  const [page, setPage] = React.useState<number>(0);
   const dispatch = useAppDispatch();
-
+  const onFilterChange = (filter: GridFilterModel) => {};
   React.useEffect(() => {
-    if (setPage) {
-      getDocs(null, null, null, page + 1, pageSize).then((res) => {
+    if (page || pageSize) {
+      dispatch(setComponents(["page", page + 1]));
+      dispatch(setComponents(["pageSize", pageSize]));
+      getDocs().then((res) => {
         dispatch(setDocs(res));
       });
     }
@@ -24,15 +27,13 @@ export default function Docs() {
     <>
       {data.count > 0 && (
         <Box>
-          <IconButton
-            onClick={() => {
-              dispatch(resetDocs());
-            }}
-            sx={{ float: "right" }}
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            height="100%"
+            width="100%"
           >
-            <Close />
-          </IconButton>
-          <Grid container direction="column" alignItems="center" height="100%">
             <Grid
               item
               container
@@ -51,11 +52,10 @@ export default function Docs() {
                 page={page}
                 onPageChange={(newPage) => setPage(newPage)}
                 rowCount={data.count}
+                filterMode="server"
+                onFilterModelChange={onFilterChange}
                 pageSize={pageSize}
-                onPageSizeChange={(newPage) => setPageSize(newPage)}
-                components={{
-                  Toolbar: GridToolbar,
-                }}
+                onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
               />
             </Grid>
           </Grid>

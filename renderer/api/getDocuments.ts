@@ -1,5 +1,4 @@
 import axios, { AxiosError } from "axios";
-import { File } from "../Schemas/File.model";
 import server from "../utils/server";
 
 export default async function getDocuments(id: number) {

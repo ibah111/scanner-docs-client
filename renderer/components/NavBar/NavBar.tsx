@@ -3,7 +3,6 @@ import { useAppDispatch } from "../../Reducer";
 import store from "../../lib/store";
 import { resetLogin } from "../../Reducer/State";
 import React from "react";
-import Scan from "../Scan";
 import UpdateDocs from "../Docs/updateDocs";
 
 export default function NavBar() {
@@ -12,12 +11,10 @@ export default function NavBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar disableGutters>
-          <Grid sx={{ pl: 3, pr: 5 }}>
+          <Grid sx={{ flexGrow: 1, pl: 3, pr: 5 }}>
             <UpdateDocs />
           </Grid>
-          <Grid sx={{ flexGrow: 1 }}>
-            <Scan />
-          </Grid>
+
           <Button
             color="inherit"
             onClick={() => {

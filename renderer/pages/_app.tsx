@@ -20,6 +20,7 @@ import Login from "../components/Login";
 import MenuBar from "../components/menuBar";
 import NavBar from "../components/NavBar/NavBar";
 import Docs from "../components/Docs/Docs";
+
 export default function (props: AppProps) {
   const { Component, pageProps } = props;
   React.useEffect(() => {
@@ -52,7 +53,6 @@ export default function (props: AppProps) {
                 <Login>
                   <NavBar />
                   <Component {...pageProps} />
-                  <Docs />
                 </Login>
               </Connect>
             </SnackbarProvider>

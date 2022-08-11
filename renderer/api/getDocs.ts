@@ -1,23 +1,15 @@
 import axios, { AxiosError } from "axios";
+import { store } from "../Reducer";
 import { DocsState } from "../Reducer/Docs";
 import { getToken } from "../utils/getToken";
 import server from "../utils/server";
 
-export default async function getDocs(
-  title: string,
-  contact_doc_id: number,
-  law_act_id: number,
-  page: number,
-  pageSize: number
-) {
+export default async function getDocs() {
+  const data = store.getState().DocsComponent;
   try {
     const result = await axios.post<DocsState>(server() + "/getDocs", {
       ...getToken(),
-      title,
-      contact_doc_id,
-      law_act_id,
-      page,
-      pageSize,
+      ...data,
     });
     console.log(result.data);
     return result.data;
