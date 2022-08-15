@@ -57,6 +57,7 @@ export default function Docs() {
             width="100%"
           >
             <DataGridPremium
+              sx={{ pl: 3, pr: 3, pt: 2 }}
               autoHeight
               columns={columns}
               rows={data.rows}
