@@ -1,8 +1,6 @@
 import { Button, Menu, MenuItem } from "@mui/material";
 import React from "react";
-import getDocs from "../../api/getDocs";
 import { useAppDispatch } from "../../Reducer";
-import { resetDocs, setDocs } from "../../Reducer/Docs";
 import Link from "../Link";
 
 export default function UpdateDocs() {
@@ -39,7 +37,6 @@ export default function UpdateDocs() {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem></MenuItem>
         {!connected ? (
           <MenuItem
             component={Link}

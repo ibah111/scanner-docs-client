@@ -1,20 +1,15 @@
 import { GridFilterModel } from "@mui/x-data-grid-premium";
 import { createSlice, Draft, PayloadAction } from "@reduxjs/toolkit";
-import { Doc } from "../Schemas/Doc.model";
 
 interface DocsComponent {
-  title: string;
-  contact_doc_id: number;
-  law_act_id: number;
+  filterModel: GridFilterModel;
   page: number;
   pageSize: number;
 }
 export const startComponentsState: DocsComponent = {
-  title: null,
-  contact_doc_id: null,
-  law_act_id: null,
+  filterModel: { items: [] },
   page: 0,
-  pageSize: 5,
+  pageSize: 25,
 };
 
 const initialState = startComponentsState;
