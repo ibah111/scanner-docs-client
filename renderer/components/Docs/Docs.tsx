@@ -1,5 +1,9 @@
 import { Box, Grid } from "@mui/material";
-import { DataGridPremium, GridFilterModel } from "@mui/x-data-grid-premium";
+import {
+  DataGridPremium,
+  GridFilterModel,
+  GridSortModel,
+} from "@mui/x-data-grid-premium";
 import React from "react";
 import getDocs from "../../api/getDocs";
 import { useAppDispatch, useAppSelector } from "../../Reducer";
@@ -13,8 +17,13 @@ export default function Docs() {
   const [page, setPage] = React.useState<number>(0);
   const dispatch = useAppDispatch();
   const onFilterChange = (filter: GridFilterModel) => {
-    console.log(filter);
     dispatch(setComponents(["filterModel", filter]));
+    getDocs().then((res) => {
+      dispatch(setDocs(res));
+    });
+  };
+  const handleSortModelChange = (sort: GridSortModel) => {
+    dispatch(setComponents(["sortModel", sort]));
     getDocs().then((res) => {
       dispatch(setDocs(res));
     });
@@ -58,6 +67,8 @@ export default function Docs() {
               rowCount={data.count}
               filterMode="server"
               onFilterModelChange={onFilterChange}
+              sortingMode="server"
+              onSortModelChange={handleSortModelChange}
               pageSize={pageSize}
               onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
             />

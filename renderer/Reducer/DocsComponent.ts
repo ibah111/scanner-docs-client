@@ -1,13 +1,15 @@
-import { GridFilterModel } from "@mui/x-data-grid-premium";
+import { GridFilterModel, GridSortModel } from "@mui/x-data-grid-premium";
 import { createSlice, Draft, PayloadAction } from "@reduxjs/toolkit";
 
 interface DocsComponent {
   filterModel: GridFilterModel;
+  sortModel: GridSortModel;
   page: number;
   pageSize: number;
 }
 export const startComponentsState: DocsComponent = {
   filterModel: { items: [] },
+  sortModel: [],
   page: 0,
   pageSize: 25,
 };
