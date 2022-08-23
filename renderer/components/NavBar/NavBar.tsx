@@ -1,10 +1,10 @@
-import { AppBar, Box, Button, Grid, Toolbar } from "@mui/material";
+import { AppBar, Box, Button, Grid, IconButton, Toolbar } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../Reducer";
 import store from "../../lib/store";
 import { resetLogin } from "../../Reducer/State";
 import React from "react";
 import UpdateDocs from "../Docs/UpdateDocs";
-import OpenAdmin from "../Admin/openAdmin";
+import OpenAdminPage from "../Admin/OpenAdminPage";
 
 export default function NavBar() {
   const dispatch = useAppDispatch();
@@ -17,7 +17,7 @@ export default function NavBar() {
             {User.roles.includes("viewer_logs") && <UpdateDocs />}
           </Grid>
           <Grid sx={{ flexGrow: 1, pl: 3, pr: 5 }}>
-            {User.roles.includes("admin") && <OpenAdmin />}
+            {User.roles.includes("admin") && <OpenAdminPage />}
           </Grid>
           <Button
             color="inherit"

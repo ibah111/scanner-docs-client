@@ -1,7 +1,8 @@
-import { Button, Link, Menu, MenuItem } from "@mui/material";
+import { Button, Menu, MenuItem } from "@mui/material";
 import React from "react";
+import Link from "../Link";
 
-export default function OpenAdmin() {
+export default function OpenAdminPage() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -10,6 +11,7 @@ export default function OpenAdmin() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const [connected, setConnected] = React.useState(false);
   return (
     <>
       <Button
@@ -22,7 +24,7 @@ export default function OpenAdmin() {
         onClick={handleClick}
         variant="contained"
       >
-        Настройки ролей
+        Администратор
       </Button>
       <Menu
         id="basic-menu"
@@ -33,12 +35,27 @@ export default function OpenAdmin() {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem component={Link} href="../GridDataRole">
-          <em>Открыть</em>
-        </MenuItem>
-        <MenuItem component={Link} href="../MainPage">
-          <em>Закрыть</em>
-        </MenuItem>
+        {!connected ? (
+          <MenuItem
+            component={Link}
+            href="../RolesData"
+            onClick={() => {
+              setConnected(true);
+            }}
+          >
+            <em>Открыть таблицу</em>
+          </MenuItem>
+        ) : (
+          <MenuItem
+            component={Link}
+            href="../MainPage"
+            onClick={() => {
+              setConnected(false);
+            }}
+          >
+            <em>Закрыть</em>
+          </MenuItem>
+        )}
       </Menu>
     </>
   );

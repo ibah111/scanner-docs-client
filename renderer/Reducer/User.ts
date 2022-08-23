@@ -23,7 +23,10 @@ export const UserSlice = createSlice({
     setUser: (state, value: PayloadAction<AuthUserSuccess>) => {
       return value.payload;
     },
+    resetUser() {
+      return initialState;
+    },
   },
 });
-export const { setUser } = UserSlice.actions;
+export const { setUser, resetUser } = UserSlice.actions;
 export default UserSlice.reducer;
