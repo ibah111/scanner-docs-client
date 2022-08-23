@@ -1,6 +1,5 @@
 import { Button, Menu, MenuItem } from "@mui/material";
 import React from "react";
-import { useAppDispatch } from "../../Reducer";
 import Link from "../Link";
 
 export default function UpdateDocs() {
@@ -12,7 +11,6 @@ export default function UpdateDocs() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const dispatch = useAppDispatch();
   const [connected, setConnected] = React.useState(false);
   return (
     <>

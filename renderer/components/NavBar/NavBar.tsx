@@ -1,20 +1,24 @@
 import { AppBar, Box, Button, Grid, Toolbar } from "@mui/material";
-import { useAppDispatch } from "../../Reducer";
+import { useAppDispatch, useAppSelector } from "../../Reducer";
 import store from "../../lib/store";
 import { resetLogin } from "../../Reducer/State";
 import React from "react";
-import UpdateDocs from "../Docs/updateDocs";
+import UpdateDocs from "../Docs/UpdateDocs";
+import OpenAdmin from "../Admin/openAdmin";
 
 export default function NavBar() {
   const dispatch = useAppDispatch();
+  const User = useAppSelector((state) => state.User);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar disableGutters>
           <Grid sx={{ flexGrow: 1, pl: 3, pr: 5 }}>
-            <UpdateDocs />
+            {User.roles.includes("viewer_logs") && <UpdateDocs />}
           </Grid>
-
+          <Grid sx={{ flexGrow: 1, pl: 3, pr: 5 }}>
+            {User.roles.includes("admin") && <OpenAdmin />}
+          </Grid>
           <Button
             color="inherit"
             onClick={() => {
