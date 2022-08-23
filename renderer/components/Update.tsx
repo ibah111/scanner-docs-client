@@ -51,10 +51,10 @@ export default function Update() {
         setMessage("Доступно обновление. Скачать обновление сейчас?");
       }
     );
-    ipcRenderer.on("message-error", (event, text: string) => {
+    ipcRenderer.on("message-error", () => {
       setMessage("Ошибка при обновлении");
     });
-    ipcRenderer.on("download-progress", (event, text: number) => {
+    ipcRenderer.on("download-progress", (_, text: number) => {
       setProgress(text);
     });
     ipcRenderer.on("update-downloaded", () => {

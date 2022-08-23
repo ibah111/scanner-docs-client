@@ -13,23 +13,23 @@ export default function Scan() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const dispatch = useAppDispatch();
   React.useEffect(() => {
-    ipcRenderer.on("ports", (event, args) => {
+    ipcRenderer.on("ports", (_, args) => {
       setPorts(args);
     });
-    ipcRenderer.on("content", (event, args: string) => {
+    ipcRenderer.on("content", (_, args: string) => {
       dispatch(resetData());
       dispatch(resetSend());
       getData(args.replace("\r", "")).then((res) => {
         dispatch(setData(res));
       });
     });
-    // ipcRenderer.on("errorConnect", (event, args) => {});
-    // ipcRenderer.on("successConnect", (event, args) => {
-    //   setConnected(true);
-    // });
-    // ipcRenderer.on("successDisconnect", (event, args) => {
-    //   setConnected(false);
-    // });
+    ipcRenderer.on("errorConnect", () => {});
+    ipcRenderer.on("successConnect", () => {
+      setConnected(true);
+    });
+    ipcRenderer.on("successDisconnect", () => {
+      setConnected(false);
+    });
     ipcRenderer.send("requestPort");
   }, []);
 
