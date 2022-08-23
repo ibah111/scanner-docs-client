@@ -51,14 +51,14 @@ export default function SendingForm() {
             )}
           />
           <TextField
-            error={!Boolean(data.WhereSend)}
+            error={!data.WhereSend}
             id="where_send"
             label="Куда"
             value={data.WhereSend}
             onChange={(event) => {
               dispatch(setSend(["WhereSend", event.target.value]));
             }}
-            helperText={!Boolean(data.WhereSend) ? "Заполните поле" : " "}
+            helperText={!data.WhereSend ? "Заполните поле" : " "}
             variant="outlined"
           />
           <Button

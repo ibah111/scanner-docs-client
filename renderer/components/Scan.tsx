@@ -9,7 +9,6 @@ import { resetSend } from "../Reducer/Send";
 
 export default function Scan() {
   const [ports, setPorts] = React.useState<PortInfo[]>([]);
-  const [port, setPort] = React.useState("");
   const [connected, setConnected] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const dispatch = useAppDispatch();
@@ -24,13 +23,13 @@ export default function Scan() {
         dispatch(setData(res));
       });
     });
-    ipcRenderer.on("errorConnect", (event, args) => {});
-    ipcRenderer.on("successConnect", (event, args) => {
-      setConnected(true);
-    });
-    ipcRenderer.on("successDisconnect", (event, args) => {
-      setConnected(false);
-    });
+    // ipcRenderer.on("errorConnect", (event, args) => {});
+    // ipcRenderer.on("successConnect", (event, args) => {
+    //   setConnected(true);
+    // });
+    // ipcRenderer.on("successDisconnect", (event, args) => {
+    //   setConnected(false);
+    // });
     ipcRenderer.send("requestPort");
   }, []);
 
