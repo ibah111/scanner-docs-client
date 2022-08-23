@@ -24,8 +24,11 @@ module.exports = {
     },
     plugins: ['react', '@typescript-eslint'],
     rules: { 'react/react-in-jsx-scope': 'off',
-    
- },
+    "react/display-name": "off",
+    "@typescript-eslint/no-explicit-any": ["off"],
+    "no-empty": 0,  
+    "no-unsafe-optional-chaining":0,
+    "react/jsx-key": "off"},
   };
   
   
