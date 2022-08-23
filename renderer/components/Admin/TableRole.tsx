@@ -5,16 +5,16 @@ import columns from "./columns";
 import getRoles from "../../api/getRoles";
 import { setRoles } from "../../Reducer/Roles";
 import React from "react";
+import removeRole from "../../api/removeRole";
 
 export default function TableRole() {
   const data = useAppSelector((state) => state.Roles);
   const rows = data ? data : [];
   const dispatch = useAppDispatch();
+  const [rowsData, setRowsData] = React.useState([]);
   const onRowsSelectionHandler = (ids) => {
-    const selectedRowsData = ids.map((id) => rows.find((row) => row.id === id));
-    console.log(selectedRowsData);
+    setRowsData(ids.map((id) => rows.find((row) => row.id === id)));
   };
-  const [checkboxSelection, setCheckboxSelection] = React.useState(true);
   return (
     <>
       <Box>
@@ -40,13 +40,7 @@ export default function TableRole() {
               columns={columns}
               rows={rows}
               checkboxSelection
-              onSelectionModelChange={(ids) => {
-                const selectedIDs = new Set(ids);
-                const selectedRowData = rows.filter((row) =>
-                  selectedIDs.has(row.id.toString())
-                );
-                console.log(selectedRowData);
-              }}
+              onSelectionModelChange={(ids) => onRowsSelectionHandler(ids)}
             />
           </Grid>
           <Grid item>
@@ -58,6 +52,15 @@ export default function TableRole() {
               }}
             >
               Открыть
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button
+              onClick={() => {
+                removeRole(rowsData[0].id);
+              }}
+            >
+              Удалить
             </Button>
           </Grid>
         </Grid>
