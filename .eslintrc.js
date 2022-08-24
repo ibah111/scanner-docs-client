@@ -3,6 +3,9 @@ module.exports = {
     react: {
       version: "detect",
     },
+    next: {
+      rootDir: "renderer",
+    },
   },
 
   env: {
@@ -14,6 +17,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
+    "plugin:@next/next/recommended",
     "prettier",
   ],
   parser: "@typescript-eslint/parser",
