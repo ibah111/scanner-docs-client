@@ -22,12 +22,12 @@ export default function UserAdd({ refresh }: RightAddProps) {
   return (
     <>
       <Grid container direction="column" sx={{ pl: 3, pr: 3 }}>
-        <Grid item direction="row">
+        <Grid item>
           <Typography>
             Введите логин пользователя, чтобы добавить его:
           </Typography>
         </Grid>
-        <Grid item direction="row">
+        <Grid item>
           <TextField
             label="логин"
             variant="standard"
