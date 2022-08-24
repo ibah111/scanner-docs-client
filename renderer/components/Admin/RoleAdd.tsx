@@ -35,6 +35,7 @@ export default function RoleAdd({ data, roles, refresh }: RightEditProps) {
                   value.name
                 ) ? (
                   <Button
+                    key={value.id}
                     onClick={(event) => {
                       addRole(data.id, value.id).then(() => {
                         if (data.login === User.login) {
