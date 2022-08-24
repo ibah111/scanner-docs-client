@@ -30,6 +30,7 @@ const columns: GridColumns<Doc> = [
     headerName: "Документ",
     getActions: (params) => [
       <OpenDocuments
+        key={1}
         id={Number(params.row.contact_doc_id)}
         title={params.row?.title}
       />,

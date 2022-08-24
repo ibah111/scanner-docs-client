@@ -20,7 +20,7 @@ import Login from "../components/Login";
 import MenuBar from "../components/menuBar";
 import NavBar from "../components/NavBar/NavBar";
 
-export default function (props: AppProps) {
+export default function App(props: AppProps) {
   const { Component, pageProps } = props;
   React.useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");

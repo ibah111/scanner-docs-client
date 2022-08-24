@@ -15,7 +15,7 @@ const columns: GridColumns<Barcode> = [
     headerName: "Документ",
     type: "actions",
     getActions: () => {
-      return [<OpenDoc />];
+      return [<OpenDoc key={0} />];
     },
   },
   {
