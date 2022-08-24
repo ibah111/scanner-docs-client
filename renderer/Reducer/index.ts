@@ -4,13 +4,12 @@ import Data from "./Data";
 import Docs from "./Docs";
 import DocsComponent from "./DocsComponent";
 import Message from "./Message";
-import Roles from "./Roles";
 import Send from "./Send";
 import State from "./State";
 import User from "./User";
 
 export const store = configureStore({
-  reducer: { User, Send, Data, Message, State, Docs, DocsComponent, Roles },
+  reducer: { User, Send, Data, Message, State, Docs, DocsComponent },
 });
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
