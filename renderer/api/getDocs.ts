@@ -1,6 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { store } from "../Reducer";
 import { DocsState } from "../Reducer/Docs";
+import { callError } from "../Reducer/Message";
 import { getToken } from "../utils/getToken";
 import server from "../utils/server";
 
@@ -15,6 +16,7 @@ export default async function getDocs() {
     return result.data;
   } catch (e) {
     if (e instanceof AxiosError) {
+      store.dispatch(callError(e.response.data.message));
     }
     throw e;
   }

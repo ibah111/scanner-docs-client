@@ -34,7 +34,12 @@ const connect = async (callback: (value: boolean) => void) => {
     callback(false);
   }
 };
-export default function Login({ children }: any) {
+
+interface LoginProps {
+  children: React.ReactNode;
+}
+
+export default function Login({ children }: LoginProps) {
   const dispatch = useAppDispatch();
   const reload = useAppSelector((state) => state.State.login);
   const [loged, setLoged] = React.useState(false);

@@ -23,7 +23,9 @@ export default function Scan() {
         dispatch(setData(res));
       });
     });
-    ipcRenderer.on("errorConnect", () => {});
+    ipcRenderer.on("errorConnect", () => {
+      setConnected(false);
+    });
     ipcRenderer.on("successConnect", () => {
       setConnected(true);
     });

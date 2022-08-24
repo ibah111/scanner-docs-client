@@ -7,12 +7,10 @@ import server from "../utils/server";
 export default async function SendData() {
   const data = store.getState().Send;
   const id = store.getState().Data.id;
-  const addons: any = {};
   try {
     const result = await axios.post(server() + "/send", {
       ...getToken(),
       ...data,
-      ...addons,
       id,
     });
     store.dispatch(callSuccess("Данные успешно отправлены"));
@@ -21,7 +19,7 @@ export default async function SendData() {
     if (e instanceof AxiosError)
       if (e.response.status === 400) {
         if (Array.isArray(e.response.data?.message)) {
-          for (const value of e.response.data?.message) {
+          for (const value of e.response.data.message) {
             switch (value) {
               case "DateSend should not be empty":
                 store.dispatch(callError("Заполните поле: 'Дата отправки'"));
