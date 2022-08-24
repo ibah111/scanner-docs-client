@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../Reducer";
 import store from "../../lib/store";
 import { resetLogin } from "../../Reducer/State";
 import React from "react";
-import UpdateDocs from "../Docs/UpdateDocs";
+import UpdateDocs from "../Docs/updateDocs";
 import OpenAdminPage from "../Admin/OpenAdminPage";
 
 export default function NavBar() {
