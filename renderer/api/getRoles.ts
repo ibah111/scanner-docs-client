@@ -32,7 +32,6 @@ export default async function getRoles() {
     const result = await axios.post<ResultRole>(server() + "/role" + "/get", {
       ...getToken(),
     });
-    console.log(result.data);
     return result.data;
   } catch (e) {
     if (e instanceof AxiosError) {

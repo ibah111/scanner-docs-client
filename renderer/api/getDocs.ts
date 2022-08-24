@@ -12,7 +12,6 @@ export default async function getDocs() {
       ...getToken(),
       ...data,
     });
-    console.log(result.data);
     return result.data;
   } catch (e) {
     if (e instanceof AxiosError) {

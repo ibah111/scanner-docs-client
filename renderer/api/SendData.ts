@@ -1,6 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { store } from "../Reducer";
 import { callError, callSuccess } from "../Reducer/Message";
+import { Transmit } from "../Schemas/Transmit.model";
 import { getToken } from "../utils/getToken";
 import server from "../utils/server";
 
@@ -8,7 +9,7 @@ export default async function SendData() {
   const data = store.getState().Send;
   const id = store.getState().Data.id;
   try {
-    const result = await axios.post(server() + "/send", {
+    const result = await axios.post<Transmit>(server() + "/send", {
       ...getToken(),
       ...data,
       id,
