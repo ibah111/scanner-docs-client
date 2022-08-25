@@ -33,6 +33,7 @@ export default function Docs() {
       dispatch(setComponents(["page", page + 1]));
       dispatch(setComponents(["pageSize", pageSize]));
       getDocs().then((res) => {
+        console.log(res);
         dispatch(setDocs(res));
       });
     }

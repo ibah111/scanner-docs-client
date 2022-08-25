@@ -1,7 +1,5 @@
 import { Type } from "class-transformer";
-import { Depart } from "./Depart.model";
-import { Transmit } from "./Transmit.model";
-import { User } from "./User.model";
+import { Barcode } from "./Barcode.model";
 
 export class Doc {
   id: number;
@@ -12,10 +10,6 @@ export class Doc {
   law_exec_id: number;
   @Type(() => Date)
   date: Date;
-  @Type(() => User)
-  User: User;
-  @Type(() => Depart)
-  Depart: Depart;
-  @Type(() => Transmit)
-  Transmits: Transmit[];
+  @Type(() => Barcode)
+  Barcode: Barcode;
 }
