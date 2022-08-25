@@ -64,10 +64,7 @@ const columns: GridColumns<Doc> = [
     headerName: "Дата отправки в банк/ОСП",
     valueGetter: (params) => {
       if (params.row.Barcode.Transmits.length > 0) {
-        return moment(
-          params.row.Barcode.Transmits[params.row.Barcode.Transmits.length - 1]
-            .date_send
-        ).toDate();
+        return moment(params.row.Barcode.Transmits[0].date_send).toDate();
       }
     },
     type: "dateTime",
@@ -78,9 +75,7 @@ const columns: GridColumns<Doc> = [
     headerName: "Куда отправлено",
     valueGetter: (params) => {
       if (params.row.Barcode.Transmits.length > 0) {
-        return params.row.Barcode.Transmits[
-          params.row.Barcode.Transmits.length - 1
-        ].where_send;
+        return params.row.Barcode.Transmits[0].where_send;
       }
     },
     width: 200,

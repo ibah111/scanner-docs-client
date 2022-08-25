@@ -79,27 +79,7 @@ const columns: GridColumns<Barcode> = [
     },
     width: 200,
   },
-  {
-    field: "where_send",
-    headerName: "Дата отправки в банк/ОСП",
-    valueGetter: (params) => {
-      if (params.row.Transmits.length > 0) {
-        params.row.Transmits[0].date_send;
-      }
-    },
-    type: "dateTime",
-    width: 200,
-  },
-  {
-    field: "whereSend",
-    headerName: "Куда отправлено",
-    valueGetter: (params) => {
-      if (params.row.Transmits.length > 0) {
-        params.row.Transmits[0].where_send;
-      }
-    },
-    width: 200,
-  },
+
   {
     field: "fio_old",
     headerName: "Предыдущий держатель",
