@@ -84,26 +84,6 @@ const columns: GridColumns<Doc> = [
     },
     width: 200,
   },
-  {
-    field: "fio_old",
-    headerName: "Предыдущий держатель",
-    valueGetter: (params) => {
-      return generateName(
-        params.row.Barcode.UserOld?.f,
-        params.row.Barcode.UserOld?.i,
-        params.row.Barcode.UserOld?.o
-      );
-    },
-    width: 200,
-  },
-  {
-    field: "depart_old",
-    headerName: "Предыдущее подразделение",
-    valueGetter: (params) => {
-      return params.row.Barcode.DepartOld?.title;
-    },
-    width: 200,
-  },
 ];
 
 export default columns;
