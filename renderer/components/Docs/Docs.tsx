@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Alert, Box, Grid } from "@mui/material";
 import {
   DataGridPremium,
   GridFilterModel,
@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from "../../Reducer";
 import { setDocs } from "../../Reducer/Docs";
 import { setComponents } from "../../Reducer/DocsComponent";
 import columns from "./columns";
+import PrevTransmit from "./PrevTransmit";
 
 export default function Docs() {
   const data = useAppSelector((state) => state.Docs);
@@ -73,6 +74,12 @@ export default function Docs() {
               onSortModelChange={handleSortModelChange}
               pageSize={pageSize}
               onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+              getDetailPanelContent={({ row }) => (
+                <Box>
+                  <PrevTransmit id={row.id} />
+                </Box>
+              )}
+              getDetailPanelHeight={() => "auto"}
             />
           </Grid>
         </Grid>

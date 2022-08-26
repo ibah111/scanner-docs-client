@@ -1,8 +1,12 @@
-import { GridColumns } from "@mui/x-data-grid-premium";
+import {
+  GridColumns,
+  GRID_DETAIL_PANEL_TOGGLE_COL_DEF,
+} from "@mui/x-data-grid-premium";
 import moment from "moment";
 import { Doc } from "../../Schemas/Doc.model";
 import { generateName } from "../../utils/generateName";
 import OpenDocuments from "./OpenDocuments";
+import PrevTransmit from "./PrevTransmit";
 
 const columns: GridColumns<Doc> = [
   {
