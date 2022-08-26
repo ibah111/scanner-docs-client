@@ -8,7 +8,7 @@ const columnsTransmit: GridColumns<Transmit> = [
     field: "date_send",
     headerName: "Дата отправки в банк/ОСП",
     valueGetter: (params) => {
-      return params.row.date_send;
+      return moment(params.row.date_send).format("LL");
     },
     type: "dateTime",
     width: 200,
