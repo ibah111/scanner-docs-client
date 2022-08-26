@@ -16,7 +16,6 @@ export default function PrevTransmit({ id }: DialogHistoryProps) {
 
   React.useEffect(() => {
     openHistory(id).then((res) => {
-      console.log(res);
       dispatch(setTransmit(res));
     });
   }, []);

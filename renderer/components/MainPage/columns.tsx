@@ -22,7 +22,7 @@ const columns: GridColumns<Barcode> = [
     field: "date_post",
     headerName: "Дата поступления",
     valueGetter: (params) => {
-      return moment(params.row.doc.date_post).toDate();
+      return moment(params.row.doc.date_post).format("LL");
     },
     type: "dateTime",
     width: 200,
