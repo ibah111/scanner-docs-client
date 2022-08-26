@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Log } from "../Schemas/Log.model";
-import { Transmit } from "../Schemas/Transmit.model";
 
 const initialState: Log[] = [];
 const TransmitSlice = createSlice({

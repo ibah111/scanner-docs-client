@@ -1,12 +1,8 @@
-import {
-  GridColumns,
-  GRID_DETAIL_PANEL_TOGGLE_COL_DEF,
-} from "@mui/x-data-grid-premium";
+import { GridColumns } from "@mui/x-data-grid-premium";
 import moment from "moment";
 import { Doc } from "../../Schemas/Doc.model";
 import { generateName } from "../../utils/generateName";
 import OpenDocuments from "./OpenDocuments";
-import PrevTransmit from "./PrevTransmit";
 
 const columns: GridColumns<Doc> = [
   {
@@ -68,10 +64,10 @@ const columns: GridColumns<Doc> = [
     headerName: "Дата отправки в банк/ОСП",
     valueGetter: (params) => {
       if (params.row.Barcode.Transmits.length > 0) {
-        return moment(params.row.Barcode.Transmits[0].date_send).format("LL");
+        return moment(params.row.Barcode.Transmits[0].date_send).toDate();
       }
     },
-    type: "dateTime",
+    type: "date",
     width: 200,
   },
   {

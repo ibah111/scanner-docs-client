@@ -39,6 +39,7 @@
     "@emotion/styled": "^11.10.0",
     "@mui/material": "^5.10.2",
     "@mui/styles": "^5.10.2",
+    "@next/eslint-plugin-next": "^12.2.5",
     "@types/mime-types": "^2.1.1",
     "@types/node": "^18.7.12",
     "@types/react": "^18.0.17",
