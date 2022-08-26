@@ -1,11 +1,11 @@
-import { Button, Menu, MenuItem } from "@mui/material";
-import { ipcRenderer } from "electron";
-import React from "react";
-import { PortInfo } from "@serialport/bindings-cpp";
-import { useAppDispatch } from "../Reducer";
-import { resetData, setData } from "../Reducer/Data";
-import getData from "../api/getData";
-import { resetSend } from "../Reducer/Send";
+import { Button, Menu, MenuItem } from '@mui/material';
+import { ipcRenderer } from 'electron';
+import React from 'react';
+import { PortInfo } from '@serialport/bindings-cpp';
+import { useAppDispatch } from '../Reducer';
+import { resetData, setData } from '../Reducer/Data';
+import getData from '../api/getData';
+import { resetSend } from '../Reducer/Send';
 
 export default function Scan() {
   const [ports, setPorts] = React.useState<PortInfo[]>([]);
@@ -13,26 +13,26 @@ export default function Scan() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const dispatch = useAppDispatch();
   React.useEffect(() => {
-    ipcRenderer.on("ports", (_, args) => {
+    ipcRenderer.on('ports', (_, args) => {
       setPorts(args);
     });
-    ipcRenderer.on("content", (_, args: string) => {
+    ipcRenderer.on('content', (_, args: string) => {
       dispatch(resetData());
       dispatch(resetSend());
-      getData(args.replace("\r", "")).then((res) => {
+      getData(args.replace('\r', '')).then((res) => {
         dispatch(setData(res));
       });
     });
-    ipcRenderer.on("errorConnect", () => {
+    ipcRenderer.on('errorConnect', () => {
       setConnected(false);
     });
-    ipcRenderer.on("successConnect", () => {
+    ipcRenderer.on('successConnect', () => {
       setConnected(true);
     });
-    ipcRenderer.on("successDisconnect", () => {
+    ipcRenderer.on('successDisconnect', () => {
       setConnected(false);
     });
-    ipcRenderer.send("requestPort");
+    ipcRenderer.send('requestPort');
   }, []);
 
   const open = Boolean(anchorEl);
@@ -49,10 +49,10 @@ export default function Scan() {
           <Button
             id="basic-button"
             color="secondary"
-            sx={{ width: "180px" }}
-            aria-controls={open ? "basic-menu" : undefined}
+            sx={{ width: '180px' }}
+            aria-controls={open ? 'basic-menu' : undefined}
             aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
+            aria-expanded={open ? 'true' : undefined}
             onClick={handleClick}
             variant="contained"
           >
@@ -65,17 +65,17 @@ export default function Scan() {
             open={open}
             onClose={handleClose}
             MenuListProps={{
-              "aria-labelledby": "basic-button",
+              'aria-labelledby': 'basic-button',
             }}
           >
-            <MenuItem onClick={handleClose} sx={{ width: "180px" }}>
+            <MenuItem onClick={handleClose} sx={{ width: '180px' }}>
               <em>Нет</em>
             </MenuItem>
             {ports.map((port, index) => (
               <MenuItem
                 key={index}
                 onClick={() => {
-                  ipcRenderer.send("connectPort", port.path);
+                  ipcRenderer.send('connectPort', port.path);
                 }}
               >
                 {port.path}
@@ -83,9 +83,9 @@ export default function Scan() {
             ))}
             <MenuItem
               onClick={() => {
-                ipcRenderer.send("requestPort");
+                ipcRenderer.send('requestPort');
               }}
-              sx={{ width: "180px" }}
+              sx={{ width: '180px' }}
             >
               <em>Обновить</em>
             </MenuItem>
@@ -95,10 +95,10 @@ export default function Scan() {
         <>
           <Button
             onClick={() => {
-              ipcRenderer.send("disconnectPort");
+              ipcRenderer.send('disconnectPort');
             }}
             color="secondary"
-            sx={{ width: "180px" }}
+            sx={{ width: '180px' }}
             variant="contained"
           >
             Отключить порт

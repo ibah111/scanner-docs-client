@@ -1,20 +1,20 @@
-import { Grid, Typography } from "@mui/material";
-import axios, { AxiosError } from "axios";
-import React from "react";
-import { store, useAppDispatch, useAppSelector } from "../Reducer";
-import { callError } from "../Reducer/Message";
-import { resetLogin, setState } from "../Reducer/State";
-import { setUser } from "../Reducer/User";
-import { AuthUserSuccess } from "../Schemas/Auth";
-import { getToken } from "../utils/getToken";
-import server from "../utils/server";
-import Authorization from "./MainPage/Authorization";
+import { Grid, Typography } from '@mui/material';
+import axios, { AxiosError } from 'axios';
+import React from 'react';
+import { store, useAppDispatch, useAppSelector } from '../Reducer';
+import { callError } from '../Reducer/Message';
+import { resetLogin, setState } from '../Reducer/State';
+import { setUser } from '../Reducer/User';
+import { AuthUserSuccess } from '../Schemas/Auth';
+import { getToken } from '../utils/getToken';
+import server from '../utils/server';
+import Authorization from './MainPage/Authorization';
 
 const connect = async (callback: (value: boolean) => void) => {
   const token = getToken();
   if (token.token) {
     try {
-      const result = await axios.post<AuthUserSuccess>(server() + "/login", {
+      const result = await axios.post<AuthUserSuccess>(server() + '/login', {
         ...token,
       });
       if (result.data.login_result === true) {
@@ -45,7 +45,7 @@ export default function Login({ children }: LoginProps) {
   const [loged, setLoged] = React.useState(false);
   React.useEffect(() => {
     if (reload) {
-      dispatch(setState(["login", false]));
+      dispatch(setState(['login', false]));
       connect(setLoged);
     }
   }, [reload]);

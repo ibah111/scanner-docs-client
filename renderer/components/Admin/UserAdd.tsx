@@ -1,16 +1,16 @@
-import { Button, Grid, TextField, Typography } from "@mui/material";
-import React from "react";
-import addUser from "../../api/addUser";
+import { Button, Grid, TextField, Typography } from '@mui/material';
+import React from 'react';
+import addUser from '../../api/addUser';
 const validateEmail = (email: string) => {
   return email.match(
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   );
 };
 interface RightAddProps {
   refresh: () => void;
 }
 export default function UserAdd({ refresh }: RightAddProps) {
-  const [login, setLogin] = React.useState("");
+  const [login, setLogin] = React.useState('');
   const [login_checked, setChecked] = React.useState(false);
   React.useEffect(() => {
     if (validateEmail(login)) {

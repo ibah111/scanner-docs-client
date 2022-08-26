@@ -1,10 +1,10 @@
-import { DataGridPremium } from "@mui/x-data-grid-premium";
-import React from "react";
-import { useAppDispatch, useAppSelector } from "../../Reducer";
-import { Box, Grid } from "@mui/material";
-import columnsTransmit from "./columnsTransmit";
-import openHistory from "../../api/openHistory";
-import { setTransmit } from "../../Reducer/openTransmit";
+import { DataGridPremium } from '@mui/x-data-grid-premium';
+import React from 'react';
+import { useAppDispatch, useAppSelector } from '../../Reducer';
+import { Box, Grid } from '@mui/material';
+import columnsTransmit from './columnsTransmit';
+import openHistory from '../../api/openHistory';
+import { setTransmit } from '../../Reducer/openTransmit';
 
 interface DialogHistoryProps {
   id: number;

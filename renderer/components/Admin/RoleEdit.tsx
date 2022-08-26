@@ -5,14 +5,14 @@ import {
   Paper,
   Popper,
   Typography,
-} from "@mui/material";
-import React from "react";
-import { Delete as DeleteIcon, Edit as EditIcon } from "@mui/icons-material";
-import RoleAdd from "./RoleAdd";
-import { Role, User } from "../../api/getRoles";
-import { useAppDispatch, useAppSelector } from "../../Reducer";
-import removeRole from "../../api/removeRole";
-import { resetUser } from "../../Reducer/User";
+} from '@mui/material';
+import React from 'react';
+import { Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
+import RoleAdd from './RoleAdd';
+import { Role, User } from '../../api/getRoles';
+import { useAppDispatch, useAppSelector } from '../../Reducer';
+import removeRole from '../../api/removeRole';
+import { resetUser } from '../../Reducer/User';
 
 interface RightEditProps {
   data: User;
@@ -24,7 +24,7 @@ export default function RoleEdit(props: RightEditProps) {
   const dispatch = useAppDispatch();
   const { data, refresh } = props;
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
-    null
+    null,
   );
   const [open, setOpen] = React.useState(false);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -46,7 +46,7 @@ export default function RoleEdit(props: RightEditProps) {
 
               {data.Users_Roles.map((User_Role, index) => (
                 <Box key={index}>
-                  <Typography component={"span"} sx={{ p: 1 }}>
+                  <Typography component={'span'} sx={{ p: 1 }}>
                     {User_Role.Role.title}
                     <IconButton
                       onClick={(event) => {

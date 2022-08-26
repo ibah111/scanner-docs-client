@@ -1,5 +1,5 @@
-import { GridFilterModel, GridSortModel } from "@mui/x-data-grid-premium";
-import { createSlice, Draft, PayloadAction } from "@reduxjs/toolkit";
+import { GridFilterModel, GridSortModel } from '@mui/x-data-grid-premium';
+import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
 
 interface DocsComponent {
   filterModel: GridFilterModel;
@@ -16,12 +16,12 @@ export const startComponentsState: DocsComponent = {
 
 const initialState = startComponentsState;
 const ComponentSlise = createSlice({
-  name: "DocsComponent",
+  name: 'DocsComponent',
   initialState,
   reducers: {
     setComponents<T extends keyof DocsComponent>(
       state: Draft<DocsComponent>,
-      action: PayloadAction<[T, DocsComponent[T]]>
+      action: PayloadAction<[T, DocsComponent[T]]>,
     ) {
       state[action.payload[0]] = action.payload[1];
     },

@@ -1,10 +1,10 @@
-import { Box, Grid } from "@mui/material";
-import { DataGridPremium } from "@mui/x-data-grid-premium";
-import React from "react";
-import { useAppSelector } from "../../Reducer";
-import Scan from "../../components/Scan";
-import columns from "../../components/MainPage/columns";
-import SendingForm from "../../components/MainPage/sendingForm";
+import { Box, Grid } from '@mui/material';
+import { DataGridPremium } from '@mui/x-data-grid-premium';
+import React from 'react';
+import { useAppSelector } from '../../Reducer';
+import Scan from '../../components/Scan';
+import columns from '../../components/MainPage/columns';
+import SendingForm from '../../components/MainPage/sendingForm';
 
 export default function Main() {
   const data = useAppSelector((state) => state.Data);
@@ -37,7 +37,7 @@ export default function Main() {
           )}
         </Grid>
         <Grid item>
-          {User.roles.includes("sender") && rows.length > 0 && <SendingForm />}
+          {User.roles.includes('sender') && rows.length > 0 && <SendingForm />}
         </Grid>
         <Grid item>
           <Scan />

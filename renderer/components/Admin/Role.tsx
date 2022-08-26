@@ -1,11 +1,11 @@
-import { Box, IconButton } from "@mui/material";
-import { DataGridPremium, GridColumns } from "@mui/x-data-grid-premium";
-import { Delete as DeleteIcon } from "@mui/icons-material";
-import React from "react";
-import UserAdd from "./UserAdd";
-import RoleEdit from "./RoleEdit";
-import getRoles, { ResultRole, User } from "../../api/getRoles";
-import removeUser from "../../api/removeUser";
+import { Box, IconButton } from '@mui/material';
+import { DataGridPremium, GridColumns } from '@mui/x-data-grid-premium';
+import { Delete as DeleteIcon } from '@mui/icons-material';
+import React from 'react';
+import UserAdd from './UserAdd';
+import RoleEdit from './RoleEdit';
+import getRoles, { ResultRole, User } from '../../api/getRoles';
+import removeUser from '../../api/removeUser';
 
 export default function Role() {
   const [rights, setRights] = React.useState<ResultRole>({
@@ -18,22 +18,22 @@ export default function Role() {
     });
   };
   const columns: GridColumns<User> = [
-    { field: "id" },
-    { field: "login", headerName: "Логин", width: 250 },
+    { field: 'id' },
+    { field: 'login', headerName: 'Логин', width: 250 },
     {
-      field: "roles",
-      headerName: "Роли",
+      field: 'roles',
+      headerName: 'Роли',
       width: 250,
       valueGetter(params) {
         return params.row.Users_Roles.map((value) => value.Role.title).join(
-          ", "
+          ', ',
         );
       },
     },
     {
-      field: "actions",
-      headerName: "Действия",
-      type: "actions",
+      field: 'actions',
+      headerName: 'Действия',
+      type: 'actions',
       getActions(params) {
         return [
           <RoleEdit

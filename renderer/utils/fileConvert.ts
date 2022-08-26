@@ -1,5 +1,5 @@
-import { File } from "../Schemas/File.model";
-import mime from "mime-types";
+import { File } from '../Schemas/File.model';
+import mime from 'mime-types';
 
 function toArrayBuffer(buf: number[]) {
   const ab = new ArrayBuffer(buf.length);

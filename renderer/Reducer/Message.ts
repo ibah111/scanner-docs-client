@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { OptionsObject } from "notistack";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { OptionsObject } from 'notistack';
 
 interface MessageState {
   message: string;
@@ -8,14 +8,14 @@ interface MessageState {
 const startMessageState: MessageState[] = [];
 const initialState = startMessageState;
 const MessageSlice = createSlice({
-  name: "Message",
+  name: 'Message',
   initialState,
   reducers: {
     callError(state, action: PayloadAction<string>) {
-      state.push({ message: action.payload, params: { variant: "error" } });
+      state.push({ message: action.payload, params: { variant: 'error' } });
     },
     callSuccess(state, action: PayloadAction<string>) {
-      state.push({ message: action.payload, params: { variant: "success" } });
+      state.push({ message: action.payload, params: { variant: 'success' } });
     },
     resetMessage() {
       return startMessageState;

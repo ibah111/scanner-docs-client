@@ -1,13 +1,13 @@
-import moment from "moment";
+import moment from 'moment';
 
 export default function ErrorDate(value: string): string {
   if (!value) {
-    return "Заполните дату";
+    return 'Заполните дату';
   }
   if (value) {
     if (!moment(value).isValid()) {
-      return "Дата заполнена неправильно";
+      return 'Дата заполнена неправильно';
     }
   }
-  return "";
+  return '';
 }

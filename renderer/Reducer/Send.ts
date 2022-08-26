@@ -1,21 +1,21 @@
-import { createSlice, Draft, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
 
 interface SendData {
   DateSend: string;
   WhereSend: string;
 }
 export const startSendState: SendData = {
-  DateSend: "",
-  WhereSend: "",
+  DateSend: '',
+  WhereSend: '',
 };
 const initialState = startSendState;
 const SendSlice = createSlice({
-  name: "Send",
+  name: 'Send',
   initialState,
   reducers: {
     setSend<T extends keyof SendData>(
       state: Draft<SendData>,
-      action: PayloadAction<[T, SendData[T]]>
+      action: PayloadAction<[T, SendData[T]]>,
     ) {
       state[action.payload[0]] = action.payload[1];
     },

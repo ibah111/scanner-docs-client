@@ -1,9 +1,9 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Log } from "../Schemas/Log.model";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Log } from '../Schemas/Log.model';
 
 const initialState: Log[] = [];
 const TransmitSlice = createSlice({
-  name: "file",
+  name: 'file',
   initialState,
   reducers: {
     setTransmit(state, action: PayloadAction<Log[]>) {

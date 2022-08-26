@@ -1,11 +1,11 @@
-import { Type } from "class-transformer";
-import { Depart } from "./Depart.model";
-import { Doc } from "./Doc.model";
-import { Result } from "./Result.model";
-import { Transmit } from "./Transmit.model";
-import { User } from "./User.model";
-import { File } from "./File.model";
-import { Log } from "./Log.model";
+import { Type } from 'class-transformer';
+import { Depart } from './Depart.model';
+import { Doc } from './Doc.model';
+import { Result } from './Result.model';
+import { Transmit } from './Transmit.model';
+import { User } from './User.model';
+import { File } from './File.model';
+import { Log } from './Log.model';
 
 export class Barcode {
   id: number;

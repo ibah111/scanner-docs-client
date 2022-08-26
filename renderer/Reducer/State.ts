@@ -1,10 +1,10 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
   login: false,
 };
 export const StateSlice = createSlice({
-  name: "State",
+  name: 'State',
   initialState,
   reducers: {
     resetLogin: (state) => {

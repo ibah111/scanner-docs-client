@@ -1,9 +1,9 @@
-import { Box, Button, ClickAwayListener, Paper, Popper } from "@mui/material";
-import React from "react";
-import addRole from "../../api/addRole";
-import { Role, User } from "../../api/getRoles";
-import { useAppDispatch, useAppSelector } from "../../Reducer";
-import { resetUser } from "../../Reducer/User";
+import { Box, Button, ClickAwayListener, Paper, Popper } from '@mui/material';
+import React from 'react';
+import addRole from '../../api/addRole';
+import { Role, User } from '../../api/getRoles';
+import { useAppDispatch, useAppSelector } from '../../Reducer';
+import { resetUser } from '../../Reducer/User';
 
 interface RightEditProps {
   data: User;
@@ -14,7 +14,7 @@ export default function RoleAdd({ data, roles, refresh }: RightEditProps) {
   const User = useAppSelector((state) => state.User);
   const dispatch = useAppDispatch();
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
-    null
+    null,
   );
   const [open, setOpen] = React.useState(false);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -32,7 +32,7 @@ export default function RoleAdd({ data, roles, refresh }: RightEditProps) {
             <Paper>
               {roles.map((value) =>
                 !data.Users_Roles.map((value) => value.Role.name).includes(
-                  value.name
+                  value.name,
                 ) ? (
                   <Button
                     key={value.id}
@@ -48,7 +48,7 @@ export default function RoleAdd({ data, roles, refresh }: RightEditProps) {
                   >
                     {value.title}
                   </Button>
-                ) : null
+                ) : null,
               )}
             </Paper>
           </Popper>

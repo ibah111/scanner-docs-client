@@ -1,6 +1,6 @@
-import { Button, Menu, MenuItem } from "@mui/material";
-import React from "react";
-import Link from "../Link";
+import { Button, Menu, MenuItem } from '@mui/material';
+import React from 'react';
+import Link from '../Link';
 
 export default function UpdateDocs() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -17,10 +17,10 @@ export default function UpdateDocs() {
       <Button
         id="basic-button"
         color="secondary"
-        sx={{ width: "180px" }}
-        aria-controls={open ? "basic-menu" : undefined}
+        sx={{ width: '180px' }}
+        aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
+        aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
         variant="contained"
       >
@@ -32,7 +32,7 @@ export default function UpdateDocs() {
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          "aria-labelledby": "basic-button",
+          'aria-labelledby': 'basic-button',
         }}
       >
         {!connected ? (

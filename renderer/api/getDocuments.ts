@@ -1,15 +1,15 @@
-import axios, { AxiosError } from "axios";
-import { store } from "../Reducer";
-import { callError } from "../Reducer/Message";
-import { getToken } from "../utils/getToken";
-import server from "../utils/server";
+import axios, { AxiosError } from 'axios';
+import { store } from '../Reducer';
+import { callError } from '../Reducer/Message';
+import { getToken } from '../utils/getToken';
+import server from '../utils/server';
 
 export default async function getDocuments(id: number) {
   try {
     const result = await axios.post<Blob>(
-      server() + "/documents",
+      server() + '/documents',
       { ...getToken(), id },
-      { responseType: "blob" }
+      { responseType: 'blob' },
     );
     return result.data;
   } catch (e) {

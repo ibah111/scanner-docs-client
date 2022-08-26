@@ -1,4 +1,4 @@
-import Role from "../components/Admin/Role";
+import Role from '../components/Admin/Role';
 
 export default function RolesData() {
   return (

@@ -1,8 +1,8 @@
-import axios, { AxiosError } from "axios";
-import { store } from "../Reducer";
-import { callError } from "../Reducer/Message";
-import { getToken } from "../utils/getToken";
-import server from "../utils/server";
+import axios, { AxiosError } from 'axios';
+import { store } from '../Reducer';
+import { callError } from '../Reducer/Message';
+import { getToken } from '../utils/getToken';
+import server from '../utils/server';
 export interface Role {
   id: number;
   name: string;
@@ -29,7 +29,7 @@ export interface ResultRole {
 
 export default async function getRoles() {
   try {
-    const result = await axios.post<ResultRole>(server() + "/role" + "/get", {
+    const result = await axios.post<ResultRole>(server() + '/role' + '/get', {
       ...getToken(),
     });
     return result.data;

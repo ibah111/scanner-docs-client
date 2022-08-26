@@ -1,7 +1,7 @@
-import { useSnackbar } from "notistack";
-import React from "react";
-import { useAppDispatch, useAppSelector } from "../Reducer";
-import { resetMessage } from "../Reducer/Message";
+import { useSnackbar } from 'notistack';
+import React from 'react';
+import { useAppDispatch, useAppSelector } from '../Reducer';
+import { resetMessage } from '../Reducer/Message';
 
 export default function MessageShow() {
   const messages = useAppSelector((state) => state.Message);

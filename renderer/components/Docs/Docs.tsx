@@ -1,16 +1,16 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Grid } from '@mui/material';
 import {
   DataGridPremium,
   GridFilterModel,
   GridSortModel,
-} from "@mui/x-data-grid-premium";
-import React from "react";
-import getDocs from "../../api/getDocs";
-import { useAppDispatch, useAppSelector } from "../../Reducer";
-import { setDocs } from "../../Reducer/Docs";
-import { setComponents } from "../../Reducer/DocsComponent";
-import columns from "./columns";
-import PrevTransmit from "./PrevTransmit";
+} from '@mui/x-data-grid-premium';
+import React from 'react';
+import getDocs from '../../api/getDocs';
+import { useAppDispatch, useAppSelector } from '../../Reducer';
+import { setDocs } from '../../Reducer/Docs';
+import { setComponents } from '../../Reducer/DocsComponent';
+import columns from './columns';
+import PrevTransmit from './PrevTransmit';
 
 export default function Docs() {
   const data = useAppSelector((state) => state.Docs);
@@ -18,21 +18,21 @@ export default function Docs() {
   const [page, setPage] = React.useState<number>(0);
   const dispatch = useAppDispatch();
   const onFilterChange = (filter: GridFilterModel) => {
-    dispatch(setComponents(["filterModel", filter]));
+    dispatch(setComponents(['filterModel', filter]));
     getDocs().then((res) => {
       dispatch(setDocs(res));
     });
   };
   const handleSortModelChange = (sort: GridSortModel) => {
-    dispatch(setComponents(["sortModel", sort]));
+    dispatch(setComponents(['sortModel', sort]));
     getDocs().then((res) => {
       dispatch(setDocs(res));
     });
   };
   React.useEffect(() => {
     if (page || pageSize) {
-      dispatch(setComponents(["page", page + 1]));
-      dispatch(setComponents(["pageSize", pageSize]));
+      dispatch(setComponents(['page', page + 1]));
+      dispatch(setComponents(['pageSize', pageSize]));
       getDocs().then((res) => {
         dispatch(setDocs(res));
       });
@@ -78,7 +78,7 @@ export default function Docs() {
                   <PrevTransmit id={row.id} />
                 </Box>
               )}
-              getDetailPanelHeight={() => "auto"}
+              getDetailPanelHeight={() => 'auto'}
             />
           </Grid>
         </Grid>

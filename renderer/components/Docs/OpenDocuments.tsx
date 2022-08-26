@@ -1,10 +1,10 @@
-import { Dialog } from "@mui/material";
-import { GridActionsCellItem } from "@mui/x-data-grid-premium";
-import React from "react";
-import getDocuments from "../../api/getDocuments";
-import { changeMime } from "../../utils/fileConvert";
-import PanoramaIcon from "@mui/icons-material/Panorama";
-import MenuBar from "../menuBar";
+import { Dialog } from '@mui/material';
+import { GridActionsCellItem } from '@mui/x-data-grid-premium';
+import React from 'react';
+import getDocuments from '../../api/getDocuments';
+import { changeMime } from '../../utils/fileConvert';
+import PanoramaIcon from '@mui/icons-material/Panorama';
+import MenuBar from '../menuBar';
 
 interface DialogFileProps {
   id: number;
@@ -13,7 +13,7 @@ interface DialogFileProps {
 
 export default function OpenDocuments({ id, title }: DialogFileProps) {
   const [open, setOpen] = React.useState(false);
-  const [fileUrl, setUrl] = React.useState("");
+  const [fileUrl, setUrl] = React.useState('');
   React.useEffect(() => {
     if (open)
       getDocuments(id).then((res) => {

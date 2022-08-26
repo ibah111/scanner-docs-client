@@ -1,23 +1,23 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AuthUser, AuthUserSuccess } from "../Schemas/Auth";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AuthUser, AuthUserSuccess } from '../Schemas/Auth';
 
 const initialState: AuthUser<boolean> = {
-  output: "Вы не вошли",
+  output: 'Вы не вошли',
   id: 0,
-  login: "",
+  login: '',
   login_result: false,
-  birthdate: "",
-  department: "",
-  position: "",
-  firstname: "",
-  secondname: "",
-  thirdname: "",
+  birthdate: '',
+  department: '',
+  position: '',
+  firstname: '',
+  secondname: '',
+  thirdname: '',
   roles: [],
-  error: "",
-  avatar: "",
+  error: '',
+  avatar: '',
 };
 export const UserSlice = createSlice({
-  name: "User",
+  name: 'User',
   initialState,
   reducers: {
     setUser: (state, value: PayloadAction<AuthUserSuccess>) => {

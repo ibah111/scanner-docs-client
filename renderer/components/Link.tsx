@@ -1,16 +1,16 @@
-import React from "react";
-import clsx from "clsx";
-import { useRouter } from "next/router";
-import NextLink, { LinkProps as NextLinkProps } from "next/link";
-import MuiLink, { LinkProps as MuiLinkProps } from "@mui/material/Link";
-import { UrlObject } from "url";
+import React from 'react';
+import clsx from 'clsx';
+import { useRouter } from 'next/router';
+import NextLink, { LinkProps as NextLinkProps } from 'next/link';
+import MuiLink, { LinkProps as MuiLinkProps } from '@mui/material/Link';
+import { UrlObject } from 'url';
 
 type NextComposedProps = React.AnchorHTMLAttributes<HTMLAnchorElement> &
   NextLinkProps;
 
 const NextComposed = React.forwardRef(function NextComposed(
   props: NextComposedProps,
-  ref: React.Ref<HTMLAnchorElement>
+  ref: React.Ref<HTMLAnchorElement>,
 ) {
   const { as, href, ...other } = props;
 
@@ -27,12 +27,12 @@ interface LinkPropsBase {
   naked?: boolean;
 }
 
-type LinkProps = LinkPropsBase & NextComposedProps & Omit<MuiLinkProps, "ref">;
+type LinkProps = LinkPropsBase & NextComposedProps & Omit<MuiLinkProps, 'ref'>;
 
 function Link(props: LinkProps) {
   const {
     href,
-    activeClassName = "active",
+    activeClassName = 'active',
     className: classNameProps,
     innerRef,
     naked,
@@ -41,7 +41,7 @@ function Link(props: LinkProps) {
 
   const router = useRouter();
   const pathname =
-    typeof href === "string" ? href : (href as UrlObject).pathname;
+    typeof href === 'string' ? href : (href as UrlObject).pathname;
   const className = clsx(classNameProps, {
     [activeClassName]: router.pathname === pathname && activeClassName,
   });
@@ -70,5 +70,5 @@ function Link(props: LinkProps) {
 const Linker = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => (
   <Link {...props} innerRef={ref} />
 ));
-Linker.displayName = "Link";
+Linker.displayName = 'Link';
 export default Linker;
