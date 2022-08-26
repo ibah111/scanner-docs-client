@@ -15,6 +15,7 @@ export default async function SendData() {
       id,
     });
     store.dispatch(callSuccess("Данные успешно отправлены"));
+
     return result.data;
   } catch (e) {
     if (e instanceof AxiosError)
