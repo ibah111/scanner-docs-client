@@ -1,12 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Log } from "../Schemas/Log.model";
 import { Transmit } from "../Schemas/Transmit.model";
 
-const initialState: Transmit[] = [];
+const initialState: Log[] = [];
 const TransmitSlice = createSlice({
   name: "file",
   initialState,
   reducers: {
-    setTransmit(state, action: PayloadAction<Transmit[]>) {
+    setTransmit(state, action: PayloadAction<Log[]>) {
       return action.payload;
     },
     resetTransmit() {

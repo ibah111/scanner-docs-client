@@ -10,6 +10,7 @@ export default function Main() {
   const data = useAppSelector((state) => state.Data);
   const User = useAppSelector((state) => state.User);
   const rows = data ? [data] : [];
+  console.log(rows);
   return (
     <Box>
       <Grid

@@ -1,8 +1,7 @@
-import { DataGridPremium, GridActionsCellItem } from "@mui/x-data-grid-premium";
+import { DataGridPremium } from "@mui/x-data-grid-premium";
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../Reducer";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { Box, Dialog, Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import columnsTransmit from "./columnsTransmit";
 import openHistory from "../../api/openHistory";
 import { setTransmit } from "../../Reducer/openTransmit";
@@ -12,9 +11,12 @@ interface DialogHistoryProps {
 }
 export default function PrevTransmit({ id }: DialogHistoryProps) {
   const data = useAppSelector((state) => state.openTransmit);
+
   const dispatch = useAppDispatch();
+
   React.useEffect(() => {
     openHistory(id).then((res) => {
+      console.log(res);
       dispatch(setTransmit(res));
     });
   }, []);
