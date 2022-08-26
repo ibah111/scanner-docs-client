@@ -71,6 +71,9 @@
       "output": "dist",
       "buildResources": "resources"
     },
+    "win": {
+      "target": "nsis"
+    },
     "files": [
       {
         "from": ".",
