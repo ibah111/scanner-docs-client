@@ -1,9 +1,9 @@
 {
   "private": true,
-  "name": "my-nextron-app",
-  "description": "My application description",
+  "name": "scanner-docs",
+  "description": "Приложение преднозначено для сканирования документов",
   "version": "0.0.0-development",
-  "author": "Yoshihide Shiono <shiono.yoshihide@gmail.com>",
+  "author": "Мария Иванова <ivanova_ms@outlook.com>",
   "main": "app/background.js",
   "scripts": {
     "start": "nextron",

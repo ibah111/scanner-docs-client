@@ -7053,57 +7053,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"my-nextron-app@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "my-nextron-app@workspace:."
-  dependencies:
-    "@contact/nextron": ^8.0.0
-    "@date-io/moment": ^2.15.0
-    "@electron/remote": ^2.0.8
-    "@emotion/react": ^11.10.0
-    "@emotion/styled": ^11.10.0
-    "@mui/icons-material": ^5.10.2
-    "@mui/material": ^5.10.2
-    "@mui/styles": ^5.10.2
-    "@mui/x-data-grid-premium": ^5.15.3
-    "@mui/x-date-pickers": ^5.0.0-beta.6
-    "@next/eslint-plugin-next": ^12.2.5
-    "@reduxjs/toolkit": ^1.8.5
-    "@types/mime-types": ^2.1.1
-    "@types/node": ^18.7.12
-    "@types/react": ^18.0.17
-    "@typescript-eslint/eslint-plugin": 5.33.0
-    "@typescript-eslint/parser": 5.33.0
-    axios: ^0.27.2
-    class-transformer: ^0.5.1
-    electron: ^20.0.3
-    electron-builder: ^23.4.0
-    electron-serve: ^1.1.0
-    electron-store: ^8.1.0
-    electron-updater: ^5.2.2
-    eslint: ^8.22.0
-    eslint-config-prettier: ^8.5.0
-    eslint-plugin-prettier: ^4.2.1
-    eslint-plugin-react: ^7.30.1
-    eslint-plugin-react-hooks: ^4.6.0
-    http-terminator: ^3.2.0
-    mime-types: ^2.1.35
-    moment: ^2.29.4
-    moment-timezone: ^0.5.35
-    next: ^12.2.5
-    notistack: ^2.0.5
-    open: ^8.4.0
-    prettier: ^2.7.1
-    react: ^18.2.0
-    react-dom: ^18.2.0
-    react-redux: ^8.0.2
-    reflect-metadata: ^0.1.13
-    serialport: ^10.4.0
-    socket.io-client: ^4.5.1
-    typescript: ^4.7.4
-  languageName: unknown
-  linkType: soft
-
 "nanoid@npm:^3.3.4":
   version: 3.3.4
   resolution: "nanoid@npm:3.3.4"
@@ -8349,6 +8298,57 @@ __metadata:
   checksum: 5636b55cf15f7cf0baa73f2797bf992bdcf75d1b39d82c0aa4608555c774368f6ac321cb641fd5f3d3ceb87805122cd47540da6a7b5960fe0dbdb8f8c263f000
   languageName: node
   linkType: hard
+
+"scanner-docs@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "scanner-docs@workspace:."
+  dependencies:
+    "@contact/nextron": ^8.0.0
+    "@date-io/moment": ^2.15.0
+    "@electron/remote": ^2.0.8
+    "@emotion/react": ^11.10.0
+    "@emotion/styled": ^11.10.0
+    "@mui/icons-material": ^5.10.2
+    "@mui/material": ^5.10.2
+    "@mui/styles": ^5.10.2
+    "@mui/x-data-grid-premium": ^5.15.3
+    "@mui/x-date-pickers": ^5.0.0-beta.6
+    "@next/eslint-plugin-next": ^12.2.5
+    "@reduxjs/toolkit": ^1.8.5
+    "@types/mime-types": ^2.1.1
+    "@types/node": ^18.7.12
+    "@types/react": ^18.0.17
+    "@typescript-eslint/eslint-plugin": 5.33.0
+    "@typescript-eslint/parser": 5.33.0
+    axios: ^0.27.2
+    class-transformer: ^0.5.1
+    electron: ^20.0.3
+    electron-builder: ^23.4.0
+    electron-serve: ^1.1.0
+    electron-store: ^8.1.0
+    electron-updater: ^5.2.2
+    eslint: ^8.22.0
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-prettier: ^4.2.1
+    eslint-plugin-react: ^7.30.1
+    eslint-plugin-react-hooks: ^4.6.0
+    http-terminator: ^3.2.0
+    mime-types: ^2.1.35
+    moment: ^2.29.4
+    moment-timezone: ^0.5.35
+    next: ^12.2.5
+    notistack: ^2.0.5
+    open: ^8.4.0
+    prettier: ^2.7.1
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    react-redux: ^8.0.2
+    reflect-metadata: ^0.1.13
+    serialport: ^10.4.0
+    socket.io-client: ^4.5.1
+    typescript: ^4.7.4
+  languageName: unknown
+  linkType: soft
 
 "scheduler@npm:^0.23.0":
   version: 0.23.0
