@@ -5,6 +5,7 @@ import { resetLogin } from '../../Reducer/State';
 import React from 'react';
 import UpdateDocs from '../Docs/updateDocs';
 import OpenAdminPage from '../Admin/OpenAdminPage';
+import BackMainPage from './BackMainPage';
 
 export default function NavBar() {
   const dispatch = useAppDispatch();
@@ -13,7 +14,10 @@ export default function NavBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar disableGutters>
-          <Grid sx={{ flexGrow: 1, pl: 3, pr: 5 }}>
+          <Grid sx={{ pl: 3, pr: 5 }}>
+            <BackMainPage />
+          </Grid>
+          <Grid sx={{ pl: 3, pr: 5 }}>
             {User.roles.includes('viewer_logs') && <UpdateDocs />}
           </Grid>
           <Grid sx={{ flexGrow: 1, pl: 3, pr: 5 }}>

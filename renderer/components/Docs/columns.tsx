@@ -19,7 +19,7 @@ const columns: GridColumns<Doc> = [
     width: 150,
   },
   {
-    field: 'title',
+    field: 'Doc.title',
     headerName: 'Название документа',
     valueGetter: (params) => {
       return params.row?.title;
@@ -40,7 +40,7 @@ const columns: GridColumns<Doc> = [
     width: 50,
   },
   {
-    field: 'fio',
+    field: 'Barcode.User.f',
     headerName: 'Текущий держатель',
     valueGetter: (params) => {
       return generateName(
@@ -52,7 +52,7 @@ const columns: GridColumns<Doc> = [
     width: 200,
   },
   {
-    field: 'depart',
+    field: 'Barcode.Depart.title',
     headerName: 'Подразделение',
     valueGetter: (params) => {
       return params.row.Barcode.Depart.title;
@@ -60,7 +60,7 @@ const columns: GridColumns<Doc> = [
     width: 200,
   },
   {
-    field: 'date_send',
+    field: 'Barcode.Transmits.date_send',
     headerName: 'Дата отправки в банк/ОСП',
     valueGetter: (params) => {
       if (params.row.Barcode.Transmits.length > 0) {
@@ -71,7 +71,7 @@ const columns: GridColumns<Doc> = [
     width: 200,
   },
   {
-    field: 'where_send',
+    field: 'Barcode.Transmits.where_send',
     headerName: 'Куда отправлено',
     valueGetter: (params) => {
       if (params.row.Barcode.Transmits.length > 0) {

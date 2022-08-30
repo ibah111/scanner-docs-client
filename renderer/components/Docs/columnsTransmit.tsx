@@ -8,7 +8,7 @@ const columnsTransmit: GridColumns<Log> = [
     field: 'date_send',
     headerName: 'Дата отправки в банк/ОСП',
     valueGetter: (params) => {
-      return moment(params.row.Transmits?.date_send).toDate();
+      return moment(params.row.Transmit.date_send).toDate();
     },
     type: 'date',
     width: 200,
@@ -17,7 +17,7 @@ const columnsTransmit: GridColumns<Log> = [
     field: 'where_send',
     headerName: 'Куда отправлено',
     valueGetter: (params) => {
-      return params.row.Transmits?.where_send;
+      return params.row.Transmit.where_send;
     },
     width: 200,
   },
@@ -54,7 +54,7 @@ const columnsTransmit: GridColumns<Log> = [
     headerName: 'Дата возврата',
 
     valueGetter: (params) => {
-      return moment(params.row.Transmits?.date_send).toDate();
+      return moment(params.row.Transmit.date_return).toDate();
     },
     type: 'date',
     width: 200,

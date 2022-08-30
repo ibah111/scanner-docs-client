@@ -19,7 +19,7 @@ export class Log {
   Depart: Depart;
 
   @Type(() => Transmit)
-  Transmits: Transmit;
+  Transmit: Transmit;
 
   @Type(() => Result)
   doc: Result;

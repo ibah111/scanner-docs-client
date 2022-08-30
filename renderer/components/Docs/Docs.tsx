@@ -19,7 +19,9 @@ export default function Docs() {
   const dispatch = useAppDispatch();
   const onFilterChange = (filter: GridFilterModel) => {
     dispatch(setComponents(['filterModel', filter]));
+
     getDocs().then((res) => {
+      console.log(res);
       dispatch(setDocs(res));
     });
   };

@@ -5,13 +5,6 @@ import Link from '../Link';
 export default function OpenAdminPage() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-  const [connected, setConnected] = React.useState(false);
   return (
     <>
       <Button
@@ -21,42 +14,12 @@ export default function OpenAdminPage() {
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
         variant="contained"
+        component={Link}
+        href="../RolesData"
       >
         Администратор
       </Button>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        {!connected ? (
-          <MenuItem
-            component={Link}
-            href="../RolesData"
-            onClick={() => {
-              setConnected(true);
-            }}
-          >
-            <em>Открыть таблицу</em>
-          </MenuItem>
-        ) : (
-          <MenuItem
-            component={Link}
-            href="../MainPage"
-            onClick={() => {
-              setConnected(false);
-            }}
-          >
-            <em>Закрыть</em>
-          </MenuItem>
-        )}
-      </Menu>
     </>
   );
 }
