@@ -60,18 +60,18 @@ const columns: GridColumns<Doc> = [
     width: 200,
   },
   {
-    field: 'Barcode.Transmits.date_send',
+    field: 'date_send',
     headerName: 'Дата отправки в банк/ОСП',
     valueGetter: (params) => {
       if (params.row.Barcode.Transmits.length > 0) {
-        return moment(params.row.Barcode.Transmits[0].date_send).toDate();
+        return moment(params.row.Barcode.Transmits[0].date_send).utc().toDate();
       }
     },
     type: 'date',
     width: 200,
   },
   {
-    field: 'Barcode.Transmits.where_send',
+    field: 'where_send',
     headerName: 'Куда отправлено',
     valueGetter: (params) => {
       if (params.row.Barcode.Transmits.length > 0) {
