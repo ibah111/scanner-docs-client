@@ -29,5 +29,5 @@ export class Barcode {
   @Type(() => File)
   file: File;
   @Type(() => Log)
-  Log: Log;
+  Logs: Log;
 }

@@ -14,32 +14,32 @@ import PrevTransmit from './PrevTransmit';
 
 export default function Docs() {
   const data = useAppSelector((state) => state.Docs);
-  const [pageSize, setPageSize] = React.useState<number>(25);
-  const [page, setPage] = React.useState<number>(0);
+  const { filterModel, page, pageSize, sortModel } = useAppSelector(
+    (state) => state.DocsComponent,
+  );
   const dispatch = useAppDispatch();
   const onFilterChange = (filter: GridFilterModel) => {
     dispatch(setComponents(['filterModel', filter]));
-
-    getDocs().then((res) => {
-      console.log(res);
-      dispatch(setDocs(res));
-    });
   };
   const handleSortModelChange = (sort: GridSortModel) => {
     dispatch(setComponents(['sortModel', sort]));
-    getDocs().then((res) => {
-      dispatch(setDocs(res));
-    });
   };
+  const handlePageChange = (newPage: number) => {
+    dispatch(setComponents(['page', newPage]));
+  };
+
+  const handlePageSizeChange = (newPageSize: number) => {
+    dispatch(setComponents(['pageSize', newPageSize]));
+  };
+
   React.useEffect(() => {
-    if (page || pageSize) {
-      dispatch(setComponents(['page', page + 1]));
-      dispatch(setComponents(['pageSize', pageSize]));
+    if (page || pageSize || filterModel || sortModel) {
       getDocs().then((res) => {
+        console.log(res);
         dispatch(setDocs(res));
       });
     }
-  }, [page]);
+  }, [page, pageSize, filterModel, sortModel]);
   return (
     <>
       <Box>
@@ -67,14 +67,16 @@ export default function Docs() {
               paginationMode="server"
               pagination
               page={page}
-              onPageChange={(newPage) => setPage(newPage)}
+              onPageChange={handlePageChange}
               rowCount={data.count}
               filterMode="server"
               onFilterModelChange={onFilterChange}
+              filterModel={filterModel}
+              sortModel={sortModel}
               sortingMode="server"
               onSortModelChange={handleSortModelChange}
               pageSize={pageSize}
-              onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+              onPageSizeChange={handlePageSizeChange}
               getDetailPanelContent={({ row }) => (
                 <Box>
                   <PrevTransmit id={row.id} />

@@ -6,8 +6,11 @@ import OpenDocuments from './OpenDocuments';
 
 const columns: GridColumns<Doc> = [
   {
-    field: 'id',
+    field: 'Doc.id',
     headerName: '№',
+    valueGetter: (params) => {
+      return params.row.id;
+    },
     width: 5,
   },
   {
@@ -25,6 +28,7 @@ const columns: GridColumns<Doc> = [
       return params.row?.title;
     },
     width: 350,
+    type: 'string',
   },
   {
     field: 'actions',
@@ -34,7 +38,7 @@ const columns: GridColumns<Doc> = [
       <OpenDocuments
         key={1}
         id={Number(params.row.contact_doc_id)}
-        title={params.row?.title}
+        title={params.row.title}
       />,
     ],
     width: 50,
@@ -60,22 +64,24 @@ const columns: GridColumns<Doc> = [
     width: 200,
   },
   {
-    field: 'date_send',
+    field: 'Barcode.Transmits.date_send',
     headerName: 'Дата отправки в банк/ОСП',
     valueGetter: (params) => {
-      if (params.row.Barcode.Transmits.length > 0) {
-        return moment(params.row.Barcode.Transmits[0].date_send).utc().toDate();
+      if (params.row.Barcode.Transmits?.length > 0) {
+        return moment(params.row.Barcode.Transmits[0]?.date_send)
+          .utc()
+          .toDate();
       }
     },
     type: 'date',
     width: 200,
   },
   {
-    field: 'where_send',
+    field: 'Barcode.Transmits.where_send',
     headerName: 'Куда отправлено',
     valueGetter: (params) => {
-      if (params.row.Barcode.Transmits.length > 0) {
-        return params.row.Barcode.Transmits[0].where_send;
+      if (params.row.Barcode.Transmits?.length > 0) {
+        return params.row.Barcode.Transmits[0]?.where_send;
       }
     },
     width: 200,
