@@ -1,10 +1,10 @@
 import { GridColumns } from '@mui/x-data-grid-premium';
 import moment from 'moment';
-import { Barcode } from '../../Schemas/Barcode.model';
+import { DocData } from '../../Schemas/DocData.model';
 import { generateName } from '../../utils/generateName';
 import OpenDoc from './openDoc';
 
-const columns: GridColumns<Barcode> = [
+const columns: GridColumns<DocData> = [
   {
     field: 'id',
     headerName: '№',

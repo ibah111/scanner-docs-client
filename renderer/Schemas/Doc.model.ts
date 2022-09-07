@@ -1,5 +1,6 @@
 import { Type } from 'class-transformer';
-import { Barcode } from './Barcode.model';
+import { DocData } from './DocData.model';
+import { DocTypes } from './DocTypes.model';
 
 export class Doc {
   id: number;
@@ -10,6 +11,8 @@ export class Doc {
   law_exec_id: number;
   @Type(() => Date)
   date: Date;
-  @Type(() => Barcode)
-  Barcode: Barcode;
+  @Type(() => DocTypes)
+  type: DocTypes;
+  @Type(() => DocData)
+  DocData: DocData;
 }
