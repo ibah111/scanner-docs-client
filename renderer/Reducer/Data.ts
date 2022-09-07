@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Barcode } from '../Schemas/Barcode.model';
-const initialState: Barcode = null;
+import { DocData } from '../Schemas/DocData.model';
+const initialState: DocData = null;
 const DataSlice = createSlice({
   name: 'data',
   initialState,
   reducers: {
-    setData(state, action: PayloadAction<Barcode>) {
+    setData(state, action: PayloadAction<DocData>) {
       return action.payload;
     },
     resetData() {
