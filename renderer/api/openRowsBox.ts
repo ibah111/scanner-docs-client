@@ -1,14 +1,16 @@
 import axios, { AxiosError } from 'axios';
 import { store } from '../Reducer';
+import { DocsState } from '../Reducer/Docs';
 import { callError } from '../Reducer/Message';
-import { Barcode } from '../Schemas/Barcode.model';
 import { getToken } from '../utils/getToken';
 import server from '../utils/server';
-export default async function getData(code: string): Promise<Barcode> {
+
+export default async function openRowsBox() {
+  const data = store.getState().RowsBox;
   try {
-    const result = await axios.post<Barcode>(server() + '/data', {
+    const result = await axios.post<DocsState>(server() + '/openRowsBox', {
       ...getToken(),
-      code,
+      ...data,
     });
     return result.data;
   } catch (e) {

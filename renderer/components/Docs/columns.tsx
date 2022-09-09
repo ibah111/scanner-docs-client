@@ -1,6 +1,5 @@
 import { GridColumns } from '@mui/x-data-grid-premium';
 import moment from 'moment';
-import { Barcode } from '../../Schemas/Barcode.model';
 import { Doc } from '../../Schemas/Doc.model';
 import { generateName } from '../../utils/generateName';
 import OpenDocuments from './OpenDocuments';
@@ -49,9 +48,9 @@ const columns: GridColumns<Doc> = [
     headerName: 'Текущий держатель',
     valueGetter: (params) => {
       return generateName(
-        params.row.DocData?.User.f,
-        params.row.DocData?.User.i,
-        params.row.DocData?.User.o,
+        params.row.DocData.User.f,
+        params.row.DocData.User.i,
+        params.row.DocData.User.o,
       );
     },
     width: 200,
@@ -60,7 +59,7 @@ const columns: GridColumns<Doc> = [
     field: 'Barcode.Depart.title',
     headerName: 'Подразделение',
     valueGetter: (params) => {
-      return params.row.DocData?.Depart.title;
+      return params.row.DocData.Depart.title;
     },
     width: 200,
   },
@@ -68,8 +67,8 @@ const columns: GridColumns<Doc> = [
     field: 'Barcode.Transmits.date_send',
     headerName: 'Дата отправки в банк/ОСП',
     valueGetter: (params) => {
-      if (params.row.DocData?.Transmits?.length > 0) {
-        return moment(params.row.DocData?.Transmits[0]?.date_send)
+      if (params.row.DocData.Transmits.length > 0) {
+        return moment(params.row.DocData.Transmits[0]?.date_send)
           .utc()
           .toDate();
       }
@@ -81,7 +80,7 @@ const columns: GridColumns<Doc> = [
     field: 'Barcode.Transmits.where_send',
     headerName: 'Куда отправлено',
     valueGetter: (params) => {
-      if (params.row.DocData?.Transmits?.length > 0) {
+      if (params.row.DocData.Transmits.length > 0) {
         return params.row.DocData?.Transmits[0]?.where_send;
       }
     },

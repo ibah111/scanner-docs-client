@@ -9,7 +9,14 @@ import SendingForm from '../../components/MainPage/sendingForm';
 export default function Main() {
   const data = useAppSelector((state) => state.Data);
   const User = useAppSelector((state) => state.User);
-  const rows = data ? [data] : [];
+  console.log(data);
+  let rows;
+  if (!Array.isArray(data)) {
+    rows = data ? [data] : [];
+  } else {
+    rows = data;
+  }
+
   return (
     <Box>
       <Grid
@@ -37,7 +44,7 @@ export default function Main() {
           )}
         </Grid>
         <Grid item>
-          {User.roles.includes('sender') && rows.length > 0 && <SendingForm />}
+          {User.roles.includes('sender') && rows.length == 1 && <SendingForm />}
         </Grid>
         <Grid item>
           <Scan />

@@ -1,6 +1,7 @@
 import { Type } from 'class-transformer';
 import { DocData } from './DocData.model';
 import { DocTypes } from './DocTypes.model';
+import { Result } from './Result.model';
 
 export class Doc {
   id: number;
@@ -15,4 +16,6 @@ export class Doc {
   type: DocTypes;
   @Type(() => DocData)
   DocData: DocData;
+  @Type(() => Result)
+  doc: Result;
 }

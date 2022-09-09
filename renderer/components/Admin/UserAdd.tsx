@@ -1,8 +1,8 @@
 import { Button, Grid, TextField, Typography } from '@mui/material';
 import React from 'react';
 import addUser from '../../api/addUser';
-const validateEmail = (email: string) => {
-  return email.match(
+const validateEmail = (login: string) => {
+  return login.match(
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   );
 };

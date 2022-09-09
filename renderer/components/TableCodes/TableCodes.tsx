@@ -1,42 +1,41 @@
-import { Box, Grid } from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 import {
   DataGridPremium,
-  DataGridPremiumProps,
   GridFilterModel,
-  GridPinnedRowsProp,
   GridSortModel,
 } from '@mui/x-data-grid-premium';
 import React from 'react';
-import getDocs from '../../api/getDocs';
 import { useAppDispatch, useAppSelector } from '../../Reducer';
 import { setDocs } from '../../Reducer/Docs';
-import { setComponents } from '../../Reducer/DocsComponent';
+import { setRowsBox } from '../../Reducer/RowsBox';
 import columns from './columns';
-import PrevTransmit from './PrevTransmit';
-export default function Docs() {
+import openRowsBox from '../../api/openRowsBox';
+import createCode from '../../api/createCode';
+import { setBox } from '../../Reducer/Box';
+
+export default function TableCodes() {
   const data = useAppSelector((state) => state.Docs);
   const { filterModel, page, pageSize, sortModel } = useAppSelector(
-    (state) => state.DocsComponent,
+    (state) => state.RowsBox,
   );
   const dispatch = useAppDispatch();
   const onFilterChange = (filter: GridFilterModel) => {
-    dispatch(setComponents(['filterModel', filter]));
+    dispatch(setRowsBox(['filterModel', filter]));
   };
   const handleSortModelChange = (sort: GridSortModel) => {
-    dispatch(setComponents(['sortModel', sort]));
+    dispatch(setRowsBox(['sortModel', sort]));
   };
   const handlePageChange = (newPage: number) => {
-    dispatch(setComponents(['page', newPage]));
+    dispatch(setRowsBox(['page', newPage]));
   };
 
   const handlePageSizeChange = (newPageSize: number) => {
-    dispatch(setComponents(['pageSize', newPageSize]));
+    dispatch(setRowsBox(['pageSize', newPageSize]));
   };
 
   React.useEffect(() => {
     if (page || pageSize || filterModel || sortModel) {
-      getDocs().then((res) => {
-        console.log(res);
+      openRowsBox().then((res) => {
         dispatch(setDocs(res));
       });
     }
@@ -78,16 +77,20 @@ export default function Docs() {
               onSortModelChange={handleSortModelChange}
               pageSize={pageSize}
               onPageSizeChange={handlePageSizeChange}
-              rowThreshold={0}
-              getDetailPanelContent={({ row }) => (
-                <Box>
-                  <PrevTransmit id={row.id} />
-                </Box>
-              )}
-              getDetailPanelHeight={() => 'auto'}
             />
           </Grid>
         </Grid>
+        <Button
+          onClick={() => {
+            dispatch(setBox(['create', true]));
+            createCode();
+          }}
+          color="primary"
+          variant="contained"
+          sx={{ float: 'right', mr: '13px' }}
+        >
+          Создать короб
+        </Button>
       </Box>
     </>
   );

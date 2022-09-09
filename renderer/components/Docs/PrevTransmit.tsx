@@ -1,22 +1,19 @@
 import { DataGridPremium } from '@mui/x-data-grid-premium';
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../Reducer';
 import { Box, Grid } from '@mui/material';
 import columnsTransmit from './columnsTransmit';
 import openHistory from '../../api/openHistory';
-import { setTransmit } from '../../Reducer/openTransmit';
+import { Log } from '../../Schemas/Log.model';
 
 interface DialogHistoryProps {
   id: number;
 }
 export default function PrevTransmit({ id }: DialogHistoryProps) {
-  const data = useAppSelector((state) => state.openTransmit);
-
-  const dispatch = useAppDispatch();
+  const [data, setData] = React.useState<Log[]>([]);
 
   React.useEffect(() => {
     openHistory(id).then((res) => {
-      dispatch(setTransmit(res));
+      setData(res);
     });
   }, []);
   return (

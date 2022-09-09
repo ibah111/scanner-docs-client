@@ -6,6 +6,7 @@ import React from 'react';
 import UpdateDocs from '../Docs/updateDocs';
 import OpenAdminPage from '../Admin/OpenAdminPage';
 import BackMainPage from './BackMainPage';
+import OpenTableCodes from '../TableCodes/OpenTableCodes';
 
 export default function NavBar() {
   const dispatch = useAppDispatch();
@@ -22,6 +23,9 @@ export default function NavBar() {
           </Grid>
           <Grid sx={{ flexGrow: 1, pl: 3, pr: 5 }}>
             {User.roles.includes('admin') && <OpenAdminPage />}
+          </Grid>
+          <Grid sx={{ flexGrow: 1, pl: 3, pr: 5 }}>
+            {User.roles.includes('former_box') && <OpenTableCodes />}
           </Grid>
           <Button
             color="inherit"

@@ -15,17 +15,14 @@ export class DocData {
   Status: Status;
   @Type(() => User)
   User: User;
-  @Type(() => User)
-  UserOld: User;
   @Type(() => Depart)
   Depart: Depart;
-  @Type(() => Depart)
-  DepartOld: Depart;
   @Type(() => Transmit)
   Transmits: Transmit[];
   @Type(() => Result)
   doc: Result;
-
   @Type(() => Log)
   Logs: Log;
+  @Type(() => File)
+  file: File;
 }
