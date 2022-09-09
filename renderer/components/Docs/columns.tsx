@@ -14,12 +14,20 @@ const columns: GridColumns<Doc> = [
     width: 5,
   },
   {
+    field: 'Barcode.code',
+    headerName: 'Номер штрихкода',
+    valueGetter(params) {
+      return params.row.Barcode.code;
+    },
+    width: 130,
+  },
+  {
     field: 'contact_doc_id',
     headerName: 'Номер документа',
     valueGetter: (params) => {
       return params.row?.contact_doc_id;
     },
-    width: 150,
+    width: 120,
   },
   {
     field: 'Doc.title',
@@ -30,6 +38,7 @@ const columns: GridColumns<Doc> = [
     width: 350,
     type: 'string',
   },
+
   {
     field: 'actions',
     type: 'actions',
@@ -44,7 +53,7 @@ const columns: GridColumns<Doc> = [
     width: 50,
   },
   {
-    field: 'Barcode.User.f',
+    field: 'DocData.User.f',
     headerName: 'Текущий держатель',
     valueGetter: (params) => {
       return generateName(
@@ -56,7 +65,7 @@ const columns: GridColumns<Doc> = [
     width: 200,
   },
   {
-    field: 'Barcode.Depart.title',
+    field: 'DocData.Depart.title',
     headerName: 'Подразделение',
     valueGetter: (params) => {
       return params.row.DocData.Depart.title;
@@ -64,7 +73,7 @@ const columns: GridColumns<Doc> = [
     width: 200,
   },
   {
-    field: 'Barcode.Transmits.date_send',
+    field: 'DocData.Transmits.date_send',
     headerName: 'Дата отправки в банк/ОСП',
     valueGetter: (params) => {
       if (params.row.DocData.Transmits.length > 0) {
@@ -77,7 +86,7 @@ const columns: GridColumns<Doc> = [
     width: 200,
   },
   {
-    field: 'Barcode.Transmits.where_send',
+    field: 'DocData.Transmits.where_send',
     headerName: 'Куда отправлено',
     valueGetter: (params) => {
       if (params.row.DocData.Transmits.length > 0) {
