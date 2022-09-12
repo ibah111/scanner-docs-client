@@ -17,7 +17,7 @@ const columns: GridColumns<Doc> = [
     field: 'Barcode.code',
     headerName: 'Номер штрихкода',
     valueGetter(params) {
-      return params.row.Barcode.code;
+      return params.row.Barcode?.code;
     },
     width: 130,
   },
@@ -30,15 +30,29 @@ const columns: GridColumns<Doc> = [
     width: 120,
   },
   {
+    field: 'DocData.Result.reestr',
+    headerName: 'Реестр',
+    valueGetter: (params) => {
+      return params.row?.DocData.Result.reestr;
+    },
+    width: 200,
+  },
+  {
+    field: 'DocData.Result.fio_dol',
+    headerName: 'ФИО должника',
+    valueGetter: (params) => {
+      return params.row?.DocData.Result.fio_dol;
+    },
+    width: 200,
+  },
+  {
     field: 'Doc.title',
     headerName: 'Название документа',
     valueGetter: (params) => {
       return params.row?.title;
     },
-    width: 350,
-    type: 'string',
+    width: 200,
   },
-
   {
     field: 'actions',
     type: 'actions',
@@ -57,9 +71,9 @@ const columns: GridColumns<Doc> = [
     headerName: 'Текущий держатель',
     valueGetter: (params) => {
       return generateName(
-        params.row.DocData.User.f,
-        params.row.DocData.User.i,
-        params.row.DocData.User.o,
+        params.row.DocData.User?.f,
+        params.row.DocData.User?.i,
+        params.row.DocData.User?.o,
       );
     },
     width: 200,
@@ -68,7 +82,7 @@ const columns: GridColumns<Doc> = [
     field: 'DocData.Depart.title',
     headerName: 'Подразделение',
     valueGetter: (params) => {
-      return params.row.DocData.Depart.title;
+      return params.row.DocData.Depart?.title;
     },
     width: 200,
   },
@@ -76,7 +90,7 @@ const columns: GridColumns<Doc> = [
     field: 'DocData.Transmits.date_send',
     headerName: 'Дата отправки в банк/ОСП',
     valueGetter: (params) => {
-      if (params.row.DocData.Transmits.length > 0) {
+      if (params.row.DocData.Transmits?.length > 0) {
         return moment(params.row.DocData.Transmits[0]?.date_send)
           .utc()
           .toDate();
@@ -89,9 +103,25 @@ const columns: GridColumns<Doc> = [
     field: 'DocData.Transmits.where_send',
     headerName: 'Куда отправлено',
     valueGetter: (params) => {
-      if (params.row.DocData.Transmits.length > 0) {
+      if (params.row.DocData.Transmits?.length > 0) {
         return params.row.DocData?.Transmits[0]?.where_send;
       }
+    },
+    width: 200,
+  },
+  {
+    field: 'law_act_id',
+    headerName: 'LAW_ACT_ID',
+    valueGetter(params) {
+      return params.row.law_act_id;
+    },
+    width: 150,
+  },
+  {
+    field: 'law_exec_id',
+    headerName: 'LAW_EXEC_ID',
+    valueGetter: (params) => {
+      return params.row.law_exec_id;
     },
     width: 200,
   },

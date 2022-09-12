@@ -4,9 +4,17 @@ import OpenDocuments from '../Docs/OpenDocuments';
 
 const columns: GridColumns<Doc> = [
   {
-    field: 'id',
+    field: 'Doc.id',
     headerName: '№',
     width: 5,
+  },
+  {
+    field: 'contact_doc_id',
+    headerName: 'Номер документа',
+    valueGetter(params) {
+      return params.row.contact_doc_id;
+    },
+    width: 150,
   },
   {
     field: 'actions',
@@ -23,16 +31,24 @@ const columns: GridColumns<Doc> = [
     },
   },
   {
-    field: 'contact_doc_id',
-    headerName: 'Номер документа',
-    valueGetter(params) {
-      return params.row.contact_doc_id;
+    field: 'DocData.Result.reestr',
+    headerName: 'Реестр',
+    valueGetter: (params) => {
+      return params.row.DocData.Result.reestr;
     },
-    width: 150,
+    width: 200,
   },
   {
-    field: 'title',
-    headerName: 'Название',
+    field: 'DocData.Result.fio_dol',
+    headerName: 'ФИО должника',
+    valueGetter: (params) => {
+      return params.row.DocData.Result.fio_dol;
+    },
+    width: 200,
+  },
+  {
+    field: 'Doc.title',
+    headerName: 'Название документа',
     valueGetter: (params) => {
       return params.row.title;
     },

@@ -9,7 +9,6 @@ import SendingForm from '../../components/MainPage/sendingForm';
 export default function Main() {
   const data = useAppSelector((state) => state.Data);
   const User = useAppSelector((state) => state.User);
-  console.log(data);
   let rows;
   if (!Array.isArray(data)) {
     rows = data ? [data] : [];

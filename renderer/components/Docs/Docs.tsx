@@ -36,7 +36,6 @@ export default function Docs() {
   React.useEffect(() => {
     if (page || pageSize || filterModel || sortModel) {
       getDocs().then((res) => {
-        console.log(res);
         dispatch(setDocs(res));
       });
     }

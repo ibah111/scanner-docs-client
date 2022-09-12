@@ -3,6 +3,7 @@ import { Depart } from './Depart.model';
 import { Doc } from './Doc.model';
 import { Log } from './Log.model';
 import { Result } from './Result.model';
+import { Results } from './Results.model';
 import { Status } from './Status.model';
 import { Transmit } from './Transmit.model';
 import { User } from './User.model';
@@ -25,4 +26,6 @@ export class DocData {
   Logs: Log;
   @Type(() => File)
   file: File;
+  @Type(() => Results)
+  Result: Results;
 }
