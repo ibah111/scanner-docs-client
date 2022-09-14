@@ -9,6 +9,14 @@ const columns: GridColumns<Doc> = [
     width: 5,
   },
   {
+    field: 'Barcode.code',
+    headerName: 'Номер штрихкода',
+    valueGetter(params) {
+      return params.row.Barcode?.code;
+    },
+    width: 130,
+  },
+  {
     field: 'contact_doc_id',
     headerName: 'Номер документа',
     valueGetter(params) {
