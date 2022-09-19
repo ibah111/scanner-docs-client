@@ -6,12 +6,14 @@ import {
 } from '@mui/x-data-grid-premium';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../Reducer';
-import { setDocs } from '../../Reducer/Docs';
 import { setRowsBox } from '../../Reducer/RowsBox';
 import columns from './columns';
 import openRowsBox from '../../api/openRowsBox';
 import createCode from '../../api/createCode';
 import { setBox } from '../../Reducer/Box';
+import server from '../../utils/server';
+import { io } from 'socket.io-client';
+import { resetDocs, setDocs } from '../../Reducer/Docs';
 
 export default function TableCodes() {
   const data = useAppSelector((state) => state.Docs);
@@ -36,10 +38,22 @@ export default function TableCodes() {
   React.useEffect(() => {
     if (page || pageSize || filterModel || sortModel) {
       openRowsBox().then((res) => {
+        console.log(res);
         dispatch(setDocs(res));
       });
     }
   }, [page, pageSize, filterModel, sortModel]);
+  React.useEffect(() => {
+    const socket = io(server());
+    socket.on('connect', () => {
+      socket.emit('listen-box');
+    });
+    socket.on('add-item', (res) => {
+      openRowsBox().then((res) => {
+        dispatch(setDocs(res));
+      });
+    });
+  }, []);
   return (
     <>
       <Box>
@@ -84,6 +98,9 @@ export default function TableCodes() {
           onClick={() => {
             dispatch(setBox(['create', true]));
             createCode();
+            openRowsBox().then((res) => {
+              dispatch(resetDocs());
+            });
           }}
           color="primary"
           variant="contained"

@@ -4,7 +4,7 @@ import OpenDocuments from '../Docs/OpenDocuments';
 
 const columns: GridColumns<Doc> = [
   {
-    field: 'Doc.id',
+    field: 'id',
     headerName: '№',
     width: 5,
   },

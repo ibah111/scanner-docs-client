@@ -13,10 +13,14 @@ const DocsSlice = createSlice({
     setDocs(state, action: PayloadAction<DocsState>) {
       return action.payload;
     },
+    addDoc(state, action: PayloadAction<Doc>) {
+      state.rows.push(action.payload);
+      state.count++;
+    },
     resetDocs() {
       return initialState;
     },
   },
 });
-export const { setDocs, resetDocs } = DocsSlice.actions;
+export const { setDocs, resetDocs, addDoc } = DocsSlice.actions;
 export default DocsSlice.reducer;
