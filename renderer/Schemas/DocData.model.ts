@@ -28,4 +28,8 @@ export class DocData {
   file: File;
   @Type(() => Results)
   Result: Results;
+  @Type(() => Depart)
+  DepartOld: Depart;
+  @Type(() => User)
+  UserOld: User;
 }

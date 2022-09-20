@@ -1,11 +1,10 @@
 import { GridColumns } from '@mui/x-data-grid-premium';
 import moment from 'moment';
-import { Barcode } from '../../Schemas/Barcode.model';
 import { Doc } from '../../Schemas/Doc.model';
 import { generateName } from '../../utils/generateName';
 import OpenDocuments from '../Docs/OpenDocuments';
 
-const columns: GridColumns<Barcode> | GridColumns<Doc> = [
+const columnsDoc: GridColumns<Doc> = [
   {
     field: 'id',
     headerName: '№',
@@ -16,23 +15,13 @@ const columns: GridColumns<Barcode> | GridColumns<Doc> = [
     type: 'actions',
     headerName: 'Документ',
     getActions: (params) => {
-      if (params.row.Doc) {
-        return [
-          <OpenDocuments
-            key={1}
-            id={Number(params.row.Doc.contact_doc_id)}
-            title={params.row.Doc.title}
-          />,
-        ];
-      } else {
-        return [
-          <OpenDocuments
-            key={1}
-            id={Number(params.row.contact_doc_id)}
-            title={params.row.title}
-          />,
-        ];
-      }
+      return [
+        <OpenDocuments
+          key={1}
+          id={Number(params.row.contact_doc_id)}
+          title={params.row.title}
+        />,
+      ];
     },
 
     width: 50,
@@ -82,19 +71,11 @@ const columns: GridColumns<Barcode> | GridColumns<Doc> = [
     field: 'fio',
     headerName: 'Текущий держатель',
     valueGetter: (params) => {
-      if (params.row.Doc) {
-        return generateName(
-          params.row.Doc.DocData.User.f,
-          params.row.Doc.DocData.User.i,
-          params.row.Doc.DocData.User.o,
-        );
-      } else {
-        return generateName(
-          params.row.DocData.User.f,
-          params.row.DocData.User.i,
-          params.row.DocData.User.o,
-        );
-      }
+      return generateName(
+        params.row.DocData.User.f,
+        params.row.DocData.User.i,
+        params.row.DocData.User.o,
+      );
     },
     width: 200,
   },
@@ -102,11 +83,7 @@ const columns: GridColumns<Barcode> | GridColumns<Doc> = [
     field: 'depart',
     headerName: 'Подразделение',
     valueGetter: (params) => {
-      if (params.row.Doc) {
-        return params.row.Doc?.DocData.Depart.title;
-      } else {
-        return params.row.DocData.Depart.title;
-      }
+      return params.row.DocData.Depart.title;
     },
     width: 200,
   },
@@ -115,19 +92,11 @@ const columns: GridColumns<Barcode> | GridColumns<Doc> = [
     field: 'fio_old',
     headerName: 'Предыдущий держатель',
     valueGetter: (params) => {
-      if (params.row.Doc) {
-        return generateName(
-          params.row.UserOld?.f,
-          params.row.UserOld?.i,
-          params.row.UserOld?.o,
-        );
-      } else {
-        return generateName(
-          params.row.DocData.UserOld?.f,
-          params.row.DocData.UserOld?.i,
-          params.row.DocData.UserOld?.o,
-        );
-      }
+      return generateName(
+        params.row.DocData.UserOld?.f,
+        params.row.DocData.UserOld?.i,
+        params.row.DocData.UserOld?.o,
+      );
     },
     width: 200,
   },
@@ -135,14 +104,10 @@ const columns: GridColumns<Barcode> | GridColumns<Doc> = [
     field: 'depart_old',
     headerName: 'Предыдущее подразделение',
     valueGetter: (params) => {
-      if (params.row.Doc) {
-        return params.row.DepartOld?.title;
-      } else {
-        return params.row.DocData.DepartOld?.title;
-      }
+      return params.row.DocData.DepartOld?.title;
     },
     width: 200,
   },
 ];
 
-export default columns;
+export default columnsDoc;
