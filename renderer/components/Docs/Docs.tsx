@@ -1,9 +1,7 @@
-import { Box, Grid } from '@mui/material';
+import { Box } from '@mui/material';
 import {
   DataGridPremium,
-  DataGridPremiumProps,
   GridFilterModel,
-  GridPinnedRowsProp,
   GridSortModel,
 } from '@mui/x-data-grid-premium';
 import React from 'react';
@@ -43,50 +41,32 @@ export default function Docs() {
   return (
     <>
       <Box>
-        <Grid
-          container
-          direction="column"
-          alignItems="center"
-          height="100%"
-          width="100%"
-        >
-          <Grid
-            item
-            container
-            direction="row"
-            justifyContent="space-around"
-            alignItems="center"
-            height="100%"
-            width="100%"
-          >
-            <DataGridPremium
-              sx={{ pl: 3, pr: 3, pt: 2 }}
-              autoHeight
-              columns={columns}
-              rows={data.rows}
-              paginationMode="server"
-              pagination
-              page={page}
-              onPageChange={handlePageChange}
-              rowCount={data.count}
-              filterMode="server"
-              onFilterModelChange={onFilterChange}
-              filterModel={filterModel}
-              sortModel={sortModel}
-              sortingMode="server"
-              onSortModelChange={handleSortModelChange}
-              pageSize={pageSize}
-              onPageSizeChange={handlePageSizeChange}
-              rowThreshold={0}
-              getDetailPanelContent={({ row }) => (
-                <Box>
-                  <PrevTransmit id={row.id} />
-                </Box>
-              )}
-              getDetailPanelHeight={() => 'auto'}
-            />
-          </Grid>
-        </Grid>
+        <DataGridPremium
+          sx={{ pl: 3, pr: 3, pt: 2 }}
+          autoHeight
+          columns={columns}
+          rows={data.rows}
+          paginationMode="server"
+          pagination
+          page={page}
+          onPageChange={handlePageChange}
+          rowCount={data.count}
+          filterMode="server"
+          onFilterModelChange={onFilterChange}
+          filterModel={filterModel}
+          sortModel={sortModel}
+          sortingMode="server"
+          onSortModelChange={handleSortModelChange}
+          pageSize={pageSize}
+          onPageSizeChange={handlePageSizeChange}
+          rowThreshold={0}
+          getDetailPanelContent={({ row }) => (
+            <Box>
+              <PrevTransmit id={row.id} />
+            </Box>
+          )}
+          getDetailPanelHeight={() => 'auto'}
+        />
       </Box>
     </>
   );

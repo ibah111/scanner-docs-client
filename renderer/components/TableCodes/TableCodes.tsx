@@ -38,7 +38,6 @@ export default function TableCodes() {
   React.useEffect(() => {
     if (page || pageSize || filterModel || sortModel) {
       openRowsBox().then((res) => {
-        console.log(res);
         dispatch(setDocs(res));
       });
     }
@@ -104,7 +103,7 @@ export default function TableCodes() {
           }}
           color="primary"
           variant="contained"
-          sx={{ float: 'right', mr: '13px' }}
+          sx={{ float: 'right', mr: '13px', mt: '10px' }}
         >
           Создать короб
         </Button>

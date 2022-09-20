@@ -39,6 +39,14 @@ const columns: GridColumns<Doc> = [
     },
   },
   {
+    field: 'DocData.Result.kd',
+    headerName: 'Кредитный договор',
+    valueGetter: (params) => {
+      return params.row?.DocData.Result.kd;
+    },
+    width: 200,
+  },
+  {
     field: 'DocData.Result.reestr',
     headerName: 'Реестр',
     valueGetter: (params) => {
@@ -64,7 +72,7 @@ const columns: GridColumns<Doc> = [
   },
   {
     field: 'law_act_id',
-    headerName: 'LAW_ACT_ID',
+    headerName: 'Юридическое дело',
     valueGetter(params) {
       return params.row.law_act_id;
     },
@@ -72,7 +80,7 @@ const columns: GridColumns<Doc> = [
   },
   {
     field: 'law_exec_id',
-    headerName: 'LAW_EXEC_ID',
+    headerName: 'Исполнительное дело',
     valueGetter: (params) => {
       return params.row.law_exec_id;
     },
