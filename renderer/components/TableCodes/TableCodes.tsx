@@ -93,20 +93,22 @@ export default function TableCodes() {
             />
           </Grid>
         </Grid>
-        <Button
-          onClick={() => {
-            dispatch(setBox(['create', true]));
-            createCode();
-            openRowsBox().then((res) => {
-              dispatch(resetDocs());
-            });
-          }}
-          color="primary"
-          variant="contained"
-          sx={{ float: 'right', mr: '13px', mt: '10px' }}
-        >
-          Создать короб
-        </Button>
+        {data.rows.length > 0 && (
+          <Button
+            onClick={() => {
+              dispatch(setBox(['create', true]));
+              createCode();
+              openRowsBox().then((res) => {
+                dispatch(resetDocs());
+              });
+            }}
+            color="primary"
+            variant="contained"
+            sx={{ float: 'right', mr: '13px', mt: '10px' }}
+          >
+            Создать короб
+          </Button>
+        )}
       </Box>
     </>
   );
