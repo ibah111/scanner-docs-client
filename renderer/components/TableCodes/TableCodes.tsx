@@ -47,7 +47,7 @@ export default function TableCodes() {
     socket.on('connect', () => {
       socket.emit('listen-box');
     });
-    socket.on('add-item', (res) => {
+    socket.on('add-item', () => {
       openRowsBox().then((res) => {
         dispatch(setDocs(res));
       });
@@ -98,7 +98,7 @@ export default function TableCodes() {
             onClick={() => {
               dispatch(setBox(['create', true]));
               createCode();
-              openRowsBox().then((res) => {
+              openRowsBox().then(() => {
                 dispatch(resetDocs());
               });
             }}
