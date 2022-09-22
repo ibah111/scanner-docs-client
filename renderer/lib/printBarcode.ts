@@ -1,7 +1,11 @@
 import path from 'path';
 import * as bpac from './bpac';
+import connect_bpac from './connect_bpac';
 export default async function printBarcode(text: string) {
   console.log('start');
+  if (bpac.IsExtensionInstalled() == false) {
+    await connect_bpac();
+  }
   if (bpac.IsExtensionInstalled() == true) {
     const doc = bpac.IDocument;
     console.log('remote');
@@ -17,7 +21,7 @@ export default async function printBarcode(text: string) {
     try {
       const printerName = await doc.GetPrinterName();
       console.log(printerName);
-      const printer = await doc.Printer;
+      //const printer = await doc.Printer;
       const res = await doc.Open(barcode_file);
       console.log(res);
       console.log('get object');

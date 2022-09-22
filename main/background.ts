@@ -5,7 +5,6 @@ import { createWindow } from './helpers';
 import events from './events';
 import autoUpdaters from './autoUpdaters';
 import { singleEvents } from './singleEvents';
-import connect_bpac from './doPrint';
 require('@electron/remote/main').initialize();
 const isProd: boolean = process.env.NODE_ENV === 'production';
 if (isProd) {
@@ -33,7 +32,6 @@ if (isProd) {
     frame: false,
   });
   Store.initRenderer();
-  await connect_bpac();
   require('@electron/remote/main').enable(mainWindow.webContents);
   events(mainWindow.webContents);
   autoUpdaters(app, mainWindow.webContents);
@@ -41,6 +39,7 @@ if (isProd) {
 
   if (isProd) {
     await mainWindow.loadURL('app://./MainPage.html');
+    mainWindow.webContents.openDevTools();
   } else {
     const port = process.argv[2];
     await mainWindow.loadURL(`http://localhost:${port}/MainPage`);
