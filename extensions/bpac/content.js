@@ -1,10 +1,8 @@
 var port = null;
 console.log('content');
 document.addEventListener('bpac_send', (event) => {
-  console.log(event);
   if (port == null) {
     port = chrome.runtime.connect({ name: 'bpac' });
-    console.log(port);
     port.onMessage.addListener((response) => {
       if (typeof cloneInto == 'function') {
         const response2 = cloneInto(response, window);

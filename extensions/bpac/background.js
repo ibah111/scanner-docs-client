@@ -2,14 +2,12 @@ var port = null;
 var lastMethod = {};
 console.log('background');
 chrome.runtime.onConnect.addListener((portCS) => {
-  console.log(portCS);
   if (portCS.name != 'bpac') return;
   if (port != null) {
     port.disconnect();
     port = null;
   }
   portCS.onMessage.addListener((request) => {
-    console.log(request);
     if (port == null) {
       port = chrome.runtime.connectNative('com.brother.bpac');
       port.onMessage.addListener((response) => {
