@@ -4,11 +4,6 @@ import OpenDocuments from '../Docs/OpenDocuments';
 
 const columns: GridColumns<Doc> = [
   {
-    field: 'id',
-    headerName: '№',
-    width: 5,
-  },
-  {
     field: 'Barcode.code',
     headerName: 'Номер штрихкода',
     valueGetter(params) {
