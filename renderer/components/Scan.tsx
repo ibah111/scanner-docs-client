@@ -6,7 +6,6 @@ import { useAppDispatch } from '../Reducer';
 import { resetData, setData } from '../Reducer/Data';
 import getData from '../api/getData';
 import { resetSend } from '../Reducer/Send';
-import printBarcode from '../lib/printBarcode';
 
 export default function Scan() {
   const [ports, setPorts] = React.useState<PortInfo[]>([]);
@@ -45,13 +44,6 @@ export default function Scan() {
   };
   return (
     <div>
-      <Button
-        onClick={() => {
-          printBarcode('1111111111');
-        }}
-      >
-        Тест печать
-      </Button>
       {!connected ? (
         <>
           <Button

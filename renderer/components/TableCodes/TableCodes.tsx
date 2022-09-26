@@ -13,7 +13,7 @@ import createCode from '../../api/createCode';
 import { setBox } from '../../Reducer/Box';
 import server from '../../utils/server';
 import { io } from 'socket.io-client';
-import { resetDocs, setDocs } from '../../Reducer/Docs';
+import { setDocs } from '../../Reducer/Docs';
 
 export default function TableCodes() {
   const data = useAppSelector((state) => state.Docs);
@@ -42,6 +42,7 @@ export default function TableCodes() {
       });
     }
   }, [page, pageSize, filterModel, sortModel]);
+
   React.useEffect(() => {
     const socket = io(server());
     socket.on('connect', () => {
@@ -55,61 +56,59 @@ export default function TableCodes() {
   }, []);
   return (
     <>
-      <Box>
+      <Grid
+        item
+        xs
+        container
+        direction="column"
+        alignItems="center"
+        height="100%"
+        width="100%"
+      >
         <Grid
+          item
+          xs
           container
-          direction="column"
+          direction="row"
+          justifyContent="space-around"
           alignItems="center"
           height="100%"
           width="100%"
         >
-          <Grid
-            item
-            container
-            direction="row"
-            justifyContent="space-around"
-            alignItems="center"
-            height="100%"
-            width="100%"
-          >
-            <DataGridPremium
-              sx={{ pl: 3, pr: 3, pt: 2 }}
-              autoHeight
-              columns={columns}
-              rows={data.rows}
-              paginationMode="server"
-              pagination
-              page={page}
-              onPageChange={handlePageChange}
-              rowCount={data.count}
-              filterMode="server"
-              onFilterModelChange={onFilterChange}
-              filterModel={filterModel}
-              sortModel={sortModel}
-              sortingMode="server"
-              onSortModelChange={handleSortModelChange}
-              pageSize={pageSize}
-              onPageSizeChange={handlePageSizeChange}
-            />
-          </Grid>
+          <DataGridPremium
+            sx={{ pl: 3, pr: 3, pt: 2, height: '100%' }}
+            columns={columns}
+            rows={data.rows}
+            paginationMode="server"
+            pagination
+            page={page}
+            onPageChange={handlePageChange}
+            rowCount={data.count}
+            filterMode="server"
+            onFilterModelChange={onFilterChange}
+            filterModel={filterModel}
+            sortModel={sortModel}
+            sortingMode="server"
+            onSortModelChange={handleSortModelChange}
+            pageSize={pageSize}
+            onPageSizeChange={handlePageSizeChange}
+          />
         </Grid>
-        {data.rows.length > 0 && (
-          <Button
-            onClick={() => {
-              dispatch(setBox(['create', true]));
-              createCode();
-              openRowsBox().then(() => {
-                dispatch(resetDocs());
-              });
-            }}
-            color="primary"
-            variant="contained"
-            sx={{ float: 'right', mr: '13px', mt: '10px' }}
-          >
-            Создать короб
-          </Button>
-        )}
-      </Box>
+      </Grid>
+
+      {data.rows.length > 0 && (
+        <Button
+          onClick={() => {
+            dispatch(setBox(['create', true]));
+            createCode();
+          }}
+          color="primary"
+          variant="contained"
+          sx={{ ml: '86vw', mt: '10px' }}
+        >
+          Создать короб
+        </Button>
+      )}
     </>
   );
 }

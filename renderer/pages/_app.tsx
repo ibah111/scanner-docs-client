@@ -19,6 +19,7 @@ import Connect from '../components/Connect';
 import Login from '../components/Login';
 import MenuBar from '../components/menuBar';
 import NavBar from '../components/NavBar/NavBar';
+import { Grid } from '@mui/material';
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
@@ -44,16 +45,24 @@ export default function App(props: AppProps) {
             dateAdapter={AdapterMoment}
           >
             <SnackbarProvider maxSnack={3}>
-              <MenuBar />
-              <MessageShow />
-              <Update />
-              <CssBaseline />
-              <Connect>
-                <Login>
-                  <NavBar />
-                  <Component {...pageProps} />
-                </Login>
-              </Connect>
+              <Grid
+                sx={{ height: '100vh', width: '100vw' }}
+                container
+                direction="column"
+                justifyContent="flex-start"
+                alignItems="center"
+              >
+                <MenuBar />
+                <MessageShow />
+                <Update />
+                <CssBaseline />
+                <Connect>
+                  <Login>
+                    <NavBar />
+                    <Component {...pageProps} />
+                  </Login>
+                </Connect>
+              </Grid>
             </SnackbarProvider>
           </LocalizationProvider>
         </ThemeProvider>

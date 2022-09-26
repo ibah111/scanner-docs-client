@@ -9,7 +9,7 @@
     "start": "ELECTRON_ENABLE_LOGGING=1 nextron",
     "build": "nextron build --win",
     "postinstall": "electron-builder install-app-deps",
-    "lint": "eslint \"renderer/**/*.{ts,tsx,js}\" --fix"
+    "lint": "eslint \"renderer/**/*.{ts,tsx}\" --fix"
   },
   "dependencies": {
     "@date-io/moment": "^2.16.0",
@@ -40,6 +40,7 @@
     "@mui/material": "^5.10.6",
     "@mui/styles": "^5.10.6",
     "@next/eslint-plugin-next": "^12.3.1",
+    "@tools/bpac": "^1.0.4",
     "@types/mime-types": "^2.1.1",
     "@types/node": "^18.7.18",
     "@types/react": "^18.0.20",

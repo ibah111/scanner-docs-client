@@ -10,50 +10,54 @@ import columnsBarcode from '../../components/MainPage/columnsBarcode';
 export default function Main() {
   const data = useAppSelector((state) => state.Data);
   const User = useAppSelector((state) => state.User);
-  let rows;
-  let columns;
-  console.log(data);
-  if (!Array.isArray(data)) {
-    rows = data ? [data] : [];
-    columns = columnsBarcode;
-  } else {
-    rows = data;
-    columns = columnsDoc;
-  }
-
+  const [rows, setRows] = React.useState([]);
+  const [columns, setColumns] = React.useState([]);
+  React.useEffect(() => {
+    if (!Array.isArray(data) && data != null) {
+      setRows([data]);
+      setColumns(columnsBarcode);
+    } else if (Array.isArray(data)) {
+      setRows(data);
+      setColumns(columnsDoc);
+    }
+  }, [data]);
   return (
-    <Box>
-      <Grid
-        container
-        direction="column"
-        alignItems="center"
-        height="100%"
-        spacing={3}
-      >
+    <Grid item xs sx={{ flexGrow: 1, width: '100vw' }}>
+      <Box>
         <Grid
-          item
           container
-          direction="row"
-          justifyContent="space-around"
+          direction="column"
           alignItems="center"
           height="100%"
+          spacing={3}
         >
-          {rows.length > 0 && (
-            <DataGridPremium
-              autoHeight
-              columns={columns}
-              rows={rows}
-              hideFooter
-            />
-          )}
+          <Grid
+            item
+            container
+            direction="row"
+            justifyContent="space-around"
+            alignItems="center"
+            height="100%"
+          >
+            {rows.length > 0 && (
+              <DataGridPremium
+                autoHeight
+                columns={columns}
+                rows={rows}
+                hideFooter
+              />
+            )}
+          </Grid>
+          <Grid item>
+            {User.roles.includes('sender') && rows.length == 1 && (
+              <SendingForm />
+            )}
+          </Grid>
+          <Grid item>
+            <Scan />
+          </Grid>
         </Grid>
-        <Grid item>
-          {User.roles.includes('sender') && rows.length == 1 && <SendingForm />}
-        </Grid>
-        <Grid item>
-          <Scan />
-        </Grid>
-      </Grid>
-    </Box>
+      </Box>
+    </Grid>
   );
 }

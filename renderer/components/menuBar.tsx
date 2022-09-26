@@ -10,7 +10,7 @@ interface MenuBarProps {
 }
 export default function MenuBar({ back }: MenuBarProps) {
   return (
-    <Box sx={{ pl: 3, width: '100%' }}>
+    <Grid item xs={0.5} sx={{ pl: 3, width: '100%' }}>
       <Grid container direction="row" justifyContent="space-between">
         <Grid item sx={{ pt: 1 }}>
           <Grid item container direction="row">
@@ -59,6 +59,6 @@ export default function MenuBar({ back }: MenuBarProps) {
           </Grid>
         </Grid>
       </Grid>
-    </Box>
+    </Grid>
   );
 }

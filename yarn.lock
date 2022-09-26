@@ -2528,6 +2528,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tools/bpac@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "@tools/bpac@npm:1.0.4::__archiveUrl=https%3A%2F%2Fgit.usb.ru%2Fapi%2Fv4%2Fprojects%2F135%2Fpackages%2Fnpm%2F%40tools%2Fbpac%2F-%2F%40tools%2Fbpac-1.0.4.tgz"
+  checksum: ddc54acc255d0ffca6c6458a35441e499d80b452ab462d1364a7d01460cb0668ab26bdd58aa6d2cf35217916732be4ceb3d110e45dd5d19c46d6797efa136f40
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:2":
   version: 2.0.0
   resolution: "@tootallnate/once@npm:2.0.0"
@@ -8072,6 +8079,7 @@ __metadata:
     "@mui/x-date-pickers": ^5.0.2
     "@next/eslint-plugin-next": ^12.3.1
     "@reduxjs/toolkit": ^1.8.5
+    "@tools/bpac": ^1.0.4
     "@types/mime-types": ^2.1.1
     "@types/node": ^18.7.18
     "@types/react": ^18.0.20

@@ -5,6 +5,7 @@ import { createWindow } from './helpers';
 import events from './events';
 import autoUpdaters from './autoUpdaters';
 import { singleEvents } from './singleEvents';
+import { document_electron_main } from '@tools/bpac';
 require('@electron/remote/main').initialize();
 const isProd: boolean = process.env.NODE_ENV === 'production';
 if (isProd) {
@@ -31,6 +32,7 @@ if (isProd) {
     autoHideMenuBar: true,
     frame: false,
   });
+  document_electron_main(mainWindow.webContents);
   Store.initRenderer();
   require('@electron/remote/main').enable(mainWindow.webContents);
   events(mainWindow.webContents);

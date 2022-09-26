@@ -12,7 +12,7 @@ export default function NavBar() {
   const dispatch = useAppDispatch();
   const User = useAppSelector((state) => state.User);
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Grid item xs={0.5} sx={{ flexGrow: 1, width: '100vw' }}>
       <AppBar position="static">
         <Toolbar disableGutters>
           <Grid sx={{ pl: 3, pr: 5 }}>
@@ -39,6 +39,6 @@ export default function NavBar() {
           </Button>
         </Toolbar>
       </AppBar>
-    </Box>
+    </Grid>
   );
 }

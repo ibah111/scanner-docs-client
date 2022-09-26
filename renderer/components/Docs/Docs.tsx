@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import {
   DataGridPremium,
   GridFilterModel,
@@ -40,10 +40,10 @@ export default function Docs() {
   }, [page, pageSize, filterModel, sortModel]);
   return (
     <>
-      <Box>
+      <Grid item xs sx={{ height: '100%', width: '100vw' }}>
         <DataGridPremium
-          sx={{ pl: 3, pr: 3, pt: 2 }}
-          autoHeight
+          // autoHeight
+
           columns={columns}
           rows={data.rows}
           paginationMode="server"
@@ -67,7 +67,7 @@ export default function Docs() {
           )}
           getDetailPanelHeight={() => 'auto'}
         />
-      </Box>
+      </Grid>
     </>
   );
 }

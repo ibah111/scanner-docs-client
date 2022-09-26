@@ -1,4 +1,4 @@
-import { Box, IconButton } from '@mui/material';
+import { Box, Grid, IconButton } from '@mui/material';
 import { DataGridPremium, GridColumns } from '@mui/x-data-grid-premium';
 import { Delete as DeleteIcon } from '@mui/icons-material';
 import React from 'react';
@@ -64,14 +64,13 @@ export default function Role() {
       <Box p={1} display="flex" alignItems="flex-end">
         <UserAdd refresh={refresh} />
       </Box>
-      <Box>
+      <Grid item xs sx={{ flexGrow: 1, width: '100vw', height: '100%' }}>
         <DataGridPremium
           sx={{ pl: 3, pr: 3, pt: 2 }}
-          autoHeight
           columns={columns}
           rows={rights.users}
         />
-      </Box>
+      </Grid>
     </>
   );
 }
