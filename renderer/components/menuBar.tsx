@@ -1,4 +1,4 @@
-import { Box, Grid, IconButton, Typography } from '@mui/material';
+import { Grid, IconButton, Typography } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import { ipcRenderer } from 'electron';
 import React from 'react';
