@@ -1,12 +1,12 @@
 import axios, { AxiosError } from 'axios';
 import { store } from '../Reducer';
 import { callError } from '../Reducer/Message';
-import { Barcode } from '../Schemas/Barcode.model';
+import { Doc } from '../Schemas/Doc.model';
 import { getToken } from '../utils/getToken';
 import server from '../utils/server';
-export default async function getData(code: string): Promise<Barcode> {
+export default async function getData(code: string): Promise<Doc[]> {
   try {
-    const result = await axios.post<Barcode>(server() + '/data', {
+    const result = await axios.post<Doc[]>(server() + '/data', {
       ...getToken(),
       code,
     });

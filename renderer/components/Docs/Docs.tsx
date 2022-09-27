@@ -42,8 +42,6 @@ export default function Docs() {
     <>
       <Grid item xs sx={{ height: '100%', width: '100vw' }}>
         <DataGridPremium
-          // autoHeight
-
           columns={columns}
           rows={data.rows}
           paginationMode="server"

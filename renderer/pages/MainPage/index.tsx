@@ -4,23 +4,11 @@ import React from 'react';
 import { useAppSelector } from '../../Reducer';
 import Scan from '../../components/Scan';
 import SendingForm from '../../components/MainPage/sendingForm';
-import columnsDoc from '../../components/MainPage/columnsDoc';
-import columnsBarcode from '../../components/MainPage/columnsBarcode';
+import columns from '../../components/MainPage/columns';
 
 export default function Main() {
   const data = useAppSelector((state) => state.Data);
   const User = useAppSelector((state) => state.User);
-  const [rows, setRows] = React.useState([]);
-  const [columns, setColumns] = React.useState([]);
-  React.useEffect(() => {
-    if (!Array.isArray(data) && data != null) {
-      setRows([data]);
-      setColumns(columnsBarcode);
-    } else if (Array.isArray(data)) {
-      setRows(data);
-      setColumns(columnsDoc);
-    }
-  }, [data]);
   return (
     <Grid item xs sx={{ flexGrow: 1, width: '100vw' }}>
       <Box>
@@ -39,17 +27,18 @@ export default function Main() {
             alignItems="center"
             height="100%"
           >
-            {rows.length > 0 && (
+            {data.length > 0 && (
               <DataGridPremium
+                sx={{ pl: 3, pr: 3, pt: 2, height: '100%' }}
                 autoHeight
                 columns={columns}
-                rows={rows}
+                rows={data}
                 hideFooter
               />
             )}
           </Grid>
           <Grid item>
-            {User.roles.includes('sender') && rows.length == 1 && (
+            {User.roles.includes('sender') && data.length == 1 && (
               <SendingForm />
             )}
           </Grid>

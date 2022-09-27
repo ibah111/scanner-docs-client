@@ -7,7 +7,7 @@ import server from '../utils/server';
 
 export default async function SendData() {
   const data = store.getState().Send;
-  const id = store.getState().Data.id;
+  const id = store.getState().Data[0].id;
   try {
     const result = await axios.post<Transmit>(server() + '/send', {
       ...getToken(),

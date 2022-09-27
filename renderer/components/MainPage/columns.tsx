@@ -4,7 +4,7 @@ import { Doc } from '../../Schemas/Doc.model';
 import { generateName } from '../../utils/generateName';
 import OpenDocuments from '../Docs/OpenDocuments';
 
-const columnsDoc: GridColumns<Doc> = [
+const columns: GridColumns<Doc> = [
   {
     field: 'id',
     headerName: '№',
@@ -39,7 +39,7 @@ const columnsDoc: GridColumns<Doc> = [
     field: 'st_pnkt',
     headerName: 'Статья и пункт',
     valueGetter: (params) => {
-      return params.row.doc?.st_pnkt;
+      return params.row.DocData.Result?.st_pnkt;
     },
     width: 130,
   },
@@ -47,7 +47,7 @@ const columnsDoc: GridColumns<Doc> = [
     field: 'kd',
     headerName: 'КД',
     valueGetter: (params) => {
-      return params.row.doc?.kd;
+      return params.row.DocData.Result.kd;
     },
     width: 200,
   },
@@ -55,7 +55,7 @@ const columnsDoc: GridColumns<Doc> = [
     field: 'reestr',
     headerName: 'Реестр',
     valueGetter: (params) => {
-      return params.row.doc?.reestr;
+      return params.row.DocData.Result.reestr;
     },
     width: 200,
   },
@@ -63,7 +63,7 @@ const columnsDoc: GridColumns<Doc> = [
     field: 'fio_dol',
     headerName: 'ФИО должника',
     valueGetter: (params) => {
-      return params.row.doc?.fio_dol;
+      return params.row.DocData.Result.fio_dol;
     },
     width: 200,
   },
@@ -110,4 +110,4 @@ const columnsDoc: GridColumns<Doc> = [
   },
 ];
 
-export default columnsDoc;
+export default columns;

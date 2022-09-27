@@ -1,4 +1,5 @@
 export class Results {
+  st_pnkt: string;
   id: number;
   kd: string;
   reestr: string;

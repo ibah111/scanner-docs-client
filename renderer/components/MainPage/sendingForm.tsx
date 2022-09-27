@@ -65,8 +65,7 @@ export default function SendingForm() {
             />
             <Button
               onClick={() => {
-                SendData();
-                dispatch(resetData());
+                SendData().then(() => dispatch(resetData()));
               }}
               color="primary"
               variant="contained"
