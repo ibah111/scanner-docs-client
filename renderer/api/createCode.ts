@@ -2,8 +2,8 @@ import { bpac_electron } from '@tools/bpac';
 import axios, { AxiosError } from 'axios';
 import printBarcode from '../lib/printBarcode';
 import { store } from '../Reducer';
-import { resetDocs } from '../Reducer/Docs';
 import { callError, callSuccess } from '../Reducer/Message';
+import { resetRowDoc } from '../Reducer/RowDoc';
 import { DocData } from '../Schemas/DocData.model';
 import { getToken } from '../utils/getToken';
 import server from '../utils/server';
@@ -22,7 +22,7 @@ export default async function createCode() {
       });
       printBarcode(String(result.data));
       store.dispatch(callSuccess('Штрих-код успешно создан'));
-      store.dispatch(resetDocs());
+      store.dispatch(resetRowDoc());
       return result.data;
     } catch (e) {
       if (e instanceof AxiosError) {

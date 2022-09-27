@@ -12,7 +12,6 @@ import openRowsBox from '../../api/openRowsBox';
 import createCode from '../../api/createCode';
 import { setBox } from '../../Reducer/Box';
 import { socketConnect } from '../../lib/socket';
-import { addDoc, setDocs } from '../../Reducer/Docs';
 import { setRowDoc } from '../../Reducer/RowDoc';
 
 export default function TableCodes() {
@@ -50,7 +49,6 @@ export default function TableCodes() {
     });
     socket.on('add-item', () => {
       openRowsBox().then((res) => {
-        console.log(res);
         dispatch(setRowDoc(res));
       });
     });

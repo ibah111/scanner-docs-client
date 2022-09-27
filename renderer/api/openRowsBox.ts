@@ -1,6 +1,5 @@
 import axios, { AxiosError } from 'axios';
 import { store } from '../Reducer';
-import { DocsState } from '../Reducer/Docs';
 import { callError } from '../Reducer/Message';
 import { RowDocState } from '../Reducer/RowDoc';
 import { getToken } from '../utils/getToken';
