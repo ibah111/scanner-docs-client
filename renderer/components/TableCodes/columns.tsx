@@ -4,8 +4,11 @@ import OpenDocuments from '../Docs/OpenDocuments';
 
 const columns: GridColumns<Doc> = [
   {
-    field: 'id',
+    field: 'Doc.id',
     headerName: '№',
+    valueGetter: (params) => {
+      return params.row.id;
+    },
     width: 25,
   },
   {
@@ -23,20 +26,6 @@ const columns: GridColumns<Doc> = [
       return params.row.contact_doc_id;
     },
     width: 150,
-  },
-  {
-    field: 'actions',
-    headerName: 'Документ',
-    type: 'actions',
-    getActions: (params) => {
-      return [
-        <OpenDocuments
-          key={1}
-          id={Number(params.row.contact_doc_id)}
-          title={params.row.title}
-        />,
-      ];
-    },
   },
   {
     field: 'DocData.Result.kd',
@@ -70,6 +59,21 @@ const columns: GridColumns<Doc> = [
     },
     width: 200,
   },
+  {
+    field: 'actions',
+    headerName: 'Документ',
+    type: 'actions',
+    getActions: (params) => {
+      return [
+        <OpenDocuments
+          key={1}
+          id={Number(params.row.contact_doc_id)}
+          title={params.row.title}
+        />,
+      ];
+    },
+  },
+
   {
     field: 'law_act_id',
     headerName: 'Юридическое дело',
