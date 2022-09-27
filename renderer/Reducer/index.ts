@@ -5,6 +5,7 @@ import Data from './Data';
 import Docs from './Docs';
 import DocsComponent from './DocsComponent';
 import Message from './Message';
+import RowDoc from './RowDoc';
 import RowsBox from './RowsBox';
 import Send from './Send';
 import State from './State';
@@ -21,6 +22,7 @@ export const store = configureStore({
     DocsComponent,
     RowsBox,
     Box,
+    RowDoc,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;

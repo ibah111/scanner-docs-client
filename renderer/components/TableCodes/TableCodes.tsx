@@ -11,12 +11,12 @@ import columns from './columns';
 import openRowsBox from '../../api/openRowsBox';
 import createCode from '../../api/createCode';
 import { setBox } from '../../Reducer/Box';
-import server from '../../utils/server';
-import { io } from 'socket.io-client';
-import { setDocs } from '../../Reducer/Docs';
+import { socketConnect } from '../../lib/socket';
+import { addDoc, setDocs } from '../../Reducer/Docs';
+import { setRowDoc } from '../../Reducer/RowDoc';
 
 export default function TableCodes() {
-  const data = useAppSelector((state) => state.Docs);
+  const data = useAppSelector((state) => state.RowDoc);
   const { filterModel, page, pageSize, sortModel } = useAppSelector(
     (state) => state.RowsBox,
   );
@@ -38,19 +38,20 @@ export default function TableCodes() {
   React.useEffect(() => {
     if (page || pageSize || filterModel || sortModel) {
       openRowsBox().then((res) => {
-        dispatch(setDocs(res));
+        dispatch(setRowDoc(res));
       });
     }
   }, [page, pageSize, filterModel, sortModel]);
 
   React.useEffect(() => {
-    const socket = io(server());
+    const socket = socketConnect('listen-box');
     socket.on('connect', () => {
       socket.emit('listen-box');
     });
     socket.on('add-item', () => {
       openRowsBox().then((res) => {
-        dispatch(setDocs(res));
+        console.log(res);
+        dispatch(setRowDoc(res));
       });
     });
   }, []);

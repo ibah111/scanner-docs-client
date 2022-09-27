@@ -1,10 +1,9 @@
 import { Grid, Typography } from '@mui/material';
 import React from 'react';
-import { io } from 'socket.io-client';
-import server from '../utils/server';
+import { socketConnect } from '../lib/socket';
 
 const connect = (callback: (value: boolean) => void) => {
-  const socket = io(server());
+  const socket = socketConnect();
   socket.on('connect', () => {
     callback(true);
   });
