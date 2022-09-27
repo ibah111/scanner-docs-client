@@ -103,7 +103,7 @@ export default function TableCodes() {
           }}
           color="primary"
           variant="contained"
-          sx={{ ml: '86vw', mt: '10px' }}
+          sx={{ ml: '88vw', mt: '10px', mb: '10px' }}
         >
           Создать короб
         </Button>
