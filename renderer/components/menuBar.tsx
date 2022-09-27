@@ -10,52 +10,50 @@ interface MenuBarProps {
 }
 export default function MenuBar({ back }: MenuBarProps) {
   return (
-    <Grid item xs={0.5} sx={{ pl: 3, width: '100%' }}>
-      <Grid container direction="row" justifyContent="space-between">
-        <Grid item sx={{ pt: 1 }}>
-          <Grid item container direction="row">
-            <Grid item sx={{ mt: -1 }}>
-              {back && (
-                <IconButton onClick={back}>
-                  <KeyboardReturnIcon />
-                </IconButton>
-              )}
-            </Grid>
-            <Grid item>
-              <Typography>Scanner Docs</Typography>
-            </Grid>
+    <Grid item container direction="row" justifyContent="space-between">
+      <Grid item sx={{ pt: 1 }}>
+        <Grid item container direction="row">
+          <Grid item sx={{ mt: -1 }}>
+            {back && (
+              <IconButton onClick={back}>
+                <KeyboardReturnIcon />
+              </IconButton>
+            )}
+          </Grid>
+          <Grid item sx={{ ml: 2 }}>
+            <Typography>Scanner Docs</Typography>
           </Grid>
         </Grid>
-        <Grid item sx={{ WebkitAppRegion: 'drag' }} xs />
-        <Grid item>
-          <Grid item container direction="row">
-            <Grid item>
-              <IconButton
-                onClick={() => {
-                  ipcRenderer.send('minimize');
-                }}
-              >
-                <HorizontalRuleIcon />
-              </IconButton>
-            </Grid>
-            <Grid item>
-              <IconButton
-                onClick={() => {
-                  ipcRenderer.send('size');
-                }}
-              >
-                <SettingsOverscanIcon />
-              </IconButton>
-            </Grid>
-            <Grid item>
-              <IconButton
-                onClick={() => {
-                  ipcRenderer.send('close');
-                }}
-              >
-                <Close />
-              </IconButton>
-            </Grid>
+      </Grid>
+      <Grid item sx={{ WebkitAppRegion: 'drag' }} xs />
+      <Grid item>
+        <Grid item container direction="row">
+          <Grid item>
+            <IconButton
+              onClick={() => {
+                ipcRenderer.send('minimize');
+              }}
+            >
+              <HorizontalRuleIcon />
+            </IconButton>
+          </Grid>
+          <Grid item>
+            <IconButton
+              onClick={() => {
+                ipcRenderer.send('size');
+              }}
+            >
+              <SettingsOverscanIcon />
+            </IconButton>
+          </Grid>
+          <Grid item>
+            <IconButton
+              onClick={() => {
+                ipcRenderer.send('close');
+              }}
+            >
+              <Close />
+            </IconButton>
           </Grid>
         </Grid>
       </Grid>

@@ -16,20 +16,20 @@ export default function NavBar() {
       <AppBar position="static">
         <Toolbar disableGutters>
           <Grid container flexWrap="wrap">
-            <Grid sx={{ flexGrow: 1, ml: 2 }}>
+            <Grid sx={{ flexGrow: 1, mt: 2, mb: 2, ml: 2 }}>
               <BackMainPage />
             </Grid>
-            <Grid sx={{ flexGrow: 1 }}>
+            <Grid sx={{ flexGrow: 1, mt: 2, mb: 2, ml: 2 }}>
               {User.roles.includes('viewer_logs') && <UpdateDocs />}
             </Grid>
-            <Grid sx={{ flexGrow: 1 }}>
+            <Grid sx={{ flexGrow: 1, mt: 2, mb: 2, ml: 2 }}>
               {User.roles.includes('former_box') && <OpenTableCodes />}
             </Grid>
-            <Grid sx={{ flexGrow: 1 }}>
+            <Grid sx={{ flexGrow: 1, mt: 2, mb: 2, ml: 2 }}>
               {User.roles.includes('admin') && <OpenAdminPage />}
             </Grid>
 
-            <Grid sx={{ flexGrow: -1, mr: 2 }}>
+            <Grid sx={{ flexGrow: -1, mr: 2, mt: 2, mb: 2, ml: 2 }}>
               <Button
                 color="inherit"
                 onClick={() => {
