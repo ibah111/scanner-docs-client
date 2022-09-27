@@ -12,31 +12,35 @@ export default function NavBar() {
   const dispatch = useAppDispatch();
   const User = useAppSelector((state) => state.User);
   return (
-    <Grid item xs={0.5} sx={{ flexGrow: 1, width: '100vw' }}>
+    <Grid item xs={0.5} sx={{ width: '100vw', height: '100%' }}>
       <AppBar position="static">
         <Toolbar disableGutters>
-          <Grid sx={{ pl: 3, pr: 5 }}>
-            <BackMainPage />
+          <Grid container flexWrap="wrap">
+            <Grid sx={{ flexGrow: 1, ml: 2 }}>
+              <BackMainPage />
+            </Grid>
+            <Grid sx={{ flexGrow: 1 }}>
+              {User.roles.includes('viewer_logs') && <UpdateDocs />}
+            </Grid>
+            <Grid sx={{ flexGrow: 1 }}>
+              {User.roles.includes('former_box') && <OpenTableCodes />}
+            </Grid>
+            <Grid sx={{ flexGrow: 1 }}>
+              {User.roles.includes('admin') && <OpenAdminPage />}
+            </Grid>
+
+            <Grid sx={{ flexGrow: -1, mr: 2 }}>
+              <Button
+                color="inherit"
+                onClick={() => {
+                  store.set('token', '');
+                  dispatch(resetLogin());
+                }}
+              >
+                Выход
+              </Button>
+            </Grid>
           </Grid>
-          <Grid sx={{ pl: 3, pr: 5 }}>
-            {User.roles.includes('viewer_logs') && <UpdateDocs />}
-          </Grid>
-          <Grid sx={{ flexGrow: 1, pl: 3, pr: 5 }}>
-            {User.roles.includes('admin') && <OpenAdminPage />}
-          </Grid>
-          <Grid sx={{ flexGrow: 1, pl: 3, pr: 5 }}>
-            {User.roles.includes('former_box') && <OpenTableCodes />}
-          </Grid>
-          <Button
-            color="inherit"
-            onClick={() => {
-              store.set('token', '');
-              dispatch(resetLogin());
-            }}
-            sx={{ mr: 2 }}
-          >
-            Выход
-          </Button>
         </Toolbar>
       </AppBar>
     </Grid>

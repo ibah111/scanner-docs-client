@@ -28,6 +28,6 @@ export default async function printBarcode(text: string) {
       store.dispatch(callError('Подключите принтер Brother QL-800'));
     }
   } catch (e) {
-    store.dispatch(callError(e));
+    store.dispatch(callError(e.response.data.message));
   }
 }

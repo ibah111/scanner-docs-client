@@ -57,18 +57,20 @@ export default function Login({ children }: LoginProps) {
       {loged ? (
         children
       ) : (
-        <Grid
-          container
-          direction="column"
-          alignItems="center"
-          spacing={4}
-          height="100%"
-        >
-          <Grid item>
-            <Typography variant="h4">Вы не авторизованы</Typography>
-          </Grid>
-          <Grid item>
-            <Authorization />
+        <Grid item xs>
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            spacing={4}
+            height="100%"
+          >
+            <Grid item>
+              <Typography variant="h4">Вы не авторизованы</Typography>
+            </Grid>
+            <Grid item>
+              <Authorization />
+            </Grid>
           </Grid>
         </Grid>
       )}
