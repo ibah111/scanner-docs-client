@@ -23,7 +23,7 @@ export default function NavBar() {
                 container
                 direction="row"
                 flexWrap="wrap"
-                sx={{ flexBasis: '50%' }}
+                sx={{ flexBasis: '80%', mt: 0.5 }}
               >
                 <Grid sx={{ ml: 2 }}>
                   <BackMainPage />
@@ -40,7 +40,7 @@ export default function NavBar() {
                 container
                 direction="row-reverse"
                 flexWrap="wrap"
-                sx={{ flexBasis: '50%' }}
+                sx={{ flexBasis: '20%' }}
               >
                 <Grid>
                   <Button
