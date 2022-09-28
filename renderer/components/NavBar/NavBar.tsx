@@ -1,4 +1,4 @@
-import { AppBar, Button, Grid, Toolbar } from '@mui/material';
+import { AppBar, Box, Button, Grid, Toolbar } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../Reducer';
 import store from '../../lib/store';
 import { resetLogin } from '../../Reducer/State';
@@ -7,42 +7,59 @@ import UpdateDocs from '../Docs/updateDocs';
 import OpenAdminPage from '../Admin/OpenAdminPage';
 import BackMainPage from './BackMainPage';
 import OpenTableCodes from '../TableCodes/OpenTableCodes';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function NavBar() {
   const dispatch = useAppDispatch();
   const User = useAppSelector((state) => state.User);
   return (
     <Grid item xs={0.5} sx={{ width: '100vw', height: '100%' }}>
-      <AppBar position="static">
-        <Toolbar disableGutters>
-          <Grid container flexWrap="wrap">
-            <Grid sx={{ flexGrow: 1, mt: 2, mb: 2, ml: 2 }}>
-              <BackMainPage />
-            </Grid>
-            <Grid sx={{ flexGrow: 1, mt: 2, mb: 2, ml: 2 }}>
-              {User.roles.includes('viewer_logs') && <UpdateDocs />}
-            </Grid>
-            <Grid sx={{ flexGrow: 1, mt: 2, mb: 2, ml: 2 }}>
-              {User.roles.includes('former_box') && <OpenTableCodes />}
-            </Grid>
-            <Grid sx={{ flexGrow: 1, mt: 2, mb: 2, ml: 2 }}>
-              {User.roles.includes('admin') && <OpenAdminPage />}
-            </Grid>
-
-            <Grid sx={{ flexGrow: -1, mr: 2, mt: 2, mb: 2, ml: 2 }}>
-              <Button
-                color="inherit"
-                onClick={() => {
-                  store.set('token', '');
-                  dispatch(resetLogin());
-                }}
+      <Box>
+        <AppBar position="static">
+          <Toolbar disableGutters>
+            <Grid container direction="row" flexWrap="wrap">
+              <Grid
+                item
+                container
+                direction="row"
+                flexWrap="wrap"
+                sx={{ flexBasis: '50%' }}
               >
-                Выход
-              </Button>
+                <Grid sx={{ ml: 2 }}>
+                  <BackMainPage />
+                </Grid>
+                <Grid>
+                  {User.roles.includes('viewer_logs') && <UpdateDocs />}
+                </Grid>
+                <Grid>
+                  {User.roles.includes('former_box') && <OpenTableCodes />}
+                </Grid>
+              </Grid>
+              <Grid
+                item
+                container
+                direction="row-reverse"
+                flexWrap="wrap"
+                sx={{ flexBasis: '50%' }}
+              >
+                <Grid>
+                  <Button
+                    color="inherit"
+                    onClick={() => {
+                      store.set('token', '');
+                      dispatch(resetLogin());
+                    }}
+                    sx={{ mt: 0.5 }}
+                  >
+                    <LogoutIcon fontSize="medium" />
+                  </Button>
+                </Grid>
+                <Grid>{User.roles.includes('admin') && <OpenAdminPage />}</Grid>
+              </Grid>
             </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
+          </Toolbar>
+        </AppBar>
+      </Box>
     </Grid>
   );
 }

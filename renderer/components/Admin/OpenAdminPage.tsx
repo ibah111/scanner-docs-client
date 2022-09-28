@@ -1,19 +1,19 @@
 import { Button } from '@mui/material';
 import React from 'react';
 import Link from '../Link';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 export default function OpenAdminPage() {
   return (
     <>
       <Button
         id="basic-button"
-        color="secondary"
-        sx={{ width: '180px' }}
-        variant="contained"
+        color="inherit"
+        variant="text"
         component={Link}
         href="../RolesData"
       >
-        Администратор
+        <AdminPanelSettingsIcon fontSize="large" />
       </Button>
     </>
   );

@@ -7,9 +7,9 @@ export default function BackMainPage() {
     <>
       <Button
         id="basic-button"
-        color="secondary"
+        color="inherit"
         sx={{ width: '180px' }}
-        variant="contained"
+        variant="text"
         component={Link}
         href="../MainPage"
       >
