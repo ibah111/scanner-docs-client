@@ -1,11 +1,12 @@
-import { Box, Grid, IconButton } from '@mui/material';
-import { DataGridPremium, GridColumns } from '@mui/x-data-grid-premium';
-import { Delete as DeleteIcon } from '@mui/icons-material';
+import { Grid } from '@mui/material';
+import {
+  DataGridPremium,
+  GridColumns,
+  GridToolbar,
+} from '@mui/x-data-grid-premium';
 import React from 'react';
-import UserAdd from './UserAdd';
 import RoleEdit from './RoleEdit';
 import getRoles, { ResultRole, User } from '../../api/getRoles';
-import removeUser from '../../api/removeUser';
 
 export default function Role() {
   const [rights, setRights] = React.useState<ResultRole>({
@@ -42,16 +43,6 @@ export default function Role() {
             roles={rights.roles}
             refresh={refresh}
           />,
-          <IconButton
-            key={1}
-            onClick={() => {
-              removeUser(params.row.id).then(() => {
-                refresh();
-              });
-            }}
-          >
-            <DeleteIcon />
-          </IconButton>,
         ];
       },
     },
@@ -61,14 +52,14 @@ export default function Role() {
   }, []);
   return (
     <>
-      <Box p={1} display="flex" alignItems="flex-end">
-        <UserAdd refresh={refresh} />
-      </Box>
-      <Grid item xs sx={{ flexGrow: 1, width: '100vw', height: '100%' }}>
+      <Grid item xs sx={{ width: '100vw', height: '100%' }}>
         <DataGridPremium
-          sx={{ pl: 3, pr: 3, pt: 2 }}
+          sx={{ pl: 2 }}
           columns={columns}
           rows={rights.users}
+          components={{
+            Toolbar: GridToolbar,
+          }}
         />
       </Grid>
     </>

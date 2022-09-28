@@ -3,6 +3,7 @@ import {
   DataGridPremium,
   GridFilterModel,
   GridSortModel,
+  GridToolbar,
 } from '@mui/x-data-grid-premium';
 import React from 'react';
 import getDocs from '../../api/getDocs';
@@ -42,6 +43,7 @@ export default function Docs() {
     <>
       <Grid item xs sx={{ height: '100%', width: '100vw' }}>
         <DataGridPremium
+          sx={{ pl: 2, height: '100%' }}
           columns={columns}
           rows={data.rows}
           paginationMode="server"
@@ -64,6 +66,9 @@ export default function Docs() {
             </Box>
           )}
           getDetailPanelHeight={() => 'auto'}
+          components={{
+            Toolbar: GridToolbar,
+          }}
         />
       </Grid>
     </>
