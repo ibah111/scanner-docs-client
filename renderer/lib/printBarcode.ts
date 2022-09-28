@@ -17,7 +17,7 @@ export default async function printBarcode(text: string) {
   const is_online = await printer.IsPrinterOnline(printerName);
   try {
     if (printerName == 'Brother QL-800' && is_online) {
-      const res = await doc.Open(barcode_file);
+      await doc.Open(barcode_file);
       const barcode = await doc.GetObject('barcode');
       barcode.Text = text;
       doc.StartPrint('', 0);
