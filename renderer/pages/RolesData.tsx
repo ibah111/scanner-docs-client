@@ -1,12 +1,9 @@
 import { Grid } from '@mui/material';
-import {
-  DataGridPremium,
-  GridColumns,
-  GridToolbar,
-} from '@mui/x-data-grid-premium';
+import { DataGridPremium, GridColumns } from '@mui/x-data-grid-premium';
 import React from 'react';
 import getRoles, { ResultRole, User } from '../api/getRoles';
 import RoleEdit from '../components/Admin/RoleEdit';
+import { CustomToolbar } from '../components/CustomToolbar';
 
 export default function Role() {
   const [rights, setRights] = React.useState<ResultRole>({
@@ -58,7 +55,7 @@ export default function Role() {
           columns={columns}
           rows={rights.users}
           components={{
-            Toolbar: GridToolbar,
+            Toolbar: CustomToolbar,
           }}
         />
       </Grid>

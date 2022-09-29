@@ -3,10 +3,10 @@ import {
   DataGridPremium,
   GridFilterModel,
   GridSortModel,
-  GridToolbar,
 } from '@mui/x-data-grid-premium';
 import React from 'react';
 import getDocs from '../api/getDocs';
+import { CustomToolbar } from '../components/CustomToolbar';
 import columns from '../components/Docs/columns';
 import PrevTransmit from '../components/Docs/PrevTransmit';
 import { useAppDispatch, useAppSelector } from '../Reducer';
@@ -68,7 +68,7 @@ export default function Docs() {
           )}
           getDetailPanelHeight={() => 'auto'}
           components={{
-            Toolbar: GridToolbar,
+            Toolbar: CustomToolbar,
           }}
         />
       </Grid>

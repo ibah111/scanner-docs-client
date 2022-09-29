@@ -7,6 +7,7 @@ import {
 import React from 'react';
 import createCode from '../api/createCode';
 import openRowsBox from '../api/openRowsBox';
+import { CustomToolbar } from '../components/CustomToolbar';
 import columns from '../components/TableCodes/columns';
 import { socketConnect } from '../lib/socket';
 import { useAppDispatch, useAppSelector } from '../Reducer';
@@ -73,6 +74,9 @@ export default function TableCodes() {
           onSortModelChange={handleSortModelChange}
           pageSize={pageSize}
           onPageSizeChange={handlePageSizeChange}
+          components={{
+            Toolbar: CustomToolbar,
+          }}
         />
       </Grid>
 
