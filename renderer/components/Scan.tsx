@@ -6,6 +6,8 @@ import { useAppDispatch } from '../Reducer';
 import { resetData, setData } from '../Reducer/Data';
 import getData from '../api/getData';
 import { resetSend } from '../Reducer/Send';
+import PowerIcon from '@mui/icons-material/Power';
+import PowerOffIcon from '@mui/icons-material/PowerOff';
 
 export default function Scan() {
   const [ports, setPorts] = React.useState<PortInfo[]>([]);
@@ -43,20 +45,16 @@ export default function Scan() {
     setAnchorEl(null);
   };
   return (
-    <div>
+    <>
       {!connected ? (
         <>
           <Button
             id="basic-button"
-            color="secondary"
-            sx={{ width: '180px' }}
-            aria-controls={open ? 'basic-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
+            color="inherit"
             onClick={handleClick}
-            variant="contained"
+            variant="text"
           >
-            Подключить порт
+            <PowerIcon fontSize="large" />
           </Button>
 
           <Menu
@@ -97,14 +95,13 @@ export default function Scan() {
             onClick={() => {
               ipcRenderer.send('disconnectPort');
             }}
-            color="secondary"
-            sx={{ width: '180px' }}
-            variant="contained"
+            color="inherit"
+            variant="text"
           >
-            Отключить порт
+            <PowerOffIcon fontSize="large" />
           </Button>
         </>
       )}
-    </div>
+    </>
   );
 }
