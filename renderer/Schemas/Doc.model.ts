@@ -1,5 +1,6 @@
 import { Type } from 'class-transformer';
 import { Barcode } from './Barcode.model';
+import { Box } from './Box.model';
 import { DocData } from './DocData.model';
 import { DocTypes } from './DocTypes.model';
 import { Result } from './Result.model';
@@ -21,4 +22,6 @@ export class Doc {
   doc: Result;
   @Type(() => Barcode)
   Barcode: Barcode;
+  @Type(() => Box)
+  Box: Box;
 }
