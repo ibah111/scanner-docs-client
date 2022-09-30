@@ -60,10 +60,9 @@ export default function Docs() {
           onSortModelChange={handleSortModelChange}
           pageSize={pageSize}
           onPageSizeChange={handlePageSizeChange}
-          rowThreshold={0}
           getDetailPanelContent={({ row }) => (
             <Box>
-              <PrevTransmit id={row.id} />
+              <PrevTransmit key={row.id} id={row.id} />
             </Box>
           )}
           getDetailPanelHeight={() => 'auto'}
