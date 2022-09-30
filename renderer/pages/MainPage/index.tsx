@@ -4,10 +4,19 @@ import React from 'react';
 import { useAppSelector } from '../../Reducer';
 import SendingForm from '../../components/MainPage/sendingForm';
 import columns from '../../components/MainPage/columns';
+import { CustomToolbar } from '../../components/CustomToolbar';
 
 export default function Main() {
   const data = useAppSelector((state) => state.Data);
   const User = useAppSelector((state) => state.User);
+  const boxId = data[0]?.Box?.id;
+  const boxUserName =
+    data[0]?.Box?.User.f +
+    ' ' +
+    data[0]?.Box?.User.i +
+    ' ' +
+    data[0]?.Box?.User.o;
+  const boxDepartName = data[0]?.Box?.Depart.title;
   return (
     <>
       <Grid
@@ -17,17 +26,27 @@ export default function Main() {
         direction="column"
         justifyContent="flex-start"
         alignItems="center"
-        width="100vw"
-        spacing={2}
+        sx={{ width: '100vw' }}
       >
-        <Grid item xs={data.length > 1 ? true : false} width="100vw">
+        <Grid item sx={{ width: '100vw' }}>
+          {data.length > 1 && (
+            <Typography sx={{ mt: 2, ml: 2, mb: 2 }}>
+              <b>ID короба:</b> {boxId} <b>Предыдущий держатель:</b>{' '}
+              {boxUserName} <b>Департамент:</b> {boxDepartName}
+            </Typography>
+          )}
+        </Grid>
+        <Grid item xs={data.length > 1 ? true : false} sx={{ width: '100vw' }}>
           {data.length > 0 ? (
             <DataGridPremium
               autoHeight={data.length === 1}
               rows={data}
               columns={columns}
               sx={{ pl: 2 }}
-              hideFooter
+              components={{
+                Toolbar: CustomToolbar,
+              }}
+              pagination
             />
           ) : (
             <Typography align={'center'} variant={'h4'} sx={{ pt: 5 }}>
@@ -35,7 +54,7 @@ export default function Main() {
             </Typography>
           )}
         </Grid>
-        <Grid item>
+        <Grid item sx={{ pt: 5 }}>
           {User.roles.includes('sender') && data.length == 1 && <SendingForm />}
         </Grid>
       </Grid>
