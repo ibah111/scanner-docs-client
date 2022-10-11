@@ -14,7 +14,8 @@ export default async function getDocuments(id: number) {
     return result.data;
   } catch (e) {
     if (e instanceof AxiosError) {
-      store.dispatch(callError(e.response.data.message));
+      const data = JSON.parse(await (e.response.data as Blob).text());
+      store.dispatch(callError(data.message));
     }
     throw e;
   }
