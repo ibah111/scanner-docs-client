@@ -5,12 +5,7 @@ import getDocuments from '../../api/getDocuments';
 import { changeMime } from '../../utils/fileConvert';
 import PanoramaIcon from '@mui/icons-material/Panorama';
 import MenuBar from '../menuBar';
-import {
-  LoadError,
-  SpecialZoomLevel,
-  Viewer,
-  Worker,
-} from '@react-pdf-viewer/core';
+import { LoadError, Viewer, Worker } from '@react-pdf-viewer/core';
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 import '@react-pdf-viewer/search/lib/styles/index.css';
 import '@react-pdf-viewer/core/lib/styles/index.css';
