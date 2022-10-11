@@ -17,7 +17,6 @@
     "@mui/icons-material": "^5.10.6",
     "@mui/x-data-grid-premium": "^5.17.3",
     "@mui/x-date-pickers": "^5.0.2",
-    "@pdftron/pdfjs-express-viewer": "^8.7.0",
     "@react-pdf-viewer/core": "^3.7.0",
     "@react-pdf-viewer/default-layout": "^3.7.0",
     "@react-pdf-viewer/locales": "^1.0.0",

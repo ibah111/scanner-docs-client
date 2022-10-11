@@ -2349,13 +2349,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pdftron/pdfjs-express-viewer@npm:^8.7.0":
-  version: 8.7.0
-  resolution: "@pdftron/pdfjs-express-viewer@npm:8.7.0"
-  checksum: 6be740d707bc4f48b5f5fb7df7c379fbf2f1eeb0d5c0a8da6034bef8824492ba07add72cc7eba51018fbd96a36212d3c12907f8ac734ee5012aff51f19291a12
-  languageName: node
-  linkType: hard
-
 "@popperjs/core@npm:^2.11.6":
   version: 2.11.6
   resolution: "@popperjs/core@npm:2.11.6"
@@ -8345,7 +8338,6 @@ __metadata:
     "@mui/x-data-grid-premium": ^5.17.3
     "@mui/x-date-pickers": ^5.0.2
     "@next/eslint-plugin-next": ^12.3.1
-    "@pdftron/pdfjs-express-viewer": ^8.7.0
     "@react-pdf-viewer/core": ^3.7.0
     "@react-pdf-viewer/default-layout": ^3.7.0
     "@react-pdf-viewer/locales": ^1.0.0
