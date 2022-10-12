@@ -28,8 +28,9 @@ test_job:
   stage: test
   image: electronuserland/builder:wine
   services:
-    - node:latest
+    - node:18
   before_script:
+    - node -v
     - yarn set version berry
     - yarn config set nodeLinker node-modules
     - yarn config set enableStrictSsl false
@@ -57,7 +58,7 @@ build_job:
   stage: build
   image: electronuserland/builder:wine
   services:
-    - node:latest
+    - node:18
   before_script:
     - yarn set version berry
     - yarn config set nodeLinker node-modules
