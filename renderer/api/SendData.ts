@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { store } from '../Reducer';
 import { callError, callSuccess } from '../Reducer/Message';
 import { Transmit } from '../Schemas/Transmit.model';
@@ -18,7 +18,7 @@ export default async function SendData() {
 
     return result.data;
   } catch (e) {
-    if (e instanceof AxiosError)
+    if (axios.isAxiosError(e))
       if (e.response.status === 400) {
         if (Array.isArray(e.response.data?.message)) {
           for (const value of e.response.data.message) {

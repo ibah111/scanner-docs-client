@@ -1,5 +1,5 @@
 import { bpac_electron } from '@tools/bpac';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import printBarcode from '../lib/printBarcode';
 import { store } from '../Reducer';
 import { callError, callSuccess } from '../Reducer/Message';
@@ -25,7 +25,7 @@ export default async function createCode() {
       store.dispatch(resetRowDoc());
       return result.data;
     } catch (e) {
-      if (e instanceof AxiosError) {
+      if (axios.isAxiosError(e)) {
         store.dispatch(callError(e.response.data.message));
       }
       throw e;

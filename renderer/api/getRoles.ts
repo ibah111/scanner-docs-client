@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { store } from '../Reducer';
 import { callError } from '../Reducer/Message';
 import { getToken } from '../utils/getToken';
@@ -34,7 +34,7 @@ export default async function getRoles() {
     });
     return result.data;
   } catch (e) {
-    if (e instanceof AxiosError) {
+    if (axios.isAxiosError(e)) {
       store.dispatch(callError(e.response.data.message));
     }
     throw e;

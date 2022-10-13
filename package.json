@@ -23,7 +23,7 @@
     "@react-pdf-viewer/page-navigation": "^3.7.0",
     "@react-pdf-viewer/search": "^3.7.0",
     "@reduxjs/toolkit": "^1.8.6",
-    "axios": "^0.27.2",
+    "axios": "^1.1.2",
     "class-transformer": "^0.5.1",
     "electron-serve": "^1.1.0",
     "electron-store": "^8.1.0",

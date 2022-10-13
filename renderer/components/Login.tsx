@@ -1,5 +1,5 @@
 import { Grid, Typography } from '@mui/material';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import React from 'react';
 import { store, useAppDispatch, useAppSelector } from '../Reducer';
 import { callError } from '../Reducer/Message';
@@ -24,7 +24,7 @@ const connect = async (callback: (value: boolean) => void) => {
         callback(false);
       }
     } catch (e) {
-      if (e instanceof AxiosError) {
+      if (axios.isAxiosError(e)) {
         store.dispatch(callError(e.response.data.message));
         callback(false);
       }

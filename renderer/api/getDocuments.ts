@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { store } from '../Reducer';
 import { callError } from '../Reducer/Message';
 import { getToken } from '../utils/getToken';
@@ -13,7 +13,7 @@ export default async function getDocuments(id: number) {
     );
     return result.data;
   } catch (e) {
-    if (e instanceof AxiosError) {
+    if (axios.isAxiosError(e)) {
       const data = JSON.parse(await (e.response.data as Blob).text());
       store.dispatch(callError(data.message));
     }

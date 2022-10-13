@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { store } from '../Reducer';
 import { callError } from '../Reducer/Message';
 import { Doc } from '../Schemas/Doc.model';
@@ -12,7 +12,7 @@ export default async function getData(code: string): Promise<Doc[]> {
     });
     return result.data;
   } catch (e) {
-    if (e instanceof AxiosError) {
+    if (axios.isAxiosError(e)) {
       store.dispatch(callError(e.response.data.message));
     }
     throw e;
