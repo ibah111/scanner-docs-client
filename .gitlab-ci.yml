@@ -26,9 +26,7 @@ stages:
   - deploy
 test_job:
   stage: test
-  image: electronuserland/builder:wine
-  services:
-    - node:18
+  image: electronuserland/builder:16-wine
   before_script:
     - node -v
     - yarn set version berry
