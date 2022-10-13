@@ -54,7 +54,7 @@ test_job:
       - node_modules
 build_job:
   stage: build
-  image: electronuserland/builder:wine
+  image: electronuserland/builder:16-wine
   services:
     - node:18
   before_script:
