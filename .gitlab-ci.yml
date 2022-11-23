@@ -26,8 +26,14 @@ stages:
   - deploy
 test_job:
   stage: test
-  image: electronuserland/builder:16-wine
+  image: node:lts
   before_script:
+    - apt-get update -qq && apt-get install -y -qq wget
+    - dpkg --add-architecture i386
+    - mkdir -pm755 /etc/apt/keyrings
+    - wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+    - wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bullseye/winehq-bullseye.sources
+    - apt-get update -qq && apt-get install --install-recommends -qq winehq-stable
     - node -v
     - yarn set version berry
     - yarn config set nodeLinker node-modules
@@ -54,10 +60,14 @@ test_job:
       - node_modules
 build_job:
   stage: build
-  image: electronuserland/builder:16-wine
-  services:
-    - node:18
+  image: node:lts
   before_script:
+    - apt-get update -qq && apt-get install -y -qq wget
+    - dpkg --add-architecture i386
+    - mkdir -pm755 /etc/apt/keyrings
+    - wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+    - wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bullseye/winehq-bullseye.sources
+    - apt-get update -qq && apt-get install --install-recommends -qq winehq-stable
     - yarn set version berry
     - yarn config set nodeLinker node-modules
     - yarn config set enableStrictSsl false
