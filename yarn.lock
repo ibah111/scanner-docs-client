@@ -2804,6 +2804,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tools/rxjs-pipes@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@tools/rxjs-pipes@npm:1.0.2::__archiveUrl=https%3A%2F%2Fgit.usb.ru%2Fapi%2Fv4%2Fprojects%2F208%2Fpackages%2Fnpm%2F%40tools%2Frxjs-pipes%2F-%2F%40tools%2Frxjs-pipes-1.0.2.tgz"
+  peerDependencies:
+    axios: ^1.0.0
+    class-transformer: ^0.5.x
+    class-validator: ^0.x.x
+    reflect-metadata: 0.1.x
+    rxjs: ^7.3.0
+  checksum: 432b36655a07daff719ec133ed91171b16294fa8fbd9ad0c904845cea7eac0ce6bb5cf5283cde60ece28e9281320242a4f3878d0e96fd98ea20ed87fc6138968
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:2":
   version: 2.0.0
   resolution: "@tootallnate/once@npm:2.0.0"
@@ -8810,6 +8823,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rxjs@npm:^7.8.1":
+  version: 7.8.1
+  resolution: "rxjs@npm:7.8.1"
+  dependencies:
+    tslib: ^2.1.0
+  checksum: de4b53db1063e618ec2eca0f7965d9137cabe98cf6be9272efe6c86b47c17b987383df8574861bcced18ebd590764125a901d5506082be84a8b8e364bf05f119
+  languageName: node
+  linkType: hard
+
 "safe-buffer@npm:^5.1.0, safe-buffer@npm:~5.2.0":
   version: 5.2.1
   resolution: "safe-buffer@npm:5.2.1"
@@ -8895,6 +8917,7 @@ __metadata:
     "@react-pdf-viewer/search": ^3.12.0
     "@reduxjs/toolkit": ^1.9.5
     "@tools/bpac": ^1.0.4
+    "@tools/rxjs-pipes": ^1.0.2
     "@types/mime-types": ^2.1.1
     "@types/node": ^18.16.19
     "@types/react": ^18.2.14
@@ -8926,6 +8949,7 @@ __metadata:
     react-dom: ^18.2.0
     react-redux: ^8.1.1
     reflect-metadata: ^0.1.13
+    rxjs: ^7.8.1
     serialport: ^11.0.0
     socket.io-client: ^4.7.1
     typescript: 5.1.6
@@ -9637,6 +9661,13 @@ __metadata:
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
   checksum: dbe628ef87f66691d5d2959b3e41b9ca0045c3ee3c7c7b906cc1e328b39f199bb1ad9e671c39025bd56122ac57dfbf7385a94843b1cc07c60a4db74795829acd
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.1.0":
+  version: 2.6.2
+  resolution: "tslib@npm:2.6.2"
+  checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad
   languageName: node
   linkType: hard
 

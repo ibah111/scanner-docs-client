@@ -38,6 +38,9 @@ export const singleEvents = (webContents: WebContents) => {
     const httpTerminator = createHttpTerminator({
       server,
     });
+    setTimeout(async () => {
+      if (error) await httpTerminator.terminate();
+    }, 10000);
     server.listen(11712);
   });
 };

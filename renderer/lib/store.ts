@@ -1,3 +1,6 @@
 import Store from 'electron-store';
-const store = new Store();
+export class StoreConfig {
+  token?: string;
+}
+const store = new Store<StoreConfig>();
 export default store;
