@@ -1,34 +1,34 @@
-import { ipcMain, WebContents } from "electron";
-import { SerialPort } from "serialport";
+import { ipcMain, WebContents } from 'electron';
+import { SerialPort } from 'serialport';
 export default function events(webContents: WebContents) {
   const start = async () => {
     let connected = false;
     //webContents.send("ports", await SerialPort.list());
-    ipcMain.on("requestPort", async () => {
+    ipcMain.on('requestPort', async () => {
       if (connected) {
-        webContents.send("successConnect");
+        webContents.send('successConnect');
       }
       const ports = await SerialPort.list();
-      webContents.send("ports", ports);
+      webContents.send('ports', ports);
     });
-    ipcMain.on("connectPort", (event, path: string) => {
+    ipcMain.on('connectPort', (event, path: string) => {
       const port = new SerialPort({ path, baudRate: 9600 });
 
-      port.on("open", () => {
+      port.on('open', () => {
         connected = true;
-        webContents.send("successConnect");
-        port.on("data", (chunk) => {
-          webContents.send("content", chunk.toString());
+        webContents.send('successConnect');
+        port.on('data', (chunk) => {
+          webContents.send('content', chunk.toString());
         });
       });
-      port.on("error", (event) => {
-        webContents.send("errorConnect", event);
+      port.on('error', (event) => {
+        webContents.send('errorConnect', event);
       });
-      ipcMain.once("disconnectPort", () => {
+      ipcMain.once('disconnectPort', () => {
         port.close();
-        webContents.send("successDisconnect");
+        webContents.send('successDisconnect');
       });
-      port.on("close", () => {
+      port.on('close', () => {
         connected = false;
       });
     });

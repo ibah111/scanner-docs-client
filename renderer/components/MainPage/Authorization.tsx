@@ -3,12 +3,13 @@ import { ipcRenderer } from 'electron';
 import store from '../../lib/store';
 import { useAppDispatch } from '../../Reducer';
 import { resetLogin } from '../../Reducer/State';
+import server from '../../utils/server';
 
 const OpenInBrowser = () => {
   return new Promise<string>((resolve, reject) => {
     ipcRenderer.send(
       'OpenInBrowser',
-      'https://chat.nbkfinance.ru/apps/scanner-docs/login.php',
+      server('oauth') + '?port=11712&name=docs-scanner',
     );
     let error = true;
     ipcRenderer.on('getToken', (event, value: string) => {

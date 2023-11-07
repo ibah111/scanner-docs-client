@@ -1,19 +1,19 @@
-import { ipcMain, WebContents } from "electron";
-import open from "open";
-import http from "http";
-import { createHttpTerminator } from "http-terminator";
-import url from "url";
+import { ipcMain, WebContents } from 'electron';
+import open from 'open';
+import http from 'http';
+import { createHttpTerminator } from 'http-terminator';
+import url from 'url';
 export const singleEvents = (webContents: WebContents) => {
-  ipcMain.on("OpenInBrowser", (event, value: string) => {
+  ipcMain.on('OpenInBrowser', (event, value: string) => {
     open(value);
     let error = true;
     const server = http.createServer(async (req, res) => {
       const query = url.parse(req.url, true).query;
-      webContents.send("getToken", query.token);
+      webContents.send('getToken', query.token);
       res.writeHead(200, {
-        "Content-Type": "text/plain; charset=utf-8",
+        'Content-Type': 'text/plain; charset=utf-8',
       });
-      res.end("Вход успешно выполнен");
+      res.end('Вход успешно выполнен');
       error = false;
       await httpTerminator.terminate();
     });
