@@ -95,5 +95,5 @@
       "url": "https://chat.nbkfinance.ru/apps/scanner-docs"
     }
   },
-  "packageManager": "yarn@3.6.1"
+  "packageManager": "yarn@4.0.2"
 }
