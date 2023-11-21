@@ -14,7 +14,11 @@ const NextComposed = React.forwardRef(function NextComposed(
 ) {
   const { as, href, ...other } = props;
 
-  return <NextLink href={href} ref={ref} as={as} {...other} />;
+  return (
+    <NextLink href={href} as={as}>
+      <a ref={ref} {...other} />
+    </NextLink>
+  );
 });
 
 interface LinkPropsBase {
