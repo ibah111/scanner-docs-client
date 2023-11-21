@@ -4,9 +4,9 @@ const ipcHandler = {
   send(channel: string, ...args: any[]) {
     ipcRenderer.send(channel, ...args);
   },
-  on(channel: string, callback: (...args: any[]) => void) {
+  on(channel: string, callback: (_event: IpcRendererEvent, ...args: any[]) => void) {
     const subscription = (_event: IpcRendererEvent, ...args: any[]) =>
-      callback(...args);
+      callback(_event, ...args);
     ipcRenderer.on(channel, subscription);
 
     return () => {
