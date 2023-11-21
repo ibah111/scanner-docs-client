@@ -26,8 +26,8 @@ export interface ResultRole {
   users: User[];
 }
 
+const url = of('/role/get');
 export default async function getRoles() {
-  const url = of('/role/get');
   return lastValueFrom(
     forkJoin([baseRequest, url]).pipe(
       get<ResultRole>(),
