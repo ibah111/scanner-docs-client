@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
-
+import type Conf from "conf";
 const ipcHandler = {
   send(channel: string, ...args: any[]) {
     ipcRenderer.send(channel, ...args);
@@ -37,7 +37,4 @@ export class StoreConfig {
 contextBridge.exposeInMainWorld('ipc', ipcHandler);
 
 export type IpcHandler = typeof ipcHandler;
-export interface StoreHandler<T extends Record<string, unknown>> {
-  get<Key extends keyof T>(key: Key): T[Key];
-  set<Key extends keyof T>(key: Key, value: T[Key]): void;
-}
+export type StoreHandler = Conf<StoreHandler>;
