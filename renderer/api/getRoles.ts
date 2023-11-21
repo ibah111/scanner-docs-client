@@ -1,8 +1,7 @@
-import axios from 'axios';
-import { store } from '../Reducer';
-import { callError } from '../Reducer/Message';
-import { getToken } from '../utils/getToken';
-import server from '../utils/server';
+import { forkJoin, lastValueFrom, of } from 'rxjs';
+import { authRetry, get, transformAxios } from '@tools/rxjs-pipes';
+import { transformError } from '../utils/processError';
+import { baseRequest } from '../utils/baseRequest';
 export interface Role {
   id: number;
   name: string;
@@ -28,15 +27,13 @@ export interface ResultRole {
 }
 
 export default async function getRoles() {
-  try {
-    const result = await axios.post<ResultRole>(server() + '/role' + '/get', {
-      ...getToken(),
-    });
-    return result.data;
-  } catch (e) {
-    if (axios.isAxiosError(e)) {
-      store.dispatch(callError(e.response.data.message));
-    }
-    throw e;
-  }
+  const url = of('/role/get');
+  return lastValueFrom(
+    forkJoin([baseRequest, url]).pipe(
+      get<ResultRole>(),
+      transformAxios(),
+      transformError(),
+      authRetry(),
+    ),
+  );
 }

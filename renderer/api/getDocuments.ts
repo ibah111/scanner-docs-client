@@ -1,22 +1,22 @@
 import axios from 'axios';
 import { store } from '../Reducer';
 import { callError } from '../Reducer/Message';
-import { getToken } from '../utils/getToken';
 import server from '../utils/server';
+import { forkJoin, lastValueFrom, of } from 'rxjs';
+import { authRetry, post, transformAxios } from '@tools/rxjs-pipes';
+import { transformError } from '../utils/processError';
+import { baseRequest } from '../utils/baseRequest';
+
+const url = of('/documents');
 
 export default async function getDocuments(id: number) {
-  try {
-    const result = await axios.post<Blob>(
-      server() + '/documents',
-      { ...getToken(), id },
-      { responseType: 'blob' },
-    );
-    return result.data;
-  } catch (e) {
-    if (axios.isAxiosError(e)) {
-      const data = JSON.parse(await (e.response.data as Blob).text());
-      store.dispatch(callError(data.message));
-    }
-    throw e;
-  }
+  return lastValueFrom(
+    forkJoin([
+      baseRequest,
+      url,
+      of({
+        headers: id,
+      }),
+    ]).pipe(post<Blob>(), transformAxios(), transformError(), authRetry()),
+  );
 }

@@ -38,6 +38,7 @@ export function getTokenFromAtlas(): Observable<string> {
     }, 10000);
   });
 }
+const url_login = of('/login');
 export function checkLogin(): OperatorFunction<string, AuthUserSuccess> {
   return pipe(
     tap((token) => {
@@ -48,7 +49,7 @@ export function checkLogin(): OperatorFunction<string, AuthUserSuccess> {
     (obs) =>
       forkJoin([
         obs.pipe(() => baseRequest),
-        obs.pipe(map(() => '/login')),
+        obs.pipe(() => url_login),
         obs.pipe(map(() => null)),
       ]).pipe(post<AuthUserSuccess>(), transformAxios()),
   );
