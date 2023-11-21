@@ -1456,6 +1456,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@casl/react@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@casl/react@npm:3.1.0"
+  peerDependencies:
+    "@casl/ability": ^3.0.0 || ^4.0.0 || ^5.1.0 || ^6.0.0
+    react: ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: 0ebaae51def6307663b94211ccbb3cafac3ebc59908e01838641e154b76e9a76f5860d938ecd78aa5dfc85197ff7b13fef4935218af1554c7d651e14e5492cb1
+  languageName: node
+  linkType: hard
+
 "@date-io/core@npm:^2.15.0, @date-io/core@npm:^2.17.0":
   version: 2.17.0
   resolution: "@date-io/core@npm:2.17.0"
@@ -8996,6 +9006,7 @@ __metadata:
   resolution: "scanner-docs@workspace:."
   dependencies:
     "@casl/ability": "npm:^6.5.0"
+    "@casl/react": "npm:^3.1.0"
     "@date-io/moment": "npm:^2.17.0"
     "@electron/remote": "npm:^2.1.0"
     "@emotion/react": "npm:^11.11.1"
