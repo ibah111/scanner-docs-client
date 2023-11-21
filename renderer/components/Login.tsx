@@ -6,6 +6,8 @@ import { resetLogin, setState } from '../Reducer/State';
 import Authorization from './MainPage/Authorization';
 import getToken from '../api/getToken';
 import { setUser } from '../Reducer/User';
+import { CaslContext } from '../casl/casl.factory';
+import { createUserAbility } from '../casl/casl';
 
 interface LoginProps {
   children: React.ReactNode;
@@ -15,6 +17,8 @@ export default function Login({ children }: LoginProps) {
   const dispatch = useAppDispatch();
   const reload = useAppSelector((state) => state.State.login);
   const [loged, setLoged] = React.useState(false);
+  const [ability, setAbility] = React.useState(createUserAbility());
+
   React.useEffect(() => {
     if (reload) {
       getToken().subscribe({
@@ -37,7 +41,7 @@ export default function Login({ children }: LoginProps) {
   return (
     <>
       {loged ? (
-        children
+        <CaslContext.Provider value={ability}>{children}</CaslContext.Provider>
       ) : (
         <Grid item xs>
           <Grid
