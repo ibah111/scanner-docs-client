@@ -7,6 +7,7 @@ import getData from '../api/getData';
 import { resetSend } from '../Reducer/Send';
 import PowerIcon from '@mui/icons-material/Power';
 import PowerOffIcon from '@mui/icons-material/PowerOff';
+import { fromEvent } from 'rxjs';
 
 export default function Scan() {
   const [ports, setPorts] = React.useState<PortInfo[]>([]);
@@ -14,26 +15,40 @@ export default function Scan() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const dispatch = useAppDispatch();
   React.useEffect(() => {
-    window.ipc.on('ports', (_, args) => {
-      setPorts(args);
-    });
-    window.ipc.on('content', (_, args: string) => {
-      dispatch(resetData());
-      dispatch(resetSend());
-      getData(args.replace('\r', '')).then((res) => {
-        dispatch(setData(res));
-      });
-    });
-    window.ipc.on('errorConnect', () => {
-      setConnected(false);
-    });
-    window.ipc.on('successConnect', () => {
-      setConnected(true);
-    });
-    window.ipc.on('successDisconnect', () => {
-      setConnected(false);
-    });
+    const unsubscribe: (() => void)[] = [];
+    unsubscribe.push(
+      window.ipc.on('ports', (_, args) => {
+        setPorts(args);
+      }),
+    );
+    unsubscribe.push(
+      window.ipc.on('content', (_, args: string) => {
+        dispatch(resetData());
+        dispatch(resetSend());
+        getData(args.replace('\r', '')).subscribe((res) => {
+          dispatch(setData(res));
+        });
+      }),
+    );
+    unsubscribe.push(
+      window.ipc.on('errorConnect', () => {
+        setConnected(false);
+      }),
+    );
+    unsubscribe.push(
+      window.ipc.on('successConnect', () => {
+        setConnected(true);
+      }),
+    );
+    unsubscribe.push(
+      window.ipc.on('successDisconnect', () => {
+        setConnected(false);
+      }),
+    );
     window.ipc.send('requestPort');
+    return () => {
+      unsubscribe.forEach((func) => func());
+    };
   }, []);
 
   const open = Boolean(anchorEl);

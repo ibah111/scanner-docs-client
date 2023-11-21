@@ -1,20 +1,16 @@
-import axios from 'axios';
-import { store } from '../Reducer';
-import { callError } from '../Reducer/Message';
 import { Doc } from '../Schemas/Doc.model';
-import { getToken } from '../utils/getToken';
-import server from '../utils/server';
-export default async function getData(code: string): Promise<Doc[]> {
-  try {
-    const result = await axios.post<Doc[]>(server() + '/data', {
-      ...getToken(),
-      code,
-    });
-    return result.data;
-  } catch (e) {
-    if (axios.isAxiosError(e)) {
-      store.dispatch(callError(e.response.data.message));
-    }
-    throw e;
-  }
+import { Observable, forkJoin, of } from 'rxjs';
+import { createFormat } from '@tools/rxjs-pipes/format';
+import { baseRequest } from '../utils/baseRequest';
+import { authRetry, get, transformAxios } from '@tools/rxjs-pipes/axios';
+import { transformError } from '../utils/processError';
+const url = of('/data/%1$s');
+const format = createFormat<[string]>();
+export default function getData(code: string): Observable<Doc[]> {
+  return forkJoin([baseRequest, url.pipe(format(code))]).pipe(
+    get<Doc[]>(),
+    transformAxios(),
+    transformError(),
+    authRetry(),
+  );
 }
