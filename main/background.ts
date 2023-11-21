@@ -6,6 +6,8 @@ import events from './events';
 import autoUpdaters from './autoUpdaters';
 import { singleEvents } from './singleEvents';
 import { document_electron_main } from '@tools/bpac';
+import path from 'path';
+import { StoreInit } from './store';
 require('@electron/remote/main').initialize();
 const isProd: boolean = process.env.NODE_ENV === 'production';
 if (isProd) {
@@ -31,6 +33,7 @@ if (isProd) {
     height: 600,
     autoHideMenuBar: true,
     frame: false,
+    webPreferences: { preload: path.join(__dirname, 'preload.js') },
   });
   document_electron_main(mainWindow.webContents);
   Store.initRenderer();
@@ -60,6 +63,7 @@ if (isProd) {
     mainWindow.isMaximized() ? mainWindow.unmaximize() : mainWindow.maximize();
   });
 })();
+StoreInit();
 app.on('window-all-closed', () => {
   app.quit();
 });

@@ -12,20 +12,19 @@ import {
   tap,
 } from 'rxjs';
 import { AuthUserSuccess } from '../Schemas/Auth';
-import store from '../lib/store';
+import getStore from '../lib/store';
 import { post, transformAxios } from '@tools/rxjs-pipes/axios';
 import { requests } from '../utils/requests';
-import axios, { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 import server from '../utils/server';
-import { ipcRenderer } from 'electron';
 export function getTokenFromAtlas(): Observable<string> {
   return new Observable<string>((subscriber) => {
-    ipcRenderer.send(
+    window.ipc.send(
       'OpenInBrowser',
       server('oauth') + '?port=11712&name=docs-scanner',
     );
     let error = true;
-    ipcRenderer.once('getToken', (event, value: string) => {
+    window.ipc.once('getToken', (event, value: string) => {
       error = false;
       subscriber.next(value);
       subscriber.complete();
@@ -42,7 +41,7 @@ export function getTokenFromAtlas(): Observable<string> {
 export function checkLogin(): OperatorFunction<string, AuthUserSuccess> {
   return pipe(
     tap((token) => {
-      store.set('token', token);
+      getStore().set('token', token);
       requests.defaults.headers.token = token;
     }),
     share(),
@@ -58,7 +57,7 @@ export default function getToken(
   requireToken = false,
 ): Observable<AuthUserSuccess> {
   return of(null).pipe(
-    map(() => store.get('token') || null),
+    map(() => getStore().get('token') || null),
     mergeMap((token) => {
       let obs = of(token);
       if (!token && requireToken) {
@@ -70,7 +69,7 @@ export default function getToken(
       delay: (error) => {
         if (axios.isAxiosError(error)) {
           if (error.response?.status === 401) {
-            store.set('token', null);
+            getStore().set('token', null);
             if (requireToken) return of(null);
           }
         }

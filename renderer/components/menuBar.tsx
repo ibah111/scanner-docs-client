@@ -1,6 +1,5 @@
 import { Grid, IconButton, Typography } from '@mui/material';
 import { Close } from '@mui/icons-material';
-import { ipcRenderer } from 'electron';
 import React from 'react';
 import SettingsOverscanIcon from '@mui/icons-material/SettingsOverscan';
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
@@ -31,7 +30,7 @@ export default function MenuBar({ back }: MenuBarProps) {
           <Grid item>
             <IconButton
               onClick={() => {
-                ipcRenderer.send('minimize');
+                window.ipc.send('minimize');
               }}
             >
               <HorizontalRuleIcon />
@@ -40,7 +39,7 @@ export default function MenuBar({ back }: MenuBarProps) {
           <Grid item>
             <IconButton
               onClick={() => {
-                ipcRenderer.send('size');
+                window.ipc.send('size');
               }}
             >
               <SettingsOverscanIcon />
@@ -49,7 +48,7 @@ export default function MenuBar({ back }: MenuBarProps) {
           <Grid item>
             <IconButton
               onClick={() => {
-                ipcRenderer.send('close');
+                window.ipc.send('close');
               }}
             >
               <Close />

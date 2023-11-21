@@ -1,5 +1,4 @@
 import { Button, Menu, MenuItem } from '@mui/material';
-import { ipcRenderer } from 'electron';
 import React from 'react';
 import { PortInfo } from '@serialport/bindings-cpp';
 import { useAppDispatch } from '../Reducer';
@@ -15,26 +14,26 @@ export default function Scan() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const dispatch = useAppDispatch();
   React.useEffect(() => {
-    ipcRenderer.on('ports', (_, args) => {
+    window.ipc.on('ports', (_, args) => {
       setPorts(args);
     });
-    ipcRenderer.on('content', (_, args: string) => {
+    window.ipc.on('content', (_, args: string) => {
       dispatch(resetData());
       dispatch(resetSend());
       getData(args.replace('\r', '')).then((res) => {
         dispatch(setData(res));
       });
     });
-    ipcRenderer.on('errorConnect', () => {
+    window.ipc.on('errorConnect', () => {
       setConnected(false);
     });
-    ipcRenderer.on('successConnect', () => {
+    window.ipc.on('successConnect', () => {
       setConnected(true);
     });
-    ipcRenderer.on('successDisconnect', () => {
+    window.ipc.on('successDisconnect', () => {
       setConnected(false);
     });
-    ipcRenderer.send('requestPort');
+    window.ipc.send('requestPort');
   }, []);
 
   const open = Boolean(anchorEl);
@@ -73,7 +72,7 @@ export default function Scan() {
               <MenuItem
                 key={index}
                 onClick={() => {
-                  ipcRenderer.send('connectPort', port.path);
+                  window.ipc.send('connectPort', port.path);
                 }}
               >
                 {port.path}
@@ -81,7 +80,7 @@ export default function Scan() {
             ))}
             <MenuItem
               onClick={() => {
-                ipcRenderer.send('requestPort');
+                window.ipc.send('requestPort');
               }}
               sx={{ width: '180px' }}
             >
@@ -93,7 +92,7 @@ export default function Scan() {
         <>
           <Button
             onClick={() => {
-              ipcRenderer.send('disconnectPort');
+              window.ipc.send('disconnectPort');
             }}
             color="inherit"
             variant="text"

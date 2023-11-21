@@ -74,8 +74,8 @@ export default (
     ...state,
     ...options,
     webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
+      nodeIntegration: false,
+      contextIsolation: true,
       ...options.webPreferences,
     },
   };

@@ -10,9 +10,8 @@ import {
   LinearProgressProps,
   Typography,
 } from '@mui/material';
-import { ipcRenderer } from 'electron';
 import React from 'react';
-import store from '../lib/store';
+import getStore from '../lib/store';
 import { useAppDispatch } from '../Reducer';
 import { callSuccess } from '../Reducer/Message';
 import { UpdateInfo } from 'electron-updater';
@@ -43,7 +42,7 @@ export default function Update() {
   const [downloaded, setDownloaded] = React.useState(false);
   const dispatch = useAppDispatch();
   React.useEffect(() => {
-    ipcRenderer.on(
+    window.ipc.on(
       'update-available',
       (event, text: UpdateInfo & { mandatory: boolean }) => {
         setOpen(true);
@@ -51,23 +50,23 @@ export default function Update() {
         setMessage('Доступно обновление. Скачать обновление сейчас?');
       },
     );
-    ipcRenderer.on('message-error', () => {
+    window.ipc.on('message-error', () => {
       setMessage('Ошибка при обновлении');
     });
-    ipcRenderer.on('download-progress', (_, text: number) => {
+    window.ipc.on('download-progress', (_, text: number) => {
       setProgress(text);
     });
-    ipcRenderer.on('update-downloaded', () => {
+    window.ipc.on('update-downloaded', () => {
       setDownloading(false);
       setDownloaded(true);
     });
-    ipcRenderer.on('version', (event, params) => {
-      const version = store.get('version');
+    window.ipc.on('version', (event, params) => {
+      const version = getStore().get('version');
       if (version !== params)
         dispatch(callSuccess('Обновление произошло успешно'));
-      store.set('version', params);
+      getStore().set('version', params);
     });
-    ipcRenderer.send('check_version');
+    window.ipc.send('check_version');
   }, []);
 
   const handleClose = () => {
@@ -97,7 +96,7 @@ export default function Update() {
               <>
                 <Button
                   onClick={() => {
-                    ipcRenderer.send('update-install');
+                    window.ipc.send('update-install');
                   }}
                   variant="contained"
                   color="primary"
@@ -112,7 +111,7 @@ export default function Update() {
               <>
                 <Button
                   onClick={() => {
-                    ipcRenderer.send('update-download');
+                    window.ipc.send('update-download');
                     setDownloading(true);
                   }}
                   variant="contained"
