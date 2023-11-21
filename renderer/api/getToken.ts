@@ -14,7 +14,7 @@ import {
 import { AuthUserSuccess } from '../Schemas/Auth';
 import getStore from '../lib/store';
 import { post, transformAxios } from '@tools/rxjs-pipes/axios';
-import { baseRequest } from '../utils/baseRequest';
+import { baseRequest, baseRequestInstance } from '../utils/baseRequest';
 import axios from 'axios';
 import server from '../utils/server';
 export function getTokenFromAtlas(): Observable<string> {
@@ -42,12 +42,12 @@ export function checkLogin(): OperatorFunction<string, AuthUserSuccess> {
   return pipe(
     tap((token) => {
       getStore().set('token', token);
-      baseRequest.defaults.headers.token = token;
+      baseRequestInstance.defaults.headers.token = token;
     }),
     share(),
     (obs) =>
       forkJoin([
-        obs.pipe(map(() => baseRequest)),
+        obs.pipe(() => baseRequest),
         obs.pipe(map(() => '/login')),
         obs.pipe(map(() => null)),
       ]).pipe(post<AuthUserSuccess>(), transformAxios()),

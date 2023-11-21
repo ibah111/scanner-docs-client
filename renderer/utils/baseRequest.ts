@@ -1,6 +1,8 @@
 import axios from 'axios';
 import server from './server';
+import { of } from 'rxjs';
 
-export const baseRequest = axios.create({
+export const baseRequestInstance = axios.create({
   baseURL: server(),
 });
+export const baseRequest = of(baseRequestInstance);
