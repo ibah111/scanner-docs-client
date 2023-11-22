@@ -16,7 +16,7 @@ import 'moment-timezone';
 import '../utils/crack';
 import Update from '../components/Update';
 import Connect from '../components/Connect';
-import Login from '../components/Login';
+import Login from '../components/Login/Login';
 import MenuBar from '../components/menuBar';
 import NavBar from '../components/NavBar/NavBar';
 import { Grid } from '@mui/material';

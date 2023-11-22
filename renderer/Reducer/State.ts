@@ -1,19 +1,19 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  login: false,
+  requireLogin: false,
 };
 export const StateSlice = createSlice({
   name: 'State',
   initialState,
   reducers: {
-    resetLogin: (state) => {
-      state.login = true;
+    relogin: (state) => {
+      state.requireLogin = true;
     },
-    setState: (state, action: PayloadAction<[string, boolean]>) => {
-      state[action.payload[0]] = action.payload[1];
+    loged: (state) => {
+      state.requireLogin = false;
     },
   },
 });
-export const { resetLogin, setState } = StateSlice.actions;
+export const { relogin, loged } = StateSlice.actions;
 export default StateSlice.reducer;
