@@ -1,10 +1,13 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
-import type Conf from "conf";
+import type Conf from 'conf';
 const ipcHandler = {
   send(channel: string, ...args: any[]) {
     ipcRenderer.send(channel, ...args);
   },
-  on(channel: string, callback: (_event: IpcRendererEvent, ...args: any[]) => void) {
+  on(
+    channel: string,
+    callback: (_event: IpcRendererEvent, ...args: any[]) => void,
+  ) {
     const subscription = (_event: IpcRendererEvent, ...args: any[]) =>
       callback(_event, ...args);
     ipcRenderer.on(channel, subscription);
@@ -13,9 +16,12 @@ const ipcHandler = {
       ipcRenderer.removeListener(channel, subscription);
     };
   },
-  once(channel: string, callback: (...args: any[]) => void) {
+  once(
+    channel: string,
+    callback: (_event: IpcRendererEvent, ...args: any[]) => void,
+  ) {
     const subscription = (_event: IpcRendererEvent, ...args: any[]) =>
-      callback(...args);
+      callback(_event, ...args);
     ipcRenderer.once(channel, subscription);
 
     return () => {
