@@ -1,7 +1,7 @@
 import { AppBar, Button, Grid, Toolbar } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../Reducer';
 import getStore from '../../lib/store';
-import { resetLogin } from '../../Reducer/State';
+import { relogin } from '../../Reducer/State';
 import React from 'react';
 import UpdateDocs from '../Docs/updateDocs';
 import OpenAdminPage from '../Admin/OpenAdminPage';
@@ -47,7 +47,7 @@ export default function NavBar() {
                   color="inherit"
                   onClick={() => {
                     getStore().set('token', '');
-                    dispatch(resetLogin());
+                    dispatch(relogin());
                   }}
                   sx={{ mt: 0.5 }}
                 >

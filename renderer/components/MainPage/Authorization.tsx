@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import { useAppDispatch } from '../../Reducer';
 import getToken from '../../api/getToken';
-import { setLoginTrue } from '../../Reducer/State';
+import { relogin } from '../../Reducer/State';
 
 export default function Authorization() {
   const dispatch = useAppDispatch();
@@ -11,7 +11,7 @@ export default function Authorization() {
       color="primary"
       onClick={() => {
         getToken(true).subscribe(() => {
-          dispatch(setLoginTrue());
+          dispatch(relogin());
         });
       }}
     >

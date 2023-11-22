@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../Reducer';
 import { relogin, loged as logedAction } from '../../Reducer/State';
 import Authorization from '../MainPage/Authorization';
 import getToken from '../../api/getToken';
-import { setUser } from '../../Reducer/User';
+import { resetUser, setUser } from '../../Reducer/User';
 import { CaslContext } from '../../casl/casl.factory';
 import { createUserAbility } from '../../casl/casl';
 
@@ -20,14 +20,13 @@ export default function Login({ children }: LoginProps) {
 
   React.useEffect(() => {
     if (reload) {
+      dispatch(resetUser());
+      setLoged(false);
       const sub = getToken().subscribe({
         next: (data) => {
           dispatch(setUser(data));
           setLoged(data.login_result);
           setAbility(createUserAbility(data));
-        },
-        error: () => {
-          dispatch(setUser(null));
         },
         complete: () => {
           dispatch(logedAction());

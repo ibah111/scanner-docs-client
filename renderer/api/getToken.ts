@@ -10,6 +10,7 @@ import {
   retry,
   share,
   tap,
+  throwError,
 } from 'rxjs';
 import { AuthUserSuccess } from '../Schemas/Auth';
 import getStore from '../lib/store';
