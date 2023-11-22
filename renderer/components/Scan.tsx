@@ -7,7 +7,6 @@ import getData from '../api/getData';
 import { resetSend } from '../Reducer/Send';
 import PowerIcon from '@mui/icons-material/Power';
 import PowerOffIcon from '@mui/icons-material/PowerOff';
-import { fromEvent } from 'rxjs';
 
 export default function Scan() {
   const [ports, setPorts] = React.useState<PortInfo[]>([]);

@@ -1,8 +1,5 @@
-import axios from 'axios';
 import { store } from '../Reducer';
 import { DocsState } from '../Reducer/Docs';
-import { callError } from '../Reducer/Message';
-import server from '../utils/server';
 import { forkJoin, lastValueFrom, of } from 'rxjs';
 import { authRetry, get, post, transformAxios } from '@tools/rxjs-pipes';
 import { baseRequest } from '../utils/baseRequest';
@@ -13,11 +10,12 @@ export default async function getDocs() {
 
   const url = of('/getDocs');
   return lastValueFrom(
-    forkJoin([baseRequest, url]).pipe(
-      get<DocsState>(),
-      transformAxios(),
-      transformError(),
-      authRetry(),
-    ),
+    forkJoin([
+      baseRequest,
+      url,
+      of({
+        ...data,
+      }),
+    ]).pipe(post<DocsState>(), transformAxios(), transformError(), authRetry()),
   );
 }

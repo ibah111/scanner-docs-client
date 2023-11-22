@@ -9,9 +9,12 @@ import BackMainPage from './BackMainPage';
 import OpenTableCodes from '../TableCodes/OpenTableCodes';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Scan from '../Scan';
+import { Action, Subject } from '../../casl/casl';
+import { Can } from '../../casl/casl.factory';
 
 export default function NavBar() {
   const dispatch = useAppDispatch();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const User = useAppSelector((state) => state.User);
   return (
     <Grid item xs={0.5} sx={{ width: '100vw', height: '100%' }}>
@@ -29,10 +32,14 @@ export default function NavBar() {
                 <BackMainPage />
               </Grid>
               <Grid item>
-                {User.roles.includes('viewer_logs') && <UpdateDocs />}
+                <Can I={Action.Manage} a={Subject.Doc}>
+                  <UpdateDocs />
+                </Can>
               </Grid>
               <Grid item>
-                {User.roles.includes('former_box') && <OpenTableCodes />}
+                <Can I={Action.Manage} a={Subject.Barcode}>
+                  <OpenTableCodes />
+                </Can>
               </Grid>
             </Grid>
             <Grid
@@ -55,7 +62,7 @@ export default function NavBar() {
                 </Button>
               </Grid>
               <Grid item>
-                {User.roles.includes('admin') && <OpenAdminPage />}
+                <OpenAdminPage />
               </Grid>
               <Grid item>
                 <Scan />

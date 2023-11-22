@@ -1,8 +1,6 @@
-import axios from 'axios';
 import { store } from '../Reducer';
 import { callError, callSuccess } from '../Reducer/Message';
 import { Transmit } from '../Schemas/Transmit.model';
-import server from '../utils/server';
 import { forkJoin, lastValueFrom, of } from 'rxjs';
 import { baseRequest } from '../utils/baseRequest';
 import { authRetry, post, transformAxios } from '@tools/rxjs-pipes';
