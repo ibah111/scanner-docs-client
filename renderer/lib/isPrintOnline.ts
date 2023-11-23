@@ -11,7 +11,11 @@ export default function isPrintOnline<T>() {
           mergeMap((printerName) => {
             const printer = new bpac.IPrinter('');
             return from(printer.IsPrinterOnline(printerName)).pipe(
-              map((isOnline) => ({ isOnline, printerName })),
+              map((isOnline) => ({
+                isOnline,
+                printerName,
+                printer,
+              })),
             );
           }),
         );
