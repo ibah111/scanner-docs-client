@@ -2935,10 +2935,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tools/bpac@npm:^1.0.4":
-  version: 1.0.4
-  resolution: "@tools/bpac@npm:1.0.4::__archiveUrl=https%3A%2F%2Fgit.usb.ru%2Fapi%2Fv4%2Fprojects%2F135%2Fpackages%2Fnpm%2F%40tools%2Fbpac%2F-%2F%40tools%2Fbpac-1.0.4.tgz"
-  checksum: 4ed4f826cd499899ee400eac51f4b2ff0ecdc45394d475c14e197cc3caaa7eb41859c952a0097a3e53a2c2296e3a011d2fa0714db1104b7a0edb5d269f47a2e4
+"@tools/bpac@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@tools/bpac@npm:2.0.1::__archiveUrl=https%3A%2F%2Fgit.usb.ru%2Fapi%2Fv4%2Fprojects%2F135%2Fpackages%2Fnpm%2F%40tools%2Fbpac%2F-%2F%40tools%2Fbpac-2.0.1.tgz"
+  checksum: 0f91f9c25bd65b809eacbe0c9231bca7eb7f42d95c8e765cae1191538aca16f221d9c47764dd58c565f0704ce7c77889d497c7993e92fd893532fed8715bd7e7
   languageName: node
   linkType: hard
 
@@ -8976,7 +8976,7 @@ __metadata:
     "@react-pdf-viewer/page-navigation": "npm:^3.12.0"
     "@react-pdf-viewer/search": "npm:^3.12.0"
     "@reduxjs/toolkit": "npm:^1.9.7"
-    "@tools/bpac": "npm:^1.0.4"
+    "@tools/bpac": "npm:^2.0.1"
     "@tools/rxjs-pipes": "npm:^1.0.7"
     "@types/mime-types": "npm:^2.1.4"
     "@types/node": "npm:^20.9.4"

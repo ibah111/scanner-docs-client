@@ -39,7 +39,7 @@
     "@react-pdf-viewer/page-navigation": "^3.12.0",
     "@react-pdf-viewer/search": "^3.12.0",
     "@reduxjs/toolkit": "^1.9.7",
-    "@tools/bpac": "^1.0.4",
+    "@tools/bpac": "^2.0.1",
     "@types/mime-types": "^2.1.4",
     "@types/node": "^20.9.4",
     "@types/react": "^18.2.38",
