@@ -27,7 +27,7 @@ export default function processError(e: unknown, name?: string) {
         return getToken().pipe(
           map((token) => {
             if (token) {
-              window.store.set('token');
+              window.store.set('token', token);
               baseRequestInstance.defaults.headers.token = '';
               return result.addon;
             }
