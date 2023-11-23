@@ -5,7 +5,7 @@ import { createWindow } from './helpers';
 import events from './events';
 import autoUpdaters from './autoUpdaters';
 import { singleEvents } from './singleEvents';
-import { document_electron_main } from '@tools/bpac';
+import { document_electron_main } from '@tools/bpac/electron_main';
 import path from 'path';
 import { StoreInit } from './store';
 require('@electron/remote/main').initialize();
