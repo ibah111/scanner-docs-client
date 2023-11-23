@@ -1,6 +1,5 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
 import type Conf from 'conf';
-import '@electron/remote';
 
 const ipcHandler = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -36,6 +35,7 @@ const ipcHandler = {
     };
   },
 };
+
 contextBridge.exposeInMainWorld('store', {
   get(key) {
     return ipcRenderer.sendSync('electron-store-get', key);
@@ -44,6 +44,9 @@ contextBridge.exposeInMainWorld('store', {
     ipcRenderer.send('electron-store-set', property, val);
   },
 });
+contextBridge.exposeInMainWorld('getCwd', () =>
+  ipcRenderer.sendSync('get-cwd'),
+);
 export class StoreConfig {
   token?: string;
 }

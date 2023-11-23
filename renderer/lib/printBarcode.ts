@@ -1,16 +1,11 @@
 import path from 'path';
-import bpac_electron from '@tools/bpac';
+import { bpac_electron } from '@tools/bpac/electron_renderer';
 import { store } from '../Reducer';
 import { callError } from '../Reducer/Message';
 export default async function printBarcode(text: string) {
   const bpac = bpac_electron();
   const doc = bpac.IDocument;
-  const remote = await import('@electron/remote');
-  const barcode_file = path.join(
-    remote.process.cwd(),
-    'extensions',
-    'barcode.lbx',
-  );
+  const barcode_file = path.join(window.getCwd(), 'extensions', 'barcode.lbx');
 
   const printerName = await doc.GetPrinterName();
   const printer = new bpac.IPrinter('');

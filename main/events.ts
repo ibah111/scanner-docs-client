@@ -1,6 +1,9 @@
 import { ipcMain, WebContents } from 'electron';
 import { SerialPort } from 'serialport';
 export default function events(webContents: WebContents) {
+  ipcMain.on('get-cwd', (event) => {
+    event.returnValue = process.cwd();
+  });
   const start = async () => {
     let connected = false;
     //webContents.send("ports", await SerialPort.list());

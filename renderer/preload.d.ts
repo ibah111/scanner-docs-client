@@ -4,5 +4,6 @@ declare global {
   interface Window {
     ipc: IpcHandler;
     store: StoreHandler;
+    getCwd: () => string;
   }
 }
