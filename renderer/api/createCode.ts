@@ -1,11 +1,10 @@
-import { bpac_electron } from '@tools/bpac';
+import bpac_electron from '@tools/bpac';
 import axios from 'axios';
 import printBarcode from '../lib/printBarcode';
 import { store } from '../Reducer';
 import { callError, callSuccess } from '../Reducer/Message';
 import { resetRowDoc } from '../Reducer/RowDoc';
 import { DocData } from '../Schemas/DocData.model';
-import server from '../utils/server';
 import { forkJoin, lastValueFrom, of } from 'rxjs';
 import { baseRequest } from '../utils/baseRequest';
 import { authRetry, post, transformAxios } from '@tools/rxjs-pipes';

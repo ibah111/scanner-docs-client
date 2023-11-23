@@ -1,5 +1,5 @@
 import path from 'path';
-import { bpac_electron } from '@tools/bpac';
+import bpac_electron from '@tools/bpac';
 import { store } from '../Reducer';
 import { callError } from '../Reducer/Message';
 export default async function printBarcode(text: string) {
