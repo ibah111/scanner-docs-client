@@ -1,7 +1,7 @@
 import { store } from '../Reducer';
 import { DocsState } from '../Reducer/Docs';
 import { forkJoin, lastValueFrom, of } from 'rxjs';
-import { authRetry, get, post, transformAxios } from '@tools/rxjs-pipes';
+import { authRetry, post, transformAxios } from '@tools/rxjs-pipes';
 import { baseRequest } from '../utils/baseRequest';
 import { transformError } from '../utils/processError';
 
