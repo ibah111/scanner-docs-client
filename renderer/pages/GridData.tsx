@@ -12,7 +12,7 @@ import PrevTransmit from '../components/Docs/PrevTransmit';
 import { useAppDispatch, useAppSelector } from '../Reducer';
 import { setDocs } from '../Reducer/Docs';
 import { setComponents } from '../Reducer/DocsComponent';
-
+import CustomPagination from '../components/Pagination/CustomPagination';
 export default function Docs() {
   const data = useAppSelector((state) => state.Docs);
   const { filterModel, page, pageSize, sortModel } = useAppSelector(
@@ -24,13 +24,6 @@ export default function Docs() {
   };
   const handleSortModelChange = (sort: GridSortModel) => {
     dispatch(setComponents(['sortModel', sort]));
-  };
-  const handlePageChange = (newPage: number) => {
-    dispatch(setComponents(['page', newPage]));
-  };
-
-  const handlePageSizeChange = (newPageSize: number) => {
-    dispatch(setComponents(['pageSize', newPageSize]));
   };
 
   React.useEffect(() => {
@@ -49,8 +42,6 @@ export default function Docs() {
           rows={data.rows}
           paginationMode="server"
           pagination
-          page={page}
-          onPageChange={handlePageChange}
           rowCount={data.count}
           filterMode="server"
           onFilterModelChange={onFilterChange}
@@ -58,16 +49,15 @@ export default function Docs() {
           sortModel={sortModel}
           sortingMode="server"
           onSortModelChange={handleSortModelChange}
-          pageSize={pageSize}
-          onPageSizeChange={handlePageSizeChange}
           getDetailPanelContent={({ row }) => (
             <Box>
               <PrevTransmit key={row.id} id={row.id} />
             </Box>
           )}
           getDetailPanelHeight={() => 'auto'}
-          components={{
-            Toolbar: CustomToolbar,
+          slots={{
+            toolbar: CustomToolbar,
+            pagination: CustomPagination,
           }}
         />
       </Grid>

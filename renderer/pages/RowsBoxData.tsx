@@ -14,7 +14,7 @@ import { useAppDispatch, useAppSelector } from '../Reducer';
 import { setBox } from '../Reducer/Box';
 import { setRowDoc } from '../Reducer/RowDoc';
 import { setRowsBox } from '../Reducer/RowsBox';
-
+import CustomPagination from '../components/Pagination/CustomPagination';
 export default function TableCodes() {
   const data = useAppSelector((state) => state.RowDoc);
   const { filterModel, page, pageSize, sortModel } = useAppSelector(
@@ -27,14 +27,6 @@ export default function TableCodes() {
   const handleSortModelChange = (sort: GridSortModel) => {
     dispatch(setRowsBox(['sortModel', sort]));
   };
-  const handlePageChange = (newPage: number) => {
-    dispatch(setRowsBox(['page', newPage]));
-  };
-
-  const handlePageSizeChange = (newPageSize: number) => {
-    dispatch(setRowsBox(['pageSize', newPageSize]));
-  };
-
   React.useEffect(() => {
     if (page || pageSize || filterModel || sortModel) {
       openRowsBox().then((res) => {
@@ -61,21 +53,33 @@ export default function TableCodes() {
           sx={{ pl: 2, height: '100%', width: '100%' }}
           columns={columns}
           rows={data.rows}
-          paginationMode="server"
-          pagination
-          page={page}
-          onPageChange={handlePageChange}
           rowCount={data.count}
+          /**
+           * filter
+           */
           filterMode="server"
           onFilterModelChange={onFilterChange}
           filterModel={filterModel}
+          /**
+           * sort
+           */
           sortModel={sortModel}
           sortingMode="server"
           onSortModelChange={handleSortModelChange}
-          pageSize={pageSize}
-          onPageSizeChange={handlePageSizeChange}
-          components={{
-            Toolbar: CustomToolbar,
+          /**
+           * pagination
+           */
+          paginationMode="server"
+          pagination
+          /**
+           * slots
+           */
+          slots={{
+            toolbar: CustomToolbar,
+            pagination: CustomPagination,
+          }}
+          slotProps={{
+            toolbar: {},
           }}
         />
       </Grid>
