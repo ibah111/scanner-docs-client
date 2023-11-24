@@ -11,7 +11,7 @@ export default function OpenAdminPage() {
         color="inherit"
         variant="text"
         component={Link}
-        href="../RolesData"
+        href="../AdminPage"
       >
         <AdminPanelSettingsIcon fontSize="large" />
       </Button>
