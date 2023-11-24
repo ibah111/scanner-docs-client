@@ -44,13 +44,13 @@ export default function RoleEdit(props: RightEditProps) {
                 <RoleAdd {...props} />
               </Box>
 
-              {data.Users_Roles.map((User_Role, index) => (
-                <Box key={index}>
+              {data.Roles.map((i) => (
+                <Box key={i.id}>
                   <Typography component={'span'} sx={{ p: 1 }}>
-                    {User_Role.Role.title}
+                    {i.title}
                     <IconButton
                       onClick={(event) => {
-                        removeRole(User_Role.id).then(() => {
+                        removeRole(i.id).then(() => {
                           if (User.login === data.login) {
                             dispatch(resetUser());
                           }
