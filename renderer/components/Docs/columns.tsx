@@ -1,10 +1,10 @@
-import { GridColumns } from '@mui/x-data-grid-premium';
 import moment from 'moment';
 import { Doc } from '../../Schemas/Doc.model';
 import { generateName } from '../../utils/generateName';
 import OpenDocuments from './OpenDocuments';
+import { GridColDef } from '@mui/x-data-grid-premium';
 
-const columns: GridColumns<Doc> = [
+export const columnsDoc: GridColDef<Doc>[] = [
   {
     field: 'Doc.id',
     headerName: '№',
@@ -134,5 +134,3 @@ const columns: GridColumns<Doc> = [
     width: 200,
   },
 ];
-
-export default columns;

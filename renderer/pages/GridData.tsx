@@ -7,11 +7,11 @@ import {
 import React from 'react';
 import getDocs from '../api/getDocs';
 import { CustomToolbar } from '../components/CustomToolbar';
-import columns from '../components/Docs/columns';
 import PrevTransmit from '../components/Docs/PrevTransmit';
 import { useAppDispatch, useAppSelector } from '../Reducer';
 import { setDocs } from '../Reducer/Docs';
 import { setComponents } from '../Reducer/DocsComponent';
+import { columnsDoc } from '../components/Docs/columns';
 import CustomPagination from '../components/Pagination/CustomPagination';
 export default function Docs() {
   const data = useAppSelector((state) => state.Docs);
@@ -38,7 +38,7 @@ export default function Docs() {
       <Grid item xs sx={{ height: '100%', width: '100vw' }}>
         <DataGridPremium
           sx={{ pl: 2 }}
-          columns={columns}
+          columns={columnsDoc}
           rows={data.rows}
           paginationMode="server"
           pagination

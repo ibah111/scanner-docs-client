@@ -1,9 +1,9 @@
-import { GridColumns } from '@mui/x-data-grid-premium';
+import { GridColDef } from '@mui/x-data-grid-premium';
 import moment from 'moment';
 import { Log } from '../../Schemas/Log.model';
 import { generateName } from '../../utils/generateName';
 
-const columnsTransmit: GridColumns<Log> = [
+const columnsTransmit: GridColDef<Log>[] = [
   {
     field: 'date_send',
     headerName: 'Дата отправки в банк/ОСП',
