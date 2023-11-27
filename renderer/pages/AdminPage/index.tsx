@@ -11,9 +11,11 @@ export default function AmdinPage() {
       <Grid
         item
         xs
-        sx={{ width: '100%', height: 520 }}
         container
-        direction={'column'}
+        direction="column"
+        justifyContent="flex-start"
+        alignItems="center"
+        sx={{ width: '100%', height: 520 }}
       >
         <DataGridPremium
           {...gridProps}

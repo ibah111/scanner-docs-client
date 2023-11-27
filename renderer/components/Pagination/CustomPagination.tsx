@@ -19,8 +19,14 @@ import {
   useGridApiContext,
   useGridSelector,
 } from '@mui/x-data-grid-premium';
-import { getPageCount } from '@mui/x-data-grid/hooks/features/pagination/gridPaginationUtils';
 import React from 'react';
+
+export const getPageCount = (rowCount: number, pageSize: number) => {
+  if (pageSize > 0 && rowCount > 0) {
+    return Math.ceil(rowCount / pageSize);
+  }
+  return 0;
+};
 const listRange = [25, 50, 100, 125, 150, 175, 200];
 export default function CustomPagination() {
   const apiRef = useGridApiContext();
