@@ -1,8 +1,8 @@
-import { GridColumns } from '@mui/x-data-grid-premium';
+import { GridColDef } from '@mui/x-data-grid-premium';
 import { Doc } from '../../Schemas/Doc.model';
 import OpenDocuments from '../Docs/OpenDocuments';
 
-const columns: GridColumns<Doc> = [
+const columns: GridColDef<Doc>[] = [
   {
     field: 'Doc.id',
     headerName: '№',
