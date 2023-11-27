@@ -10,7 +10,6 @@ import RowsBox from './RowsBox';
 import Send from './Send';
 import State from './State';
 import User from './User';
-import UserList from './UserList';
 
 export const store = configureStore({
   reducer: {
@@ -24,7 +23,6 @@ export const store = configureStore({
     RowsBox,
     Box,
     RowDoc,
-    UserList,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;
