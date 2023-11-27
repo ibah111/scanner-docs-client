@@ -5,9 +5,11 @@ import getRoles, { User } from '../../api/getRoles';
 export default function useAdminPageGrid() {
   const columns = useColumns();
   const [rows, setRows] = React.useState<User[]>([]);
+  const [rowCount, setRowCount] = React.useState<number>();
   const refresh = React.useCallback(() => {
     getRoles().then((res) => {
-      setRows(res);
+      setRows(res.rows);
+      setRowCount(res.count);
     });
   }, []);
 
@@ -17,5 +19,6 @@ export default function useAdminPageGrid() {
   return {
     rows,
     columns,
+    rowCount,
   };
 }

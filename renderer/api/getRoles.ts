@@ -15,6 +15,10 @@ export interface User {
   Roles: Role[];
 }
 
+interface Page {
+  count: number;
+  rows: User[];
+}
 const url = of('/role/get');
 export default async function getRoles() {
   const data = store.getState().UserList;
@@ -25,6 +29,6 @@ export default async function getRoles() {
       of({
         ...data,
       }),
-    ]).pipe(post<User[]>(), transformAxios(), transformError(), authRetry()),
+    ]).pipe(post<Page>(), transformAxios(), transformError(), authRetry()),
   );
 }

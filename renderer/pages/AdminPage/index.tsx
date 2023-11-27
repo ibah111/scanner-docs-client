@@ -20,7 +20,11 @@ export default function AmdinPage() {
         <DataGridPremium
           {...gridProps}
           sx={{ pl: 2 }}
+          /** */
           pagination
+          paginationMode="server"
+          filterMode="server"
+          sortingMode="server"
           slots={{
             toolbar: CustomToolbar,
             pagination: CustomPagination,
