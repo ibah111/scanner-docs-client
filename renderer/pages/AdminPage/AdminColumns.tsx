@@ -13,7 +13,7 @@ export default function useColumns() {
         width: 250,
         valueGetter(params) {
           const roles = params.row.Roles?.map((value) => value.title);
-          if (roles.length === 0) return 'No roles';
+          if (roles.length === 0) return 'Ролей нет';
           return roles.join(', ');
         },
       },

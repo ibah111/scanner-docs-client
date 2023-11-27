@@ -25,15 +25,13 @@ export default function RoleAdd({ data, roles, refresh }: RightEditProps) {
     <>
       <ClickAwayListener onClickAway={() => setOpen(false)}>
         <Box>
-          {!(data.Users_Roles.length === roles.length) ? (
+          {!(data.Roles.length === roles.length) ? (
             <Button onClick={handleClick}>Добавить роль</Button>
           ) : null}
           <Popper open={open} anchorEl={anchorEl}>
             <Paper>
               {roles.map((value) =>
-                !data.Users_Roles.map((value) => value.Role.name).includes(
-                  value.name,
-                ) ? (
+                !data.Roles.map((value) => value.name).includes(value.name) ? (
                   <Button
                     key={value.id}
                     onClick={(event) => {

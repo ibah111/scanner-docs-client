@@ -80,7 +80,7 @@
   "build": {
     "appId": "ru.usb.scanner",
     "productName": "Scanner Docs",
-    "copyright": "Copyright © 2022 Maria Ivanova",
+    "copyright": "Copyright © 2022 Ibah",
     "directories": {
       "output": "dist",
       "buildResources": "resources"
