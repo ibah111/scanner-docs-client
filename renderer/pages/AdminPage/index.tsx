@@ -18,6 +18,7 @@ export default function AmdinPage() {
         <DataGridPremium
           {...gridProps}
           sx={{ pl: 2 }}
+          pagination
           slots={{
             toolbar: CustomToolbar,
             pagination: CustomPagination,

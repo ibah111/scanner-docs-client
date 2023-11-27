@@ -5,6 +5,7 @@ import { useAppSelector } from '../../Reducer';
 import SendingForm from '../../components/MainPage/sendingForm';
 import columns from '../../components/MainPage/columns';
 import { CustomToolbar } from '../../components/CustomToolbar';
+import CustomPagination from '../../components/Pagination/CustomPagination';
 
 export default function Main() {
   const data = useAppSelector((state) => state.Data);
@@ -43,8 +44,9 @@ export default function Main() {
               rows={data}
               columns={columns}
               sx={{ pl: 2 }}
-              components={{
-                Toolbar: CustomToolbar,
+              slots={{
+                toolbar: CustomToolbar,
+                pagination: CustomPagination,
               }}
               pagination
             />
