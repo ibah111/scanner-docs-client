@@ -5,8 +5,8 @@ import React from 'react';
 export default function useColumns() {
   return React.useMemo<GridColDef<User>[]>(
     () => [
-      { field: 'id' },
-      { field: 'login', headerName: 'Логин', width: 250 },
+      { field: 'id', type: 'number' },
+      { field: 'login', headerName: 'Логин', width: 250, type: 'string' },
       {
         field: 'roles',
         headerName: 'Роли',

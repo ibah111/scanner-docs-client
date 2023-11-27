@@ -15,13 +15,11 @@ export default function AmdinPage() {
         direction="column"
         justifyContent="flex-start"
         alignItems="center"
-        sx={{ width: '100%', height: 520 }}
+        sx={{ minHeight: 0, minWidth: 0 }}
       >
         <DataGridPremium
-          {...gridProps}
-          sx={{ pl: 2 }}
-          /** */
           pagination
+          sx={{ width: '100%' }}
           paginationMode="server"
           filterMode="server"
           sortingMode="server"
@@ -29,6 +27,7 @@ export default function AmdinPage() {
             toolbar: CustomToolbar,
             pagination: CustomPagination,
           }}
+          {...gridProps}
         />
       </Grid>
     </>

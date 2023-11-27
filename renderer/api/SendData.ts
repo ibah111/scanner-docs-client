@@ -1,5 +1,4 @@
 import { store } from '../Reducer';
-import { callError, callSuccess } from '../Reducer/Message';
 import { Transmit } from '../Schemas/Transmit.model';
 import { forkJoin, lastValueFrom, of } from 'rxjs';
 import { baseRequest } from '../utils/baseRequest';
@@ -11,27 +10,14 @@ export default async function SendData() {
   const id = store.getState().Data[0].id;
 
   const url = of('/send');
-  return (
-    lastValueFrom(
-      forkJoin([
-        baseRequest,
-        url,
-        of({
-          ...data,
-          id,
-        }),
-      ]).pipe(
-        post<Transmit>(),
-        transformAxios(),
-        transformError(),
-        authRetry(),
-      ),
-    )
-      /**
-       * удалить, добавить Instance ошибок в модель на клиенте
-       * код ниже тоже можно удалить
-       */
-      .then(() => store.dispatch(callSuccess('Данные успешно отправлены')))
-      .catch(() => store.dispatch(callError('Произошла непредвиденная ошибка')))
+  return lastValueFrom(
+    forkJoin([
+      baseRequest,
+      url,
+      of({
+        ...data,
+        id,
+      }),
+    ]).pipe(post<Transmit>(), transformAxios(), transformError(), authRetry()),
   );
 }
