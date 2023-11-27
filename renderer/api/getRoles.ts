@@ -2,6 +2,7 @@ import { forkJoin, lastValueFrom, of } from 'rxjs';
 import { authRetry, post, transformAxios } from '@tools/rxjs-pipes';
 import { transformError } from '../utils/processError';
 import { baseRequest } from '../utils/baseRequest';
+import { store } from '../Reducer';
 export interface Role {
   id: number;
   name: string;
@@ -16,12 +17,14 @@ export interface User {
 
 const url = of('/role/get');
 export default async function getRoles() {
+  const data = store.getState().UserList;
   return lastValueFrom(
-    forkJoin([baseRequest, url, of({})]).pipe(
-      post<User[]>(),
-      transformAxios(),
-      transformError(),
-      authRetry(),
-    ),
+    forkJoin([
+      baseRequest,
+      url,
+      of({
+        ...data,
+      }),
+    ]).pipe(post<User[]>(), transformAxios(), transformError(), authRetry()),
   );
 }
