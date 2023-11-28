@@ -15,7 +15,7 @@ export class Doc {
   @Type(() => Date)
   date: Date;
   @Type(() => DocTypes)
-  type: DocTypes;
+  doc_type: DocTypes;
   @Type(() => DocData)
   DocData: DocData;
   @Type(() => Result)
