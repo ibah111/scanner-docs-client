@@ -9,7 +9,7 @@ import AddDocumentButton from './AddDocumentButton';
 interface DocToolbarProps {
   handleOpenDocumentCreate: VoidFunction;
 }
-export function DocumentToolbar(props: DocToolbarProps) {
+export function DocumentToolbar({ handleOpenDocumentCreate }: DocToolbarProps) {
   return (
     <GridToolbarContainer>
       <GridToolbarColumnsButton />
@@ -18,9 +18,7 @@ export function DocumentToolbar(props: DocToolbarProps) {
       {/**
        * @TODO добавить can
        */}
-      <AddDocumentButton
-        handleOpenDocumentCreate={props.handleOpenDocumentCreate}
-      />
+      <AddDocumentButton handleOpenDocumentCreate={handleOpenDocumentCreate} />
     </GridToolbarContainer>
   );
 }

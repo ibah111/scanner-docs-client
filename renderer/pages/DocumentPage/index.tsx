@@ -22,10 +22,10 @@ export default function DocumentPage() {
   console.log(DialogTarget);
 
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => {
+  const handleOpenDocumentCreate = () => {
     setOpen(true);
   };
-  const handleClose = () => {
+  const handleCloseDocumentCreate = () => {
     setOpen(false);
   };
   return (
@@ -47,10 +47,15 @@ export default function DocumentPage() {
             pagination: CustomPagination,
           }}
           slotProps={{
-            toolbar: { handleOpen },
+            toolbar: { handleOpenDocumentCreate },
           }}
         />
-        {open && <DocumentCreateDialog open={open} onClose={handleClose} />}
+        {open && (
+          <DocumentCreateDialog
+            open={open}
+            onClose={handleCloseDocumentCreate}
+          />
+        )}
       </Grid>
     </>
   );
