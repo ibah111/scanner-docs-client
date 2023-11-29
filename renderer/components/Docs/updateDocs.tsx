@@ -11,7 +11,7 @@ export default function UpdateDocs() {
         sx={{ width: '180px' }}
         variant="text"
         component={Link}
-        href="../GridData"
+        href="../DocumentPage"
       >
         Документы
       </Button>
