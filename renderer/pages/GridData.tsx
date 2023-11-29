@@ -40,13 +40,13 @@ export default function Docs() {
           sx={{ pl: 2 }}
           columns={columnsDoc}
           rows={data.rows}
-          paginationMode="server"
           pagination
           rowCount={data.count}
-          filterMode="server"
           onFilterModelChange={onFilterChange}
           filterModel={filterModel}
           sortModel={sortModel}
+          paginationMode="server"
+          filterMode="server"
           sortingMode="server"
           onSortModelChange={handleSortModelChange}
           getDetailPanelContent={({ row }) => (

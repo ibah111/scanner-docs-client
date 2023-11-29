@@ -4,14 +4,23 @@ import {
   GridToolbarDensitySelector,
   GridToolbarFilterButton,
 } from '@mui/x-data-grid-premium';
+import AddDocumentButton from './AddDocumentButton';
 
-export function DocumentToolbar() {
+interface DocToolbarProps {
+  handleOpenDocumentCreate: VoidFunction;
+}
+export function DocumentToolbar(props: DocToolbarProps) {
   return (
     <GridToolbarContainer>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
       <GridToolbarDensitySelector />
-      <DocumentToolbar />
+      {/**
+       * @TODO добавить can
+       */}
+      <AddDocumentButton
+        handleOpenDocumentCreate={props.handleOpenDocumentCreate}
+      />
     </GridToolbarContainer>
   );
 }
