@@ -1,6 +1,7 @@
 import { Grid, TextField } from '@mui/material';
 import { useAppDispatch } from '../../../../Reducer';
 import { setPropertyValue } from '../../../../Reducer/Doc';
+import { NumericFormatCustom } from '../../../../utils/NumberFormatMask';
 
 export default function LawActId() {
   const dispatch = useAppDispatch();
@@ -11,6 +12,9 @@ export default function LawActId() {
         onChange={(event) =>
           dispatch(setPropertyValue(['law_act_id', event.target.value]))
         }
+        inputProps={{
+          inputComponent: NumericFormatCustom,
+        }}
       />
     </Grid>
   );
