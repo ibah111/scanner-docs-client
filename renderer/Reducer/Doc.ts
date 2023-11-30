@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
 import { Doc } from '../Schemas/Doc.model';
 import { CreationAttributes } from '@sql-tools/sequelize';
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
@@ -37,10 +37,16 @@ const DocSlice = createSlice({
     setValue(_, action: PayloadAction<DocInstance>) {
       return action.payload;
     },
+    setPropertyValue<T extends keyof DocInstance>(
+      state: Draft<DocInstance>,
+      action: PayloadAction<[T, DocInstance[T]]>,
+    ) {
+      state[action.payload[0]] = action.payload[1];
+    },
     resetData() {
       return initialState;
     },
   },
 });
-export const { setValue, resetData } = DocSlice.actions;
+export const { setValue, setPropertyValue, resetData } = DocSlice.actions;
 export default DocSlice.reducer;
