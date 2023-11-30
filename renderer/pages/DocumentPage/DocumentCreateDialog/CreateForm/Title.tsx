@@ -1,18 +1,23 @@
 import { Grid, TextField } from '@mui/material';
-import { useAppDispatch, useAppSelector } from '../../../../Reducer';
+import { useAppDispatch } from '../../../../Reducer';
 import { setPropertyValue } from '../../../../Reducer/Doc';
+import useDocData from '../../../../hooks/useDocData';
 
 export default function Title() {
   const dispatch = useAppDispatch();
-  const title = useAppSelector((state) => state.Doc.title);
+  const data = useDocData('title');
   return (
     <Grid item xs={4}>
       <TextField
         label="Имя документа"
-        value={title || ''}
-        onChange={(event) =>
-          dispatch(setPropertyValue(['title', event.target.value]))
-        }
+        onChange={(event) => {
+          dispatch(setPropertyValue(['title', event.target.value]));
+          console.log(typeof data.value);
+        }}
+        value={data.value}
+        required={data.required}
+        error={data.error}
+        helperText={data.helperText}
       />
     </Grid>
   );

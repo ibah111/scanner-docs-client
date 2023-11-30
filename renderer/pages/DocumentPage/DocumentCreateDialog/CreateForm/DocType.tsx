@@ -1,6 +1,14 @@
-import { FormControl, Grid, InputLabel, MenuItem, Select } from '@mui/material';
+import {
+  FormControl,
+  FormHelperText,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+} from '@mui/material';
 import { useAppDispatch } from '../../../../Reducer';
 import { setPropertyValue } from '../../../../Reducer/Doc';
+import useDocData from '../../../../hooks/useDocData';
 
 export default function DocType() {
   const dispatch = useAppDispatch();
@@ -16,6 +24,7 @@ export default function DocType() {
       title: 'box',
     },
   ];
+  const data = useDocData('doc_type');
   return (
     <Grid item xs={4}>
       <FormControl id="doc_type" fullWidth>
@@ -29,6 +38,9 @@ export default function DocType() {
               setPropertyValue(['doc_type', event.target.value as number]),
             )
           }
+          value={data.value}
+          required={data.required}
+          error={data.error}
         >
           {doc_types.map((i) => (
             <MenuItem value={i.id} key={i.id}>
@@ -36,6 +48,7 @@ export default function DocType() {
             </MenuItem>
           ))}
         </Select>
+        {data.helperText && <FormHelperText>{data.helperText}</FormHelperText>}
       </FormControl>
     </Grid>
   );
