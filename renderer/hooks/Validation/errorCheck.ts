@@ -1,8 +1,8 @@
-import { ValidationError } from "class-validator";
+import { ValidationError } from 'class-validator';
 
 export default function errorCheck(
   errors: ValidationError[],
-  name: string
+  name: string,
 ): boolean {
   if (errors.length > 0 && errors.find((error) => error.property === name))
     return true;

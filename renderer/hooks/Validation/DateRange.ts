@@ -4,15 +4,15 @@ import {
   ValidatorConstraint,
   ValidatorConstraintInterface,
   registerDecorator,
-} from "class-validator";
-import moment from "moment";
+} from 'class-validator';
+import moment from 'moment';
 
 export interface DateRangeOptions {
   minDate?: moment.Moment;
   maxDate?: moment.Moment;
 }
 
-@ValidatorConstraint({ name: "DateRange" })
+@ValidatorConstraint({ name: 'DateRange' })
 export class DateRangeConstructor implements ValidatorConstraintInterface {
   validate(value: moment.Moment, args: ValidationArguments): boolean {
     if (!value) return false;
@@ -21,14 +21,14 @@ export class DateRangeConstructor implements ValidatorConstraintInterface {
     if (options.minDate) {
       if (options.minDate.isBefore(value)) valid = true;
       else {
-        args.constraints[1] = "minDate";
+        args.constraints[1] = 'minDate';
         return false;
       }
     }
     if (options.maxDate) {
       if (options.maxDate.isAfter(value)) valid = true;
       else {
-        args.constraints[1] = "maxDate";
+        args.constraints[1] = 'maxDate';
         return false;
       }
     }
@@ -41,11 +41,11 @@ export class DateRangeConstructor implements ValidatorConstraintInterface {
 
 export function DateRange(
   options: DateRangeOptions,
-  validationOptions?: ValidationOptions
+  validationOptions?: ValidationOptions,
 ) {
-  return function (object: Object, propertyName: string) {
+  return function (object: object, propertyName: string) {
     registerDecorator({
-      name: "DateRange",
+      name: 'DateRange',
       target: object.constructor,
       propertyName: propertyName,
       options: validationOptions,

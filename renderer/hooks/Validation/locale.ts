@@ -7,35 +7,35 @@ import {
   IsPositive as IsPositiveOrigin,
   ValidationOptions,
   IsNumberOptions,
-} from "class-validator";
-import ValidatorJS from "validator";
-import { IsValidMoment as IsValidMomentOrigin } from "./IsValidMoment";
-import { DateRange as DateRangeOrigin, DateRangeOptions } from "./DateRange";
-import { TranslateMessage } from "./checker";
+} from 'class-validator';
+import ValidatorJS from 'validator';
+import { IsValidMoment as IsValidMomentOrigin } from './IsValidMoment';
+import { DateRange as DateRangeOrigin, DateRangeOptions } from './DateRange';
+import { TranslateMessage } from './checker';
 
 export const IsPositive = (validationOptions?: ValidationOptions) =>
-  IsPositiveOrigin({ message: "IsPositive", ...validationOptions });
+  IsPositiveOrigin({ message: 'IsPositive', ...validationOptions });
 
 export const IsBoolean = (validationOptions?: ValidationOptions) =>
-  IsBooleanOrigin({ message: "isBoolean", ...validationOptions });
+  IsBooleanOrigin({ message: 'isBoolean', ...validationOptions });
 
 export const IsNotEmpty = (validationOptions?: ValidationOptions) =>
-  IsNotEmptyOrigin({ message: "isNotEmpty", ...validationOptions });
+  IsNotEmptyOrigin({ message: 'isNotEmpty', ...validationOptions });
 
 export const IsEmail = (
   options?: ValidatorJS.IsEmailOptions,
-  validationOptions?: ValidationOptions
-) => IsEmailOrigin(options, { message: "isEmail", ...validationOptions });
+  validationOptions?: ValidationOptions,
+) => IsEmailOrigin(options, { message: 'isEmail', ...validationOptions });
 
 export const IsNumber = (
   options: IsNumberOptions = {},
-  validationOptions?: ValidationOptions
-) => IsNumberOrigin(options, { message: "isNumber", ...validationOptions });
+  validationOptions?: ValidationOptions,
+) => IsNumberOrigin(options, { message: 'isNumber', ...validationOptions });
 
 export const Length = (
   min: number,
   max?: number,
-  validationOptions?: ValidationOptions
+  validationOptions?: ValidationOptions,
 ) =>
   LengthOrigin(min, max, {
     message: (args) => {
@@ -48,43 +48,43 @@ export const Length = (
         isMinLength &&
         (!args.value || args.value.length < args?.constraints[0])
       ) {
-        return result.replace("$name", "length>=");
+        return result.replace('$name', 'length>=');
       } else if (isMaxLength && args.value.length > args?.constraints[1]) {
-        return result.replace("$name", "length<=");
+        return result.replace('$name', 'length<=');
       }
-      return result.replace("$name", "length<>");
+      return result.replace('$name', 'length<>');
     },
     ...validationOptions,
   });
 
 export const IsValidMoment = (validationOptions?: ValidationOptions) =>
-  IsValidMomentOrigin({ message: "isValidMoment", ...validationOptions });
+  IsValidMomentOrigin({ message: 'isValidMoment', ...validationOptions });
 
 export const DateRange = (
   options: DateRangeOptions,
-  validationOptions?: ValidationOptions
+  validationOptions?: ValidationOptions,
 ) =>
   DateRangeOrigin(options, {
     message: (args) => {
       const result = args.constraints[1];
       let message: TranslateMessage | null = null;
       switch (result) {
-        case "invalidOptions":
-          message = { name: "DateRangeOptionsInvalid", options: {} };
+        case 'invalidOptions':
+          message = { name: 'DateRangeOptionsInvalid', options: {} };
           break;
-        case "maxDate":
+        case 'maxDate':
           message = {
-            name: "DateRangeAfterMax",
+            name: 'DateRangeAfterMax',
             options: {
-              maxDate: options?.maxDate?.format("DD.MM.YYYY") || null,
+              maxDate: options?.maxDate?.format('DD.MM.YYYY') || null,
             },
           };
           break;
-        case "minDate":
+        case 'minDate':
           message = {
-            name: "DateRangeBeforeMin",
+            name: 'DateRangeBeforeMin',
             options: {
-              minDate: options?.minDate?.format("DD.MM.YYYY") || null,
+              minDate: options?.minDate?.format('DD.MM.YYYY') || null,
             },
           };
           break;

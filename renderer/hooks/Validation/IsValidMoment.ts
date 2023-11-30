@@ -1,11 +1,11 @@
-import { TransformFnParams } from "class-transformer";
+import { TransformFnParams } from 'class-transformer';
 import {
   registerDecorator,
   ValidationOptions,
   ValidatorConstraint,
   ValidatorConstraintInterface,
-} from "class-validator";
-import moment from "moment";
+} from 'class-validator';
+import moment from 'moment';
 
 export const NullOrMoment = ({ value }: TransformFnParams) => {
   if (value === undefined) return undefined;
@@ -22,7 +22,7 @@ export const NullOrMoment = ({ value }: TransformFnParams) => {
   return moment(value);
 };
 
-@ValidatorConstraint({ name: "isValidMoment" })
+@ValidatorConstraint({ name: 'isValidMoment' })
 export class IsValidMomentConstructor implements ValidatorConstraintInterface {
   validate(value: moment.Moment): boolean {
     return value?.isValid?.();
@@ -33,9 +33,9 @@ export class IsValidMomentConstructor implements ValidatorConstraintInterface {
 }
 
 export function IsValidMoment(validationOptions?: ValidationOptions) {
-  return function (object: Object, propertyName: string) {
+  return function (object: object, propertyName: string) {
     registerDecorator({
-      name: "isValidMoment",
+      name: 'isValidMoment',
       target: object.constructor,
       propertyName: propertyName,
       options: validationOptions,

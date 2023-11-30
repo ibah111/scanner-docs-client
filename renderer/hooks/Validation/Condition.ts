@@ -4,14 +4,14 @@ import {
   ValidatorConstraint,
   ValidatorConstraintInterface,
   registerDecorator,
-} from "class-validator";
+} from 'class-validator';
 
 export type ConditionFunc<T extends object, V extends keyof T> = (
   value: T[V],
-  obj: T
+  obj: T,
 ) => boolean;
 
-@ValidatorConstraint({ name: "condition" })
+@ValidatorConstraint({ name: 'condition' })
 export class ConditionConstructor<T extends object, V extends keyof T>
   implements ValidatorConstraintInterface
 {
@@ -25,11 +25,11 @@ export class ConditionConstructor<T extends object, V extends keyof T>
 }
 export function Condition<T extends object, V extends keyof T>(
   options: ConditionFunc<T, V>,
-  validationOptions?: ValidationOptions
+  validationOptions?: ValidationOptions,
 ) {
   return function (object: T, propertyName: V) {
     registerDecorator({
-      name: "condition",
+      name: 'condition',
       target: object.constructor,
       propertyName: propertyName as unknown as string,
       options: validationOptions,

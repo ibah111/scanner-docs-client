@@ -1,8 +1,8 @@
-import { ClassConstructor, plainToInstance } from "class-transformer";
-import { validateSync } from "class-validator";
-import errorCheck from "./errorCheck";
-import helperCheck from "./helperCheck";
-import requiredCheck from "./requiredCheck";
+import { ClassConstructor, plainToInstance } from 'class-transformer';
+import { validateSync } from 'class-validator';
+import errorCheck from './errorCheck';
+import helperCheck from './helperCheck';
+import requiredCheck from './requiredCheck';
 
 interface CheckerResult {
   required: boolean;
@@ -11,6 +11,7 @@ interface CheckerResult {
 }
 
 export class TranslateOptions {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [index: string]: any;
 }
 
@@ -23,22 +24,22 @@ export default function checker<T extends object, F>(
   example: ClassConstructor<T>,
   name: keyof T,
   value: F,
-  additional?: T
+  additional?: T,
 ): CheckerResult {
   const result: CheckerResult = {
     required: false,
     error: false,
-    helperText: "",
+    helperText: '',
   };
   const dataNull = plainToInstance(example, { [name]: null });
   const data = plainToInstance(
     example,
     {
       [name]:
-        value === undefined || value === null || value === "" ? null : value,
+        value === undefined || value === null || value === '' ? null : value,
       ...(additional || {}),
     },
-    { enableImplicitConversion: true }
+    { enableImplicitConversion: true },
   );
   result.required = requiredCheck(dataNull, name as string);
   const errors = validateSync(data, { skipUndefinedProperties: true });

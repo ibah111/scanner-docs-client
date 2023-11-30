@@ -4,7 +4,7 @@ import checker from './Validation/checker';
 import { ResultData } from './Validation/ResultData';
 import { DocInstance, setPropertyValue } from '../Reducer/Doc';
 
-export default function useAgreementData<T extends keyof DocInstance>(
+export default function useDocData<T extends keyof DocInstance>(
   name: T,
   additional?: Partial<DocInstance>,
 ): ResultData<DocInstance, T> {

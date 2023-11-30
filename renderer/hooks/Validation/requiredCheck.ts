@@ -1,8 +1,8 @@
-import { validateSync } from "class-validator";
+import { validateSync } from 'class-validator';
 
 export default function requiredCheck<T extends object>(
   data: T,
-  name: string
+  name: string,
 ): boolean {
   const errors = validateSync(data, {
     skipUndefinedProperties: true,
