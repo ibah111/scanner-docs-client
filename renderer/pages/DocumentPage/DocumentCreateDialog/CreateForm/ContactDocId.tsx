@@ -1,5 +1,17 @@
-import { TextField } from '@mui/material';
+import { Grid, TextField } from '@mui/material';
+import { useAppDispatch } from '../../../../Reducer';
+import { setPropertyValue } from '../../../../Reducer/Doc';
 
 export default function ContactDocId() {
-  return <TextField></TextField>;
+  const dispatch = useAppDispatch();
+  return (
+    <Grid item xs={4}>
+      <TextField
+        label="ID документа из контакта"
+        onChange={(event) =>
+          dispatch(setPropertyValue(['contact_doc_id', event.target.value]))
+        }
+      />
+    </Grid>
+  );
 }

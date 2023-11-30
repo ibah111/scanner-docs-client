@@ -14,6 +14,8 @@ import LawExecId from './CreateForm/LawExecId';
 import DocType from './CreateForm/DocType';
 import { store } from '../../../Reducer';
 import createDocument from '../../../api/createDocument';
+import { enqueueSnackbar } from 'notistack';
+import { Divider } from '@mui/material';
 
 interface DialogProps {
   open: boolean;
@@ -24,24 +26,34 @@ export default function DocumentCreateDialog({ open, onClose }: DialogProps) {
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>Создание документа</DialogTitle>
+      <Divider />
       <DialogContent>
         {/**
          * Form
          */}
-        <Title />
-        <ContactDocId />
-        <MailId />
-        <LawActId />
-        <LawExecId />
-        <DocType />
+        <Grid item container spacing={1}>
+          <Title />
+          <ContactDocId />
+          <MailId />
+          <LawActId />
+          <LawExecId />
+          <DocType />
+        </Grid>
       </DialogContent>
       <DialogActions>
-        <Grid item xs sx={{}}>
+        <Grid item xs>
           <Button
             variant="contained"
             color="success"
             onClick={() => {
-              createDocument(data);
+              createDocument({
+                ...data,
+              }).then(() => {
+                onClose;
+                enqueueSnackbar('Документ создан', {
+                  variant: 'success',
+                });
+              });
             }}
           >
             Создать
