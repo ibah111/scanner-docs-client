@@ -1389,16 +1389,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime-corejs3@npm:^7.22.6":
-  version: 7.23.5
-  resolution: "@babel/runtime-corejs3@npm:7.23.5"
-  dependencies:
-    core-js-pure: "npm:^3.30.2"
-    regenerator-runtime: "npm:^0.14.0"
-  checksum: af73e281a590ee11ac2811f13d4a32757384a71400a9597ffb4d8e0715121c1ea0d2a5ed938b7afe46e8bda443ba9d150dc89e7bd8f1b469db5a6f5d7e2ddd9b
-  languageName: node
-  linkType: hard
-
 "@babel/runtime@npm:7.23.2":
   version: 7.23.2
   resolution: "@babel/runtime@npm:7.23.2"
@@ -6387,6 +6377,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"i18next@npm:^23.7.7":
+  version: 23.7.7
+  resolution: "i18next@npm:23.7.7"
+  dependencies:
+    "@babel/runtime": "npm:^7.23.2"
+  checksum: c8d112f5bbe62b3402b0fc47094f85e6ae6f939ff0b3299c5f2b3d30e05125184ae3faa10abfc14e21ea7f8dc78526455c251dc7e5eb40cf1a204257f22e6071
+  languageName: node
+  linkType: hard
+
 "iconv-corefoundation@npm:^1.1.7":
   version: 1.1.7
   resolution: "iconv-corefoundation@npm:1.1.7"
@@ -6417,15 +6416,6 @@ __metadata:
   version: 5.3.0
   resolution: "ignore@npm:5.3.0"
   checksum: 51594355cea4c6ad6b28b3b85eb81afa7b988a1871feefd7062baf136c95aa06760ee934fa9590e43d967bd377ce84a4cf6135fbeb6063e063f1182a0e9a3bcd
-  languageName: node
-  linkType: hard
-
-"imask@npm:^7.1.3":
-  version: 7.1.3
-  resolution: "imask@npm:7.1.3"
-  dependencies:
-    "@babel/runtime-corejs3": "npm:^7.22.6"
-  checksum: 75e42513982391ca6554129ca592974e137699949cd372b9662b76eeeaac3070ccf20ee36fe04bc834ccc29532e479c377ebdc65df317880354ff0606e24914d
   languageName: node
   linkType: hard
 
@@ -8536,18 +8526,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-imask@npm:^7.1.3":
-  version: 7.1.3
-  resolution: "react-imask@npm:7.1.3"
-  dependencies:
-    imask: "npm:^7.1.3"
-    prop-types: "npm:^15.8.1"
-  peerDependencies:
-    react: ">=0.14.0"
-  checksum: 41581620984e3b2d9f1dd4b30d4f2509922f3208d7cf304c6027d977b8d42b30dd32042e87c20e3b2c1fa657f5f12114281aab827017dbb6e6398790c50d880b
-  languageName: node
-  linkType: hard
-
 "react-is@npm:^16.13.1, react-is@npm:^16.7.0":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -9100,6 +9078,7 @@ __metadata:
     eslint-plugin-react: "npm:^7.33.2"
     eslint-plugin-react-hooks: "npm:^4.6.0"
     http-terminator: "npm:^3.2.0"
+    i18next: "npm:^23.7.7"
     mime-types: "npm:^2.1.35"
     moment: "npm:^2.29.4"
     moment-timezone: "npm:^0.5.43"
@@ -9111,7 +9090,6 @@ __metadata:
     prettier: "npm:^3.1.0"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
-    react-imask: "npm:^7.1.3"
     react-number-format: "npm:^5.3.1"
     react-redux: "npm:^8.1.3"
     reflect-metadata: "npm:^0.1.13"

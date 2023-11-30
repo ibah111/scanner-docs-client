@@ -21,6 +21,7 @@
     "class-validator": "^0.14.0",
     "electron-serve": "^1.2.0",
     "electron-store": "^8.1.0",
+    "i18next": "^23.7.7",
     "react-number-format": "^5.3.1",
     "rxjs": "^7.8.1",
     "sequelize": "^6.35.1",
