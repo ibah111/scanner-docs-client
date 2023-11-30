@@ -13,6 +13,7 @@ export default function LawActId() {
           dispatch(setPropertyValue(['law_act_id', event.target.value]))
         }
         InputProps={{
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           inputComponent: NumericFormatCustom as any,
         }}
       />
