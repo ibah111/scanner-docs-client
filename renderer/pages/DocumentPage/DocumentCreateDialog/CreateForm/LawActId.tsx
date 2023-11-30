@@ -12,8 +12,8 @@ export default function LawActId() {
         onChange={(event) =>
           dispatch(setPropertyValue(['law_act_id', event.target.value]))
         }
-        inputProps={{
-          inputComponent: NumericFormatCustom,
+        InputProps={{
+          inputComponent: NumericFormatCustom as any,
         }}
       />
     </Grid>

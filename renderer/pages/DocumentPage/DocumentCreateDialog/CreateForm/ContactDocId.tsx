@@ -12,8 +12,9 @@ export default function ContactDocId() {
         onChange={(event) =>
           dispatch(setPropertyValue(['contact_doc_id', event.target.value]))
         }
-        inputProps={{
-          inputComponent: NumericFormatCustom,
+        InputProps={{
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          inputComponent: NumericFormatCustom as any,
         }}
       />
     </Grid>

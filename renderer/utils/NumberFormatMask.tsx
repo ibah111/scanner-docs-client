@@ -24,9 +24,8 @@ export const NumericFormatCustom = React.forwardRef<
           },
         });
       }}
-      thousandSeparator
+      thousandSeparator={' '}
       valueIsNumericString
-      prefix="ID"
     />
   );
 });

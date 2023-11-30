@@ -12,8 +12,9 @@ export default function MailId() {
         onChange={(event) =>
           dispatch(setPropertyValue(['mail_id', event.target.value]))
         }
-        inputProps={{
-          inputComponent: NumericFormatCustom,
+        InputProps={{
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          inputComponent: NumericFormatCustom as any,
         }}
       />
     </Grid>
