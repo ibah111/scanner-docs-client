@@ -12,7 +12,7 @@ export default function MailId() {
       <TextField
         label="ID почты"
         onChange={(event) =>
-          dispatch(setPropertyValue(['mail_id', event.target.value]))
+          dispatch(setPropertyValue(['mail_id', Number(event.target.value)]))
         }
         InputProps={{
           // eslint-disable-next-line @typescript-eslint/no-explicit-any

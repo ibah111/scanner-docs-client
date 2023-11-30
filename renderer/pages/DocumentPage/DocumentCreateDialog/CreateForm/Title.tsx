@@ -11,8 +11,7 @@ export default function Title() {
       <TextField
         label="Имя документа"
         onChange={(event) => {
-          dispatch(setPropertyValue(['title', event.target.value]));
-          console.log(typeof data.value);
+          dispatch(setPropertyValue(['title', String(event.target.value)]));
         }}
         value={data.value}
         required={data.required}

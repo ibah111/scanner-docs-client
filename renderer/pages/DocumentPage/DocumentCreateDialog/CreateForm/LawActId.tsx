@@ -12,7 +12,7 @@ export default function LawActId() {
       <TextField
         label="ID Суд. иска/приказа"
         onChange={(event) =>
-          dispatch(setPropertyValue(['law_act_id', event.target.value]))
+          dispatch(setPropertyValue(['law_act_id', Number(event.target.value)]))
         }
         InputProps={{
           // eslint-disable-next-line @typescript-eslint/no-explicit-any

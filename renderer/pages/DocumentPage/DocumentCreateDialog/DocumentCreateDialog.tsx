@@ -48,7 +48,7 @@ export default function DocumentCreateDialog({ open, onClose }: DialogProps) {
             onClick={() => {
               console.log(data);
               createDocument(data).then(() => {
-                onClose;
+                onClose();
                 enqueueSnackbar('Документ создан', {
                   variant: 'success',
                 });

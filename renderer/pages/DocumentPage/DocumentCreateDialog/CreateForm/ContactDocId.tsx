@@ -12,7 +12,9 @@ export default function ContactDocId() {
       <TextField
         label="ID документа из контакта"
         onChange={(event) =>
-          dispatch(setPropertyValue(['contact_doc_id', event.target.value]))
+          dispatch(
+            setPropertyValue(['contact_doc_id', Number(event.target.value)]),
+          )
         }
         InputProps={{
           // eslint-disable-next-line @typescript-eslint/no-explicit-any

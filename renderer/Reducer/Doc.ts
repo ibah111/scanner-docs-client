@@ -24,8 +24,8 @@ export class DocInstance implements DocData {
   @IsNumber()
   law_exec_id: number;
 
-  @IsNumber()
   @IsNotEmpty()
+  @IsNumber()
   doc_type: number;
 }
 

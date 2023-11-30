@@ -34,9 +34,7 @@ export default function DocType() {
           labelId="Тип документа"
           label="Тип документа"
           onChange={(event) =>
-            dispatch(
-              setPropertyValue(['doc_type', event.target.value as number]),
-            )
+            dispatch(setPropertyValue(['doc_type', Number(event.target.value)]))
           }
           value={data.value}
           required={data.required}
