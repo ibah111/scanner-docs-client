@@ -6,9 +6,12 @@ import {
   GridPaginationModel,
   GridSortModel,
 } from '@mui/x-data-grid';
+import getRolesArray from '../../api/Roles/getRolesArray';
+import useAsyncMemo from '../../utils/useAsyndMemo';
 
 export default function useAdminPageGrid() {
-  const columns = useColumns();
+  const roles = useAsyncMemo(getRolesArray, [], []);
+  const columns = useColumns(roles);
   const [loading, setLoading] = React.useState(false);
   const [rows, setRows] = React.useState<User[]>([]);
   const [rowCount, setRowCount] = React.useState<number>(0);

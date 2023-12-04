@@ -4,11 +4,11 @@ import { authRetry, get, transformAxios } from '@tools/rxjs-pipes';
 import { baseRequest } from '../../utils/baseRequest';
 import { transformError } from '../../utils/processError';
 
-export default function getRoles() {
-  const url = of('role/getRoles');
+const url = of('role/getRoles');
+export default function getRolesArray() {
   return lastValueFrom(
     forkJoin([baseRequest, url]).pipe(
-      get<Type>(),
+      get<Type[]>(),
       transformAxios(),
       transformError(),
       authRetry(),
