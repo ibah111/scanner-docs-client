@@ -49,5 +49,5 @@ const SendSlice = createSlice({
     },
   },
 });
-export const { setSend, resetSend } = SendSlice.actions;
+export const { setSend, setSendProperty, resetSend } = SendSlice.actions;
 export default SendSlice.reducer;
