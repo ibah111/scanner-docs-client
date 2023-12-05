@@ -1,16 +1,12 @@
-import { Box, Button, Paper, TextField, Typography } from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers';
-import { Moment } from 'moment';
+import { Box, Button, Paper, Typography } from '@mui/material';
 import React from 'react';
 import SendData from '../../api/SendData';
-import { useAppDispatch, useAppSelector } from '../../Reducer';
-import { setSend } from '../../Reducer/Send';
-import errorDate from '../../utils/errorDate';
+import { useAppDispatch } from '../../Reducer';
 import { resetData } from '../../Reducer/Data';
+import DateSend from './MainPageForm/DateSend';
+import WhereSend from './MainPageForm/WhereSend.';
 
 export default function SendingForm() {
-  const data = useAppSelector((state) => state.Send);
-  const errorDateText = errorDate(data.DateSend);
   const dispatch = useAppDispatch();
   return (
     <>
@@ -27,42 +23,8 @@ export default function SendingForm() {
             <Typography variant="h4" textAlign={'center'}>
               Отправляем в банк/ОСП
             </Typography>
-            <DatePicker
-              label="Дата отправки"
-              value={data.DateSend}
-              onChange={(newValue: Moment) => {
-                dispatch(
-                  setSend([
-                    'DateSend',
-                    newValue
-                      ? newValue.isValid()
-                        ? newValue.toISOString()
-                        : newValue.toString()
-                      : '',
-                  ]),
-                );
-              }}
-              renderInput={(params) => (
-                <TextField
-                  id="date_send"
-                  label="Дата"
-                  {...params}
-                  helperText={errorDateText}
-                  variant="filled"
-                />
-              )}
-            />
-            <TextField
-              error={!data.WhereSend}
-              id="where_send"
-              label="Куда"
-              value={data.WhereSend}
-              onChange={(event) => {
-                dispatch(setSend(['WhereSend', event.target.value]));
-              }}
-              helperText={!data.WhereSend ? 'Заполните поле' : ' '}
-              variant="outlined"
-            />
+            <DateSend />
+            <WhereSend />
             <Button
               onClick={() => {
                 SendData().then(() => dispatch(resetData()));
