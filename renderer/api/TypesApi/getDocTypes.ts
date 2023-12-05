@@ -8,7 +8,7 @@ export default function getDocTypes() {
   const url = of('types/getDocTypes');
   return lastValueFrom(
     forkJoin([baseRequest, url]).pipe(
-      get<Type>(),
+      get<Type[]>(),
       transformAxios(),
       transformError(),
       authRetry(),
