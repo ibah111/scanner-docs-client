@@ -6,6 +6,8 @@ import SendingForm from '../../components/MainPage/sendingForm';
 import columns from '../../components/MainPage/columns';
 import { CustomToolbar } from '../../components/CustomToolbar';
 import CustomPagination from '../../components/Pagination/CustomPagination';
+import { Can } from '../../casl/casl.factory';
+import { Action, Subject } from '../../casl/casl';
 
 export default function Main() {
   const data = useAppSelector((state) => state.Data);
@@ -57,7 +59,11 @@ export default function Main() {
           )}
         </Grid>
         <Grid item sx={{ pt: 5 }}>
-          {User.roles.includes('sender') && data.length == 1 && <SendingForm />}
+          {data.length > 0 && (
+            <Can I={Action.Manage} a={Subject.Barcode}>
+              <SendingForm />
+            </Can>
+          )}
         </Grid>
       </Grid>
     </>
