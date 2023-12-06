@@ -4,29 +4,19 @@ import {
   GridToolbarDensitySelector,
   GridToolbarFilterButton,
 } from '@mui/x-data-grid-premium';
-import { useAppDispatch } from '../../Reducer';
-import { Button } from '@mui/material';
-import { setBox } from '../../Reducer/Box';
-import createCode from '../../api/createCode';
+import PrintCodesButton from './PrintCodesButton';
+import { Can } from '../../casl/casl.factory';
+import { Action, Subject } from '../../casl/casl';
 
 export function RowBoxToolbar() {
-  const dispatch = useAppDispatch();
   return (
     <GridToolbarContainer>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
       <GridToolbarDensitySelector />
-      <Button
-        onClick={() => {
-          dispatch(setBox(['create', true]));
-          createCode();
-        }}
-        color="primary"
-        variant="contained"
-        size="small"
-      >
-        Создать короб
-      </Button>
+      <Can I={Action.Manage} a={Subject.Barcode}>
+        <PrintCodesButton />
+      </Can>
     </GridToolbarContainer>
   );
 }

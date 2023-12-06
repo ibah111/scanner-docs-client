@@ -7,12 +7,12 @@ import {
 import React from 'react';
 import getDocs from '../api/getDocs';
 import { CustomToolbar } from '../components/CustomToolbar';
-import PrevTransmit from '../components/Docs/PrevTransmit';
 import { useAppDispatch, useAppSelector } from '../Reducer';
 import { setDocs } from '../Reducer/Docs';
 import { setComponents } from '../Reducer/DocsComponent';
 import { columnsDoc } from '../components/Docs/columns';
 import CustomPagination from '../components/Pagination/CustomPagination';
+import PrevTransmit from '../components/Docs/Transmit/PrevTransmit';
 export default function Docs() {
   const data = useAppSelector((state) => state.Docs);
   const { filterModel, page, pageSize, sortModel } = useAppSelector(

@@ -15,6 +15,7 @@ export enum Subject {
   Box = 'Box',
   Doc = 'Doc',
   DocData = 'DocData',
+  Document = 'Document',
 }
 export type Subjects = Subject | 'all';
 export type AppAbility = PureAbility<[Action, Subjects]>;
