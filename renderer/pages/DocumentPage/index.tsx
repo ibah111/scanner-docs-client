@@ -1,5 +1,5 @@
 import { Box, Grid } from '@mui/material';
-import PrevTransmit from '../../components/Docs/PrevTransmit';
+import PrevTransmit from '../../components/Docs/Transmit/PrevTransmit';
 import useDocumentPage from './useDocumentPage';
 import { DataGridPremium } from '@mui/x-data-grid-premium';
 import CustomPagination from '../../components/Pagination/CustomPagination';

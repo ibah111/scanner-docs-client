@@ -1,20 +1,18 @@
-import { Button, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import {
   DataGridPremium,
   GridFilterModel,
   GridSortModel,
 } from '@mui/x-data-grid-premium';
 import React from 'react';
-import createCode from '../api/createCode';
-import openRowsBox from '../api/openRowsBox';
-import { CustomToolbar } from '../components/CustomToolbar';
-import columns from '../components/TableCodes/columns';
-import { socketConnect } from '../lib/socket';
-import { useAppDispatch, useAppSelector } from '../Reducer';
-import { setBox } from '../Reducer/Box';
-import { setRowDoc } from '../Reducer/RowDoc';
-import { setRowsBox } from '../Reducer/RowsBox';
-import CustomPagination from '../components/Pagination/CustomPagination';
+import openRowsBox from '../../api/openRowsBox';
+import columns from '../../components/TableCodes/columns';
+import { socketConnect } from '../../lib/socket';
+import { useAppDispatch, useAppSelector } from '../../Reducer';
+import { setRowDoc } from '../../Reducer/RowDoc';
+import { setRowsBox } from '../../Reducer/RowsBox';
+import { RowBoxToolbar } from './RowBoxToolbar';
+import CustomPagination from '../../components/Pagination/CustomPagination';
 export default function TableCodes() {
   const data = useAppSelector((state) => state.RowDoc);
   const { filterModel, page, pageSize, sortModel } = useAppSelector(
@@ -75,7 +73,7 @@ export default function TableCodes() {
            * slots
            */
           slots={{
-            toolbar: CustomToolbar,
+            toolbar: RowBoxToolbar,
             pagination: CustomPagination,
           }}
           slotProps={{
@@ -83,20 +81,6 @@ export default function TableCodes() {
           }}
         />
       </Grid>
-
-      {data.rows.length > 0 && (
-        <Button
-          onClick={() => {
-            dispatch(setBox(['create', true]));
-            createCode();
-          }}
-          color="primary"
-          variant="contained"
-          sx={{ ml: '88vw', mt: '10px', mb: '10px' }}
-        >
-          Создать короб
-        </Button>
-      )}
     </>
   );
 }
