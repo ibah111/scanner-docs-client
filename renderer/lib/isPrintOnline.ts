@@ -1,4 +1,5 @@
 import { bpac_electron } from '@tools/bpac/electron_renderer';
+import { enqueueSnackbar } from 'notistack';
 import { from, map, mergeMap, of } from 'rxjs';
 const printers = ['Brother QL-800'];
 export default function isPrintOnline<T>() {
@@ -22,7 +23,9 @@ export default function isPrintOnline<T>() {
       },
       map((data) => {
         if (!(data.isOnline && printers.includes(data.printerName)))
-          throw Error('Ошибка принтер недоступен');
+          enqueueSnackbar('Принтер не подключен', {
+            variant: 'error',
+          });
       }),
       map(() => value),
     ),
