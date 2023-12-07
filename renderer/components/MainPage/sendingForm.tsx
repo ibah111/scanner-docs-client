@@ -1,15 +1,18 @@
-import { Box, Button, Paper, Typography } from '@mui/material';
+import { Box, Button, Dialog, Paper, Typography } from '@mui/material';
 import React from 'react';
 import SendData from '../../api/SendData';
 import { useAppDispatch } from '../../Reducer';
 import { resetData } from '../../Reducer/Data';
 import DateSend from './MainPageForm/DateSend';
 import WhereSend from './MainPageForm/WhereSend.';
-
-export default function SendingForm() {
+interface SendingFormInterface {
+  open: boolean;
+  onClose: VoidFunction;
+}
+export default function SendingForm({ ...props }: SendingFormInterface) {
   const dispatch = useAppDispatch();
   return (
-    <>
+    <Dialog {...props}>
       <React.Fragment>
         <Paper>
           <Box
@@ -38,6 +41,6 @@ export default function SendingForm() {
           </Box>
         </Paper>
       </React.Fragment>
-    </>
+    </Dialog>
   );
 }
