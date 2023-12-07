@@ -4,7 +4,6 @@ import React from 'react';
 import { useAppSelector } from '../../Reducer';
 import SendingForm from '../../components/MainPage/sendingForm';
 import columns from '../../components/MainPage/columns';
-import { CustomToolbar } from '../../components/CustomToolbar';
 import CustomPagination from '../../components/Pagination/CustomPagination';
 import { Can } from '../../casl/casl.factory';
 import { Action, Subject } from '../../casl/casl';
@@ -12,7 +11,6 @@ import MainPageToolbar from './MainPageToolbar';
 
 export default function Main() {
   const data = useAppSelector((state) => state.Data);
-  const User = useAppSelector((state) => state.User);
   const boxId = data[0]?.Box?.id;
   const boxUserName =
     data[0]?.Box?.User.f +
@@ -33,9 +31,9 @@ export default function Main() {
         direction="column"
         justifyContent="flex-start"
         alignItems="center"
-        sx={{ width: '100vw' }}
+        sx={{ minHeight: 0, minWidth: 0 }}
       >
-        <Grid item sx={{ width: '100vw' }}>
+        <Grid item sx={{ minHeight: 0, minWidth: 0 }}>
           {data.length > 1 && (
             <Typography sx={{ mt: 2, ml: 2, mb: 2 }}>
               <b>ID короба:</b> {boxId} <b>Предыдущий держатель:</b>{' '}
@@ -43,7 +41,11 @@ export default function Main() {
             </Typography>
           )}
         </Grid>
-        <Grid item xs={data.length > 1 ? true : false} sx={{ width: '100vw' }}>
+        <Grid
+          item
+          xs={data.length > 1 ? true : false}
+          sx={{ minHeight: 0, minWidth: 0 }}
+        >
           {data.length > 0 ? (
             <DataGridPremium
               autoHeight={data.length === 1}
@@ -65,13 +67,11 @@ export default function Main() {
             </Typography>
           )}
         </Grid>
-        <Grid item sx={{ pt: 5 }}>
         {data.length > 0 && (
           <Can I={Action.Manage} a={Subject.Barcode}>
             <SendingForm open={open} onClose={handleClose} />
           </Can>
         )}
-        </Grid>
       </Grid>
     </>
   );

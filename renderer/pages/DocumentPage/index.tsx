@@ -30,8 +30,19 @@ export default function DocumentPage() {
   };
   return (
     <>
-      <Grid item xs sx={{ height: '100%', width: '100vw' }}>
+      <Grid
+        item
+        xs
+        container
+        direction={'column'}
+        justifyContent={'flex-start'}
+        alignItems={'center'}
+        sx={{ minHeight: 0, minWidth: 0 }}
+      >
         <DataGridPremium
+          sx={{
+            width: '100%',
+          }}
           {...gridProps}
           pagination
           paginationMode="server"
