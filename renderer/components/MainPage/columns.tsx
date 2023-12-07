@@ -27,10 +27,10 @@ const columns: GridColDef<Doc>[] = [
     width: 50,
   },
   {
-    field: 'date_post',
+    field: 'date',
     headerName: 'Дата поступления',
     valueGetter: (params) => {
-      return moment(params.row.doc?.date_post).toDate();
+      return moment(params.row.date).toDate();
     },
     type: 'date',
     width: 200,

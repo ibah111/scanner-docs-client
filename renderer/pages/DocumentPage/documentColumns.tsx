@@ -15,6 +15,14 @@ export default function documentColumns() {
       width: 5,
     },
     {
+      field: 'Doc.title',
+      headerName: 'Название документа',
+      valueGetter: (params) => {
+        return params.row?.title;
+      },
+      width: 200,
+    },
+    {
       field: 'Barcode.code',
       headerName: 'Номер штрихкода',
       valueGetter(params) {
@@ -51,14 +59,6 @@ export default function documentColumns() {
       headerName: 'ФИО должника',
       valueGetter: (params) => {
         return params.row?.DocData.Result.fio_dol;
-      },
-      width: 200,
-    },
-    {
-      field: 'Doc.title',
-      headerName: 'Название документа',
-      valueGetter: (params) => {
-        return params.row?.title;
       },
       width: 200,
     },
