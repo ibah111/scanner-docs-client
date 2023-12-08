@@ -7,7 +7,7 @@ import {
   Grid,
   Typography,
 } from '@mui/material';
-import { useAppDispatch, useAppSelector } from '../../Reducer';
+import { useAppDispatch } from '../../Reducer';
 import { setBox } from '../../Reducer/Box';
 import createCode from '../../api/createCode';
 import { useGridApiContext, useGridSelector } from '@mui/x-data-grid-premium';
@@ -16,12 +16,11 @@ import React from 'react';
 
 export default function PrintCodesButton() {
   const dispatch = useAppDispatch();
-  const data = useAppSelector((state) => state.RowDoc);
   const gridApi = useGridApiContext();
   const rows = useGridSelector(
     gridApi,
     (state: GridStatePremium) => state.rowSelection,
-  );
+  ) as number[];
   const [open, setOpen] = React.useState<boolean>(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -52,7 +51,7 @@ export default function PrintCodesButton() {
               variant="outlined"
               onClick={() => {
                 dispatch(setBox(['create', true]));
-                createCode().then(() => handleClose());
+                createCode(rows).then(() => handleClose());
               }}
             >
               Печать

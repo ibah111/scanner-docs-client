@@ -1,4 +1,3 @@
-import { store } from '../Reducer';
 import { forkJoin, lastValueFrom, map, mergeMap, of } from 'rxjs';
 import { baseRequest } from '../utils/baseRequest';
 import { authRetry, post, transformAxios } from '@tools/rxjs-pipes';
@@ -7,16 +6,9 @@ import isPrintOnline from '../lib/isPrintOnline';
 import printBarcode from '../lib/printBarcode';
 const url = of('/createBox');
 
-export default async function createCode() {
-  const data = store.getState().Box;
+export default async function createCode(list: number[]) {
   return lastValueFrom(
-    forkJoin([
-      baseRequest,
-      url,
-      of({
-        ...data,
-      }),
-    ]).pipe(
+    forkJoin([baseRequest, url, of({ list })]).pipe(
       isPrintOnline(),
       post<string>(),
       transformAxios(),
