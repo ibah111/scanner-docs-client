@@ -6,13 +6,13 @@ import {
 } from '@mui/x-data-grid-premium';
 import React from 'react';
 import openRowsBox from '../../api/openRowsBox';
-import columns from '../../components/TableCodes/columns';
 import { socketConnect } from '../../lib/socket';
 import { useAppDispatch, useAppSelector } from '../../Reducer';
 import { setRowDoc } from '../../Reducer/RowDoc';
 import { setRowsBox } from '../../Reducer/RowsBox';
 import { RowBoxToolbar } from './RowBoxToolbar';
 import CustomPagination from '../../components/Pagination/CustomPagination';
+import rowBoxColumns from './rowBoxColumns';
 export default function TableCodes() {
   const data = useAppSelector((state) => state.RowDoc);
   const { filterModel, page, pageSize, sortModel } = useAppSelector(
@@ -49,7 +49,7 @@ export default function TableCodes() {
       <Grid item xs container direction="column" alignItems="center">
         <DataGridPremium
           sx={{ pl: 2, height: '100%', width: '100%' }}
-          columns={columns}
+          columns={rowBoxColumns()}
           rows={data.rows}
           rowCount={data.count}
           /**

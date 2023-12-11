@@ -7,7 +7,8 @@ import OpenDocuments from '../../components/Docs/OpenDocuments';
 export default function documentColumns() {
   const documentColumns: GridColDef<Doc>[] = [
     {
-      field: 'Doc.id',
+      field: 'id',
+      type: 'number',
       headerName: '№',
       valueGetter: (params) => {
         return params.row.id;
@@ -15,15 +16,16 @@ export default function documentColumns() {
       width: 5,
     },
     {
-      field: 'Doc.title',
+      field: 'title',
       headerName: 'Название документа',
       valueGetter: (params) => {
         return params.row?.title;
       },
+      type: 'string',
       width: 200,
     },
     {
-      field: 'Barcode.code',
+      field: 'code',
       headerName: 'Номер штрихкода',
       valueGetter(params) {
         return params.row.Barcode?.code;
@@ -39,7 +41,7 @@ export default function documentColumns() {
       width: 120,
     },
     {
-      field: 'DocData.Result.kd',
+      field: 'kd',
       headerName: 'Кредитный договор',
       valueGetter: (params) => {
         return params.row?.DocData.Result.kd;
@@ -47,7 +49,7 @@ export default function documentColumns() {
       width: 200,
     },
     {
-      field: 'DocData.Result.reestr',
+      field: 'reestr',
       headerName: 'Реестр',
       valueGetter: (params) => {
         return params.row?.DocData.Result.reestr;
@@ -55,7 +57,7 @@ export default function documentColumns() {
       width: 200,
     },
     {
-      field: 'DocData.Result.fio_dol',
+      field: 'fio_dol',
       headerName: 'ФИО должника',
       valueGetter: (params) => {
         return params.row?.DocData.Result.fio_dol;
@@ -75,8 +77,11 @@ export default function documentColumns() {
       ],
       width: 50,
     },
+    /**
+     * @todo sequelize server concat
+     */
     {
-      field: 'DocData.User.f',
+      field: 'fio',
       headerName: 'Текущий держатель',
       valueGetter: (params) => {
         return generateName(
@@ -88,7 +93,7 @@ export default function documentColumns() {
       width: 200,
     },
     {
-      field: 'DocData.Depart.title',
+      field: 'title',
       headerName: 'Подразделение',
       valueGetter: (params) => {
         return params.row.DocData.Depart?.title;
@@ -96,7 +101,7 @@ export default function documentColumns() {
       width: 200,
     },
     {
-      field: 'DocData.Transmits.date_send',
+      field: 'date_send',
       headerName: 'Дата отправки в банк/ОСП',
       valueGetter: (params) => {
         if (params.row.DocData.Transmits?.length > 0) {
@@ -109,7 +114,7 @@ export default function documentColumns() {
       width: 200,
     },
     {
-      field: 'DocData.Transmits.where_send',
+      field: 'where_send',
       headerName: 'Куда отправлено',
       valueGetter: (params) => {
         if (params.row.DocData.Transmits?.length > 0) {
