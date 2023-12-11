@@ -22,16 +22,17 @@ export default function useDocumentPage() {
 
   const refresh = React.useCallback(() => {
     setLoading(true);
-    getDocs()
-      .then((res) => {
-        setRows(res.rows), setRowCount(res.count);
-      })
-      /** absurd */
-      .then(() => setLoading(false));
-  }, []);
+    getDocs({
+      filterModel,
+      paginationModel,
+      sortModel,
+    }).then((res) => {
+      setRows(res.rows), setRowCount(res.count), setLoading(false);
+    });
+  }, [filterModel, sortModel, paginationModel]);
   React.useEffect(() => {
     refresh();
-  }, []);
+  }, [refresh]);
   return {
     rows,
     columns,
