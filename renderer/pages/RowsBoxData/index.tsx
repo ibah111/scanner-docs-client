@@ -7,19 +7,19 @@ import {
 import React from 'react';
 import openRowsBox from '../../api/openRowsBox';
 import { socketConnect } from '../../lib/socket';
-import { useAppDispatch, useAppSelector } from '../../Reducer';
+import { useAppDispatch } from '../../Reducer';
 import { setRowDoc } from '../../Reducer/RowDoc';
 import { setRowsBox } from '../../Reducer/RowsBox';
 import { RowBoxToolbar } from './RowBoxToolbar';
 import CustomPagination from '../../components/Pagination/CustomPagination';
-import rowBoxColumns from './rowBoxColumns';
+import useRowBox from './useRowBox';
 export default function TableCodes() {
   const data = useAppSelector((state) => state.RowDoc);
   const { filterModel, page, pageSize, sortModel } = useAppSelector(
     (state) => state.RowsBox,
   );
   const dispatch = useAppDispatch();
-  const onFilterChange = (filter: GridFilterModel) => {
+  const { refresh, ...gridProps } = useRowBox();
     dispatch(setRowsBox(['filterModel', filter]));
   };
   const handleSortModelChange = (sort: GridSortModel) => {
@@ -77,7 +77,7 @@ export default function TableCodes() {
             pagination: CustomPagination,
           }}
           slotProps={{
-            toolbar: {},
+            toolbar: { refresh },
           }}
           checkboxSelection
         />
