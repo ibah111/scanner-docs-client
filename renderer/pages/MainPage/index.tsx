@@ -44,14 +44,16 @@ export default function Main() {
         <Grid
           item
           xs={data.length > 1 ? true : false}
-          sx={{ minHeight: 0, minWidth: 0 }}
+          sx={{ minHeight: 0, minWidth: 0, height: '100%', width: '100%' }}
         >
           {data.length > 0 ? (
             <DataGridPremium
+              sx={{
+                width: '100%',
+              }}
               autoHeight={data.length === 1}
               rows={data}
               columns={columns}
-              sx={{ pl: 2 }}
               slots={{
                 toolbar: MainPageToolbar,
                 pagination: CustomPagination,
