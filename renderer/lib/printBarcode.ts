@@ -16,7 +16,7 @@ export default function printBarcode(text: string) {
       return from(doc.Open(barcode_file)).pipe(
         mergeMap(() => doc.GetObject('barcode')),
         tap((barcode) => {
-          barcode.Text = text;
+          barcode.Text = String(text);
           doc.StartPrint('', 0);
           doc.PrintOut(1, 0);
           doc.EndPrint();
