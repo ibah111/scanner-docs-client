@@ -22,7 +22,11 @@ export default function useRowBox() {
 
   const refresh = React.useCallback(() => {
     setLoading(true);
-    openRowsBox().then((res) => {
+    openRowsBox({
+      filterModel,
+      paginationModel,
+      sortModel,
+    }).then((res) => {
       setRows(res.rows);
       setRowCount(res.count);
       setLoading(false);
