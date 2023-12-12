@@ -2,25 +2,13 @@ import { forkJoin, lastValueFrom, of } from 'rxjs';
 import { authRetry, post, transformAxios } from '@tools/rxjs-pipes';
 import { baseRequest } from '../utils/baseRequest';
 import { transformError } from '../utils/processError';
-import {
-  GridFilterModel,
-  GridPaginationModel,
-  GridSortModel,
-} from '@mui/x-data-grid-premium';
 import { Doc } from '../Schemas/Doc.model';
-
-interface getDocsParams {
-  paginationModel: GridPaginationModel;
-  filterModel: GridFilterModel;
-  sortModel: GridSortModel;
-}
-interface Page {
-  count: number;
-  rows: Doc[];
-}
+import { Page, paramsDataGridInterface } from '../utils/DataGridParameters';
 
 const url = of('/getDocs');
-export default async function getDocs(params: getDocsParams): Promise<Page> {
+export default async function getDocs(
+  params: paramsDataGridInterface,
+): Promise<Page<Doc>> {
   return lastValueFrom(
     forkJoin([
       baseRequest,
@@ -28,6 +16,6 @@ export default async function getDocs(params: getDocsParams): Promise<Page> {
       of({
         ...params,
       }),
-    ]).pipe(post<Page>(), transformAxios(), transformError(), authRetry()),
+    ]).pipe(post<Page<Doc>>(), transformAxios(), transformError(), authRetry()),
   );
 }

@@ -2,11 +2,7 @@ import { forkJoin, lastValueFrom, of } from 'rxjs';
 import { authRetry, post, transformAxios } from '@tools/rxjs-pipes';
 import { transformError } from '../utils/processError';
 import { baseRequest } from '../utils/baseRequest';
-import {
-  GridPaginationModel,
-  GridFilterModel,
-  GridSortModel,
-} from '@mui/x-data-grid';
+import { Page, paramsDataGridInterface } from '../utils/DataGridParameters';
 export interface Role {
   id: number;
   name: string;
@@ -19,18 +15,10 @@ export interface User {
   Roles: Role[];
 }
 
-interface Page {
-  count: number;
-  rows: User[];
-}
-
-interface getRoleParams {
-  paginationModel: GridPaginationModel;
-  filterModel: GridFilterModel;
-  sortModel: GridSortModel;
-}
 const url = of('/role/get');
-export default async function getRoles(params: getRoleParams): Promise<Page> {
+export default async function getRoles(
+  params: paramsDataGridInterface,
+): Promise<Page<User>> {
   return lastValueFrom(
     forkJoin([
       baseRequest,
@@ -38,6 +26,11 @@ export default async function getRoles(params: getRoleParams): Promise<Page> {
       of({
         ...params,
       }),
-    ]).pipe(post<Page>(), transformAxios(), transformError(), authRetry()),
+    ]).pipe(
+      post<Page<User>>(),
+      transformAxios(),
+      transformError(),
+      authRetry(),
+    ),
   );
 }
