@@ -3,8 +3,13 @@ import { Doc } from '../../Schemas/Doc.model';
 import { generateName } from '../../utils/generateName';
 import { GridColDef } from '@mui/x-data-grid-premium';
 import OpenDocuments from '../../components/Docs/OpenDocuments';
+import { Can } from '../../casl/casl.factory';
+import { Action, Subject } from '../../casl/casl';
+import PrintButton from './DocumentComponents/PrintButton';
+import { DocumentEvents, EventDocumentDialog } from '.';
+import { EventDialogInterface } from '../../utils/EventDialogInterface';
 
-export default function documentColumns() {
+export default function documentColumns({ EventTarget }: EventDialogInterface) {
   const documentColumns: GridColDef<Doc>[] = [
     {
       field: 'id',
@@ -18,9 +23,6 @@ export default function documentColumns() {
     {
       field: 'title',
       headerName: 'Название документа',
-      valueGetter: (params) => {
-        return params.row?.title;
-      },
       type: 'string',
       width: 200,
     },
@@ -44,7 +46,7 @@ export default function documentColumns() {
       field: 'kd',
       headerName: 'Кредитный договор',
       valueGetter: (params) => {
-        return params.row?.DocData.Result.kd;
+        return params.row?.DocData?.Result?.kd || 'Кд не указан';
       },
       width: 200,
     },
@@ -52,7 +54,7 @@ export default function documentColumns() {
       field: 'reestr',
       headerName: 'Реестр',
       valueGetter: (params) => {
-        return params.row?.DocData.Result.reestr;
+        return params.row?.DocData?.Result?.reestr || 'Реестр не указан';
       },
       width: 200,
     },
@@ -60,7 +62,9 @@ export default function documentColumns() {
       field: 'fio_dol',
       headerName: 'ФИО должника',
       valueGetter: (params) => {
-        return params.row?.DocData.Result.fio_dol;
+        return (
+          params.row?.DocData?.Result?.fio_dol || 'ФИО Должника не указано'
+        );
       },
       width: 200,
     },
@@ -77,9 +81,6 @@ export default function documentColumns() {
       ],
       width: 50,
     },
-    /**
-     * @todo sequelize server concat
-     */
     {
       field: 'fio',
       headerName: 'Текущий держатель',
@@ -93,7 +94,7 @@ export default function documentColumns() {
       width: 200,
     },
     {
-      field: 'title',
+      field: 'depatment',
       headerName: 'Подразделение',
       valueGetter: (params) => {
         return params.row.DocData.Depart?.title;
@@ -138,6 +139,28 @@ export default function documentColumns() {
         return params.row.law_exec_id;
       },
       width: 200,
+    },
+    {
+      field: 'actions',
+      headerName: 'Действия',
+      width: 200,
+      type: 'actions',
+      getActions: (params) => [
+        <>
+          <Can I={Action.Manage} a={Subject.Doc}>
+            <PrintButton
+              handleOpen={() =>
+                EventTarget.dispatchEvent(
+                  new EventDocumentDialog(
+                    DocumentEvents.openPrintDialog,
+                    params.row.id,
+                  ),
+                )
+              }
+            />
+          </Can>
+        </>,
+      ],
     },
   ];
   return documentColumns;

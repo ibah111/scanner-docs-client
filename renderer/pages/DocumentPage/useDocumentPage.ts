@@ -30,6 +30,13 @@ export default function useDocumentPage() {
       setRows(res.rows), setRowCount(res.count), setLoading(false);
     });
   }, [filterModel, sortModel, paginationModel]);
+  const initialState: GridInitialStatePremium = {
+    pinnedColumns: {
+      left: [],
+      right: ['actions'],
+    },
+  };
+
   React.useEffect(() => {
     refresh();
   }, [refresh]);
@@ -47,5 +54,6 @@ export default function useDocumentPage() {
     onSortModelChange,
     filterModel,
     onFilterModelChange,
+    initialState,
   };
 }
