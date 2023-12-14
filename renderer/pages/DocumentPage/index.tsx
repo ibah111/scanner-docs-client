@@ -6,10 +6,14 @@ import CustomPagination from '../../components/Pagination/CustomPagination';
 import { DocumentToolbar } from './DocumentToolbar/DocumentToolbar';
 import React from 'react';
 import DocumentCreateDialog from './DocumentCreateDialog/DocumentCreateDialog';
-enum DocumentEvents {
-  openCreateWindow = 'openCreateWindow',
+import PrindDialog from './DocumentComponents/PrintDialog';
+import usePrintControl from './DocumentComponents/usePrintControl';
+export enum DocumentEvents {
+  openPrintDialog = 'openPrintDialog',
 }
-export class EventDialog<Value = number | string | object> extends Event {
+export class EventDocumentDialog<
+  Value = number | string | object,
+> extends Event {
   constructor(type: DocumentEvents, value: Value) {
     super(type);
     this.value = value;
@@ -17,9 +21,8 @@ export class EventDialog<Value = number | string | object> extends Event {
   value: Value;
 }
 export default function DocumentPage() {
-  const { ...gridProps } = useDocumentPage();
-  const DialogTarget = React.useMemo(() => new EventTarget(), []);
-  console.log(DialogTarget);
+  const EventTrigger = React.useMemo(() => new EventTarget(), []);
+  const { ...gridProps } = useDocumentPage(EventTrigger);
 
   const [open, setOpen] = React.useState(false);
   const handleOpenDocumentCreate = () => {
@@ -28,6 +31,10 @@ export default function DocumentPage() {
   const handleCloseDocumentCreate = () => {
     setOpen(false);
   };
+  const printControl = usePrintControl({
+    EventTarget: EventTrigger,
+    refresh: () => {},
+  });
   return (
     <>
       <Grid
@@ -65,6 +72,12 @@ export default function DocumentPage() {
           <DocumentCreateDialog
             open={open}
             onClose={handleCloseDocumentCreate}
+          />
+        )}
+        {printControl.code && (
+          <PrindDialog
+            open={printControl.open}
+            onClose={printControl.closePrintDialog}
           />
         )}
       </Grid>

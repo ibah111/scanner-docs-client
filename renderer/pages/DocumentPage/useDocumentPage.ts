@@ -7,9 +7,9 @@ import {
   GridPaginationModel,
   GridSortModel,
 } from '@mui/x-data-grid-premium';
+import { GridInitialStatePremium } from '@mui/x-data-grid-premium/models/gridStatePremium';
 
-export default function useDocumentPage() {
-  const columns = documentColumns();
+export default function useDocumentPage(EventTarget: EventTarget) {
   const [rows, setRows] = React.useState<Doc[]>([]);
   const [rowCount, setRowCount] = React.useState<number>(0);
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -19,7 +19,6 @@ export default function useDocumentPage() {
   const [filterModel, onFilterModelChange] = React.useState<GridFilterModel>({
     items: [],
   });
-
   const refresh = React.useCallback(() => {
     setLoading(true);
     getDocs({
@@ -30,6 +29,11 @@ export default function useDocumentPage() {
       setRows(res.rows), setRowCount(res.count), setLoading(false);
     });
   }, [filterModel, sortModel, paginationModel]);
+
+  const columns = documentColumns({
+    EventTarget,
+    refresh,
+  });
   const initialState: GridInitialStatePremium = {
     pinnedColumns: {
       left: [],
@@ -45,9 +49,6 @@ export default function useDocumentPage() {
     columns,
     loading,
     rowCount,
-    /**
-     * Модель фильтров, сорт, пагинации
-     */
     paginationModel,
     onPaginationModelChange,
     sortModel,
