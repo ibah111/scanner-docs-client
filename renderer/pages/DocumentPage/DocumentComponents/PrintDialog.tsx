@@ -12,15 +12,17 @@ interface PrintDialogInterface {
   open: boolean;
   onClose: VoidFunction;
   docId: number;
+  docCode: string;
+  boxCode: string;
 }
 export default function PrindDialog({
   onClose,
   open,
   docId,
+  boxCode,
+  docCode,
 }: PrintDialogInterface) {
-  const [boxCode, setBoxCode] = React.useState<number>();
-  const [docCode, setDocCode] = React.useState<number>();
-  const condition = (box: number): boolean => {
+  const condition = (box: string): boolean => {
     if (box) return false;
     return true;
   };
@@ -36,9 +38,7 @@ export default function PrindDialog({
               variant="contained"
               onClick={() => {
                 printBarcode(String(docCode)).subscribe({
-                  complete: () => {},
-                  error: () => {},
-                  next: () => {},
+                  next: () => onClose(),
                 });
               }}
             >
@@ -48,18 +48,18 @@ export default function PrindDialog({
           <Grid xs item>
             <Tooltip title="Если кнопка деактивирована, то клиент не получил код короба">
               <Button
-                disabled={condition}
+                disabled={condition(boxCode)}
                 fullWidth
                 variant="contained"
                 onClick={() => {
                   printBarcode(String(boxCode)).subscribe({
-                    complete: () => {},
-                    error: () => {},
-                    next: () => {},
+                    next: () => onClose(),
                   });
                 }}
               >
-                <Grid>Короба: {boxCode}</Grid>
+                <Grid>
+                  {boxCode ? `Короб: ${boxCode}` : 'Док. не в коробе'}
+                </Grid>
               </Button>
             </Tooltip>
           </Grid>
