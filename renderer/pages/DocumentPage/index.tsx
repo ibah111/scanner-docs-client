@@ -74,8 +74,9 @@ export default function DocumentPage() {
             onClose={handleCloseDocumentCreate}
           />
         )}
-        {printControl.code && (
+        {printControl.open && (
           <PrindDialog
+            docId={printControl.docId}
             open={printControl.open}
             onClose={printControl.closePrintDialog}
           />

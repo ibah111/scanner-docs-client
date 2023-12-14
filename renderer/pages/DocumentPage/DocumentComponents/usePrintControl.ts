@@ -9,23 +9,23 @@ export default function usePrintControl({
   refresh,
 }: usePrintDialog) {
   const [open, setOpen] = React.useState(false);
-  const [code, setCode] = React.useState<number>(0);
+  const [docId, setDocId] = React.useState<number>(0);
 
   React.useEffect(() => {
     const callback = ((event: EventDocumentDialog) => {
-      setCode(event.value as number);
+      setDocId(event.value as number);
       setOpen(true);
     }) as EventListener;
     EventTarget.addEventListener(DocumentEvents.openPrintDialog, callback);
   }, []);
   const closePrintDialog = React.useCallback(() => {
-    setCode(0);
+    setDocId(0);
     setOpen(false);
     refresh();
   }, [refresh, EventTarget]);
   return {
     open,
-    code,
+    docId,
     closePrintDialog,
   };
 }
