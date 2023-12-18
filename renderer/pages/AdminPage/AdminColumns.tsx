@@ -45,7 +45,15 @@ export default function useColumns(roles: Type[]) {
         field: 'Actions',
         headerName: 'Действия',
         type: 'actions',
-        getActions: () => [],
+        getActions: () => [
+          <>
+            <GridActionsCellItem
+              label="addRole"
+              onClick={() => {}}
+              icon={<AddIcon />}
+            />
+          </>,
+        ],
       },
     ],
     [],
