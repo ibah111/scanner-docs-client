@@ -18,7 +18,7 @@ export default function documentColumns({ EventTarget }: EventDialogInterface) {
       valueGetter: (params) => {
         return params.row.id;
       },
-      width: 5,
+      width: 25,
     },
     {
       field: 'title',
@@ -35,12 +35,13 @@ export default function documentColumns({ EventTarget }: EventDialogInterface) {
       width: 130,
     },
     {
+      type: 'number',
       field: 'contact_doc_id',
       headerName: 'Номер документа',
+      width: 120,
       valueGetter: (params) => {
         return params.row?.contact_doc_id;
       },
-      width: 120,
     },
     {
       field: 'kd',
@@ -125,6 +126,7 @@ export default function documentColumns({ EventTarget }: EventDialogInterface) {
       width: 200,
     },
     {
+      type: 'number',
       field: 'law_act_id',
       headerName: 'Юридическое дело',
       valueGetter(params) {
@@ -133,6 +135,7 @@ export default function documentColumns({ EventTarget }: EventDialogInterface) {
       width: 150,
     },
     {
+      type: 'number',
       field: 'law_exec_id',
       headerName: 'Исполнительное дело',
       valueGetter: (params) => {
