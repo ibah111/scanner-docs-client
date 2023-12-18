@@ -11,6 +11,9 @@ export interface Role {
 export interface User {
   id: number;
   id_bitrix: number;
+  f: string;
+  i: string;
+  o: string;
   login: string;
   Roles: Role[];
 }
