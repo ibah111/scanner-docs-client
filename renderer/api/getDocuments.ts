@@ -11,7 +11,7 @@ export default async function getDocuments(id: number) {
       baseRequest,
       url,
       of({
-        headers: id,
+        id,
       }),
     ]).pipe(post<Blob>(), transformAxios(), transformError(), authRetry()),
   );
