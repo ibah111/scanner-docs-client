@@ -5,30 +5,34 @@ import OpenDocuments from '../../components/Docs/OpenDocuments';
 export default function rowBoxColumns() {
   const cols: GridColDef<Doc>[] = [
     {
+      width: 75,
+      type: 'number',
       field: 'id',
       headerName: '№',
       valueGetter: (params) => {
         return params.row.id;
       },
-      width: 25,
     },
     {
+      width: 150,
+      type: 'string',
       field: 'code',
       headerName: 'Номер штрихкода',
       valueGetter(params) {
         return params.row.Barcode?.code;
       },
-      width: 130,
     },
     {
+      width: 150,
+      type: 'number',
       field: 'contact_doc_id',
       headerName: 'Номер документа',
       valueGetter(params) {
         return params.row.contact_doc_id;
       },
-      width: 150,
     },
     {
+      type: 'string',
       field: 'kd',
       headerName: 'Кредитный договор',
       valueGetter: (params) => {
@@ -37,7 +41,8 @@ export default function rowBoxColumns() {
       width: 200,
     },
     {
-      field: 'DocData.Result.reestr',
+      type: 'string',
+      field: 'reestr',
       headerName: 'Реестр',
       valueGetter: (params) => {
         return params.row.DocData.Result.reestr;
@@ -45,7 +50,8 @@ export default function rowBoxColumns() {
       width: 200,
     },
     {
-      field: 'DocData.Result.fio_dol',
+      type: 'string',
+      field: 'fio_dol',
       headerName: 'ФИО должника',
       valueGetter: (params) => {
         return params.row.DocData.Result.fio_dol;
@@ -53,7 +59,8 @@ export default function rowBoxColumns() {
       width: 200,
     },
     {
-      field: 'Doc.title',
+      type: 'string',
+      field: 'title',
       headerName: 'Название документа',
       valueGetter: (params) => {
         return params.row.title;
@@ -61,9 +68,9 @@ export default function rowBoxColumns() {
       width: 200,
     },
     {
+      type: 'actions',
       field: 'actions',
       headerName: 'Документ',
-      type: 'actions',
       getActions: (params) => {
         return [
           <OpenDocuments
@@ -74,8 +81,8 @@ export default function rowBoxColumns() {
         ];
       },
     },
-
     {
+      type: 'number',
       field: 'law_act_id',
       headerName: 'Юридическое дело',
       valueGetter(params) {
@@ -84,6 +91,7 @@ export default function rowBoxColumns() {
       width: 150,
     },
     {
+      type: 'number',
       field: 'law_exec_id',
       headerName: 'Исполнительное дело',
       valueGetter: (params) => {
