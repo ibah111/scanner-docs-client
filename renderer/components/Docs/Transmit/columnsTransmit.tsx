@@ -50,13 +50,14 @@ export default function columnsTransmit(): GridColDef<Log>[] {
       width: 200,
     },
     {
+      type: 'date',
       field: 'date_return',
       headerName: 'Дата возврата',
-
       valueGetter: (params) => {
-        return moment(params.row.Transmit?.date_return).toDate() || '';
+        if (params.row.Transmit?.date_return !== null)
+          return moment(params.row.Transmit?.date_return).toDate();
+        else return '';
       },
-      type: 'date',
       width: 200,
     },
   ];
