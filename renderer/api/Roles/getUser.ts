@@ -10,6 +10,7 @@ import { User } from './getRoles';
 import { transformError } from '../../utils/processError';
 
 const url = of('getUser/%1$s');
+const url = of('role/getUser/%1$s');
 const format = createFormat<[string]>();
 export default function getUser(id: number) {
   return lastValueFrom(
