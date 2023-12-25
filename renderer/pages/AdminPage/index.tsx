@@ -19,6 +19,10 @@ export class AdminPageDialog<Value = number | string | object> extends Event {
 export default function AmdinPage() {
   const EventTargets = React.useMemo(() => new EventTarget(), []);
   const { ...gridProps } = useAdminPageGrid(EventTargets);
+  const control = useAddRoleDialogControl({
+    EventTarget: EventTargets,
+    refresh: () => {},
+  });
   return (
     <>
       <Grid
@@ -43,6 +47,9 @@ export default function AmdinPage() {
           {...gridProps}
         />
       </Grid>
+      {control.open && (
+        <AddRoleDialog open={control.open} onClose={control.onClose} />
+      )}
     </>
   );
 }

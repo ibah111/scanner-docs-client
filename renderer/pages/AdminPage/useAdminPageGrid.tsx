@@ -9,9 +9,9 @@ import {
 import getRolesArray from '../../api/Roles/getRolesArray';
 import useAsyncMemo from '../../utils/useAsyndMemo';
 
-export default function useAdminPageGrid() {
+export default function useAdminPageGrid(eventTarget: EventTarget) {
   const roles = useAsyncMemo(getRolesArray, [], []);
-  const columns = useColumns(roles);
+  const columns = useColumns(roles, eventTarget);
   const [loading, setLoading] = React.useState(false);
   const [rows, setRows] = React.useState<User[]>([]);
   const [rowCount, setRowCount] = React.useState<number>(0);
