@@ -10,6 +10,7 @@ interface AddRoleDiloagProps {
   onClose: VoidFunction;
 }
 export default function AddRoleDialog({ onClose, open }: AddRoleDiloagProps) {
+  userId,
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth={'lg'}>
       <DialogTitle>Добавить роль</DialogTitle>

@@ -48,7 +48,11 @@ export default function AmdinPage() {
         />
       </Grid>
       {control.open && (
-        <AddRoleDialog open={control.open} onClose={control.onClose} />
+        <AddRoleDialog
+          open={control.open}
+          onClose={control.onClose}
+          userId={control.userId}
+        />
       )}
     </>
   );
