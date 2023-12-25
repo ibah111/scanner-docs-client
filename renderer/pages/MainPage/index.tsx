@@ -1,13 +1,17 @@
-import { Grid, Typography } from '@mui/material';
+import { Button, Grid, TextField, Typography } from '@mui/material';
 import { DataGridPremium } from '@mui/x-data-grid-premium';
 import React from 'react';
-import { useAppSelector } from '../../Reducer';
+import { useAppDispatch, useAppSelector } from '../../Reducer';
 import SendingForm from '../../components/MainPage/sendingForm';
 import columns from '../../components/MainPage/columns';
 import CustomPagination from '../../components/Pagination/CustomPagination';
 import { Can } from '../../casl/casl.factory';
 import { Action, Subject } from '../../casl/casl';
 import MainPageToolbar from './MainPageToolbar';
+import { NumericFormatCustom } from '../../utils/NumberFormatMask';
+import { resetData, setData } from '../../Reducer/Data';
+import { resetSend } from '../../Reducer/Send';
+import getData from '../../api/getData';
 
 export default function Main() {
   const data = useAppSelector((state) => state.Data);
@@ -22,6 +26,17 @@ export default function Main() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [code, setCode] = React.useState<string>('');
+  const dispatch = useAppDispatch();
+  const handleScan = () => {
+    dispatch(resetData());
+    dispatch(resetSend());
+    getData(code).subscribe((res) => {
+      dispatch(setData(res));
+    });
+  };
+
   return (
     <>
       <Grid
@@ -64,9 +79,59 @@ export default function Main() {
               pagination
             />
           ) : (
-            <Typography align={'center'} variant={'h4'} sx={{ pt: 5 }}>
-              Подключите сканер штрих-кода и начните работу
-            </Typography>
+            <>
+              <Typography align={'center'} variant={'h4'} sx={{ pt: 5 }}>
+                Подключите сканер штрих-кода и начните работу
+              </Typography>
+              <Grid
+                container
+                sx={{
+                  alignContent: 'center',
+                }}
+              >
+                <Grid item xs>
+                  <Typography align={'center'} variant={'h4'}>
+                    Или введите код вручную:
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Grid
+                container
+                sx={{
+                  alignContent: 'center',
+                }}
+                spacing={2}
+              >
+                <Grid item xs={12}>
+                  <TextField
+                    label="Номер штриха"
+                    value={code}
+                    onChange={(event) => {
+                      console.log(typeof event.target.value);
+                      setCode(event.target.value);
+                    }}
+                    InputProps={{
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                      inputComponent: NumericFormatCustom as any,
+                    }}
+                  >
+                    Штрихкод
+                  </TextField>
+                  <Grid item xs>
+                    <Button
+                      size="large"
+                      variant="contained"
+                      onClick={() => handleScan()}
+                      onKeyDown={(event) => {
+                        if (event.key === 'enter') handleScan();
+                      }}
+                    >
+                      Поиск
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </>
           )}
         </Grid>
         {data.length > 0 && (
