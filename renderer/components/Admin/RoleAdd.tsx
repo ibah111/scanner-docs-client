@@ -1,7 +1,7 @@
 import { Box, Button, ClickAwayListener, Paper, Popper } from '@mui/material';
 import React from 'react';
-import addRole from '../../api/addRole';
-import { Role, User } from '../../api/getRoles';
+import addRole from '../../api/Roles/addRole';
+import { Role, User } from '../../api/Roles/getRoles';
 import { useAppDispatch, useAppSelector } from '../../Reducer';
 import { resetUser } from '../../Reducer/User';
 

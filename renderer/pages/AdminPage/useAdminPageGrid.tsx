@@ -1,6 +1,6 @@
 import React from 'react';
 import useColumns from './AdminColumns';
-import getRoles, { User } from '../../api/getRoles';
+import getRoles, { User } from '../../api/Roles/getRoles';
 import {
   GridFilterModel,
   GridPaginationModel,

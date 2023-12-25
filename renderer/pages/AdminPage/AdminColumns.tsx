@@ -1,5 +1,5 @@
 import { GridActionsCellItem, GridColDef } from '@mui/x-data-grid-premium';
-import { User } from '../../api/getRoles';
+import { User } from '../../api/Roles/getRoles';
 import React from 'react';
 import { Type } from '../../api/TypesApi/ClassType';
 import AddIcon from '@mui/icons-material/Add';

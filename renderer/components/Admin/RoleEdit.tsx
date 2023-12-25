@@ -9,7 +9,7 @@ import {
 import React from 'react';
 import { Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
 import RoleAdd from './RoleAdd';
-import { Role, User } from '../../api/getRoles';
+import { Role, User } from '../../api/Roles/getRoles';
 import { useAppDispatch, useAppSelector } from '../../Reducer';
 import removeRole from '../../api/removeRole';
 import { resetUser } from '../../Reducer/User';

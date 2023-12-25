@@ -1,8 +1,8 @@
 import { forkJoin, lastValueFrom, of } from 'rxjs';
 import { authRetry, post, transformAxios } from '@tools/rxjs-pipes';
-import { transformError } from '../utils/processError';
-import { baseRequest } from '../utils/baseRequest';
-import { Page, paramsDataGridInterface } from '../utils/DataGridParameters';
+import { transformError } from '../../utils/processError';
+import { baseRequest } from '../../utils/baseRequest';
+import { Page, paramsDataGridInterface } from '../../utils/DataGridParameters';
 export interface Role {
   id: number;
   name: string;
