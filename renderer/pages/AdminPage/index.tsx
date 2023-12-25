@@ -3,9 +3,22 @@ import { DataGridPremium } from '@mui/x-data-grid-premium';
 import useAdminPageGrid from './useAdminPageGrid';
 import { CustomToolbar } from '../../components/CustomToolbar';
 import CustomPagination from '../../components/Pagination/CustomPagination';
-
+import React from 'react';
+import AddRoleDialog from './AddRoleDialog/AddRoleDialog';
+import useAddRoleDialogControl from './AddRoleDialog/useAddRoleDialogControl';
+export enum AdminPageEvents {
+  openAddRoleDialog = 'openAddRoleDialog',
+}
+export class AdminPageDialog<Value = number | string | object> extends Event {
+  constructor(type: AdminPageEvents, value: Value) {
+    super(type);
+    this.value = value;
+  }
+  value: Value;
+}
 export default function AmdinPage() {
-  const { ...gridProps } = useAdminPageGrid();
+  const EventTargets = React.useMemo(() => new EventTarget(), []);
+  const { ...gridProps } = useAdminPageGrid(EventTargets);
   return (
     <>
       <Grid

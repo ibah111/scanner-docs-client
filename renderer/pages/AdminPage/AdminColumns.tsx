@@ -1,10 +1,10 @@
-import { GridActionsCellItem, GridColDef } from '@mui/x-data-grid-premium';
+import { GridColDef } from '@mui/x-data-grid-premium';
 import { User } from '../../api/Roles/getRoles';
 import React from 'react';
 import { Type } from '../../api/TypesApi/ClassType';
-import AddIcon from '@mui/icons-material/Add';
+import OpenAddRoleDialogIcon from './AddRoleDialog/OpenAddRoleDialogIcon';
 
-export default function useColumns(roles: Type[]) {
+export default function useColumns(roles: Type[], eventTarget: EventTarget) {
   const selects = [
     {
       label: 'Нет',
@@ -45,12 +45,11 @@ export default function useColumns(roles: Type[]) {
         field: 'Actions',
         headerName: 'Действия',
         type: 'actions',
-        getActions: () => [
+        getActions: (params) => [
           <>
-            <GridActionsCellItem
-              label="addRole"
-              onClick={() => {}}
-              icon={<AddIcon />}
+            <OpenAddRoleDialogIcon
+              eventTarget={eventTarget}
+              userId={params.row.id}
             />
           </>,
         ],
