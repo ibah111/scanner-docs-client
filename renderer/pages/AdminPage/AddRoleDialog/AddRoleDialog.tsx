@@ -17,6 +17,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import addRole from '../../../api/Roles/addRole';
 import { enqueueSnackbar } from 'notistack';
+import removeRole from '../../../api/Roles/removeRole';
 interface AddRoleDiloagProps {
   open: boolean;
   onClose: VoidFunction;
@@ -60,7 +61,18 @@ export default function AddRoleDialog({
                   <>
                     <MenuItem value={i.id} key={i.id}>
                       {i.title}
-                      <IconButton onClick={() => {}} size="small">
+                      <IconButton
+                        onClick={() =>
+                          removeRole(userId, i.id).then(() =>
+                            refresh().then(() =>
+                              enqueueSnackbar('Роль удалена', {
+                                variant: 'warning',
+                              }),
+                            ),
+                          )
+                        }
+                        size="small"
+                      >
                         <DeleteIcon />
                       </IconButton>
                     </MenuItem>
