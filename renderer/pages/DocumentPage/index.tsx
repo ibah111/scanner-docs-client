@@ -3,7 +3,7 @@ import PrevTransmit from '../../components/Docs/Transmit/PrevTransmit';
 import useDocumentPage from './useDocumentPage';
 import { DataGridPremium } from '@mui/x-data-grid-premium';
 import CustomPagination from '../../components/Pagination/CustomPagination';
-import { DocumentToolbar } from './DocumentToolbar/DocumentToolbar';
+import DocumentToolbar from './DocumentToolbar/DocumentToolbar';
 import React from 'react';
 import DocumentCreateDialog from './DocumentCreateDialog/DocumentCreateDialog';
 import PrindDialog from './DocumentComponents/PrintDialog';

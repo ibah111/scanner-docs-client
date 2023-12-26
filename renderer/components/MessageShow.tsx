@@ -10,7 +10,7 @@ export default function MessageShow() {
   React.useEffect(() => {
     if (messages.length > 0) {
       for (const message of messages)
-        enqueueSnackbar(message.message, message.params);
+        enqueueSnackbar(message.message, message.options);
       dispatch(resetMessage());
     }
   }, [messages]);

@@ -8,7 +8,7 @@ import PrintCodesButton from './PrintCodesButton';
 import { Can } from '../../casl/casl.factory';
 import { Action, Subject } from '../../casl/casl';
 
-export function RowBoxToolbar() {
+export default function RowBoxToolbar() {
   return (
     <GridToolbarContainer>
       <GridToolbarColumnsButton />

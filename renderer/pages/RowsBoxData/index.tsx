@@ -2,7 +2,7 @@ import { Grid } from '@mui/material';
 import { DataGridPremium } from '@mui/x-data-grid-premium';
 import React from 'react';
 import { socketConnect } from '../../lib/socket';
-import { RowBoxToolbar } from './RowBoxToolbar';
+import RowBoxToolbar from './RowBoxToolbar';
 import CustomPagination from '../../components/Pagination/CustomPagination';
 import useRowBox from './useRowBox';
 export default function TableCodes() {

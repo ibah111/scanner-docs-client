@@ -5,7 +5,7 @@ import {
   GridToolbarFilterButton,
 } from '@mui/x-data-grid-premium';
 
-export function DocumentToolbar() {
+export default function DocumentToolbar() {
   return (
     <GridToolbarContainer>
       <GridToolbarColumnsButton />

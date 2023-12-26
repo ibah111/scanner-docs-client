@@ -13,7 +13,7 @@ import {
 import React from 'react';
 import getStore from '../lib/store';
 import { useAppDispatch } from '../Reducer';
-import { callSuccess } from '../Reducer/Message';
+import { addMessage } from '../Reducer/Message';
 import { UpdateInfo } from 'electron-updater';
 
 function LinearProgressWithLabel(
@@ -62,8 +62,7 @@ export default function Update() {
     });
     window.ipc.on('version', (event, params) => {
       const version = getStore().get('version');
-      if (version !== params)
-        dispatch(callSuccess('Обновление произошло успешно'));
+      if (version !== params) dispatch(addMessage());
       getStore().set('version', params);
     });
     window.ipc.send('check_version');
