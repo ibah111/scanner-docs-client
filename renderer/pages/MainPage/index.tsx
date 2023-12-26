@@ -36,7 +36,10 @@ export default function Main() {
       dispatch(setData(res));
     });
   };
-
+  const buttonCondition = (value: string): boolean => {
+    if (value.length === 12) return false;
+    return true;
+  };
   return (
     <>
       <Grid
