@@ -98,31 +98,39 @@ export default function Main() {
                   </Typography>
                 </Grid>
               </Grid>
-              <Grid
-                container
-                sx={{
-                  alignContent: 'center',
-                }}
-                spacing={2}
-              >
-                <Grid item xs={12}>
-                  <TextField
-                    label="Номер штриха"
-                    value={code}
-                    onChange={(event) => {
-                      console.log(typeof event.target.value);
-                      setCode(event.target.value);
-                    }}
-                    InputProps={{
-                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                          inputComponent: CodeFormatCustom as any,
-                    }}
+              <Grid item container rowSpacing={1}>
+                <Grid item container rowSpacing={1}>
+                  <Grid
+                    item
+                    xs={12}
+                    border={'center'}
+                    justifyContent={'center'}
+                    display={'flex'}
                   >
-                    Штрихкод
-                  </TextField>
-                  <Grid item xs>
+                    <Grid item>
+                      <TextField
+                        label="Номер штриха"
+                        value={code}
+                        onChange={(event) => setCode(event.target.value)}
+                        InputProps={{
+                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                          inputComponent: CodeFormatCustom as any,
+                        }}
+                      >
+                        Штрихкод
+                      </TextField>
+                    </Grid>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    border={'center'}
+                    justifyContent={'center'}
+                    display={'flex'}
+                  >
                     <Button
                       disabled={buttonCondition(code)}
+                      size="medium"
                       variant="contained"
                       onClick={() => handleScan()}
                       onKeyDown={(event) => {
