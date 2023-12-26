@@ -8,7 +8,7 @@ import CustomPagination from '../../components/Pagination/CustomPagination';
 import { Can } from '../../casl/casl.factory';
 import { Action, Subject } from '../../casl/casl';
 import MainPageToolbar from './MainPageToolbar';
-import { NumericFormatCustom } from '../../utils/NumberFormatMask';
+import { CodeFormatCustom } from '../../utils/NumberFormatMask';
 import { resetData, setData } from '../../Reducer/Data';
 import { resetSend } from '../../Reducer/Send';
 import getData from '../../api/getData';
@@ -115,14 +115,14 @@ export default function Main() {
                     }}
                     InputProps={{
                       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                      inputComponent: NumericFormatCustom as any,
+                          inputComponent: CodeFormatCustom as any,
                     }}
                   >
                     Штрихкод
                   </TextField>
                   <Grid item xs>
                     <Button
-                      size="large"
+                      disabled={buttonCondition(code)}
                       variant="contained"
                       onClick={() => handleScan()}
                       onKeyDown={(event) => {
