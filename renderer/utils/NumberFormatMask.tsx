@@ -29,3 +29,27 @@ export const NumericFormatCustom = React.forwardRef<
     />
   );
 });
+
+export const CodeFormatCustom = React.forwardRef<
+  NumericFormatProps,
+  CustomProps
+>(function NumericFormatCustom(props, ref) {
+  const { onChange, ...other } = props;
+
+  return (
+    <NumericFormat
+      maxLength={12}
+      {...other}
+      getInputRef={ref}
+      onValueChange={(values) => {
+        onChange({
+          target: {
+            name: props.name,
+            value: values.value,
+          },
+        });
+      }}
+      valueIsNumericString
+    />
+  );
+});
