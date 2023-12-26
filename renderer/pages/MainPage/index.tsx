@@ -109,6 +109,9 @@ export default function Main() {
                   >
                     <Grid item>
                       <TextField
+                        onKeyDown={(event) => {
+                          if (event.key === 'Enter') handleScan();
+                        }}
                         label="Номер штриха"
                         value={code}
                         onChange={(event) => setCode(event.target.value)}
@@ -133,9 +136,6 @@ export default function Main() {
                       size="medium"
                       variant="contained"
                       onClick={() => handleScan()}
-                      onKeyDown={(event) => {
-                        if (event.key === 'enter') handleScan();
-                      }}
                     >
                       Поиск
                     </Button>
