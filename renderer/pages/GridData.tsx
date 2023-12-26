@@ -28,7 +28,11 @@ export default function Docs() {
 
   React.useEffect(() => {
     if (page || pageSize || filterModel || sortModel) {
-      getDocs().then((res) => {
+      getDocs({
+        filterModel,
+        sortModel,
+        paginationModel: { page, pageSize },
+      }).then((res) => {
         dispatch(setDocs(res));
       });
     }
