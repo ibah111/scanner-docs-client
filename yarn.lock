@@ -4337,7 +4337,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"canvas@npm:^2.11.2":
+"canvas@npm:^2.11.0":
   version: 2.11.2
   resolution: "canvas@npm:2.11.2"
   dependencies:
@@ -8309,25 +8309,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"path2d-polyfill@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "path2d-polyfill@npm:2.0.1"
-  checksum: 82b26ef1a737560bc7a974919aec5d1c316d923b39cdf3aae2f20cd77b08d6c5256a5605f178d7dc010de7c886eeac0c263a590653687f8aea60fabbc0582890
-  languageName: node
-  linkType: hard
-
-"pdfjs-dist@npm:^3.11.174":
-  version: 3.11.174
-  resolution: "pdfjs-dist@npm:3.11.174"
+"pdfjs-dist@npm:3.2.146":
+  version: 3.2.146
+  resolution: "pdfjs-dist@npm:3.2.146"
   dependencies:
-    canvas: "npm:^2.11.2"
-    path2d-polyfill: "npm:^2.0.1"
+    canvas: "npm:^2.11.0"
+    web-streams-polyfill: "npm:^3.2.1"
   dependenciesMeta:
     canvas:
       optional: true
-    path2d-polyfill:
-      optional: true
-  checksum: f739ffd451718d214e664c943a066dcb4020bc1ed92b5639ae38d6a25ef0bddcc05b35a68c3dfeb95fcfb852377bcb2aef935c780312a229f1f34e682627a8ae
+  checksum: fa3f4b5052414169f7f1d6585338d3307aa02aefbb398331f1de8546432abd02e66ca8e31cba97fe1ac09c90c3f123e5d481e0bae782c6c1d39fd0c6a2b4b1d6
   languageName: node
   linkType: hard
 
@@ -9085,7 +9076,7 @@ __metadata:
     nextron: "npm:^8.12.0"
     notistack: "npm:^3.0.1"
     open: "npm:^9.1.0"
-    pdfjs-dist: "npm:^3.11.174"
+    pdfjs-dist: "npm:3.2.146"
     prettier: "npm:^3.1.0"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -10226,6 +10217,13 @@ __metadata:
     glob-to-regexp: "npm:^0.4.1"
     graceful-fs: "npm:^4.1.2"
   checksum: 4280b45bc4b5d45d5579113f2a4af93b67ae1b9607cc3d86ae41cdd53ead10db5d9dc3237f24256d05ef88b28c69a02712f78e434cb7ecc8edaca134a56e8cab
+  languageName: node
+  linkType: hard
+
+"web-streams-polyfill@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "web-streams-polyfill@npm:3.2.1"
+  checksum: 08fcf97b7883c1511dd3da794f50e9bde75a660884783baaddb2163643c21a94086f394dc4bd20dff0f55c98d98d60c4bea05a5809ef5005bdf835b63ada8900
   languageName: node
   linkType: hard
 
