@@ -18,7 +18,6 @@ interface DialogFileProps {
   id: number;
   title: string;
 }
-
 export default function OpenDocuments({ id, title }: DialogFileProps) {
   const [open, setOpen] = React.useState(false);
   const [file, setFile] = React.useState<string>('');
@@ -26,10 +25,10 @@ export default function OpenDocuments({ id, title }: DialogFileProps) {
     if (open)
       getDocuments(id).then((res) => {
         const file = changeMime(title, res);
-        setFile(URL.createObjectURL(file));
+        const urlFile = URL.createObjectURL(file);
+        setFile(urlFile);
       });
   }, [open]);
-
   const defaultLayoutPluginInstance = defaultLayoutPlugin({
     sidebarTabs: (defaultTabs) => [defaultTabs[0]],
   });
