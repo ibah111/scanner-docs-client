@@ -33,7 +33,10 @@ if (isProd) {
     height: 600,
     autoHideMenuBar: true,
     frame: false,
-    webPreferences: { preload: path.join(__dirname, 'preload.js') },
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      devTools: process.env.NODE_ENV === 'production' ? false : true,
+    },
   });
   document_electron_main(mainWindow.webContents);
   Store.initRenderer();
