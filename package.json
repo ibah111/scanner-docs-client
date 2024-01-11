@@ -6,7 +6,8 @@
   "author": "Мария Иванова <ivanova_ms@outlook.com>",
   "main": "app/background.js",
   "scripts": {
-    "start": "ELECTRON_ENABLE_LOGGING=1 nextron",
+    "start:dev": "NODE_ENV=development ELECTRON_ENABLE_LOGGING=1 nextron",
+    "start:prod": "NODE_ENV=production ELECTRON_ENABLE_LOGGING=1 nextron",
     "build": "nextron build --win",
     "postinstall": "electron-builder install-app-deps",
     "lint": "eslint \"renderer/**/*.{ts,tsx}\" --fix"

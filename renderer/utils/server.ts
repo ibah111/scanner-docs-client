@@ -4,6 +4,8 @@ export default function server(name?: string) {
     case 'oauth':
       return config.oauth;
     default:
-      return config.server;
+      return process.env.NODE_ENV === 'production'
+        ? config.server_production
+        : config.server_development;
   }
 }
