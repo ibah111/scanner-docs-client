@@ -4,10 +4,10 @@ import { ValidationError } from 'class-validator';
 import { store } from '../Reducer';
 import { t } from 'i18next';
 import { createError } from '@tools/rxjs-pipes';
-import getToken from '../api/getToken';
 import { baseRequestInstance } from './baseRequest';
 import { TranslateMessage } from '../hooks/Validation/checker';
 import { addMessage } from '../Reducer/Message';
+import getToken from '../api/Login/getToken';
 
 function objectKeys<T extends object>(obj: T) {
   return Object.keys(obj) as Array<keyof T>;

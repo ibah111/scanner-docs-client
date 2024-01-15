@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import { useAppDispatch } from '../../Reducer';
-import getToken from '../../api/getToken';
 import { relogin } from '../../Reducer/State';
+import getToken from '../../api/Login/getToken';
 
 export default function Authorization() {
   const dispatch = useAppDispatch();

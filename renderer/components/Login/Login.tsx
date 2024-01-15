@@ -3,10 +3,10 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../Reducer';
 import { relogin, loged as logedAction } from '../../Reducer/State';
 import Authorization from '../MainPage/Authorization';
-import getToken from '../../api/getToken';
 import { resetUser, setUser } from '../../Reducer/User';
 import { CaslContext } from '../../casl/casl.factory';
 import { createUserAbility } from '../../casl/casl';
+import getToken from '../../api/Login/getToken';
 
 interface LoginProps {
   children: React.ReactNode;
