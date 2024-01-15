@@ -8,12 +8,16 @@ import { singleEvents } from './singleEvents';
 import { document_electron_main } from '@tools/bpac/electron_main';
 import path from 'path';
 import { StoreInit } from './store';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('@electron/remote/main').initialize();
 const isProd: boolean = process.env.NODE_ENV === 'production';
+console.log('isp: ', isProd);
 if (isProd) {
   serve({ directory: 'app' });
 } else {
-  app.setPath('userData', `${app.getPath('userData')} (development)`);
+  const path = app.getPath('userData');
+  console.log('path:', path);
+  app.setPath('userData', `${path} (development)`);
 }
 
 (async () => {
@@ -40,6 +44,7 @@ if (isProd) {
   });
   document_electron_main(mainWindow.webContents);
   Store.initRenderer();
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('@electron/remote/main').enable(mainWindow.webContents);
   events(mainWindow.webContents);
   autoUpdaters(app, mainWindow.webContents);
@@ -50,6 +55,7 @@ if (isProd) {
     mainWindow.webContents.openDevTools();
   } else {
     const port = process.argv[2];
+    //8888
     await mainWindow.loadURL(`http://localhost:${port}/MainPage`);
     mainWindow.webContents.openDevTools();
   }

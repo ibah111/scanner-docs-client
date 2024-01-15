@@ -57,6 +57,10 @@ export default function Login({ children }: LoginProps) {
             <Grid item>
               <Authorization />
             </Grid>
+            <Grid item>
+              Вы в режиме:{' '}
+              {process.env.NODE_ENV === 'production' ? 'рабочая' : 'тестовая'}
+            </Grid>
           </Grid>
         </Grid>
       )}

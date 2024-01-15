@@ -25,6 +25,9 @@ export function getTokenFromAtlas(): Observable<string> {
     );
     let error = true;
     window.ipc.once('getToken', (event, value: string) => {
+      console.log('value', value, 'subscriber', subscriber.next(value));
+      getStore().set('token', value);
+      console.log('store: ', getStore().get('token'));
       error = false;
       subscriber.next(value);
       subscriber.complete();
