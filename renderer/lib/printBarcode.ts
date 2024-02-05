@@ -2,7 +2,7 @@ import path from 'path';
 import { bpac_electron } from '@tools/bpac/electron_renderer';
 import { from, mergeMap, of, tap } from 'rxjs';
 import isPrintOnline from './isPrintOnline';
-export default function printBarcode(text: string, title: string) {
+export default function printBarcode(text: string, title?: string) {
   const bpac = bpac_electron();
   return of(text).pipe(
     isPrintOnline(),
@@ -17,7 +17,7 @@ export default function printBarcode(text: string, title: string) {
         mergeMap(() => doc.GetObject('text')),
         tap((lbx) => {
           // Наименование к баркоду
-          lbx.Text = String(title);
+          lbx.Text = String(title) || '';
           // Даю значение к штрихкоду
           doc.SetBarcodeData(0, String(text));
           // Принт функции
