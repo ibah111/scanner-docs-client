@@ -14,6 +14,7 @@ interface PrintDialogInterface {
   docId: number;
   docCode: string;
   boxCode: string;
+  titleCode: string;
 }
 export default function PrindDialog({
   onClose,
@@ -21,6 +22,7 @@ export default function PrindDialog({
   docId,
   boxCode,
   docCode,
+  titleCode,
 }: PrintDialogInterface) {
   const condition = (box: string): boolean => {
     if (box) return false;
@@ -37,7 +39,10 @@ export default function PrindDialog({
               color="success"
               variant="contained"
               onClick={() => {
-                printBarcode(String(docCode)).subscribe({
+                printBarcode(
+                  String(docCode),
+                  `Документ:\n${titleCode}`,
+                ).subscribe({
                   next: () => onClose(),
                 });
               }}
@@ -52,7 +57,10 @@ export default function PrindDialog({
                 fullWidth
                 variant="contained"
                 onClick={() => {
-                  printBarcode(String(boxCode)).subscribe({
+                  printBarcode(
+                    String(boxCode),
+                    `Короб:\n${titleCode}`,
+                  ).subscribe({
                     next: () => onClose(),
                   });
                 }}

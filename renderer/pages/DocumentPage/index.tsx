@@ -83,6 +83,7 @@ export default function DocumentPage() {
             docId={printControl.docId}
             open={printControl.open}
             onClose={printControl.closePrintDialog}
+            titleCode={printControl.titleCode}
           />
         )}
       </Grid>

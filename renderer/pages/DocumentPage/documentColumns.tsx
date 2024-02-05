@@ -157,6 +157,7 @@ export default function documentColumns({ EventTarget }: EventDialogInterface) {
                   new EventDocumentDialog(
                     DocumentEvents.openPrintDialog,
                     params.row.id,
+                    params.row.title,
                   ),
                 )
               }
