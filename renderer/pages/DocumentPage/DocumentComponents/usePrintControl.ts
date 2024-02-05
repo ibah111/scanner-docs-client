@@ -13,10 +13,12 @@ export default function usePrintControl({
   const [docId, setDocId] = React.useState<number>(0);
   const [docCode, setDocCode] = React.useState<string>('');
   const [boxCode, setBoxCode] = React.useState<string>('');
-
+  const [titleCode, setTitleCode] = React.useState<string>('');
   React.useEffect(() => {
     const callback = ((event: EventDocumentDialog) => {
       const value = event.value as number;
+      const title = event.title as string;
+      setTitleCode(title);
       setDocId(value);
       setOpen(true);
       getCodes(value).then((res) => {
@@ -37,5 +39,6 @@ export default function usePrintControl({
     boxCode,
     docCode,
     closePrintDialog,
+    titleCode,
   };
 }
