@@ -14,11 +14,13 @@ export enum DocumentEvents {
 export class EventDocumentDialog<
   Value = number | string | object,
 > extends Event {
-  constructor(type: DocumentEvents, value: Value) {
+  constructor(type: DocumentEvents, value: Value, title?: string) {
     super(type);
     this.value = value;
+    this.title = title;
   }
   value: Value;
+  title?: string;
 }
 export default function DocumentPage() {
   const EventTrigger = React.useMemo(() => new EventTarget(), []);
