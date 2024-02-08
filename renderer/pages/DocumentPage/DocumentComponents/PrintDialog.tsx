@@ -30,7 +30,9 @@ export default function PrindDialog({
   };
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth={'md'}>
-      <DialogTitle align="center">Документ: {docId}, Печать кода:</DialogTitle>
+      <DialogTitle align="center">
+        Документ: {docId}, Печать кода документа {titleCode}:
+      </DialogTitle>
       <DialogContent>
         <Grid container columnSpacing={2}>
           <Grid xs item>
@@ -43,7 +45,7 @@ export default function PrindDialog({
                   String(docCode),
                   `Документ:\n${titleCode}`,
                 ).subscribe({
-                  next: () => onClose(),
+                  complete: () => onClose(),
                 });
               }}
             >
@@ -61,7 +63,7 @@ export default function PrindDialog({
                     String(boxCode),
                     `Короб:\n${titleCode}`,
                   ).subscribe({
-                    next: () => onClose(),
+                    complete: () => onClose(),
                   });
                 }}
               >
