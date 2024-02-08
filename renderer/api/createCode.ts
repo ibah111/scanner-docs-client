@@ -6,7 +6,7 @@ import isPrintOnline from '../lib/isPrintOnline';
 import printBarcode from '../lib/printBarcode';
 const url = of('/createBox');
 
-export default async function createCode(list: number[]) {
+export default async function createCode(list: number[], boxName: string) {
   return lastValueFrom(
     forkJoin([baseRequest, url, of({ list })]).pipe(
       isPrintOnline(),
@@ -14,7 +14,7 @@ export default async function createCode(list: number[]) {
       transformAxios(),
       transformError(),
       authRetry(),
-      mergeMap((data) => printBarcode(data).pipe(map(() => data))),
+      mergeMap((data) => printBarcode(data, boxName).pipe(map(() => data))),
     ),
   );
 }

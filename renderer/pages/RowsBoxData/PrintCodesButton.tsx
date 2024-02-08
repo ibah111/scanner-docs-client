@@ -5,6 +5,7 @@ import {
   DialogContent,
   DialogTitle,
   Grid,
+  TextField,
   Typography,
 } from '@mui/material';
 import { useAppDispatch } from '../../Reducer';
@@ -14,7 +15,11 @@ import { useGridApiContext, useGridSelector } from '@mui/x-data-grid-premium';
 import { GridStatePremium } from '@mui/x-data-grid-premium/models/gridStatePremium';
 import React from 'react';
 
-export default function PrintCodesButton() {
+interface PrintCodesButtonProps {
+  refresh: VoidFunction;
+}
+
+export default function PrintCodesButton({ refresh }: PrintCodesButtonProps) {
   const dispatch = useAppDispatch();
   const gridApi = useGridApiContext();
   const rows = useGridSelector(
@@ -28,6 +33,8 @@ export default function PrintCodesButton() {
     if (rows.length > 0) return false;
     return true;
   };
+  const [boxTitle, setBoxTitle] = React.useState<string>('');
+
   return (
     <>
       <Button
@@ -43,6 +50,14 @@ export default function PrintCodesButton() {
         <DialogContent>
           <DialogTitle>
             <Grid>
+              <TextField
+                onChange={(event) => {
+                  setBoxTitle(event.target.value as string);
+                }}
+                value={boxTitle}
+              />
+            </Grid>
+            <Grid>
               <Typography>{`Распечатать коды: ${rows}?`}</Typography>
             </Grid>
           </DialogTitle>
@@ -51,7 +66,9 @@ export default function PrintCodesButton() {
               variant="outlined"
               onClick={() => {
                 dispatch(setBox(['create', true]));
-                createCode(rows).then(() => handleClose());
+                createCode(rows, boxTitle)
+                  .then(() => handleClose())
+                  .then(() => refresh());
               }}
             >
               Печать

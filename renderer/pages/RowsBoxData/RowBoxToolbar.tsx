@@ -7,15 +7,17 @@ import {
 import PrintCodesButton from './PrintCodesButton';
 import { Can } from '../../casl/casl.factory';
 import { Action, Subject } from '../../casl/casl';
-
-export default function RowBoxToolbar() {
+interface RowBoxToolbarProps {
+  refresh: VoidFunction;
+}
+export default function RowBoxToolbar({ refresh }: RowBoxToolbarProps) {
   return (
     <GridToolbarContainer>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
       <GridToolbarDensitySelector />
       <Can I={Action.Manage} a={Subject.Barcode}>
-        <PrintCodesButton />
+        <PrintCodesButton refresh={refresh} />
       </Can>
     </GridToolbarContainer>
   );
