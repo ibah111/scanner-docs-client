@@ -22,10 +22,12 @@ export default function isPrintOnline<T>() {
         );
       },
       map((data) => {
-        if (!(data.isOnline && printers.includes(data.printerName)))
+        if (!(data.isOnline && printers.includes(data.printerName))) {
           enqueueSnackbar('Принтер не подключен', {
             variant: 'error',
           });
+          throw Error();
+        }
       }),
       map(() => value),
     ),
