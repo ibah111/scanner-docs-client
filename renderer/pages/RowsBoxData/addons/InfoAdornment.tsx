@@ -12,7 +12,9 @@ import {
 } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
 import React from 'react';
-import { textConst } from './text';
+
+const textConst = `Имя короба должно состоять больше 10 символов. 
+Если вам нужны быстрые варианты набора, обратитесь к разработчику.`;
 
 export default function InfoAdornment() {
   const [open, setOpen] = React.useState<boolean>(false);

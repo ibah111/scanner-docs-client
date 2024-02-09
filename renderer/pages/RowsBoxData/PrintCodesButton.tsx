@@ -16,8 +16,9 @@ import { useGridApiContext, useGridSelector } from '@mui/x-data-grid-premium';
 import { GridStatePremium } from '@mui/x-data-grid-premium/models/gridStatePremium';
 import React from 'react';
 import InfoAdornment from './addons/InfoAdornment';
-import { falseHelper, trueHelper } from './addons/text';
 
+const trueHelper = `Четко.`;
+const falseHelper = `Наименование должно превышать длину в 10 символов`;
 interface PrintCodesButtonProps {
   refresh: VoidFunction;
 }

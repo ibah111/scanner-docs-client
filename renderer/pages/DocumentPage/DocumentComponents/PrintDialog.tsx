@@ -8,6 +8,7 @@ import {
 } from '@mui/material';
 import printBarcode from '../../../lib/printBarcode';
 import React from 'react';
+import { enqueueSnackbar } from 'notistack';
 interface PrintDialogInterface {
   open: boolean;
   onClose: VoidFunction;
@@ -45,7 +46,17 @@ export default function PrindDialog({
                   String(docCode),
                   `Документ:\n${titleCode}`,
                 ).subscribe({
-                  complete: () => onClose(),
+                  complete() {
+                    onClose();
+                    enqueueSnackbar('Распечатано', {
+                      variant: 'success',
+                    });
+                  },
+                  error() {
+                    enqueueSnackbar('Подключите принтер', {
+                      variant: 'warning',
+                    });
+                  },
                 });
               }}
             >
@@ -63,7 +74,17 @@ export default function PrindDialog({
                     String(boxCode),
                     `Короб:\n${titleCode}`,
                   ).subscribe({
-                    complete: () => onClose(),
+                    complete() {
+                      onClose();
+                      enqueueSnackbar('Распечатано', {
+                        variant: 'success',
+                      });
+                    },
+                    error() {
+                      enqueueSnackbar('Подключите принтер', {
+                        variant: 'warning',
+                      });
+                    },
                   });
                 }}
               >
