@@ -4,6 +4,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Divider,
   Grid,
   TextField,
   Typography,
@@ -14,6 +15,8 @@ import createCode from '../../api/createCode';
 import { useGridApiContext, useGridSelector } from '@mui/x-data-grid-premium';
 import { GridStatePremium } from '@mui/x-data-grid-premium/models/gridStatePremium';
 import React from 'react';
+import InfoAdornment from './addons/InfoAdornment';
+import { falseHelper, trueHelper } from './addons/text';
 
 interface PrintCodesButtonProps {
   refresh: VoidFunction;
@@ -35,6 +38,11 @@ export default function PrintCodesButton({ refresh }: PrintCodesButtonProps) {
   };
   const [boxTitle, setBoxTitle] = React.useState<string>('');
 
+  const buttonCondition = (value: string): boolean => {
+    if (value.length > 10) return false;
+    return true;
+  };
+
   return (
     <>
       <Button
@@ -46,33 +54,50 @@ export default function PrintCodesButton({ refresh }: PrintCodesButtonProps) {
       >
         {`Печать короб(а)`}
       </Button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} maxWidth={'md'} fullWidth>
         <DialogContent>
           <DialogTitle>
+            <Grid alignItems={'center'}>
+              <Typography align="center">{`Распечатать коды: ${rows}?`}</Typography>
+            </Grid>
+          </DialogTitle>
+          <Divider />
+          <DialogContent>
             <Grid>
               <TextField
+                fullWidth
+                label={'Наименование короба'}
                 onChange={(event) => {
                   setBoxTitle(event.target.value as string);
                 }}
                 value={boxTitle}
+                multiline
+                InputProps={{
+                  endAdornment: <InfoAdornment />,
+                }}
+                error={buttonCondition(boxTitle) ? true : false}
+                helperText={
+                  buttonCondition(boxTitle) ? falseHelper : trueHelper
+                }
               />
             </Grid>
-            <Grid>
-              <Typography>{`Распечатать коды: ${rows}?`}</Typography>
-            </Grid>
-          </DialogTitle>
+          </DialogContent>
+          <Divider />
           <DialogActions>
-            <Button
-              variant="outlined"
-              onClick={() => {
-                dispatch(setBox(['create', true]));
-                createCode(rows, boxTitle)
-                  .then(() => handleClose())
-                  .then(() => refresh());
-              }}
-            >
-              Печать
-            </Button>
+            <Grid>
+              <Button
+                disabled={buttonCondition(boxTitle)}
+                variant="contained"
+                onClick={() => {
+                  dispatch(setBox(['create', true]));
+                  createCode(rows, boxTitle)
+                    .then(() => handleClose())
+                    .then(() => refresh());
+                }}
+              >
+                Печать
+              </Button>
+            </Grid>
           </DialogActions>
         </DialogContent>
       </Dialog>
