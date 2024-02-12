@@ -70,19 +70,6 @@ export default function documentColumns({ EventTarget }: EventDialogInterface) {
       width: 200,
     },
     {
-      field: 'actions',
-      type: 'actions',
-      headerName: 'Документ',
-      getActions: (params) => [
-        <OpenDocuments
-          key={1}
-          id={Number(params.row.contact_doc_id)}
-          title={params.row.title}
-        />,
-      ],
-      width: 50,
-    },
-    {
       field: 'fio',
       headerName: 'Текущий держатель',
       valueGetter: (params) => {
@@ -161,6 +148,11 @@ export default function documentColumns({ EventTarget }: EventDialogInterface) {
                   ),
                 )
               }
+            />
+            <OpenDocuments
+              key={1}
+              id={params.row.contact_doc_id}
+              title={params.row.title}
             />
           </Can>
         </>,
