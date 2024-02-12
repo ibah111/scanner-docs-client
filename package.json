@@ -92,6 +92,7 @@
       "output": "dist",
       "buildResources": "resources"
     },
+    "extraFiles": ["extensions"],
     "files": [
       {
         "from": ".",
@@ -100,7 +101,7 @@
           "app"
         ]
       }
-    ],
+     ],
     "publish": {
       "provider": "generic",
       "url": "https://chat.nbkfinance.ru/apps/scanner-docs"
