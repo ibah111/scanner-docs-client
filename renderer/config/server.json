@@ -1,5 +1,5 @@
 {
   "oauth":"https://chat.nbkfinance.ru/apps/oauth",
   "server_production": "https://apps.usb.ru:3003",
-  "server_development": "https://balezin.usb.ru:3003"
+  "server_development": "http://127.0.0.1:3003"
 }

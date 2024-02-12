@@ -10,13 +10,12 @@ import path from 'path';
 import { StoreInit } from './store';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('@electron/remote/main').initialize();
+
 const isProd: boolean = process.env.NODE_ENV === 'production';
-console.log('isp: ', isProd);
 if (isProd) {
   serve({ directory: 'app' });
 } else {
   const path = app.getPath('userData');
-  console.log('path:', path);
   app.setPath('userData', `${path} (development)`);
 }
 
@@ -40,6 +39,7 @@ if (isProd) {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       devTools: process.env.NODE_ENV === 'production' ? false : true,
+      // devTools: true,
     },
   });
   document_electron_main(mainWindow.webContents);
