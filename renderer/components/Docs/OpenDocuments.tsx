@@ -13,6 +13,7 @@ import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import ru_RU from '@react-pdf-viewer/locales/lib/ru_RU.json';
 import { pageNavigationPlugin } from '@react-pdf-viewer/page-navigation';
 import { searchPlugin } from '@react-pdf-viewer/search';
+import { enqueueSnackbar } from 'notistack';
 
 interface DialogFileProps {
   id: number;
@@ -23,11 +24,17 @@ export default function OpenDocuments({ id, title }: DialogFileProps) {
   const [file, setFile] = React.useState<string>('');
   React.useEffect(() => {
     if (open)
-      getDocuments(id).then((res) => {
-        const file = changeMime(title, res);
-        const urlFile = URL.createObjectURL(file);
-        setFile(urlFile);
-      });
+      getDocuments(id)
+        .then((res) => {
+          const file = changeMime(title, res);
+          const urlFile = URL.createObjectURL(file);
+          setFile(urlFile);
+        })
+        .catch((error) => {
+          console.log(error.response);
+          if (error.response.request.status === 404)
+            enqueueSnackbar('Документ не найден', { variant: 'error' });
+        });
   }, [open]);
   const defaultLayoutPluginInstance = defaultLayoutPlugin({
     sidebarTabs: (defaultTabs) => [defaultTabs[0]],
