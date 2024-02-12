@@ -5,21 +5,22 @@ import isPrintOnline from './isPrintOnline';
 
 export default function printBarcode(barcode: string, title: string) {
   const bpac = bpac_electron();
-
   return of(title).pipe(
     isPrintOnline(),
     mergeMap(() => {
       const doc = bpac.IDocument;
-      const barcode_file = path.join(
+      const barcode_path = path.join(
         window.getCwd(),
         'extensions',
         'test-barcode.lbx',
       );
 
-      return from(doc.Open(barcode_file)).pipe(
+      const opened = doc.Open(barcode_path);
+      return from(opened).pipe(
         mergeMap(() => doc.GetObject('title')),
         tap((lbx) => {
           // Наименование к баркоду
+          //  Наименование к баркоду
           lbx.Text = title;
           // Даю значение к штрихкоду
           doc.SetBarcodeData(0, barcode);

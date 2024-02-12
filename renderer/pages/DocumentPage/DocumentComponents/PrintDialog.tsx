@@ -32,7 +32,7 @@ export default function PrindDialog({
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth={'md'}>
       <DialogTitle align="center">
-        Документ: {docId}, Печать кода документа {titleCode}:
+        Документ: {docId}, Печать кода документа: {titleCode}
       </DialogTitle>
       <DialogContent>
         <Grid container columnSpacing={2}>
