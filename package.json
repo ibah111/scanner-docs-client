@@ -13,7 +13,7 @@
     "lint": "eslint \"renderer/**/*.{ts,tsx}\" --fix",
     "prepare": "husky",
     "commitlint": "commitlint --edit",
-    "release": "release-it"
+    "release": "release-it GITLAB_TOKEN=glpat-2ncT9bwYpfis_Rtve1vJ"
   },
   "dependencies": {
     "@casl/ability": "^6.5.0",
