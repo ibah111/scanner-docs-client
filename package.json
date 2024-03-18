@@ -14,11 +14,12 @@
     "prepare": "husky",
     "commitlint": "commitlint --edit",
     "release": "release-it"
-  
   },
   "dependencies": {
     "@casl/ability": "^6.5.0",
     "@casl/react": "^3.1.0",
+    "@commitlint/cli": "^19.2.0",
+    "@commitlint/config-conventional": "^19.1.0",
     "@sql-tools/association-literal": "^0.0.3",
     "@sql-tools/sequelize": "^6.32.0",
     "@sql-tools/sequelize-typescript": "^2.1.5",
@@ -96,7 +97,9 @@
       "output": "dist",
       "buildResources": "resources"
     },
-    "extraFiles": ["extensions"],
+    "extraFiles": [
+      "extensions"
+    ],
     "files": [
       {
         "from": ".",
@@ -105,7 +108,7 @@
           "app"
         ]
       }
-     ],
+    ],
     "publish": {
       "provider": "generic",
       "url": "https://chat.nbkfinance.ru/apps/scanner-docs"
