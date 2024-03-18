@@ -13,7 +13,7 @@
     "lint": "eslint \"renderer/**/*.{ts,tsx}\" --fix",
     "prepare": "husky",
     "commitlint": "commitlint --edit",
-    "release": "release-it GITLAB_TOKEN=glpat-2ncT9bwYpfis_Rtve1vJ"
+    "release": "dotenv release-it --"
   },
   "dependencies": {
     "@casl/ability": "^6.5.0",
@@ -63,6 +63,7 @@
     "@typescript-eslint/parser": "6.12.0",
     "axios": "^1.6.2",
     "class-transformer": "^0.5.1",
+    "dotenv-cli": "^7.4.1",
     "electron": "^27.2.0",
     "electron-builder": "^24.10.0",
     "electron-updater": "^6.1.7",
