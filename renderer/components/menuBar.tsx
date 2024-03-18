@@ -8,6 +8,7 @@ interface MenuBarProps {
   back?: () => void;
 }
 export default function MenuBar({ back }: MenuBarProps) {
+  const version = '1.0.0';
   return (
     <Grid item container direction="row" justifyContent="space-between">
       <Grid item sx={{ pt: 1 }}>
@@ -20,7 +21,7 @@ export default function MenuBar({ back }: MenuBarProps) {
             )}
           </Grid>
           <Grid item sx={{ ml: 2 }}>
-            <Typography>Scanner Docs</Typography>
+            <Typography>Scanner Docs {version}</Typography>
           </Grid>
         </Grid>
       </Grid>
