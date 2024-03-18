@@ -3512,6 +3512,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/luxon@npm:^3":
+  version: 3.4.2
+  resolution: "@types/luxon@npm:3.4.2"
+  checksum: fd89566e3026559f2bc4ddcc1e70a2c16161905ed50be9473ec0cfbbbe919165041408c4f6e06c4bcf095445535052e2c099087c76b1b38e368127e618fc968d
+  languageName: node
+  linkType: hard
+
 "@types/mime-types@npm:^2.1.4":
   version: 2.1.4
   resolution: "@types/mime-types@npm:2.1.4"
@@ -9214,6 +9221,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"luxon@npm:^3.4.4":
+  version: 3.4.4
+  resolution: "luxon@npm:3.4.4"
+  checksum: c14164bc338987349075a08e63ea3ff902866735f7f5553a355b27be22667919765ff96fde4d3413d0e9a0edc4ff9e2e74ebcb8f86eae0ce8b14b27330d87d6e
+  languageName: node
+  linkType: hard
+
 "macos-release@npm:^3.1.0":
   version: 3.2.0
   resolution: "macos-release@npm:3.2.0"
@@ -11294,6 +11308,7 @@ __metadata:
     "@sql-tools/sequelize-typescript": "npm:^2.1.5"
     "@tools/bpac": "npm:^2.0.1"
     "@tools/rxjs-pipes": "npm:^1.0.7"
+    "@types/luxon": "npm:^3"
     "@types/mime-types": "npm:^2.1.4"
     "@types/node": "npm:^20.9.4"
     "@types/react": "npm:^18.2.38"
@@ -11316,6 +11331,7 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^4.6.0"
     http-terminator: "npm:^3.2.0"
     i18next: "npm:^23.7.7"
+    luxon: "npm:^3.4.4"
     mime-types: "npm:^2.1.35"
     moment: "npm:^2.29.4"
     moment-timezone: "npm:^0.5.43"
