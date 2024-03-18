@@ -10,7 +10,11 @@
     "start:prod": "NODE_ENV=production ELECTRON_ENABLE_LOGGING=1 nextron",
     "build": "nextron build --win",
     "postinstall": "electron-builder install-app-deps",
-    "lint": "eslint \"renderer/**/*.{ts,tsx}\" --fix"
+    "lint": "eslint \"renderer/**/*.{ts,tsx}\" --fix",
+    "prepare": "husky",
+    "commitlint": "commitlint --edit",
+    "release": "release-it"
+  
   },
   "dependencies": {
     "@casl/ability": "^6.5.0",
