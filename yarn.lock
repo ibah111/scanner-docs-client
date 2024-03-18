@@ -1668,6 +1668,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@contact/models@npm:^0.4.1":
+  version: 0.4.1
+  resolution: "@contact/models@npm:0.4.1::__archiveUrl=https%3A%2F%2Fgit.usb.ru%2Fapi%2Fv4%2Fprojects%2F69%2Fpackages%2Fnpm%2F%40contact%2Fmodels%2F-%2F%40contact%2Fmodels-0.4.1.tgz"
+  peerDependencies:
+    "@sql-tools/sequelize": ^6.27.8
+    "@sql-tools/sequelize-typescript": ^2.1.5
+    reflect-metadata: ^0.1.13
+  checksum: 7ff9ff90177cd52306d6be1573293330c2f6851bf18cd7cc1e551cd9567c9feb87e06d898f62b54380e8fbb7079f75b87cc98063de6151705db5095ee82103c4
+  languageName: node
+  linkType: hard
+
 "@date-io/core@npm:^2.17.0":
   version: 2.17.0
   resolution: "@date-io/core@npm:2.17.0"
@@ -11260,6 +11271,7 @@ __metadata:
     "@casl/react": "npm:^3.1.0"
     "@commitlint/cli": "npm:^19.2.0"
     "@commitlint/config-conventional": "npm:^19.1.0"
+    "@contact/models": "npm:^0.4.1"
     "@date-io/moment": "npm:^2.17.0"
     "@electron/remote": "npm:^2.1.0"
     "@emotion/react": "npm:^11.11.1"
