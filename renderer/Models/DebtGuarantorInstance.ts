@@ -24,6 +24,7 @@ export class DebtGuarantorInstance
   @IsValidDateTime()
   @IsNotEmpty()
   @TransformDateTime()
+  //@ts-expect-error
   birth_date: DateTime;
   @IsString()
   @IsOptional()
@@ -79,14 +80,17 @@ export class DebtGuarantorInstance
   @IsValidDateTime()
   @IsOptional()
   @TransformDateTime()
+  //@ts-expect-error
   start_date?: DateTime | null;
   @IsValidDateTime()
   @IsOptional()
   @TransformDateTime()
+  //@ts-expect-error
   end_date?: DateTime | null;
   @IsValidDateTime()
   @IsOptional()
   @TransformDateTime()
+  //@ts-expect-error
   finish_date?: DateTime | null;
   @IsNumber()
   @IsOptional()
@@ -169,5 +173,6 @@ export class DebtGuarantorInstance
   @IsOptional()
   @IsValidDateTime()
   @TransformDateTime()
+  //@ts-expect-error
   PASS_DT?: DateTime | null;
 }
