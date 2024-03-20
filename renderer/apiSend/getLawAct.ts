@@ -1,9 +1,9 @@
-import store from '../Reducer';
 import { PersonAddress } from './search';
 import { defer, forkJoin, of } from 'rxjs';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
 import { transformError } from '../utils/processError';
 import { sendApiRequestInstance } from '../utils/sendUtils/requests';
+import store from '../ReducerSend';
 export class LawActPlain {
   'id': number;
   'typ': number;

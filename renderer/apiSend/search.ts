@@ -1,5 +1,5 @@
 import { defer, forkJoin, of } from 'rxjs';
-import store from '../Reducer';
+import store from '../ReducerSend';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
 import { transformError } from '../utils/processError';
 import { sendApiRequestInstance } from '../utils/sendUtils/requests';
