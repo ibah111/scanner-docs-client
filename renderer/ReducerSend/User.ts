@@ -5,6 +5,10 @@ import { AuthUser, AuthUserSuccess } from '../Schemas/Auth';
 const initialState: AuthUser<boolean> = {
   output: 'Вы не вошли',
   id: 0,
+  /**
+   * @Problem
+   * Ее источник
+   */
   local_id: 0,
   login: '',
   login_result: false,

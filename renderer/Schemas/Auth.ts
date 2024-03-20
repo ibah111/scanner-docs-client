@@ -2,6 +2,11 @@ export class AuthUser<T> {
   output: T extends true ? 'Вы вошли' : 'Вы не вошли';
   error: T extends false ? string : never;
   id: T extends true ? number : never;
+  /**
+   * @Problem
+   * может быть проблема
+   */
+  local_id: T extends true ? number : never;
   login: T extends true ? string : never;
   login_result: T;
   birthdate: T extends true ? string : never;
