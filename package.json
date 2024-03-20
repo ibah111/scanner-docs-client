@@ -21,6 +21,7 @@
     "@commitlint/cli": "^19.2.0",
     "@commitlint/config-conventional": "^19.1.0",
     "@contact/models": "^0.4.1",
+    "@fontsource/roboto": "^5.0.12",
     "@release-it/conventional-changelog": "^8.0.1",
     "@sql-tools/association-literal": "^0.0.3",
     "@sql-tools/sequelize": "^6.32.0",
