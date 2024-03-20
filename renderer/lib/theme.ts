@@ -55,5 +55,5 @@ export const theme = createThemeOrigin(
     },
   },
   ruRU,
-  ruRUGrid,
+  ruRUgrid,
 );
