@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
 import { LawExec } from '@contact/models';
 import getName from '../utils/sendUtils/getName';
@@ -62,10 +63,13 @@ export const send = createSlice({
       state.total_sum = data.total_sum;
       state.court_doc_num = data.court_doc_num;
       state.executive_typ = data.executive_typ;
+      //@ts-expect-error
       state.court_date = data.court_date;
       state.DELIVERY_TYP = 1;
       state.template_typ = 16;
+      //@ts-expect-error
       state.entry_force_dt = data.entry_force_dt;
+      //@ts-expect-error
       state.receipt_recover_dt = data.receipt_recover_dt;
       state.fssp_date = datetimeNow();
       state.r_court_id = data.r_court_id;
