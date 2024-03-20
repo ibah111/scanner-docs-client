@@ -3512,10 +3512,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/luxon@npm:^3":
-  version: 3.4.2
-  resolution: "@types/luxon@npm:3.4.2"
-  checksum: fd89566e3026559f2bc4ddcc1e70a2c16161905ed50be9473ec0cfbbbe919165041408c4f6e06c4bcf095445535052e2c099087c76b1b38e368127e618fc968d
+"@types/luxon@npm:3.3.5":
+  version: 3.3.5
+  resolution: "@types/luxon@npm:3.3.5"
+  checksum: be2aede1787f437e0ec3e2d1b964c5831fed1838d10cc60d824f814d0c0659dfa8874ffa81bec116004845279bdee2e5127046bb4fd64dc71cce8c0c25f6c25f
   languageName: node
   linkType: hard
 
@@ -11308,7 +11308,7 @@ __metadata:
     "@sql-tools/sequelize-typescript": "npm:^2.1.5"
     "@tools/bpac": "npm:^2.0.1"
     "@tools/rxjs-pipes": "npm:^1.0.7"
-    "@types/luxon": "npm:^3"
+    "@types/luxon": "npm:3.3.5"
     "@types/mime-types": "npm:^2.1.4"
     "@types/node": "npm:^20.9.4"
     "@types/react": "npm:^18.2.38"
