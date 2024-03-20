@@ -2,7 +2,6 @@ import React from 'react';
 import Head from 'next/head';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { theme } from '../lib/theme';
 import type { AppProps } from 'next/app';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import 'reflect-metadata';
@@ -20,6 +19,7 @@ import Login from '../components/Login/Login';
 import MenuBar from '../components/menuBar';
 import NavBar from '../components/NavBar/NavBar';
 import { Grid } from '@mui/material';
+import { createTheme } from '../lib/theme';
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
@@ -39,7 +39,10 @@ export default function App(props: AppProps) {
         />
       </Head>
       <Provider store={store}>
-        <ThemeProvider theme={theme}>
+        {/**
+         * @TODO доделать
+         */}
+        <ThemeProvider theme={createTheme('dark')}>
           <LocalizationProvider
             adapterLocale={'ru'}
             dateAdapter={AdapterMoment}
