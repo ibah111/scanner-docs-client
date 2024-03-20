@@ -12,6 +12,7 @@ import ValidatorJS from 'validator';
 import { IsValidMoment as IsValidMomentOrigin } from './IsValidMoment';
 import { DateRange as DateRangeOrigin, DateRangeOptions } from './DateRange';
 import { TranslateMessage } from './checker';
+import { IsValidDateTime as IsValidDateTimeOrigin } from './isValidDateTime';
 
 export const IsPositive = (validationOptions?: ValidationOptions) =>
   IsPositiveOrigin({ message: 'IsPositive', ...validationOptions });
@@ -93,3 +94,5 @@ export const DateRange = (
     },
     ...validationOptions,
   });
+export const IsValidDateTime = (validationOptions?: ValidationOptions) =>
+  IsValidDateTimeOrigin({ message: 'isValidDateTime', ...validationOptions });
