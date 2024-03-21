@@ -1,5 +1,26 @@
 
 
+## [1.1.0](https://git.usb.ru/scanner-docs/client/compare/v1.0.1...v1.1.0) (2024-03-21)
+
+
+### Features
+
+* хук словарей ([0e61a68](https://git.usb.ru/scanner-docs/client/commit/0e61a6844603115b83eab733bfcf2bbc882b51da))
+* **checks:** check values utils ([77797fc](https://git.usb.ru/scanner-docs/client/commit/77797fceb8f2ecd5b2dacd934c10808883dd0d1e))
+* **config:** добавил конфиг ([9ffa4ba](https://git.usb.ru/scanner-docs/client/commit/9ffa4ba8a82b4efdd45ec31ca8245f737a91f6b6))
+* **date-pickers-pro:** добавил про версию date pickers ([bb5f614](https://git.usb.ru/scanner-docs/client/commit/bb5f6149d38acaf912b9f6d147df7cc7631d7afd))
+* **dropzone:** added react dropzone ([e452b32](https://git.usb.ru/scanner-docs/client/commit/e452b32acfcbafe73cf968e004cbb8dfba2f3d63))
+* **file-saver:** added file saver ([0fff064](https://git.usb.ru/scanner-docs/client/commit/0fff064f867c402b7217b03b944fc0083f601923))
+* **getData:** get values params ([90e9422](https://git.usb.ru/scanner-docs/client/commit/90e9422d76a4d21e698c77a38e7ab951391a463d))
+* **i18next:** добавил транслитерацию для send ([ffcfdaa](https://git.usb.ru/scanner-docs/client/commit/ffcfdaacf85001d8bacf523355c28fee4ae6bdd0))
+* **mui-lab:** added mui lab ([6a75e07](https://git.usb.ru/scanner-docs/client/commit/6a75e079208d55f0ff01fa8e8f42f47d0150c9b2))
+* **PersonProperty:** added Person Property ([c63d425](https://git.usb.ru/scanner-docs/client/commit/c63d425fc2369bf6ca9764f2c894a7b70c003915))
+* **rxjs:** кастом хук rxjs observableMemo ([81d1129](https://git.usb.ru/scanner-docs/client/commit/81d11290f79fc29e7cff970445f417ff002343f2))
+* **send-checkers:** добавил чекеры из сенда ([e0032fd](https://git.usb.ru/scanner-docs/client/commit/e0032fd2f0ebd59387b742a0d7e21281e1ffe34c))
+* **send-main:** main send components ([125eccb](https://git.usb.ru/scanner-docs/client/commit/125eccbba0808336895244053b9cfe07e889917c))
+* **send-resetData:** reset data function ([cc45dcd](https://git.usb.ru/scanner-docs/client/commit/cc45dcdb548e86254f017a7f2021ef9db169ab0a))
+* **version:** добавил константу версии ([1a7ac80](https://git.usb.ru/scanner-docs/client/commit/1a7ac806868d07b1855e060aa8e11c59c53a3655))
+
 ## [1.0.1](https://git.usb.ru/scanner-docs/client/compare/v0.0.3...v0.1.0) (2024-03-20)
 
 
