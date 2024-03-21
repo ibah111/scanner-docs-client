@@ -1,0 +1,6 @@
+{
+  "title": "menu.title",
+  "root": "/apps/send",
+  "demo": false,
+  "rejected": [115, 103, 104, 106, 110, 112, 6, 111, 119]
+}
