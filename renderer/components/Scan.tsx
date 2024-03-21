@@ -4,7 +4,7 @@ import { PortInfo } from '@serialport/bindings-cpp';
 import { useAppDispatch } from '../Reducer';
 import { resetData, setData } from '../Reducer/Data';
 import getData from '../api/getData';
-import { resetSend } from '../Reducer/Send';
+import { resetSend } from '../Reducer/SendDoc';
 import PowerIcon from '@mui/icons-material/Power';
 import PowerOffIcon from '@mui/icons-material/PowerOff';
 

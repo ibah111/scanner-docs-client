@@ -12,11 +12,11 @@ import DocsComponent from './DocsComponent';
 import Message from './Message';
 import RowDoc from './RowDoc';
 import RowsBox from './RowsBox';
-import Send from './Send';
+import SendDoc from './SendDoc';
 import State from './State';
 import User from './User';
 import Doc from './Doc';
-import SendOfSend from './SendOfSend';
+import Send from './Send';
 import App from './App';
 import StateResult from './StateResult';
 import Search from './Search';
@@ -30,7 +30,7 @@ import React from 'react';
 export const store = configureStore({
   reducer: {
     User,
-    Send,
+    SendDoc,
     Data,
     Message,
     State,
@@ -43,7 +43,7 @@ export const store = configureStore({
     //Send
     App,
     Search,
-    SendOfSend,
+    Send,
     StateResult,
     Comment,
     Dict,

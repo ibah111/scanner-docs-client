@@ -10,7 +10,7 @@ import { Action, Subject } from '../../casl/casl';
 import MainPageToolbar from './MainPageToolbar';
 import { CodeFormatCustom } from '../../utils/NumberFormatMask';
 import { resetData, setData } from '../../Reducer/Data';
-import { resetSend } from '../../Reducer/Send';
+import { resetSend } from '../../Reducer/SendDoc';
 import getData from '../../api/getData';
 
 export default function Main() {
