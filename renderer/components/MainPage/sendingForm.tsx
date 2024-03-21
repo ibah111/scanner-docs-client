@@ -3,6 +3,7 @@ import React from 'react';
 import { useAppDispatch } from '../../Reducer';
 import CloseIcon from '@mui/icons-material/Close';
 import { Transition } from '../../Styles/Transtion';
+import Send from './SendComponents';
 interface SendingFormInterface {
   open: boolean;
   onClose: VoidFunction;
@@ -32,6 +33,7 @@ export default function SendingForm({ ...props }: SendingFormInterface) {
         {/**
          * Send components
          */}
+        <Send />
       </React.Fragment>
     </Dialog>
   );
