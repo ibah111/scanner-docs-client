@@ -2,8 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { OptionsObject } from 'notistack';
 
 interface MessageState {
-  message: string;
-  options: OptionsObject;
+  text: string | null;
+  params?: OptionsObject;
 }
 const startMessageState: MessageState[] = [];
 const initialState = startMessageState;
@@ -11,6 +11,15 @@ const MessageSlice = createSlice({
   name: 'Message',
   initialState,
   reducers: {
+    callError(state, action: PayloadAction<string>) {
+      state.push({ text: action.payload, params: { variant: 'error' } });
+    },
+    callSuccess(state, action: PayloadAction<string>) {
+      state.push({ text: action.payload, params: { variant: 'success' } });
+    },
+    callWarning(state, action: PayloadAction<string>) {
+      state.push({ text: action.payload, params: { variant: 'warning' } });
+    },
     addMessage(state: MessageState[], action: PayloadAction<MessageState>) {
       state.push(action.payload);
     },
@@ -19,5 +28,5 @@ const MessageSlice = createSlice({
     },
   },
 });
-export const { addMessage, resetMessage } = MessageSlice.actions;
+export const { ...funcs } = MessageSlice.actions;
 export default MessageSlice.reducer;

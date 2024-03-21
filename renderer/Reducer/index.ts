@@ -1,5 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import {
+  ReactReduxContextValue,
+  TypedUseSelectorHook,
+  createDispatchHook,
+  createSelectorHook,
+} from 'react-redux';
 import Box from './Box';
 import Data from './Data';
 import Docs from './Docs';
@@ -11,6 +16,16 @@ import Send from './Send';
 import State from './State';
 import User from './User';
 import Doc from './Doc';
+import SendOfSend from './SendOfSend';
+import App from './App';
+import StateResult from './StateResult';
+import Search from './Search';
+import Comment from './Comment';
+import Dict from './Dict';
+import Error from './Error';
+import LawExec from './LawExec';
+import Results from './Results';
+import React from 'react';
 
 export const store = configureStore({
   reducer: {
@@ -25,9 +40,24 @@ export const store = configureStore({
     Box,
     RowDoc,
     Doc,
+    //Send
+    App,
+    Search,
+    SendOfSend,
+    StateResult,
+    Comment,
+    Dict,
+    Error,
+    LawExec,
+    Results,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-export const useAppDispatch: () => AppDispatch = useDispatch;
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const RootReducerContext = React.createContext(
+  null as unknown as ReactReduxContextValue,
+);
+export const useAppDispatch: () => AppDispatch =
+  createDispatchHook(RootReducerContext);
+export const useAppSelector: TypedUseSelectorHook<RootState> =
+  createSelectorHook(RootReducerContext);
