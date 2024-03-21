@@ -1,8 +1,8 @@
 import { ClassConstructor, plainToInstance } from 'class-transformer';
 import { validateSync } from 'class-validator';
-import errorCheck from './errorCheck';
-import helperCheck from './helperCheck';
-import requiredCheck from './requiredCheck';
+import errorCheck, { errorCheckSend } from './errorCheck';
+import helperCheck, { helperCheckSend } from './helperCheck';
+import { requiredCheck, requiredCheckSend } from './requiredCheck';
 
 interface CheckerResult {
   required: boolean;
@@ -45,5 +45,30 @@ export default function checker<T extends object, F>(
   const errors = validateSync(data, { skipUndefinedProperties: true });
   result.error = errorCheck(errors, name as string);
   result.helperText = helperCheck(errors, name as string);
+  return result;
+}
+export function checkerSend<T extends object, F>(
+  example: ClassConstructor<T>,
+  name: string,
+  value: F,
+): CheckerResult {
+  const result: CheckerResult = {
+    required: false,
+    error: false,
+    helperText: '',
+  };
+  const dataNull = plainToInstance(example, { [name]: null });
+  const data = plainToInstance(
+    example,
+    {
+      [name]:
+        value === undefined || value === null || value === '' ? null : value,
+    },
+    { enableImplicitConversion: true },
+  );
+  result.required = requiredCheckSend(dataNull);
+  const errors = validateSync(data, { skipUndefinedProperties: true });
+  result.error = errorCheckSend(errors);
+  result.helperText = helperCheckSend(errors);
   return result;
 }
