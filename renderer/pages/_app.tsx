@@ -3,11 +3,11 @@ import Head from 'next/head';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import type { AppProps } from 'next/app';
-import { LocalizationProvider } from '@mui/x-date-pickers';
+import { LocalizationProvider } from '@mui/x-date-pickers-pro';
 import 'reflect-metadata';
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { AdapterLuxon } from '@mui/x-date-pickers-pro/AdapterLuxon';
 import { Provider } from 'react-redux';
-import { store } from '../Reducer';
+import { RootReducerContext, store } from '../Reducer';
 import 'moment/locale/ru';
 import { SnackbarProvider } from 'notistack';
 import MessageShow from '../components/MessageShow';
@@ -38,15 +38,12 @@ export default function App(props: AppProps) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <Provider store={store}>
+      <Provider store={store} context={RootReducerContext}>
         {/**
          * @TODO доделать
          */}
         <ThemeProvider theme={createTheme('dark')}>
-          <LocalizationProvider
-            adapterLocale={'ru'}
-            dateAdapter={AdapterMoment}
-          >
+          <LocalizationProvider adapterLocale={'ru'} dateAdapter={AdapterLuxon}>
             <SnackbarProvider maxSnack={3}>
               <Grid
                 sx={{ height: '100vh', width: '100vw' }}

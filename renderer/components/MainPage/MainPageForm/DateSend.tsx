@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers';
+import { DatePicker } from '@mui/x-date-pickers-pro';
 import useSendData from '../../../hooks/useSendData';
 import moment from 'moment';
 
