@@ -13,16 +13,16 @@ import deleteExec from '../../../../../apiSend/deleteExec';
 import getComment from '../../../../../apiSend/getComment';
 import { LawExecPlain } from '../../../../../apiSend/search';
 import { useAppDispatch } from '../../../../../Reducer';
-import {
-  ResetComment,
-  setLawActComment,
-  setLawExecComment,
-} from '../../../../../ReducerSend/Comment';
-import { setId } from '../../../../../ReducerSend/Send';
 import DebtCalc from '../Up/Search/DebtCalc';
 import Documents from '../Up/Search/Documents';
 import ButtonComment from './ButtonComment';
 import { map, mergeMap, tap } from 'rxjs';
+import {
+  setLawActComment,
+  setLawExecComment,
+  ResetComment,
+} from '../../../../../Reducer/Comment';
+import { setId } from '../../../../../Reducer/Send';
 
 export default function YesOrNo({
   open,

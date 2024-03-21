@@ -1,8 +1,8 @@
 import { Grid, TextField } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAppDispatch, useAppSelector } from '../../../../../../ReducerSend';
-import { setContract } from '../../../../../../ReducerSend/Search';
+import { useAppDispatch, useAppSelector } from '../../../../../../Reducer';
+import { setContract } from '../../../../../../Reducer/Search';
 
 export default function Contract({ onEnter }: { onEnter: () => void }) {
   const { t } = useTranslation();

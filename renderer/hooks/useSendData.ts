@@ -2,7 +2,7 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '../Reducer';
 import checker from './Validation/checker';
 import { ResultData } from './Validation/ResultData';
-import { SendDocInstance, setSendProperty } from '../Reducer/SendDoc';
+import { SendDocInstance, setSendDocProperty } from '../Reducer/SendDoc';
 
 export default function useSendData<T extends keyof SendDocInstance>(
   name: T,
@@ -10,17 +10,17 @@ export default function useSendData<T extends keyof SendDocInstance>(
 ): ResultData<SendDocInstance, T> {
   const dispatch = useAppDispatch();
   const value = useAppSelector((state) =>
-    state.Send?.[name] === undefined || state.Send?.[name] === null
+    state.SendDoc?.[name] === undefined || state.SendDoc?.[name] === null
       ? ''
-      : state.Send?.[name],
+      : state.SendDoc?.[name],
   );
 
   const setValue = React.useCallback(
     (value: SendDocInstance[T] | null | undefined) => {
       if (value === undefined || value == null) {
-        dispatch(setSendProperty([name, undefined]));
+        dispatch(setSendDocProperty([name, undefined]));
       } else {
-        dispatch(setSendProperty([name, value]));
+        dispatch(setSendDocProperty([name, value]));
       }
     },
     [dispatch, name],
@@ -28,7 +28,7 @@ export default function useSendData<T extends keyof SendDocInstance>(
 
   React.useEffect(() => {
     if (value === '') {
-      dispatch(setSendProperty([name, undefined]));
+      dispatch(setSendDocProperty([name, undefined]));
     }
   }, [dispatch, name, value]);
 

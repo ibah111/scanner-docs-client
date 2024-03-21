@@ -9,11 +9,8 @@ import {
 import { t } from 'i18next';
 import React from 'react';
 import getDebtCalc from '../../../../../../../apiSend/getDebtCalc';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '../../../../../../../ReducerSend';
-import { setDebtCalcState } from '../../../../../../../ReducerSend/StateResults';
+import { useAppDispatch, useAppSelector } from '../../../../../../../Reducer';
+import { setDebtCalcState } from '../../../../../../../Reducer/StateResult';
 const getColumns = () => {
   const columns: GridColDef<DebtCalc>[] = [
     { field: 'id', headerName: 'ID' },
@@ -45,7 +42,7 @@ interface DebtCalcTableProps {
 }
 export default function DebtCalcTable({ id }: DebtCalcTableProps) {
   const [columns] = React.useState(getColumns());
-  const stateGrid = useAppSelector((state) => state.StateResults.debt_calc);
+  const stateGrid = useAppSelector((state) => state.StateResult.debt_calc);
   const apiRef = useGridApiRef();
   const dispatch = useAppDispatch();
   const [rows, setRows] = React.useState<DebtCalc[]>([]);

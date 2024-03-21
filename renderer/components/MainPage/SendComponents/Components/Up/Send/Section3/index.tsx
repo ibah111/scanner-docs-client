@@ -5,7 +5,7 @@ import CourtDate from './CourtDate';
 import DeliveryTyp from './DeliveryTyp';
 import TemplateTyp from './TemplateTyp';
 import AppealTyp from './AppealTyp';
-import { useAppSelector } from '../../../../../../../ReducerSend';
+import { useAppSelector } from '../../../../../../../Reducer';
 
 export default function Section1() {
   const typ = useAppSelector((state) => state.Send.template_typ);

@@ -1,6 +1,6 @@
-import store from '../ReducerSend';
-import { ResetComment } from '../ReducerSend/Comment';
-import { reset, setId } from '../ReducerSend/Send';
+import { store } from '../Reducer';
+import { ResetComment } from '../Reducer/Comment';
+import { reset, setId } from '../Reducer/Send';
 
 export default function ResetSendData() {
   store.dispatch(setId(0));

@@ -1,7 +1,7 @@
 import React from 'react';
 import getDict from '../apiSend/getDict';
-import { useAppDispatch, useAppSelector } from '../ReducerSend';
-import { setDict } from '../ReducerSend/Dict';
+import { useAppDispatch, useAppSelector } from '../Reducer';
+import { setDict } from '../Reducer/Dict';
 
 export default function useDict(id: number) {
   const dict = useAppSelector((state) => state.Dict[id]);

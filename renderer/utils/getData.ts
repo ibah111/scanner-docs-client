@@ -1,13 +1,13 @@
 import { t } from 'i18next';
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../ReducerSend';
+import { useAppDispatch, useAppSelector } from '../Reducer';
 import callError from './callError';
 import checkDate from './checkDate';
 import checkNull from './checkNull';
 import checkNumber from './checkNumber';
 import checkString from './checkString';
 import { DateTime } from 'luxon';
-import { DataNames, DataTypes, setData } from '../ReducerSend/Send';
+import { DataNames, DataTypes, setData } from '../Reducer/Send';
 type Typed = 'string' | 'date' | 'null' | 'number' | 'boolean' | null;
 export default function useError<K extends DataNames>(
   name: K,

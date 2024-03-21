@@ -2,12 +2,9 @@ import { FormControl, Grid, InputLabel, MenuItem, Select } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import getLawExec from '../../../../../../../apiSend/getLawExec';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '../../../../../../../ReducerSend';
-import { setLawExec } from '../../../../../../../ReducerSend/LawExec';
-import { setSend } from '../../../../../../../ReducerSend/Send';
+import { useAppDispatch, useAppSelector } from '../../../../../../../Reducer';
+import { setLawExec } from '../../../../../../../Reducer/LawExec';
+import { setSend } from '../../../../../../../Reducer/Send';
 import getData from '../../../../../../../utils/getData';
 import DebtGuarantorForm from '../../../DebtGuarantor';
 

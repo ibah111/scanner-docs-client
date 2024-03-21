@@ -2,12 +2,12 @@ import { darken, Grid, lighten, styled } from '@mui/material';
 import { DataGridPremium, useGridApiRef } from '@mui/x-data-grid-premium';
 import React from 'react';
 import { LawExecPlain } from '../../../../../apiSend/search';
-import { useAppDispatch, useAppSelector } from '../../../../../ReducerSend';
-import { setPageState } from '../../../../../ReducerSend/StateResults';
 import version from '../../../../../utils/version';
 import PopoverHook from '../PopoverHook';
 import Dialogs from './Dialogs';
 import getColumns from './getColumns';
+import { useAppDispatch, useAppSelector } from '../../../../../Reducer';
+import { setPageState } from '../../../../../Reducer/StateResult';
 const getBackgroundColor = (color: string, mode: string) =>
   mode === 'dark' ? darken(color, 0.6) : lighten(color, 0.6);
 
@@ -40,7 +40,7 @@ export default function Results() {
   const [row, setRow] = React.useState<LawExecPlain>();
   const apiRef = useGridApiRef();
   const rows = useAppSelector((state) => state.Results);
-  const stateGrid = useAppSelector((state) => state.StateResults.create);
+  const stateGrid = useAppSelector((state) => state.StateResult.create);
   const { handlePopoverOpen, handlePopoverClose, ElementPopover } = PopoverHook(
     rows.data,
   );

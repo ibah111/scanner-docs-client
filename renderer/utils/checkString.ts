@@ -1,4 +1,4 @@
-import { TypesData } from '../ReducerSend/Send';
+import { TypesData } from '../Reducer/Send';
 
 export default function checkString(value: TypesData, availableEmpty: boolean) {
   if (availableEmpty) return null;

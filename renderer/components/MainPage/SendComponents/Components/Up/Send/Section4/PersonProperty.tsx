@@ -1,7 +1,7 @@
 import { FormControl, Grid, InputLabel, MenuItem, Select } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from '../../../../../../../ReducerSend';
+import { useAppSelector } from '../../../../../../../Reducer';
 import getData from '../../../../../../../utils/getData';
 import { Vehicle } from '../../../../../../../Models/PersonProperty';
 

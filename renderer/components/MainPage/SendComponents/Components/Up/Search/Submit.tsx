@@ -3,13 +3,13 @@ import { t } from 'i18next';
 import { useSnackbar, VariantType } from 'notistack';
 import React from 'react';
 import updateExec from '../../../../../../apiSend/updateExec';
-import { useAppDispatch, useAppSelector } from '../../../../../../ReducerSend';
+import { useAppDispatch, useAppSelector } from '../../../../../../Reducer';
 import { saveAs } from 'file-saver';
 import { LoadingButton } from '@mui/lab';
 import { useTranslation } from 'react-i18next';
-import { ErrorTypes } from '../../../../../../ReducerSend/Error';
+import { ErrorTypes } from '../../../../../../Reducer/Error';
 import ResetSendData from '../../../../../../utils/ResetSendData';
-import { callError } from '../../../../../../ReducerSend/Message';
+import { callError } from '../../../../../../Reducer/Message';
 
 function toArrayBuffer(buf: number[]) {
   const ab = new ArrayBuffer(buf.length);

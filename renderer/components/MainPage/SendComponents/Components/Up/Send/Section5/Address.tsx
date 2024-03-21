@@ -2,7 +2,7 @@ import { Grid, TextField } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import getCourt from '../../../../../../../apiSend/getCourt';
-import { useAppSelector } from '../../../../../../../ReducerSend';
+import { useAppSelector } from '../../../../../../../Reducer';
 
 export default function Address() {
   const { t } = useTranslation();

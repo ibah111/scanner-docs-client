@@ -28,5 +28,6 @@ const MessageSlice = createSlice({
     },
   },
 });
-export const { ...funcs } = MessageSlice.actions;
+export const { addMessage, callError, callSuccess, callWarning, resetMessage } =
+  MessageSlice.actions;
 export default MessageSlice.reducer;

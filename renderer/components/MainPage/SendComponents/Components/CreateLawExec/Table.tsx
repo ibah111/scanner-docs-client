@@ -4,18 +4,15 @@ import React from 'react';
 import createExec from '../../../../../apiSend/createExec';
 import getComment from '../../../../../apiSend/getComment';
 import getLawAct, { LawActPlain } from '../../../../../apiSend/getLawAct';
-import { useAppDispatch, useAppSelector } from '../../../../../ReducerSend';
-import {
-  ResetComment,
-  setLawActComment,
-} from '../../../../../ReducerSend/Comment';
-import { setId } from '../../../../../ReducerSend/Send';
-import { setCreateState } from '../../../../../ReducerSend/StateResults';
 import version from '../../../../../utils/version';
 import PopoverHook from '../PopoverHook';
 import Canceled from './Canceled';
 import getColumns from './getColumns';
 import { map, mergeMap, tap } from 'rxjs';
+import { useAppDispatch, useAppSelector } from '../../../../../Reducer';
+import { ResetComment, setLawActComment } from '../../../../../Reducer/Comment';
+import { setId } from '../../../../../Reducer/Send';
+import { setCreateState } from '../../../../../Reducer/StateResult';
 
 const getBackgroundColor = (color: string, mode: string) =>
   mode === 'dark' ? darken(color, 0.6) : lighten(color, 0.6);
@@ -53,7 +50,7 @@ export default function Table({ handleClose }: { handleClose: () => void }) {
   const [openCanceled, setOpenCanceled] = React.useState(false);
   const search = useAppSelector((state) => state.Search);
   const apiRef = useGridApiRef();
-  const stateGrid = useAppSelector((state) => state.StateResults.create);
+  const stateGrid = useAppSelector((state) => state.StateResult.create);
   const { handlePopoverOpen, handlePopoverClose, ElementPopover } =
     PopoverHook(rows);
 

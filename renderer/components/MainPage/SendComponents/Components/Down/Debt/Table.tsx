@@ -4,10 +4,10 @@ import React from 'react';
 import getDebt from '../../../../../../apiSend/getDebt';
 import { LawExecPlain } from '../../../../../../apiSend/search';
 import updateDebt from '../../../../../../apiSend/updateDebt';
-import { useAppDispatch, useAppSelector } from '../../../../../../ReducerSend';
-import { ReloadResults } from '../../../../../../ReducerSend/Results';
-import { setDebtState } from '../../../../../../ReducerSend/StateResults';
 import getColumns from './getColumns';
+import { useAppDispatch, useAppSelector } from '../../../../../../Reducer';
+import { ReloadResults } from '../../../../../../Reducer/Results';
+import { setDebtState } from '../../../../../../Reducer/StateResult';
 
 export default function Table({
   row,
@@ -22,7 +22,7 @@ export default function Table({
   const [loading, setLoading] = React.useState(false);
   const search = useAppSelector((state) => state.Search);
   const apiRef = useGridApiRef();
-  const stateGrid = useAppSelector((state) => state.StateResults.debt);
+  const stateGrid = useAppSelector((state) => state.StateResult.debt);
 
   React.useEffect(() => {
     setLoading(true);

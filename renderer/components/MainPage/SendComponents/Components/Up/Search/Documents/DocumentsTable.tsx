@@ -2,11 +2,8 @@ import { DocAttach } from '@contact/models';
 import { DataGridPremium, useGridApiRef } from '@mui/x-data-grid-premium';
 import React from 'react';
 import getDocuments from '../../../../../../../apiSend/getDocuments';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '../../../../../../../ReducerSend';
-import { setDocumentsState } from '../../../../../../../ReducerSend/StateResults';
+import { useAppDispatch, useAppSelector } from '../../../../../../../Reducer';
+import { setDocumentsState } from '../../../../../../../Reducer/StateResult';
 import BackDrop from './BackDrop';
 import DialogFile from './DialogFile';
 import getColumns from './getColumns';
@@ -23,7 +20,7 @@ export default function DocumentsTable({ id }: DocumentsTableProps) {
   const [columns] = React.useState(getColumns(refresh));
   const [open, setOpen] = React.useState(false);
   const [file, setFile] = React.useState<number | null>(null);
-  const stateGrid = useAppSelector((state) => state.StateResults.documents);
+  const stateGrid = useAppSelector((state) => state.StateResult.documents);
   const apiRef = useGridApiRef();
   const dispatch = useAppDispatch();
   const [rows, setRows] = React.useState<DocAttach[]>([]);

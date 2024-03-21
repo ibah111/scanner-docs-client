@@ -1,4 +1,4 @@
-import { TypesData } from '../ReducerSend/Send';
+import { TypesData } from '../Reducer/Send';
 import { DateTime } from 'luxon';
 
 export default function checkDate(value: TypesData, availableEmpty = false) {
