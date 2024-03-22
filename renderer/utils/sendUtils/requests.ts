@@ -4,8 +4,8 @@ import { of } from 'rxjs';
 
 function send_server(): string {
   return process.env.NODE_ENV === 'production'
-    ? send_cfg.server_production
-    : send_cfg.server_development;
+    ? send_cfg.send_api_prod
+    : send_cfg.send_api_dev;
 }
 export const sendApiRequestInstance = of(
   axios.create({
