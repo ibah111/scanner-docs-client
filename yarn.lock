@@ -3729,6 +3729,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/git-semver-tags@npm:^7":
+  version: 7.0.0
+  resolution: "@types/git-semver-tags@npm:7.0.0"
+  checksum: 10/ad87d0a3376ab375ddef3fc350bdc83a064740ee90d4e2c3caebe4923fd846e0337376bd0ad39e31f5e1273c129cc2279a76881e9b151d526e7b6a422bfe2264
+  languageName: node
+  linkType: hard
+
 "@types/hoist-non-react-statics@npm:^3.3.1":
   version: 3.3.5
   resolution: "@types/hoist-non-react-statics@npm:3.3.5"
@@ -7753,7 +7760,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"git-semver-tags@npm:^7.0.0":
+"git-semver-tags@npm:^7.0.0, git-semver-tags@npm:^7.0.1":
   version: 7.0.1
   resolution: "git-semver-tags@npm:7.0.1"
   dependencies:
@@ -11983,6 +11990,7 @@ __metadata:
     "@tools/bpac": "npm:^2.0.1"
     "@tools/rxjs-pipes": "npm:^1.0.7"
     "@types/file-saver": "npm:^2"
+    "@types/git-semver-tags": "npm:^7"
     "@types/luxon": "npm:3.4.2"
     "@types/mime-types": "npm:^2.1.4"
     "@types/node": "npm:^20.9.4"
@@ -12005,6 +12013,7 @@ __metadata:
     eslint-plugin-react: "npm:^7.34.1"
     eslint-plugin-react-hooks: "npm:^4.6.0"
     file-saver: "npm:^2.0.5"
+    git-semver-tags: "npm:^7.0.1"
     http-terminator: "npm:^3.2.0"
     i18next: "npm:^23.7.7"
     luxon: "npm:^3.4.4"
