@@ -2,15 +2,9 @@ import { Grid } from '@mui/material';
 import React from 'react';
 import getLawExec from '../../../../../../apiSend/getLawExec';
 import Contract from './Contract';
-import CreateExec from './CreateExec';
 import Name from './Name';
 import Find from './Find';
-import Submit from './Submit';
 import search from '../../../../../../apiSend/search';
-import Comments from './Comments';
-import DebtCalc from './DebtCalc';
-import Documents from './Documents';
-import Reset from './Reset';
 import { useAppDispatch, useAppSelector } from '../../../../../../Reducer';
 import { setLawExec } from '../../../../../../Reducer/LawExec';
 import {
@@ -19,6 +13,12 @@ import {
   setReloadResults,
 } from '../../../../../../Reducer/Results';
 import { reset, setSend } from '../../../../../../Reducer/Send';
+import CreateExec from './CreateExec';
+import Submit from './Submit';
+import Comments from './Comments';
+import DebtCalc from './DebtCalc';
+import Documents from './Documents';
+import Reset from './Reset';
 
 export default function Search() {
   const dispatch = useAppDispatch();
