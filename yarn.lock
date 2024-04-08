@@ -8169,6 +8169,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"i18next-resources-to-backend@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "i18next-resources-to-backend@npm:1.2.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.23.2"
+  checksum: 10/a08ec56bcdeddc885d7987bd6de877c6db2c6f2828ea2a0888e8d060caa0dd828b850c0ff85575992bda822d1630850ec47c60bdac4eed660ac963748544118f
+  languageName: node
+  linkType: hard
+
 "i18next@npm:^23.7.7":
   version: 23.7.7
   resolution: "i18next@npm:23.7.7"
@@ -11846,6 +11855,7 @@ __metadata:
     git-semver-tags: "npm:^7.0.1"
     http-terminator: "npm:^3.2.0"
     i18next: "npm:^23.7.7"
+    i18next-resources-to-backend: "npm:^1.2.0"
     luxon: "npm:^3.4.4"
     mime-types: "npm:^2.1.35"
     moment: "npm:^2.30.1"
