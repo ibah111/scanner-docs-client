@@ -8,7 +8,6 @@ const url_login = of('/login');
 export function checkLogin(): OperatorFunction<string, AuthUserSuccess> {
   return pipe(
     tap((token) => {
-      console.log('token in check api call ===> ', token);
       getStore().set('token', token);
       baseRequestInstance.defaults.headers.token = token;
     }),
