@@ -2,7 +2,9 @@ import { LawCourt } from '@contact/models';
 import { Autocomplete, Grid, TextField } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import getCourt from '../../../../../../../apiSend/getCourt';
+import getCourt, {
+  getCourtPromise,
+} from '../../../../../../../apiSend/getCourt';
 import getData from '../../../../../../../utils/getData';
 
 export default function RCourtId() {
@@ -11,16 +13,21 @@ export default function RCourtId() {
   const [type, setType] = React.useState<'' | LawCourt>('');
   const [name, setName] = React.useState('');
   const data = getData('r_court_id', 'null');
+
+  const [count, setCount] = React.useState<number>(0);
   React.useEffect(() => {
-    if (name[0] !== '(') {
-      const sub = getCourt({
-        name: name === t('system.none') ? '' : name,
-      }).subscribe((court) => {
-        setTypes(['', ...court]);
-      });
-      return sub.unsubscribe.bind(sub);
-    }
-  }, [name, t]);
+    console.log(t);
+    setCount(count + 1);
+    getCourtPromise({
+      name: name === t('system.none') ? '' : name,
+    }).then((courts) => {
+      setTypes(courts);
+    });
+    /**
+     * В hook зависимостях было [name, t]
+     * Правило хуков советую избегать обьектов/функций в зависимостях
+     */
+  }, [name]);
   React.useEffect(() => {
     if (data.value !== '') {
       const sub = getCourt({ id: data.value as number }).subscribe((court) => {
