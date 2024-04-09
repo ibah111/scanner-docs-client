@@ -4,8 +4,8 @@ import { authRetry, get, transformAxios } from '@tools/rxjs-pipes';
 import { transformError } from '../../utils/processError';
 import { Type } from './ClassType';
 
+const url = of('types/getBarcodeTypes');
 export default function getBarcodeTypes() {
-  const url = of('types/getBarcodeTypes');
   return lastValueFrom(
     forkJoin([baseRequest, url]).pipe(
       get<Type>(),
