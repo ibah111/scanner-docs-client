@@ -20,16 +20,18 @@ import MenuBar from '../components/menuBar';
 import NavBar from '../components/NavBar/NavBar';
 import { Grid } from '@mui/material';
 import { createTheme } from '../lib/theme';
+import '../locale';
+import moment from 'moment';
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
   React.useEffect(() => {
+    moment.locale('ru');
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
-
   return (
     <React.Fragment>
       <Head>
