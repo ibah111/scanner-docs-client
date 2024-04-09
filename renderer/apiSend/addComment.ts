@@ -1,7 +1,7 @@
 import { forkJoin, of } from 'rxjs';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
 import { transformError } from '../utils/processError';
-import { sendApiRequestInstance } from '../utils/sendUtils/requests';
+import { sendApiRequestInstanceObservable } from '../utils/sendUtils/requests';
 const url = of('/add_comment');
 export default function addComment(
   id: number,
@@ -10,7 +10,7 @@ export default function addComment(
   law_exec: boolean,
 ) {
   return forkJoin([
-    sendApiRequestInstance,
+    sendApiRequestInstanceObservable,
     url,
     of({
       id,

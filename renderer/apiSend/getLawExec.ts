@@ -2,13 +2,12 @@ import { LawExec } from '@contact/models';
 import { forkJoin, of } from 'rxjs';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
 import { transformError } from '../utils/processError';
-import { sendApiRequestInstance } from '../utils/sendUtils/requests';
+import { sendApiRequestInstanceObservable } from '../utils/sendUtils/requests';
 const url = of('/law_exec');
 export default function getLawExec(value: number | null) {
-  return forkJoin([sendApiRequestInstance, url, of({ id: value })]).pipe(
-    post<LawExec>(),
-    transformAxios(),
-    transformError(),
-    authRetry(),
-  );
+  return forkJoin([
+    sendApiRequestInstanceObservable,
+    url,
+    of({ id: value }),
+  ]).pipe(post<LawExec>(), transformAxios(), transformError(), authRetry());
 }

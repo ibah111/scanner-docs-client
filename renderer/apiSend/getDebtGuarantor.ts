@@ -3,11 +3,15 @@ import { forkJoin, map, of } from 'rxjs';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
 import { transformError } from '../utils/processError';
 import { transformInstance } from '@tools/rxjs-pipes/transformer';
-import { sendApiRequestInstance } from '../utils/sendUtils/requests';
+import { sendApiRequestInstanceObservable } from '../utils/sendUtils/requests';
 import { DebtGuarantorInstance } from '../Models/DebtGuarantorInstance';
 const url = of('/get_debt_guarantor');
 export default function getDebtGuarantor(value: number) {
-  return forkJoin([sendApiRequestInstance, url, of({ id: value })]).pipe(
+  return forkJoin([
+    sendApiRequestInstanceObservable,
+    url,
+    of({ id: value }),
+  ]).pipe(
     post<DebtGuarantor>(),
     transformAxios(),
     transformError(),

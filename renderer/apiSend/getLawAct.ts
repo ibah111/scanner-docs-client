@@ -2,7 +2,7 @@ import { PersonAddress } from './search';
 import { defer, forkJoin, of } from 'rxjs';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
 import { transformError } from '../utils/processError';
-import { sendApiRequestInstance } from '../utils/sendUtils/requests';
+import { sendApiRequestInstanceObservable } from '../utils/sendUtils/requests';
 import { store } from '../Reducer';
 export class LawActPlain {
   'id': number;
@@ -26,7 +26,7 @@ export class LawActPlain {
 const url = of('/search_la');
 const data = defer(() => of(store.getState().Search));
 export default function search() {
-  return forkJoin([sendApiRequestInstance, url, data]).pipe(
+  return forkJoin([sendApiRequestInstanceObservable, url, data]).pipe(
     post<LawActPlain[]>(),
     transformAxios(),
     transformError(),

@@ -2,7 +2,7 @@ import { defer, forkJoin, of } from 'rxjs';
 import { store } from '../Reducer';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
 import { transformError } from '../utils/processError';
-import { sendApiRequestInstance } from '../utils/sendUtils/requests';
+import { sendApiRequestInstanceObservable } from '../utils/sendUtils/requests';
 export class PersonAddress {
   full_adr: string;
 }
@@ -36,7 +36,7 @@ export class LawExecPlain {
 const url = of('/search');
 const data = defer(() => of(store.getState().Search));
 export default function search() {
-  return forkJoin([sendApiRequestInstance, url, data]).pipe(
+  return forkJoin([sendApiRequestInstanceObservable, url, data]).pipe(
     post<LawExecPlain[]>(),
     transformAxios(),
     transformError(),

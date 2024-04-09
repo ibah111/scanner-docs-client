@@ -3,13 +3,13 @@ import { forkJoin, map, of } from 'rxjs';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
 import { transformError } from '../utils/processError';
 import { AxiosRequestConfig } from 'axios';
-import { sendApiRequestInstance } from '../utils/sendUtils/requests';
+import { sendApiRequestInstanceObservable } from '../utils/sendUtils/requests';
 type types = 'doc' | 'law_exec';
 type results<T extends types> = T extends 'doc' ? Blob : DocAttach[];
 const url = of('/documents/get');
 export default function getDocuments<T extends types>(id: number, type: T) {
   return forkJoin([
-    sendApiRequestInstance,
+    sendApiRequestInstanceObservable,
     url,
     of([id, type]).pipe(
       map(([id, type]) => {
