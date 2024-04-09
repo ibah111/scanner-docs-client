@@ -1,7 +1,7 @@
 import { DocAttach } from '@contact/models';
 import { DataGridPremium, useGridApiRef } from '@mui/x-data-grid-premium';
 import React from 'react';
-import getDocuments from '../../../../../../../apiSend/getDocuments';
+import getDocuments from '../../../../../../../apiSend/Documents/getDocuments';
 import { useAppDispatch, useAppSelector } from '../../../../../../../Reducer';
 import { setDocumentsState } from '../../../../../../../Reducer/StateResult';
 import BackDrop from './BackDrop';

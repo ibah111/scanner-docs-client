@@ -4,7 +4,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import getCourt, {
   getCourtPromise,
-} from '../../../../../../../apiSend/getCourt';
+} from '../../../../../../../apiSend/Court/getCourt';
 import getData from '../../../../../../../utils/getData';
 
 export default function RCourtId() {
@@ -16,7 +16,6 @@ export default function RCourtId() {
 
   const [count, setCount] = React.useState<number>(0);
   React.useEffect(() => {
-    console.log(t);
     setCount(count + 1);
     getCourtPromise({
       name: name === t('system.none') ? '' : name,

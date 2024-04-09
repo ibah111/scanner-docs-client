@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import addComment from '../../../../../apiSend/addComment';
+import addComment from '../../../../../apiSend/Comment/addComment';
 
 export default function ButtonComment({
   id,

@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { LawActPlain } from '../../../../../../apiSend/getLawAct';
+import { LawActPlain } from '../../../../../../apiSend/LawAct/getLawAct';
 import Table from './Table';
 
 export default function Debt({

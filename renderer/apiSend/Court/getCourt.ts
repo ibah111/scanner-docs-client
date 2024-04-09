@@ -1,11 +1,11 @@
 import { LawCourt } from '@contact/models';
 import { forkJoin, of } from 'rxjs';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
-import { transformError } from '../utils/processError';
+import { transformError } from '../../utils/processError';
 import {
   sendApiRequestInstanceObservable,
   sendApiRequestInstancePromise,
-} from '../utils/sendUtils/requests';
+} from '../../utils/sendUtils/requests';
 const urlObservable = of('/court');
 export default function getCourt(
   data: { name: string } | { id: number | string | null },

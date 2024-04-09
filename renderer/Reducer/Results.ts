@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { LawExecPlain } from '../apiSend/search';
+import { LawExecPlain } from '../apiSend/Search/search';
 
 const initialState: {
   reload: boolean;

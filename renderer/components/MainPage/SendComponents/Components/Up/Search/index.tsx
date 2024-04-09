@@ -1,10 +1,10 @@
 import { Grid } from '@mui/material';
 import React from 'react';
-import getLawExec from '../../../../../../apiSend/getLawExec';
+import getLawExec from '../../../../../../apiSend/Exec/getLawExec';
 import Contract from './Contract';
 import Name from './Name';
 import Find from './Find';
-import search from '../../../../../../apiSend/search';
+import search from '../../../../../../apiSend/Search/search';
 import { useAppDispatch, useAppSelector } from '../../../../../../Reducer';
 import { setLawExec } from '../../../../../../Reducer/LawExec';
 import {

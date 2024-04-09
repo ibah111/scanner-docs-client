@@ -6,7 +6,7 @@ import {
 } from '@mui/x-data-grid-premium';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import getDebtGuarantorAddress from '../../../../../../apiSend/getDebtGuarantorAddress';
+import getDebtGuarantorAddress from '../../../../../../apiSend/DebtGuarantor/getDebtGuarantorAddress';
 import useData from '../useData';
 import getColumns from './columns';
 import Form from './Form';

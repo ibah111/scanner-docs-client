@@ -1,5 +1,5 @@
 import React from 'react';
-import { LawExecPlain } from '../../../../../apiSend/search';
+import { LawExecPlain } from '../../../../../apiSend/Search/search';
 import Canceled from './Canceled';
 import YesOrNo from './YesOrNo';
 

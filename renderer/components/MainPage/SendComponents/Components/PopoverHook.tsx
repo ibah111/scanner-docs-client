@@ -1,7 +1,7 @@
 import { Popover, Typography } from '@mui/material';
 import React from 'react';
-import { LawActPlain } from '../../../../apiSend/getLawAct';
-import { LawExecPlain } from '../../../../apiSend/search';
+import { LawActPlain } from '../../../../apiSend/LawAct/getLawAct';
+import { LawExecPlain } from '../../../../apiSend/Search/search';
 export default function PopoverHook(rows: (LawExecPlain | LawActPlain)[]) {
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
   const [value, setValue] = React.useState('');

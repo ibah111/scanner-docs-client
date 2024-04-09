@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import updateDebtGuarantorAddress from '../../../../../../../apiSend/updateDebtGuarantorAddress';
+import updateDebtGuarantorAddress from '../../../../../../../apiSend/DebtGuarantor/updateDebtGuarantorAddress';
 import {
   resetDebtGuarantorAddress,
   setDebtGuarantorAddress,

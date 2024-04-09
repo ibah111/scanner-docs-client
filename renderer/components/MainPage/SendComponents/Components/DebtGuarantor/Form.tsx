@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import getDebtGuarantor from '../../../../../apiSend/getDebtGuarantor';
+import getDebtGuarantor from '../../../../../apiSend/DebtGuarantor/getDebtGuarantor';
 import AddressGrid from './Address';
 import DialogPhysics from './DialogPhysics';
 import ExtId from './ExtId';

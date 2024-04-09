@@ -1,7 +1,7 @@
 import { FormControl, Grid, InputLabel, MenuItem, Select } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import getLawExec from '../../../../../../../apiSend/getLawExec';
+import getLawExec from '../../../../../../../apiSend/Exec/getLawExec';
 import { useAppDispatch, useAppSelector } from '../../../../../../../Reducer';
 import { setLawExec } from '../../../../../../../Reducer/LawExec';
 import { setSend } from '../../../../../../../Reducer/Send';

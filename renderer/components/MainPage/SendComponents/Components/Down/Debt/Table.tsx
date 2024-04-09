@@ -1,9 +1,9 @@
 import { Grid } from '@mui/material';
 import { DataGridPremium, useGridApiRef } from '@mui/x-data-grid-premium';
 import React from 'react';
-import getDebt from '../../../../../../apiSend/getDebt';
-import { LawExecPlain } from '../../../../../../apiSend/search';
-import updateDebt from '../../../../../../apiSend/updateDebt';
+import getDebt from '../../../../../../apiSend/DebtGuarantor/getDebt';
+import { LawExecPlain } from '../../../../../../apiSend/Search/search';
+import updateDebt from '../../../../../../apiSend/Debt/updateDebt';
 import getColumns from './getColumns';
 import { useAppDispatch, useAppSelector } from '../../../../../../Reducer';
 import { ReloadResults } from '../../../../../../Reducer/Results';

@@ -11,7 +11,7 @@ import {
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import React from 'react';
 import { useDropzone } from 'react-dropzone';
-import uploadFile from '../../../../../../../apiSend/uploadFile';
+import uploadFile from '../../../../../../../apiSend/Files/uploadFile';
 import { forkJoin } from 'rxjs';
 interface BackDropProps {
   children: React.ReactNode;

@@ -1,9 +1,9 @@
 import { DocAttach } from '@contact/models';
 import { forkJoin, map, of } from 'rxjs';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
-import { transformError } from '../utils/processError';
+import { transformError } from '../../utils/processError';
 import { AxiosRequestConfig } from 'axios';
-import { sendApiRequestInstanceObservable } from '../utils/sendUtils/requests';
+import { sendApiRequestInstanceObservable } from '../../utils/sendUtils/requests';
 type types = 'doc' | 'law_exec';
 type results<T extends types> = T extends 'doc' ? Blob : DocAttach[];
 const url = of('/documents/get');

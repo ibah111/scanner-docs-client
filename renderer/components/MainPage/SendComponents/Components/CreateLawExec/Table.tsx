@@ -1,9 +1,11 @@
 import { darken, Grid, lighten, styled } from '@mui/material';
 import { DataGridPremium, useGridApiRef } from '@mui/x-data-grid-premium';
 import React from 'react';
-import createExec from '../../../../../apiSend/createExec';
-import getComment from '../../../../../apiSend/getComment';
-import getLawAct, { LawActPlain } from '../../../../../apiSend/getLawAct';
+import createExec from '../../../../../apiSend/Exec/createExec';
+import getComment from '../../../../../apiSend/Comment/getComment';
+import getLawAct, {
+  LawActPlain,
+} from '../../../../../apiSend/LawAct/getLawAct';
 import version from '../../../../../utils/version';
 import PopoverHook from '../PopoverHook';
 import Canceled from './Canceled';

@@ -1,7 +1,7 @@
 import { forkJoin, of } from 'rxjs';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
-import { transformError } from '../utils/processError';
-import { sendApiRequestInstanceObservable } from '../utils/sendUtils/requests';
+import { transformError } from '../../utils/processError';
+import { sendApiRequestInstanceObservable } from '../../utils/sendUtils/requests';
 export class CreateExecOld {
   court_doc_num: string;
   executive_typ: number;

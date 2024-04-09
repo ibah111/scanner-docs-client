@@ -8,7 +8,7 @@ import {
 } from '@mui/x-data-grid-premium';
 import { t } from 'i18next';
 import React from 'react';
-import getDebtCalc from '../../../../../../../apiSend/getDebtCalc';
+import getDebtCalc from '../../../../../../../apiSend/DebtCalc/getDebtCalc';
 import { useAppDispatch, useAppSelector } from '../../../../../../../Reducer';
 import { setDebtCalcState } from '../../../../../../../Reducer/StateResult';
 const getColumns = () => {

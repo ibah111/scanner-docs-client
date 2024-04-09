@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { LawExecPlain } from '../../../../../apiSend/search';
+import { LawExecPlain } from '../../../../../apiSend/Search/search';
 import DebtCalc from '../Up/Search/DebtCalc';
 import Documents from '../Up/Search/Documents';
 import Debt from './Debt';

@@ -1,5 +1,5 @@
 import React from 'react';
-import getDict from '../apiSend/getDict';
+import getDict from '../apiSend/Dict/getDict';
 import { useAppDispatch, useAppSelector } from '../Reducer';
 import { setDict } from '../Reducer/Dict';
 

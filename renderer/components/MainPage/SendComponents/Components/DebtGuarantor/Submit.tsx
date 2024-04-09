@@ -2,7 +2,7 @@ import { DebtGuarantor } from '@contact/models';
 import { Button } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import updateDebtGuarantor from '../../../../../apiSend/updateDebtGuarantor';
+import updateDebtGuarantor from '../../../../../apiSend/DebtGuarantor/updateDebtGuarantor';
 import { useDgSelector } from './Reducer';
 interface SubmitProps {
   onClose: (id?: number) => void;

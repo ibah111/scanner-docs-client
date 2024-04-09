@@ -1,7 +1,7 @@
 import { Grid, TextField } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import getCourt from '../../../../../../../apiSend/getCourt';
+import getCourt from '../../../../../../../apiSend/Court/getCourt';
 import { useAppSelector } from '../../../../../../../Reducer';
 
 export default function Address() {

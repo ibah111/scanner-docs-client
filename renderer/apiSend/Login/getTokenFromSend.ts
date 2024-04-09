@@ -1,5 +1,5 @@
 import axios from 'axios';
-import server from '../utils/server';
+import server from '../../utils/server';
 import { forkJoin, map, mergeMap, of } from 'rxjs';
 import { post, transformAxios, get } from '@tools/rxjs-pipes/axios';
 /**

@@ -1,7 +1,7 @@
 import { darken, Grid, lighten, styled } from '@mui/material';
 import { DataGridPremium, useGridApiRef } from '@mui/x-data-grid-premium';
 import React from 'react';
-import { LawExecPlain } from '../../../../../apiSend/search';
+import { LawExecPlain } from '../../../../../apiSend/Search/search';
 import version from '../../../../../utils/version';
 import PopoverHook from '../PopoverHook';
 import Dialogs from './Dialogs';

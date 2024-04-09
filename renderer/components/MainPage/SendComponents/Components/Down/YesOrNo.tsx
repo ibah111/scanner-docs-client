@@ -8,10 +8,10 @@ import {
 } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import createExec from '../../../../../apiSend/createExec';
-import deleteExec from '../../../../../apiSend/deleteExec';
-import getComment from '../../../../../apiSend/getComment';
-import { LawExecPlain } from '../../../../../apiSend/search';
+import createExec from '../../../../../apiSend/Exec/createExec';
+import deleteExec from '../../../../../apiSend/Exec/deleteExec';
+import getComment from '../../../../../apiSend/Comment/getComment';
+import { LawExecPlain } from '../../../../../apiSend/Search/search';
 import { useAppDispatch } from '../../../../../Reducer';
 import DebtCalc from '../Up/Search/DebtCalc';
 import Documents from '../Up/Search/Documents';

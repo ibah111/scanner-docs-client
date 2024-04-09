@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { LawExecPlain } from '../../../../../../apiSend/search';
+import { LawExecPlain } from '../../../../../../apiSend/Search/search';
 import Table from './Table';
 
 export default function Debt({
