@@ -5,53 +5,52 @@ import { post, transformAxios, get } from '@tools/rxjs-pipes/axios';
 /**
  * При необходимости удалить
  */
-const requests = of(
+const baseRequestsSend = of(
   axios.create({
     baseURL: server('oauth'),
-    withCredentials: true,
   }),
 );
 const urlCheck = of('oauth/check');
-export function checkToken(token: string) {
-  return forkJoin([requests, urlCheck, of({ token })]).pipe(
+export function checkTokenSend(token: string) {
+  return forkJoin([baseRequestsSend, urlCheck, of({ token })]).pipe(
     post<boolean>(),
     transformAxios(),
   );
 }
 const urlAuthorize = of('oauth/authorize');
-export function authorize() {
-  return forkJoin([requests, urlAuthorize]).pipe(
+export function authorizeSend() {
+  return forkJoin([baseRequestsSend, urlAuthorize]).pipe(
     get<string | false>(),
     transformAxios(),
   );
 }
-export function redirect() {
+export function redirectSend() {
   document.location.replace(
     server('oauth') + `/oauth/authorize?origin=${window.location.href}`,
   );
 }
-export function getLogin() {
-  return authorize().pipe(
+export function getLoginSend() {
+  return authorizeSend().pipe(
     map((result) => {
       if (result) return result;
-      redirect();
+      redirectSend();
       throw Error('Переадресация не прошла');
     }),
   );
 }
-export default function getToken() {
-  return getLogin().pipe(
+export default function getTokenSend() {
+  return getLoginSend().pipe(
     mergeMap((token) => {
-      return checkToken(token).pipe(
+      return checkTokenSend(token).pipe(
         map((result) => {
-          if (!result) redirect();
+          if (!result) redirectSend();
           return token;
         }),
       );
     }),
   );
 }
-const urlLogout = of('oauth/logout');
+const urlLogoutSend = of('oauth/logout');
 export function logout() {
-  return forkJoin([requests, urlLogout]).pipe(get());
+  return forkJoin([baseRequestsSend, urlLogoutSend]).pipe(get());
 }
