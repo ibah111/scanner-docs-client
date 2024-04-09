@@ -7,8 +7,12 @@ function send_server(): string {
     ? send_cfg.send_api_prod
     : send_cfg.send_api_dev;
 }
-export const sendApiRequestInstance = of(
+export const sendApiRequestInstanceObservable = of(
   axios.create({
     baseURL: send_server(),
   }),
 );
+
+export const sendApiRequestInstancePromise = axios.create({
+  baseURL: send_server(),
+});
