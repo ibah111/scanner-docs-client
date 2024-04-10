@@ -1,6 +1,15 @@
+import { Observable, of } from 'rxjs';
 import getStore from '../lib/store';
+import { AxiosRequestConfig } from 'axios';
 
-export default function storeToken() {
-  const token = getStore().get('token');
-  return token as string;
+function storeToken() {
+  const token = getStore().get('token') as string;
+  return token;
+}
+export function axiosConfig(): Observable<AxiosRequestConfig> {
+  return of({
+    headers: {
+      token: storeToken(),
+    },
+  });
 }
