@@ -12,8 +12,12 @@ import { CodeFormatCustom } from '../../utils/NumberFormatMask';
 import { resetData, setData } from '../../Reducer/Data';
 import { resetSend } from '../../Reducer/SendDoc';
 import getData from '../../api/getData';
+import { reset } from '../../Reducer/Send';
 
 export default function Main() {
+  const dispatch = useAppDispatch();
+  const globalState = useAppSelector((state) => state);
+  const scanSendState = useAppSelector((state) => state.Send);
   const data = useAppSelector((state) => state.Data);
   const boxId = data[0]?.Box?.id;
   const boxUserName =
@@ -24,12 +28,18 @@ export default function Main() {
     data[0]?.Box?.User.o;
   const boxDepartName = data[0]?.Box?.Depart.title;
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
   const handleClose = () => setOpen(false);
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+    dispatch(reset());
+  };
 
   const [code, setCode] = React.useState<string>('');
-  const dispatch = useAppDispatch();
   const handleScan = () => {
+    dispatch(reset());
     dispatch(resetData());
     dispatch(resetSend());
     getData(code).subscribe((res) => {
@@ -92,7 +102,13 @@ export default function Main() {
                   alignContent: 'center',
                 }}
               >
-                <Grid item xs>
+                <Grid
+                  item
+                  xs
+                  sx={{
+                    margin: '5px',
+                  }}
+                >
                   <Typography align={'center'} variant={'h4'}>
                     Или введите код вручную:
                   </Typography>
@@ -106,6 +122,9 @@ export default function Main() {
                     border={'center'}
                     justifyContent={'center'}
                     display={'flex'}
+                    sx={{
+                      margin: '2px',
+                    }}
                   >
                     <Grid item>
                       <TextField
