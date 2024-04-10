@@ -3,6 +3,7 @@ import { store } from '../../Reducer';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
 import { transformError } from '../../utils/processError';
 import { sendApiRequestInstanceObservable } from '../../utils/sendUtils/requests';
+import { axiosConfig } from '../token';
 type FileUpdate =
   | false
   | {
@@ -14,10 +15,10 @@ const data = defer(() =>
   of({ ...store.getState().Send, options: { save_file: true } }),
 );
 export default function updateExec() {
-  return forkJoin([sendApiRequestInstanceObservable, url, data]).pipe(
-    post<FileUpdate>(),
-    transformAxios(),
-    transformError(),
-    authRetry(),
-  );
+  return forkJoin([
+    sendApiRequestInstanceObservable,
+    url,
+    data,
+    axiosConfig(),
+  ]).pipe(post<FileUpdate>(), transformAxios(), transformError(), authRetry());
 }

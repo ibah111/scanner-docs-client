@@ -1,10 +1,9 @@
-import { Observable, defer, forkJoin, of } from 'rxjs';
+import { defer, forkJoin, of } from 'rxjs';
 import { store } from '../../Reducer';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
 import { transformError } from '../../utils/processError';
 import { sendApiRequestInstanceObservable } from '../../utils/sendUtils/requests';
-import storeToken from '../token';
-import { AxiosRequestConfig } from 'axios';
+import { axiosConfig } from '../token';
 export class PersonAddress {
   full_adr: string;
 }
@@ -40,17 +39,11 @@ const searchData = store.getState().Search;
 const data = defer(() => of(searchData));
 
 export default function search() {
-  const token = storeToken();
-  const config: Observable<AxiosRequestConfig> = of({
-    headers: {
-      token,
-    },
-  });
   return forkJoin([
     sendApiRequestInstanceObservable,
     urlObservable,
     data,
-    config,
+    axiosConfig(),
   ]).pipe(
     post<LawExecPlain[]>(),
     transformAxios(),

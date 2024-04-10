@@ -6,6 +6,7 @@ import { transformError } from '../../utils/processError';
 import { validateData } from '@tools/rxjs-pipes/validator';
 import { sendApiRequestInstanceObservable } from '../../utils/sendUtils/requests';
 import { AddressInstance } from '../../Models/AdressIntance';
+import { axiosConfig } from '../token';
 const url = of('/create_or_update_debt_guarantor/address');
 export default function updateDebtGuarantorAddress(
   body: CreationAttributes<Address>,
@@ -19,6 +20,7 @@ export default function updateDebtGuarantorAddress(
         resultTransform: true,
       }),
     ),
+    axiosConfig(),
   ]).pipe(
     post<Address | { update: true }>(),
     transformAxios(),

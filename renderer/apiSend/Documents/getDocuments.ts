@@ -4,10 +4,12 @@ import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
 import { transformError } from '../../utils/processError';
 import { AxiosRequestConfig } from 'axios';
 import { sendApiRequestInstanceObservable } from '../../utils/sendUtils/requests';
+import { storeToken } from '../token';
 type types = 'doc' | 'law_exec';
 type results<T extends types> = T extends 'doc' ? Blob : DocAttach[];
 const url = of('/documents/get');
 export default function getDocuments<T extends types>(id: number, type: T) {
+  const token = storeToken();
   return forkJoin([
     sendApiRequestInstanceObservable,
     url,
@@ -20,8 +22,17 @@ export default function getDocuments<T extends types>(id: number, type: T) {
     of(type).pipe(
       map((type) => {
         if (type === 'doc')
-          return { iresponseType: 'blob' } as AxiosRequestConfig;
-        return {};
+          return {
+            iresponseType: 'blob',
+            headers: {
+              token: token,
+            },
+          } as AxiosRequestConfig;
+        return {
+          headers: {
+            token,
+          },
+        };
       }),
     ),
   ]).pipe(post<results<T>>(), transformAxios(), transformError(), authRetry());

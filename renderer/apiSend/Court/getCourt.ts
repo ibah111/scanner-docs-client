@@ -6,6 +6,7 @@ import {
   sendApiRequestInstanceObservable,
   sendApiRequestInstancePromise,
 } from '../../utils/sendUtils/requests';
+import { axiosConfig } from '../token';
 const urlObservable = of('/court');
 export default function getCourt(
   data: { name: string } | { id: number | string | null },
@@ -14,6 +15,7 @@ export default function getCourt(
     sendApiRequestInstanceObservable,
     urlObservable,
     of(data),
+    axiosConfig(),
   ]).pipe(post<LawCourt[]>(), transformAxios(), transformError(), authRetry());
 }
 

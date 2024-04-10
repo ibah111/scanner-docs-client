@@ -2,6 +2,7 @@ import { forkJoin, of } from 'rxjs';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
 import { transformError } from '../../utils/processError';
 import { sendApiRequestInstanceObservable } from '../../utils/sendUtils/requests';
+import { axiosConfig } from '../token';
 export interface CommentType {
   dsc: string;
   LawAct: { dsc: string };
@@ -11,10 +12,10 @@ export default function getComment(data: {
   type: 'law_act' | 'law_exec';
   id: number;
 }) {
-  return forkJoin([sendApiRequestInstanceObservable, url, of(data)]).pipe(
-    post<CommentType>(),
-    transformAxios(),
-    transformError(),
-    authRetry(),
-  );
+  return forkJoin([
+    sendApiRequestInstanceObservable,
+    url,
+    of(data),
+    axiosConfig(),
+  ]).pipe(post<CommentType>(), transformAxios(), transformError(), authRetry());
 }

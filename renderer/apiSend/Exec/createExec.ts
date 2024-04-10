@@ -2,6 +2,7 @@ import { forkJoin, of } from 'rxjs';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
 import { transformError } from '../../utils/processError';
 import { sendApiRequestInstanceObservable } from '../../utils/sendUtils/requests';
+import { axiosConfig } from '../token';
 export class CreateExecOld {
   court_doc_num: string;
   executive_typ: number;
@@ -14,6 +15,7 @@ export default function createExec(value: number, old?: CreateExecOld) {
     sendApiRequestInstanceObservable,
     url,
     of({ id: value, old }),
+    axiosConfig(),
   ]).pipe(
     post<number | false>(),
     transformAxios(),

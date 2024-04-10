@@ -2,6 +2,7 @@ import { forkJoin, of } from 'rxjs';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
 import { transformError } from '../../utils/processError';
 import { sendApiRequestInstanceObservable } from '../../utils/sendUtils/requests';
+import { axiosConfig } from '../token';
 const url = of('/add_comment');
 export default function addComment(
   id: number,
@@ -18,5 +19,6 @@ export default function addComment(
       law_act,
       law_exec,
     }),
+    axiosConfig(),
   ]).pipe(post<boolean>(), transformAxios(), transformError(), authRetry());
 }
