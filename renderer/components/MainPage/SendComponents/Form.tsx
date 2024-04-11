@@ -15,6 +15,9 @@ export default function Form() {
           spacing={1}
           direction="column"
           alignItems="center"
+          sx={{
+            padding: '10px',
+          }}
         >
           <Up />
           <Down />
