@@ -22,7 +22,7 @@ export default function Name({ onEnter }: { onEnter: () => void }) {
         <TextField
           label={t('form.search.name')}
           value={name}
-          onKeyPress={onPress}
+          onKeyDown={onPress}
           onChange={(event) => dispatch(setName(event.target.value))}
         />
       </Grid>

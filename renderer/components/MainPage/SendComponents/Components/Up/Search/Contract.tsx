@@ -22,7 +22,7 @@ export default function Contract({ onEnter }: { onEnter: () => void }) {
         <TextField
           label={t('form.search.contract')}
           value={contract}
-          onKeyPress={onPress}
+          onKeyDown={onPress}
           onChange={(event) => dispatch(setContract(event.target.value))}
         />
       </Grid>
