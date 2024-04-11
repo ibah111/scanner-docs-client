@@ -35,10 +35,10 @@ export class LawExecPlain {
   'Person.Addresses': PersonAddress[];
 }
 const urlObservable = of('/search');
-const searchData = store.getState().Search;
-const data = defer(() => of(searchData));
 
 export default function search() {
+  const searchData = store.getState().Search;
+  const data = defer(() => of(searchData));
   return forkJoin([
     sendApiRequestInstanceObservable,
     urlObservable,
