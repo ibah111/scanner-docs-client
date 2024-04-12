@@ -4,6 +4,8 @@ import { useAppDispatch } from '../../Reducer';
 import CloseIcon from '@mui/icons-material/Close';
 import { Transition } from '../../Styles/Transtion';
 import Send from './SendComponents';
+import search from '../../apiSend/Search/search';
+import { setLoadingResults, setResults } from '../../Reducer/Results';
 interface SendingFormInterface {
   open: boolean;
   onClose: VoidFunction;
@@ -12,6 +14,18 @@ export default function SendingForm({ ...props }: SendingFormInterface) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const dispatch = useAppDispatch();
   const handleClose = () => props.onClose();
+
+  React.useEffect(() => {
+    search().subscribe({
+      next: (res) => {
+        dispatch(setResults(res));
+        dispatch(setLoadingResults(false));
+      },
+      error: () => {
+        setLoadingResults(false);
+      },
+    });
+  }, []);
   return (
     <Dialog {...props} fullScreen TransitionComponent={Transition}>
       <React.Fragment>
@@ -33,7 +47,9 @@ export default function SendingForm({ ...props }: SendingFormInterface) {
         {/**
          * Send components
          */}
-        <Send />
+        <>
+          <Send />
+        </>
       </React.Fragment>
     </Dialog>
   );

@@ -39,6 +39,7 @@ export default function Search() {
     return sub.unsubscribe.bind(sub);
   }, [dispatch]);
   React.useEffect(() => {
+    //POSSIBLE REDUX RESET HAPPENED HERE
     dispatch(reset());
     if (id) {
       const sub = getLawExec(id).subscribe((res) => {
