@@ -1,21 +1,19 @@
 import { AppBar, Button, Grid, Toolbar } from '@mui/material';
-import { useAppDispatch, useAppSelector } from '../../Reducer';
+import { useAppDispatch } from '../../Reducer';
 import getStore from '../../lib/store';
 import { relogin } from '../../Reducer/State';
 import React from 'react';
-import UpdateDocs from '../Docs/updateDocs';
 import OpenAdminPage from '../Admin/OpenAdminPage';
 import BackMainPage from './BackMainPage';
-import OpenTableCodes from '../TableCodes/OpenTableCodes';
+import OpenTableCodes from './OpenTableCodes';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Scan from '../Scan';
 import { Action, Subject } from '../../casl/casl';
 import { Can } from '../../casl/casl.factory';
+import UpdateDocs from './UpdateDocs';
 
 export default function NavBar() {
   const dispatch = useAppDispatch();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const User = useAppSelector((state) => state.User);
   return (
     <Grid item xs={0.5} sx={{ width: '100vw', height: '100%' }}>
       <AppBar position="static">

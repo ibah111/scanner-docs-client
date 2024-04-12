@@ -7,7 +7,9 @@ import { Model } from '@sql-tools/sequelize-typescript';
 import { CreateLiteralAssociation } from '@sql-tools/association-literal';
 import { InferAttributes, InferCreationAttributes } from '@sql-tools/sequelize';
 import { CreationAttributes } from '@sql-tools/sequelize';
-
+/**
+ * @TODO Надо переместить заполнение в вкладку "подачи", другие поля
+ */
 export class SendDoc extends Model<
   InferAttributes<SendDoc>,
   InferCreationAttributes<SendDoc>,
