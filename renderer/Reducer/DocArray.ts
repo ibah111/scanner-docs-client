@@ -1,17 +1,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Doc } from '../Schemas/Doc.model';
+/**
+ * Scan Data
+ */
 const initialState: Doc[] = [];
 const DataSlice = createSlice({
-  name: 'data',
+  name: 'doc',
   initialState,
   reducers: {
-    setData(state, action: PayloadAction<Doc[]>) {
+    setDoc(state, action: PayloadAction<Doc[]>) {
       return action.payload;
     },
-    resetData() {
-      return [];
+    resetDoc() {
+      return initialState;
     },
   },
 });
-export const { setData, resetData } = DataSlice.actions;
+export const { setDoc, resetDoc } = DataSlice.actions;
 export default DataSlice.reducer;

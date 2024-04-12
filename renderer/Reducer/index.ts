@@ -6,7 +6,7 @@ import {
   createSelectorHook,
 } from 'react-redux';
 import Box from './Box';
-import Data from './Data';
+import DocArray from './DocArray';
 import Docs from './Docs';
 import DocsComponent from './DocsComponent';
 import Message from './Message';
@@ -31,7 +31,7 @@ export const store = configureStore({
   reducer: {
     User,
     SendDoc,
-    Data,
+    DocArray,
     Message,
     State,
     Docs,

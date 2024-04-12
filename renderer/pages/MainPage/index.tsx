@@ -9,16 +9,14 @@ import { Can } from '../../casl/casl.factory';
 import { Action, Subject } from '../../casl/casl';
 import MainPageToolbar from './MainPageToolbar';
 import { CodeFormatCustom } from '../../utils/NumberFormatMask';
-import { resetData, setData } from '../../Reducer/Data';
+import { resetDoc, setDoc } from '../../Reducer/DocArray';
 import { resetSend } from '../../Reducer/SendDoc';
 import getData from '../../api/getData';
 import { reset } from '../../Reducer/Send';
 
 export default function Main() {
   const dispatch = useAppDispatch();
-  const globalState = useAppSelector((state) => state);
-  const scanSendState = useAppSelector((state) => state.Send);
-  const data = useAppSelector((state) => state.Data);
+  const data = useAppSelector((state) => state.DocArray);
   const boxId = data[0]?.Box?.id;
   const boxUserName =
     data[0]?.Box?.User.f +
@@ -29,7 +27,6 @@ export default function Main() {
   const boxDepartName = data[0]?.Box?.Depart.title;
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
-  const handleClose = () => setOpen(false);
     setOpen(true);
   };
   const handleClose = () => {
@@ -40,10 +37,10 @@ export default function Main() {
   const [code, setCode] = React.useState<string>('');
   const handleScan = () => {
     dispatch(reset());
-    dispatch(resetData());
+    dispatch(resetDoc());
     dispatch(resetSend());
     getData(code).subscribe((res) => {
-      dispatch(setData(res));
+      dispatch(setDoc(res));
     });
   };
   const buttonCondition = (value: string): boolean => {
