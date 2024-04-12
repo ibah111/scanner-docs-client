@@ -8,6 +8,11 @@ import { singleEvents } from './singleEvents';
 import { document_electron_main } from '@tools/bpac/electron_main';
 import path from 'path';
 import { StoreInit } from './store';
+import 'electron-devtools-installer';
+import install, {
+  REACT_DEVELOPER_TOOLS,
+  REDUX_DEVTOOLS,
+} from 'electron-devtools-installer';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('@electron/remote/main').initialize();
 
@@ -29,6 +34,11 @@ if (isProd) {
       callback(true);
     },
   );
+  app.on('ready', () => {
+    install([REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS]).then((name) => {
+      console.log(name, 'extension is installed');
+    });
+  });
 
   await app.whenReady();
   const mainWindow = createWindow('main', {

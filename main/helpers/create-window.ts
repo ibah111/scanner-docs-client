@@ -4,10 +4,6 @@ import {
   BrowserWindowConstructorOptions,
 } from 'electron';
 import Store from 'electron-store';
-import installExtension, {
-  REDUX_DEVTOOLS,
-  REACT_DEVELOPER_TOOLS,
-} from 'electron-devtools-installer';
 
 export default (
   windowName: string,
@@ -85,19 +81,7 @@ export default (
     },
   };
   win = new BrowserWindow(browserOptions);
-  const isDev = process.env.NODE_ENV === 'development';
-  if (isDev) {
-    win.webContents.once('dom-ready', async () => {
-      console.log('webContents.once: dom-ready\nTrying to install extension');
-      await installExtension([REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS])
-        .then((extension) => {
-          console.log(`Extension: { ${extension} } added`);
-        })
-        .catch((err) => {
-          console.log('err happened', err);
-        });
-    });
-  }
+
   win.on('close', saveState);
 
   return win;
