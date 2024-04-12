@@ -21,7 +21,8 @@ export default (
     height: options.height,
   };
   let state = {};
-  let win;
+  // eslint-disable-next-line prefer-const
+  let win: BrowserWindow;
 
   const restore = () => store.get(key, defaultSize);
 
