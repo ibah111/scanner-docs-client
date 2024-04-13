@@ -1,8 +1,9 @@
 import { Button } from '@mui/material';
 import React from 'react';
 import Link from '../Linker';
-
-export default function BackMainPage() {
+/**@deprecated */
+export default function MainPage() {
+  const path = '/MainPage';
   return (
     <>
       <Button
@@ -11,7 +12,7 @@ export default function BackMainPage() {
         sx={{ width: '180px' }}
         variant="text"
         component={Link}
-        href="../MainPage"
+        href={`..${path}`}
       >
         Главная страница
       </Button>

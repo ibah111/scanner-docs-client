@@ -1,8 +1,8 @@
 import { Button } from '@mui/material';
 import React from 'react';
 import Link from '../Linker';
-
-export default function UpdateDocs() {
+/**@deprecated */
+export default function DocumentPage() {
   return (
     <>
       <Button

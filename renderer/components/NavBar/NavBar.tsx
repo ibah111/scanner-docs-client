@@ -3,14 +3,12 @@ import { useAppDispatch } from '../../Reducer';
 import getStore from '../../lib/store';
 import { relogin } from '../../Reducer/State';
 import React from 'react';
-import OpenAdminPage from '../Admin/OpenAdminPage';
-import BackMainPage from './BackMainPage';
-import RowBoxData from './RowsBoxData';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Scan from '../Scan';
 import { Action, Subject } from '../../casl/casl';
 import { Can } from '../../casl/casl.factory';
-import UpdateDocs from './UpdateDocs';
+import NavigationLinkButton from './NavigationLinkButton';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 export default function NavBar() {
   const dispatch = useAppDispatch();
@@ -27,16 +25,40 @@ export default function NavBar() {
               sx={{ flexBasis: '75%', mt: 0.5 }}
             >
               <Grid item sx={{ ml: 2 }}>
-                <BackMainPage />
+                <NavigationLinkButton
+                  path={'/MainPage'}
+                  name={'Главная страница'}
+                  props={{
+                    sx: {
+                      width: '180px',
+                    },
+                  }}
+                />
               </Grid>
               <Grid item>
                 <Can I={Action.Manage} a={Subject.Doc}>
-                  <UpdateDocs />
+                  <NavigationLinkButton
+                    path={'/DocumentPage'}
+                    name={'Документы'}
+                    props={{
+                      sx: {
+                        width: '180px',
+                      },
+                    }}
+                  />
                 </Can>
               </Grid>
               <Grid item>
                 <Can I={Action.Manage} a={Subject.Barcode}>
-                  <RowBoxData />
+                  <NavigationLinkButton
+                    path={'/RowsBoxData'}
+                    name={'Создание короба'}
+                    props={{
+                      sx: {
+                        width: '180px',
+                      },
+                    }}
+                  />
                 </Can>
               </Grid>
             </Grid>
@@ -60,11 +82,13 @@ export default function NavBar() {
                 </Button>
               </Grid>
               <Grid item>
-                <OpenAdminPage />
-              </Grid>
-              <Grid item>
+                <NavigationLinkButton
+                  path={'/AdminPage'}
+                  icon={<AdminPanelSettingsIcon fontSize="large" />}
+                />
                 <Scan />
               </Grid>
+              <Grid item></Grid>
             </Grid>
           </Grid>
         </Toolbar>
