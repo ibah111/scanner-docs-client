@@ -5,7 +5,7 @@ import { relogin } from '../../Reducer/State';
 import React from 'react';
 import OpenAdminPage from '../Admin/OpenAdminPage';
 import BackMainPage from './BackMainPage';
-import OpenTableCodes from './OpenTableCodes';
+import RowBoxData from './RowsBoxData';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Scan from '../Scan';
 import { Action, Subject } from '../../casl/casl';
@@ -36,7 +36,7 @@ export default function NavBar() {
               </Grid>
               <Grid item>
                 <Can I={Action.Manage} a={Subject.Barcode}>
-                  <OpenTableCodes />
+                  <RowBoxData />
                 </Can>
               </Grid>
             </Grid>
