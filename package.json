@@ -4,7 +4,7 @@
   "description": "Приложение преднозначено для сканирования документов",
   "version": "1.1.0",
   "author": "Мария Иванова <ivanova_ms@outlook.com>",
-  "main": "app/background.js",
+  "main": "main/background.js",
   "scripts": {
     "start:dev": "NODE_ENV=development ELECTRON_ENABLE_LOGGING=1 nextron",
     "start:prod": "NODE_ENV=production ELECTRON_ENABLE_LOGGING=1 nextron",
