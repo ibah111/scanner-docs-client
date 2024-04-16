@@ -7,12 +7,14 @@ import autoUpdaters from './autoUpdaters';
 import { singleEvents } from './singleEvents';
 import { document_electron_main } from '@tools/bpac/electron_main';
 import path from 'path';
-import { StoreInit } from './store';
+import { StoreInit, electronStore } from './store';
 import 'electron-devtools-installer';
 import install, {
   REACT_DEVELOPER_TOOLS,
   REDUX_DEVTOOLS,
 } from 'electron-devtools-installer';
+import gitSemverTags from 'git-semver-tags';
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('@electron/remote/main').initialize();
 
@@ -83,6 +85,18 @@ if (isProd) {
   });
 })();
 StoreInit();
+/**
+ * С помощью gitSemverTags - получаю последний тэг приложения
+ * для знания версии приложения
+ */
+const lastTag = await gitSemverTags().then((tags) => {
+  console.log('all tags', tags);
+  return tags[0];
+});
+electronStore.set('version', lastTag);
+const checkApplicationVersion = electronStore.get('version');
+console.log('Current Application version', checkApplicationVersion);
+
 app.on('window-all-closed', () => {
   app.quit();
 });
