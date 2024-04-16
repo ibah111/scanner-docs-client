@@ -1,11 +1,14 @@
 import { ipcMain } from 'electron';
 import Store from 'electron-store';
+/**
+ * Инициализация "магазина"(стора) на стороне сервера
+ */
+export const electronStore = new Store();
 export function StoreInit() {
-  const store = new Store();
   ipcMain.on('electron-store-get', async (event, val) => {
-    event.returnValue = store.get(val);
+    event.returnValue = electronStore.get(val);
   });
   ipcMain.on('electron-store-set', async (event, key, val) => {
-    store.set(key, val);
+    electronStore.set(key, val);
   });
 }
