@@ -23,13 +23,19 @@ import { createTheme } from '../lib/theme';
 import '../locale';
 import moment from 'moment';
 import getStore from '../lib/store';
-
 export default function App(props: AppProps) {
-  const [version, setVersion] = React.useState<string>('');
+  const [versionApp, setVersionApp] = React.useState<string>('');
   const { Component, pageProps } = props;
   React.useEffect(() => {
+    /**
+     * Я не могу вызвать диспатч в этом useEffect
+     * потому что App - является корневым элементом
+     * и контекст для него обозначается ниже и если на этот уровне
+     * вызвать что либо связанное с контекстом, то будет выдаваться ошибка,
+     * в контексте которой он не знает контекста и ругается на это
+     */
     const ver = getStore().get('version') as string;
-    setVersion(ver);
+    setVersionApp(ver);
     moment.locale('ru');
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
@@ -58,7 +64,7 @@ export default function App(props: AppProps) {
                 justifyContent="flex-start"
                 alignItems="center"
               >
-                <MenuBar version={version} />
+                <MenuBar version={versionApp} />
                 <MessageShow />
                 <Update />
                 <CssBaseline />
