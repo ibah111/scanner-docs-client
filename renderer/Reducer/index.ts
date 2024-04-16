@@ -25,6 +25,7 @@ import Dict from './Dict';
 import Error from './Error';
 import LawExec from './LawExec';
 import Results from './Results';
+import Version from './Version';
 import React from 'react';
 
 export const store = configureStore({
@@ -40,7 +41,9 @@ export const store = configureStore({
     Box,
     RowDoc,
     Doc,
-    //Send
+    /**
+     * start of Send reducers
+     */
     App,
     Search,
     Send,
@@ -50,6 +53,11 @@ export const store = configureStore({
     Error,
     LawExec,
     Results,
+    /**
+     * end of Send reducers
+     * Just version
+     */
+    Version,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;
