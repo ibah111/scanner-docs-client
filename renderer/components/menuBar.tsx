@@ -6,9 +6,9 @@ import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 interface MenuBarProps {
   back?: () => void;
+  version: string;
 }
-export default function MenuBar({ back }: MenuBarProps) {
-  const version = '1.0.0';
+export default function MenuBar({ back, version }: MenuBarProps) {
   return (
     <Grid item container direction="row" justifyContent="space-between">
       <Grid item sx={{ pt: 1 }}>
