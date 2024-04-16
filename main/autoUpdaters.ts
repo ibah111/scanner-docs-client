@@ -1,4 +1,4 @@
-import { App, ipcMain, WebContents } from 'electron';
+import { App, dialog, ipcMain, WebContents } from 'electron';
 import { autoUpdater } from 'electron-updater';
 
 export default function autoUpdaters(app: App, webContents: WebContents) {
@@ -23,7 +23,19 @@ export default function autoUpdaters(app: App, webContents: WebContents) {
   });
 
   ipcMain.on('check_version', function () {
-    webContents.send('version', app.getVersion());
-    autoUpdater.checkForUpdates();
+    dialog.showMessageBox({
+      message: 'some kinda message',
+    });
+    console.log('Checking version');
+    const getVersion = (): string => {
+      const version = app.getVersion();
+      console.log('ipcMain.on => checking version', version);
+      return version;
+    };
+    webContents.send('version', getVersion());
+    autoUpdater.checkForUpdates().then((res) => {
+      console.log('AutoUpdater => check for updates promise result\n', res);
+      return res;
+    });
   });
 }
