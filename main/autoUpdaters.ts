@@ -32,6 +32,14 @@ export default function autoUpdaters(app: App, webContents: WebContents) {
       console.log('ipcMain.on => checking version', version);
       return version;
     };
+
+    dialog.showMessageBox({
+      title: 'Application update',
+      message: `You are working version on: ${getVersion()}`,
+      buttons: ['Restart', 'Later'],
+      detail: 'New working version is installed, restart to apply changes',
+    });
+
     webContents.send('version', getVersion());
     autoUpdater.checkForUpdates().then((res) => {
       console.log('AutoUpdater => check for updates promise result\n', res);
