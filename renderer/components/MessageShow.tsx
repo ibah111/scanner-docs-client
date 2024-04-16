@@ -8,9 +8,13 @@ export default function MessageShow() {
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
   React.useEffect(() => {
+    console.log('MessageShow.messages', messages);
     if (messages.length > 0) {
       for (const message of messages)
-        enqueueSnackbar(message.text, message.params);
+        enqueueSnackbar(
+          message.text || 'Неизвестное сообщение',
+          message.params,
+        );
       dispatch(resetMessage());
     }
   }, [messages]);
