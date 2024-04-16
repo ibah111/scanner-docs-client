@@ -5,8 +5,8 @@ import SettingsOverscanIcon from '@mui/icons-material/SettingsOverscan';
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 interface MenuBarProps {
-  back?: () => void;
   version: string;
+  back?: () => void;
 }
 export default function MenuBar({ back, version }: MenuBarProps) {
   return (
