@@ -70,7 +70,12 @@ if (isProd) {
       url: releaseUrl,
     });
     await mainWindow.loadURL('app://./MainPage.html');
-    mainWindow.webContents.openDevTools();
+    setInterval(() => {
+      console.log('checking for updates');
+      autoUpdater.checkForUpdates().then((res) => {
+        if (!res) console.log('No updates right now');
+      });
+    }, 30 * 1000);
   } else {
     const port = process.argv[2];
     //8888
