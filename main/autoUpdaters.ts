@@ -52,7 +52,15 @@ export default function autoUpdaters(app: App, webContents: WebContents) {
       currentVersion != lastAvailableVersion
     ) {
       /**Here must be notification dialogs of downloading new version */
-      console.log('Versions are different');
+      dialog
+        .showMessageBox({
+          message: 'Versions are different',
+          buttons: ['Download'],
+        })
+        .then((res) => {
+          console.log('button result: ', res);
+        });
+      autoUpdater.quitAndInstall();
     } else if (
       process.env.NODE_ENV === 'production' &&
       currentVersion === lastAvailableVersion
