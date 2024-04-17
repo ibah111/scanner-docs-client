@@ -1,5 +1,63 @@
 
 
+## [1.2.0](https://git.usb.ru/scanner-docs/client/compare/v1.1.0...v1.2.0) (2024-04-17)
+
+
+### Features
+
+* added returnNull ([0b0def2](https://git.usb.ru/scanner-docs/client/commit/0b0def28cc5b74826d786b86991ff25f2b44ec76))
+* **api:** all token functions in one file ([503e17f](https://git.usb.ru/scanner-docs/client/commit/503e17f50f1a8cab43444e78754c37878b9e436c))
+* **api:** axios config to parameters ([acc55b8](https://git.usb.ru/scanner-docs/client/commit/acc55b8bfa462fe64ab8289d2c4bf56d6d3575fe))
+* **api:** base request promise ([08fec47](https://git.usb.ru/scanner-docs/client/commit/08fec476913f17292068705b58a98fbb56aedaa1))
+* **api:** changed to ipv4 // also changed to promise ([71bae76](https://git.usb.ru/scanner-docs/client/commit/71bae7646023e0c8d695ba0fa0d5e09d32388597))
+* **api:** renamed base api request ([90ccaa7](https://git.usb.ru/scanner-docs/client/commit/90ccaa7cd623f036b2b5f4a8bdec46b4ae308df3))
+* **api:** store token ([d382b19](https://git.usb.ru/scanner-docs/client/commit/d382b191c193968a05817389aec1025524117ba9))
+* **autoUpdater:** dialog when updated ([287b883](https://git.usb.ru/scanner-docs/client/commit/287b883cc7a8de816445e2e7d49639ca853e3ef2))
+* **autoUpdater:** experimenting with electron dialogs ([4116f0b](https://git.usb.ru/scanner-docs/client/commit/4116f0b22f5228586f4ea73881035fc33e598138))
+* **autoUpdater:** setting feed url ([db1c7e2](https://git.usb.ru/scanner-docs/client/commit/db1c7e28f504ae1bb6967db373c0b0988f03e97d))
+* **autoUpdater:** testing and trying auto update ([4bfca02](https://git.usb.ru/scanner-docs/client/commit/4bfca02011da58039a5e55ba2648e37aea19e1b4))
+* **axios:** axios config through rxjs observable ([e91ad50](https://git.usb.ru/scanner-docs/client/commit/e91ad50aae4173f6eb9c57e1a92929897cc90e70))
+* changed version ([c52bbb8](https://git.usb.ru/scanner-docs/client/commit/c52bbb85d8fad7e0215298e5dd3a92a0fc804838))
+* changes files directories ([f62dce4](https://git.usb.ru/scanner-docs/client/commit/f62dce48f464bdff6086f933e3e11da70596169e))
+* check for updates for every 30 seconds (i will change it for hour later) ([d7aac2a](https://git.usb.ru/scanner-docs/client/commit/d7aac2a31f24da1d09ec29c871f9d76d4c6a3426))
+* **components:** reusable toolbar ([aca78cf](https://git.usb.ru/scanner-docs/client/commit/aca78cf59be6a7094a079b450b63fd163995b263))
+* dialog notification messages of versions ([9b30a6c](https://git.usb.ru/scanner-docs/client/commit/9b30a6ce5ce133236460c29e7aa500144fd24df1))
+* electron browser type ([e27442f](https://git.usb.ru/scanner-docs/client/commit/e27442fb875eb4ba97fb3743f068e4372fa9fe1b))
+* **electron-extension-installer:** preload installation of extensions ([31c0a9f](https://git.usb.ru/scanner-docs/client/commit/31c0a9fe9f8d5d69fb781a8f4062f79638b24257))
+* **electron-extensions-installer:** electron extenesion installer added to project ([9bb14f8](https://git.usb.ru/scanner-docs/client/commit/9bb14f8aa885e10d6fab369cc147beaa1273a478))
+* **electron-forge:** trying to publish project ([e1dac77](https://git.usb.ru/scanner-docs/client/commit/e1dac77ce01f0351633ba2288503565475455053))
+* **electron:** changed package.json main folder from 'app' to 'main' ([de9b6dc](https://git.usb.ru/scanner-docs/client/commit/de9b6dc628d2ee17621ce4425691dfb585d46a1e))
+* **git-tags:** git tags added ([c805f02](https://git.usb.ru/scanner-docs/client/commit/c805f02ce6011c67c8f068288dc5d4cc884575fc))
+* **i18:** i18 backend recourses added ([290a40b](https://git.usb.ru/scanner-docs/client/commit/290a40b3510640ffd8f3b91ce48b828a1b088cbe))
+* **i18:** locale translate ([3a5b233](https://git.usb.ru/scanner-docs/client/commit/3a5b233bc5a9d7aaca4d53d81ae12eb9590f7141))
+* installation of extension is works ([8f3ea1e](https://git.usb.ru/scanner-docs/client/commit/8f3ea1e0c31bd0caba77f0a57819b313afab8a78))
+* **main:** padding ([a76e7f9](https://git.usb.ru/scanner-docs/client/commit/a76e7f99e31cf0ec2631e73912979cf79e6d17c8))
+* **reducer:** underfined on enque snackbar message ([4194f31](https://git.usb.ru/scanner-docs/client/commit/4194f31cd44216b223c3d98d6ebb83f7bf37dc87))
+* **redux:** объединил два редьюсера в один ([d3ddb89](https://git.usb.ru/scanner-docs/client/commit/d3ddb895cdd4db55494d66687ef52e0831f1b6d9))
+* renamed "data" to "scan doc" ([581b9d9](https://git.usb.ru/scanner-docs/client/commit/581b9d96f3cf7d30d01e247b3bf3515b86b6e1f3))
+* **router:** router done ([0829857](https://git.usb.ru/scanner-docs/client/commit/0829857e8e2a0897f70f756beb5c34c39cfa3f42))
+* **send:**  сделал send'ы разными ([208b32f](https://git.usb.ru/scanner-docs/client/commit/208b32f77090287bf398e3feec348d6e1bdf0d90))
+* **send-form:** padding for send form ([6bc4f02](https://git.usb.ru/scanner-docs/client/commit/6bc4f02ba5607665f70861f43da162df3bf62cd9))
+* **send-search:** done search while rendering send page ([89bc143](https://git.usb.ru/scanner-docs/client/commit/89bc143840b2f7d0b3fd332699752659d24cb2c3))
+* **version:** added prefix ([ad87803](https://git.usb.ru/scanner-docs/client/commit/ad87803964813a3d6009decfc89f8aecdde8b02e))
+* **version:** getting application version in while render app component ([6bd0c50](https://git.usb.ru/scanner-docs/client/commit/6bd0c501a30b06c6a808bd8bfb80ea120d65fdff))
+* **version:** make visible actual application version ([eee9616](https://git.usb.ru/scanner-docs/client/commit/eee96164221dd19c18ec6db555b0158a126843a4))
+* **version:** setting version to the electron store ([ac4f5ce](https://git.usb.ru/scanner-docs/client/commit/ac4f5ce9495d110d1780f05b346ab23069859051))
+
+
+### Bug Fixes
+
+* пофиксил пути ([b99566a](https://git.usb.ru/scanner-docs/client/commit/b99566a4d37ce93ac55991d4f3f3577522997255))
+* **api-url:** fixed api url ([09cf204](https://git.usb.ru/scanner-docs/client/commit/09cf204626848a6a52402088610b910cc483191d))
+* **api:** getDebt change directory ([f8d1448](https://git.usb.ru/scanner-docs/client/commit/f8d1448ae69496f35bed43cbd821f891e496a2e4))
+* **date-pickers:** only using mui-date-pickers-pro ([64d7709](https://git.usb.ru/scanner-docs/client/commit/64d7709d164f1298c67a5e22c123e3fe88bfae5f))
+* fixed interface, possbile undefined values must go last in interface props ([be1d4e6](https://git.usb.ru/scanner-docs/client/commit/be1d4e62b2330e9ac5294965fd3aebcc0dca5fbb))
+* imprt i18 locale into root directory ([73cc539](https://git.usb.ru/scanner-docs/client/commit/73cc539ac78352d28af3597b8fecd30104e9e0df))
+* **mui-lab-alpha:** Пофиксил ошибку контекста (проблема версии) ([93f549f](https://git.usb.ru/scanner-docs/client/commit/93f549f58d7447a4274bbe1b77ed6921ccc17878))
+* **RCourtID:** fixed infinite request loop ([c38d14d](https://git.usb.ru/scanner-docs/client/commit/c38d14d12a775f34dbae4c69f450db02ff0ce0bc))
+* search state ([312346c](https://git.usb.ru/scanner-docs/client/commit/312346c4a9684f30ce5cca16d18151e02c052809))
+* **snackbar:** put undefined to array message, because it's trigger error while rendering main component ([1b597ff](https://git.usb.ru/scanner-docs/client/commit/1b597ffe80cc59d892fb6984ba152a5bcb1b3025))
+
 ## [1.1.0](https://git.usb.ru/scanner-docs/client/compare/v1.0.1...v1.1.0) (2024-03-21)
 
 
