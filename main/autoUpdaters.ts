@@ -1,5 +1,10 @@
 import { App, dialog, ipcMain, WebContents } from 'electron';
 import { autoUpdater } from 'electron-updater';
+import gitSemverTags from 'git-semver-tags';
+
+export const lastAvailableVersion = await gitSemverTags().then(
+  (tags) => tags[0],
+);
 
 export default function autoUpdaters(app: App, webContents: WebContents) {
   autoUpdater.autoDownload = false;
@@ -22,27 +27,43 @@ export default function autoUpdaters(app: App, webContents: WebContents) {
     webContents.send('update-downloaded');
   });
 
-  ipcMain.on('check_version', function () {
-    dialog.showMessageBox({
-      message: 'some kinda message',
-    });
-    console.log('Checking version');
+  ipcMain.on('check_version', async function () {
     const getVersion = (): string => {
       const version = app.getVersion();
       console.log('ipcMain.on => checking version', version);
       return version;
     };
-
-    dialog.showMessageBox({
-      title: 'Application update',
-      message: `You are working version on: ${getVersion()}`,
-      buttons: ['Restart', 'Later'],
-      detail: 'New working version is installed, restart to apply changes',
-    });
+    /**
+     * getting current version and latest
+     */
+    const currentVersion = getVersion();
+    console.log(
+      `CurrentVersion = ${currentVersion},\n LastAvailable = ${lastAvailableVersion}`,
+    );
 
     webContents.send('version', getVersion());
+
+    dialog.showMessageBox({
+      title: 'Version',
+      message: `Current application verison: ${getVersion()}`,
+    });
+    if (
+      process.env.NODE_ENV === 'production' &&
+      currentVersion != lastAvailableVersion
+    ) {
+      /**Here must be notification dialogs of downloading new version */
+      console.log('Versions are different');
+    } else if (
+      process.env.NODE_ENV === 'production' &&
+      currentVersion === lastAvailableVersion
+    ) {
+      dialog.showMessageBox({
+        title: 'Version message',
+        message: 'Your working on actual version',
+      });
+    }
+
     autoUpdater.checkForUpdates().then((res) => {
-      console.log('AutoUpdater => check for updates promise result\n', res);
       return res;
     });
   });
