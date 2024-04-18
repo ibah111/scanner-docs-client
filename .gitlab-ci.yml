@@ -28,6 +28,7 @@ test_job:
   stage: test
   image: node:lts
   before_script:
+    - echo "${CI_JOB_TOKEN}"
     - apt-get update -qq && apt-get install -y -qq wget
     - dpkg --add-architecture i386
     - mkdir -pm755 /etc/apt/keyrings
