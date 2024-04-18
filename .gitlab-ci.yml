@@ -40,13 +40,14 @@ test_job:
     - yarn config set -H enableImmutableInstalls false
     - yarn config set nodeLinker node-modules
     - yarn config set enableStrictSsl false
+    - yarn config set enableGlobalCache false
     - yarn config set "npmRegistries[\"//${CI_SERVER_HOST}/api/v4/packages/npm/\"].npmAlwaysAuth" true
-    - yarn config set "npmRegistries[\"//${CI_SERVER_HOST}/api/v4/packages/npm/\"].npmAuthToken" "glpat-kmV_5HiSiT8kogFH4rix"
+    - yarn config set "npmRegistries[\"//${CI_SERVER_HOST}/api/v4/packages/npm/\"].npmAuthToken" "${CI_JOB_TOKEN}"
     - yarn config set npmScopes.contact.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
     - yarn config set npmScopes.motivation.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
     - yarn config set npmScopes.tools.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
   script:
-    - cat .yarnrc.yml
+    - cat .yarnrc
     - yarn
     - yarn build
   rules:
