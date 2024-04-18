@@ -35,7 +35,8 @@ test_job:
     - wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bullseye/winehq-bullseye.sources
     - apt-get update -qq && apt-get install --install-recommends -qq winehq-stable
     - node -v
-    - yarn set version 3.6.1
+    - yarn set version berry
+    - yarn config set -H enableImmutableInstalls false
     - yarn config set nodeLinker node-modules
     - yarn config set enableStrictSsl false
     - yarn config set "npmRegistries[\"//${CI_SERVER_HOST}/api/v4/packages/npm/\"].npmAlwaysAuth" true
