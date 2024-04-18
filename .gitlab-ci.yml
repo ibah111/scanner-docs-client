@@ -36,6 +36,7 @@ test_job:
     - apt-get update -qq && apt-get install --install-recommends -qq winehq-stable
     - node -v
     - yarn set version berry
+    - yarn config set compressionLevel mixed
     - yarn config set -H enableImmutableInstalls false
     - yarn config set nodeLinker node-modules
     - yarn config set enableStrictSsl false
