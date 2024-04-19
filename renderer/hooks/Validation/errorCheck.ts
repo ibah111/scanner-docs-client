@@ -8,3 +8,7 @@ export default function errorCheck(
     return true;
   return false;
 }
+export function errorCheckSend(errors: ValidationError[]): boolean {
+  if (errors.length > 0) return true;
+  return false;
+}

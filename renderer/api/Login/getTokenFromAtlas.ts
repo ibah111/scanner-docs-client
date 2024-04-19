@@ -8,7 +8,6 @@ export function getTokenFromAtlas(): Observable<string> {
     );
     let error = true;
     window.ipc.once('getToken', (event, value: string) => {
-      console.log('i opened the browser and get token === ', value);
       error = false;
       subscriber.next(value);
       subscriber.complete();

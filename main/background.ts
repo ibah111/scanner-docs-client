@@ -3,11 +3,19 @@ import Store from 'electron-store';
 import serve from 'electron-serve';
 import { createWindow } from './helpers';
 import events from './events';
-import autoUpdaters from './autoUpdaters';
+import autoUpdaters, { lastAvailableVersion } from './autoUpdaters';
 import { singleEvents } from './singleEvents';
 import { document_electron_main } from '@tools/bpac/electron_main';
 import path from 'path';
-import { StoreInit } from './store';
+import { StoreInit, electronStore } from './store';
+import 'electron-devtools-installer';
+import install, {
+  REACT_DEVELOPER_TOOLS,
+  REDUX_DEVTOOLS,
+} from 'electron-devtools-installer';
+import gitSemverTags from 'git-semver-tags';
+import { autoUpdater } from 'electron-updater';
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('@electron/remote/main').initialize();
 
@@ -29,6 +37,11 @@ if (isProd) {
       callback(true);
     },
   );
+  app.on('ready', () => {
+    install([REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS]).then((name) => {
+      console.log(name, 'extension is installed');
+    });
+  });
 
   await app.whenReady();
   const mainWindow = createWindow('main', {
@@ -51,8 +64,18 @@ if (isProd) {
   singleEvents(mainWindow.webContents);
 
   if (isProd) {
+    const releaseUrl = `https://git.usb.ru/scanner-docs/client/-/releases/${lastAvailableVersion}`;
+    autoUpdater.setFeedURL({
+      provider: 'generic',
+      url: releaseUrl,
+    });
     await mainWindow.loadURL('app://./MainPage.html');
-    mainWindow.webContents.openDevTools();
+    setInterval(() => {
+      console.log('checking for updates');
+      autoUpdater.checkForUpdates().then((res) => {
+        if (!res) console.log('No updates right now');
+      });
+    }, 30 * 1000);
   } else {
     const port = process.argv[2];
     //8888
@@ -73,6 +96,18 @@ if (isProd) {
   });
 })();
 StoreInit();
+/**
+ * С помощью gitSemverTags - получаю последний тэг приложения
+ * для знания версии приложения
+ */
+const lastTag = await gitSemverTags().then((tags) => {
+  console.log('all tags', tags);
+  return tags[0];
+});
+electronStore.set('version', lastTag);
+const checkApplicationVersion = electronStore.get('version');
+console.log('Current Application version', checkApplicationVersion);
+
 app.on('window-all-closed', () => {
   app.quit();
 });

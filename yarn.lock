@@ -1417,6 +1417,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.23.9":
+  version: 7.24.1
+  resolution: "@babel/runtime@npm:7.24.1"
+  dependencies:
+    regenerator-runtime: "npm:^0.14.0"
+  checksum: 10/3a8d61400c636d1ce3a42895a106cd4dfb4e9b88832a8a754a724c68652f821d7a46dce394305d7623f9f0d3597bf0a98aeb5f9c150ef60e14bbbf66caab4654
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.22.15":
   version: 7.22.15
   resolution: "@babel/template@npm:7.22.15"
@@ -2255,6 +2264,35 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mui/lab@npm:5.0.0-alpha.153":
+  version: 5.0.0-alpha.153
+  resolution: "@mui/lab@npm:5.0.0-alpha.153"
+  dependencies:
+    "@babel/runtime": "npm:^7.23.2"
+    "@mui/base": "npm:5.0.0-beta.24"
+    "@mui/system": "npm:^5.14.18"
+    "@mui/types": "npm:^7.2.9"
+    "@mui/utils": "npm:^5.14.18"
+    clsx: "npm:^2.0.0"
+    prop-types: "npm:^15.8.1"
+  peerDependencies:
+    "@emotion/react": ^11.5.0
+    "@emotion/styled": ^11.3.0
+    "@mui/material": ">=5.10.11"
+    "@types/react": ^17.0.0 || ^18.0.0
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    "@emotion/react":
+      optional: true
+    "@emotion/styled":
+      optional: true
+    "@types/react":
+      optional: true
+  checksum: 10/c1b5b2f1cff2df9d0f2b443461769b79b13f69da5d74cf96f59db5d95d13e81f7f37d0f1391b55f1e0c184f3f800a5bfe315fba2e2993cf5457204243d06e412
+  languageName: node
+  linkType: hard
+
 "@mui/material@npm:^5.14.18":
   version: 5.14.18
   resolution: "@mui/material@npm:5.14.18"
@@ -2477,14 +2515,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/x-date-pickers@npm:^6.18.2":
-  version: 6.18.2
-  resolution: "@mui/x-date-pickers@npm:6.18.2"
+"@mui/x-date-pickers-pro@npm:^6.19.8":
+  version: 6.19.8
+  resolution: "@mui/x-date-pickers-pro@npm:6.19.8"
   dependencies:
     "@babel/runtime": "npm:^7.23.2"
     "@mui/base": "npm:^5.0.0-beta.22"
     "@mui/utils": "npm:^5.14.16"
-    "@types/react-transition-group": "npm:^4.4.8"
+    "@mui/x-date-pickers": "npm:6.19.8"
+    "@mui/x-license-pro": "npm:6.10.2"
     clsx: "npm:^2.0.0"
     prop-types: "npm:^15.8.1"
     react-transition-group: "npm:^4.4.5"
@@ -2493,7 +2532,7 @@ __metadata:
     "@emotion/styled": ^11.8.1
     "@mui/material": ^5.8.6
     "@mui/system": ^5.8.0
-    date-fns: ^2.25.0
+    date-fns: ^2.25.0 || ^3.2.0
     date-fns-jalali: ^2.13.0-0
     dayjs: ^1.10.7
     luxon: ^3.0.2
@@ -2521,7 +2560,55 @@ __metadata:
       optional: true
     moment-jalaali:
       optional: true
-  checksum: 10/8f5d141ad9410b96a2e6ff1bbbde4e97d036cd4d341b573845406f1f1a36211d51ea9697da5765155811fad4aaed85b6338b5a99dc68103cc96397928508d226
+  checksum: 10/f1d020fc4424097b7667dff04d2c3c7bd24cdb2be0b04c3648b5f1e2fdb515d04b4171bbf61f85a3a772704cfa03123bb56035b58cd54dfcfb8ec52105fcbd93
+  languageName: node
+  linkType: hard
+
+"@mui/x-date-pickers@npm:6.19.8":
+  version: 6.19.8
+  resolution: "@mui/x-date-pickers@npm:6.19.8"
+  dependencies:
+    "@babel/runtime": "npm:^7.23.2"
+    "@mui/base": "npm:^5.0.0-beta.22"
+    "@mui/utils": "npm:^5.14.16"
+    "@types/react-transition-group": "npm:^4.4.8"
+    clsx: "npm:^2.0.0"
+    prop-types: "npm:^15.8.1"
+    react-transition-group: "npm:^4.4.5"
+  peerDependencies:
+    "@emotion/react": ^11.9.0
+    "@emotion/styled": ^11.8.1
+    "@mui/material": ^5.8.6
+    "@mui/system": ^5.8.0
+    date-fns: ^2.25.0 || ^3.2.0
+    date-fns-jalali: ^2.13.0-0
+    dayjs: ^1.10.7
+    luxon: ^3.0.2
+    moment: ^2.29.4
+    moment-hijri: ^2.1.2
+    moment-jalaali: ^0.7.4 || ^0.8.0 || ^0.9.0 || ^0.10.0
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    "@emotion/react":
+      optional: true
+    "@emotion/styled":
+      optional: true
+    date-fns:
+      optional: true
+    date-fns-jalali:
+      optional: true
+    dayjs:
+      optional: true
+    luxon:
+      optional: true
+    moment:
+      optional: true
+    moment-hijri:
+      optional: true
+    moment-jalaali:
+      optional: true
+  checksum: 10/3fdc72aa606d4862227b4ee5dabaffe17d681ec1b2115e73e12302fab921da6d9432b15fb58db7436ff00b024ce85d634a3aa7a1478026c03772db2d536b019b
   languageName: node
   linkType: hard
 
@@ -3463,6 +3550,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/file-saver@npm:^2":
+  version: 2.0.7
+  resolution: "@types/file-saver@npm:2.0.7"
+  checksum: 10/c3d1cd80eab1214767922cabac97681f3fb688e82b74890450d70deaca49537949bbc96d80d363d91e8f0a4752c7164909cc8902d9721c5c4809baafc42a3801
+  languageName: node
+  linkType: hard
+
 "@types/format-util@npm:^1.0.3":
   version: 1.0.4
   resolution: "@types/format-util@npm:1.0.4"
@@ -3476,6 +3570,13 @@ __metadata:
   dependencies:
     "@types/node": "npm:*"
   checksum: 10/ac545e377248039c596ef27d9f277b813507ebdd95d05f32fe7e9c67eb1ed567dafb4ba59f5fdcb6601dd7fd396ff9ba24f8c122e89cef096cdc17987c50a7fa
+  languageName: node
+  linkType: hard
+
+"@types/git-semver-tags@npm:^7":
+  version: 7.0.0
+  resolution: "@types/git-semver-tags@npm:7.0.0"
+  checksum: 10/ad87d0a3376ab375ddef3fc350bdc83a064740ee90d4e2c3caebe4923fd846e0337376bd0ad39e31f5e1273c129cc2279a76881e9b151d526e7b6a422bfe2264
   languageName: node
   linkType: hard
 
@@ -4562,6 +4663,13 @@ __metadata:
   version: 1.7.0
   resolution: "atomically@npm:1.7.0"
   checksum: 10/085a81b7c34183c6b05e3f53beae9900657efa8cf366ba086fd76481095f001b8eb4566d02e0d34ecc296bfc832eee8319049db314de39ac360fb4b128e7ec5e
+  languageName: node
+  linkType: hard
+
+"attr-accept@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "attr-accept@npm:2.2.2"
+  checksum: 10/c867ed41ed749988ad2a6fc70eb2498b9c3c2d58aaad2a8d05422a383058f9d29e50c4bca363c5ee7433df738a7920cc95377bbce8678e817fb498299dd82010
   languageName: node
   linkType: hard
 
@@ -6199,6 +6307,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"electron-devtools-installer@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "electron-devtools-installer@npm:3.2.0"
+  dependencies:
+    rimraf: "npm:^3.0.2"
+    semver: "npm:^7.2.1"
+    tslib: "npm:^2.1.0"
+    unzip-crx-3: "npm:^0.2.0"
+  checksum: 10/e48390567f7344a0aa3a184413064ea366992fc1f0d247177bfe4f6c4b732ee3088c9d19409156650edb2c6982b97cbf1983cfd7b486c6ee7ef314ad0cabc06e
+  languageName: node
+  linkType: hard
+
 "electron-publish@npm:24.13.1":
   version: 24.13.1
   resolution: "electron-publish@npm:24.13.1"
@@ -7059,6 +7179,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"file-saver@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "file-saver@npm:2.0.5"
+  checksum: 10/fbba443d9b682fec0be6676c048a7ac688b9bd33b105c02e8e1a1cb3e354ed441198dc1f15dcbc137fa044bea73f8a7549f2617e3a952fa7d96390356d54a7c3
+  languageName: node
+  linkType: hard
+
+"file-selector@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "file-selector@npm:0.6.0"
+  dependencies:
+    tslib: "npm:^2.4.0"
+  checksum: 10/6add4098ae07fd1e9050b1e8d3fd9f128680c1d6648c0676af54ace4586e6e5bfcb8fdfa45b69e9131ffd8175bf630d54a445a5facf9be244f85b99ce309183e
+  languageName: node
+  linkType: hard
+
 "filelist@npm:^1.0.4":
   version: 1.0.4
   resolution: "filelist@npm:1.0.4"
@@ -7466,7 +7602,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"git-semver-tags@npm:^7.0.0":
+"git-semver-tags@npm:^7.0.0, git-semver-tags@npm:^7.0.1":
   version: 7.0.1
   resolution: "git-semver-tags@npm:7.0.1"
   dependencies:
@@ -7908,6 +8044,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"html-parse-stringify@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "html-parse-stringify@npm:3.0.1"
+  dependencies:
+    void-elements: "npm:3.1.0"
+  checksum: 10/8743b76cc50e46d1956c1ad879d18eb9613b0d2d81e24686d633f9f69bb26b84676f64a926973de793cca479997017a63219278476d617b6c42d68246d7c07fe
+  languageName: node
+  linkType: hard
+
 "http-cache-semantics@npm:^4.0.0, http-cache-semantics@npm:^4.1.1":
   version: 4.1.1
   resolution: "http-cache-semantics@npm:4.1.1"
@@ -8033,6 +8178,15 @@ __metadata:
   version: 1.0.4
   resolution: "hyphenate-style-name@npm:1.0.4"
   checksum: 10/d37883e6b7e1be62e1ddae29cac83fa59fb93c068bc8eb1561585439adbad91dcf7e264ee2a82c4378fc58049f7bd853544a4a81bf00d4aff717f641052323e7
+  languageName: node
+  linkType: hard
+
+"i18next-resources-to-backend@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "i18next-resources-to-backend@npm:1.2.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.23.2"
+  checksum: 10/a08ec56bcdeddc885d7987bd6de877c6db2c6f2828ea2a0888e8d060caa0dd828b850c0ff85575992bda822d1630850ec47c60bdac4eed660ac963748544118f
   languageName: node
   linkType: hard
 
@@ -9097,7 +9251,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jszip@npm:^3.10.1":
+"jszip@npm:^3.1.0, jszip@npm:^3.10.1":
   version: 3.10.1
   resolution: "jszip@npm:3.10.1"
   dependencies:
@@ -9758,7 +9912,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mkdirp@npm:>=0.5 0":
+"mkdirp@npm:>=0.5 0, mkdirp@npm:^0.5.1":
   version: 0.5.6
   resolution: "mkdirp@npm:0.5.6"
   dependencies:
@@ -10938,6 +11092,37 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-dropzone@npm:^14.2.3":
+  version: 14.2.3
+  resolution: "react-dropzone@npm:14.2.3"
+  dependencies:
+    attr-accept: "npm:^2.2.2"
+    file-selector: "npm:^0.6.0"
+    prop-types: "npm:^15.8.1"
+  peerDependencies:
+    react: ">= 16.8 || 18.0.0"
+  checksum: 10/34cf1758a896795b579adab5f9cdc144330577ab1826a0b66ff9daa8c60a80ed6b31b8f989647664f2548cfe00b336e9c31a2f3dd8de43111c8318fcc89b279c
+  languageName: node
+  linkType: hard
+
+"react-i18next@npm:^14.1.0":
+  version: 14.1.0
+  resolution: "react-i18next@npm:14.1.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.23.9"
+    html-parse-stringify: "npm:^3.0.1"
+  peerDependencies:
+    i18next: ">= 23.2.3"
+    react: ">= 16.8.0"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: 10/47b050ff3d8e43e8b56ca6b57f67c3feaecdb629b47eeb3923b4f43312b89af3e9373e93ada72420ad3199fc340605929512134eefcb55844f0eaa6bc0785613
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.13.1, react-is@npm:^16.7.0":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -11637,10 +11822,11 @@ __metadata:
     "@emotion/styled": "npm:^11.11.0"
     "@fontsource/roboto": "npm:^5.0.12"
     "@mui/icons-material": "npm:^5.14.18"
+    "@mui/lab": "npm:5.0.0-alpha.153"
     "@mui/material": "npm:^5.14.18"
     "@mui/styles": "npm:^5.14.18"
     "@mui/x-data-grid-premium": "npm:^6.18.2"
-    "@mui/x-date-pickers": "npm:^6.18.2"
+    "@mui/x-date-pickers-pro": "npm:^6.19.8"
     "@next/eslint-plugin-next": "npm:^14.0.3"
     "@react-pdf-viewer/core": "npm:^3.12.0"
     "@react-pdf-viewer/default-layout": "npm:^3.12.0"
@@ -11654,6 +11840,8 @@ __metadata:
     "@sql-tools/sequelize-typescript": "npm:^2.1.5"
     "@tools/bpac": "npm:^2.0.1"
     "@tools/rxjs-pipes": "npm:^1.0.7"
+    "@types/file-saver": "npm:^2"
+    "@types/git-semver-tags": "npm:^7"
     "@types/luxon": "npm:3.4.2"
     "@types/mime-types": "npm:^2.1.4"
     "@types/node": "npm:^20.9.4"
@@ -11667,6 +11855,7 @@ __metadata:
     dotenv-cli: "npm:^7.4.1"
     electron: "npm:^27.2.0"
     electron-builder: "npm:^24.13.3"
+    electron-devtools-installer: "npm:^3.2.0"
     electron-serve: "npm:^1.3.0"
     electron-store: "npm:^8.2.0"
     electron-updater: "npm:^6.1.7"
@@ -11675,8 +11864,11 @@ __metadata:
     eslint-plugin-prettier: "npm:^5.1.3"
     eslint-plugin-react: "npm:^7.34.1"
     eslint-plugin-react-hooks: "npm:^4.6.0"
+    file-saver: "npm:^2.0.5"
+    git-semver-tags: "npm:^7.0.1"
     http-terminator: "npm:^3.2.0"
     i18next: "npm:^23.7.7"
+    i18next-resources-to-backend: "npm:^1.2.0"
     luxon: "npm:^3.4.4"
     mime-types: "npm:^2.1.35"
     moment: "npm:^2.30.1"
@@ -11689,6 +11881,8 @@ __metadata:
     prettier: "npm:^3.1.0"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
+    react-dropzone: "npm:^14.2.3"
+    react-i18next: "npm:^14.1.0"
     react-number-format: "npm:^5.3.1"
     react-redux: "npm:^8.1.3"
     reflect-metadata: "npm:^0.1.13"
@@ -11750,7 +11944,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:7.6.0, semver@npm:^7.3.7, semver@npm:^7.5.2, semver@npm:^7.6.0":
+"semver@npm:7.6.0, semver@npm:^7.2.1, semver@npm:^7.3.7, semver@npm:^7.5.2, semver@npm:^7.6.0":
   version: 7.6.0
   resolution: "semver@npm:7.6.0"
   dependencies:
@@ -13050,6 +13244,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"unzip-crx-3@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "unzip-crx-3@npm:0.2.0"
+  dependencies:
+    jszip: "npm:^3.1.0"
+    mkdirp: "npm:^0.5.1"
+    yaku: "npm:^0.16.6"
+  checksum: 10/fcc381e9dda6fa7c3e99d285bcc87baffd9010b0dd0927027799c2a17fab9873417323d164d93ff6babe6bb757a8d5d266e891040f4364b9989e2608465545fe
+  languageName: node
+  linkType: hard
+
 "unzipper@npm:^0.10.11":
   version: 0.10.14
   resolution: "unzipper@npm:0.10.14"
@@ -13184,6 +13389,13 @@ __metadata:
     core-util-is: "npm:1.0.2"
     extsprintf: "npm:^1.2.0"
   checksum: 10/2b24eb830ecee7be69ab84192946074d7e8a85a42b0784d9874a28f52616065953ab4297975c87045879505fe9a6ac38dedad29a7470bbe0324540e5b6e92f62
+  languageName: node
+  linkType: hard
+
+"void-elements@npm:3.1.0":
+  version: 3.1.0
+  resolution: "void-elements@npm:3.1.0"
+  checksum: 10/0390f818107fa8fce55bb0a5c3f661056001c1d5a2a48c28d582d4d847347c2ab5b7f8272314cac58acf62345126b6b09bea623a185935f6b1c3bbce0dfd7f7f
   languageName: node
   linkType: hard
 
@@ -13540,6 +13752,13 @@ __metadata:
   version: 5.0.8
   resolution: "y18n@npm:5.0.8"
   checksum: 10/5f1b5f95e3775de4514edbb142398a2c37849ccfaf04a015be5d75521e9629d3be29bd4432d23c57f37e5b61ade592fb0197022e9993f81a06a5afbdcda9346d
+  languageName: node
+  linkType: hard
+
+"yaku@npm:^0.16.6":
+  version: 0.16.7
+  resolution: "yaku@npm:0.16.7"
+  checksum: 10/13de5e1249e1299f67fef0c39153fcf1be8ddc89ce4b8c99951bbf4fe67d7803cd0c2001fbfec35af9338a894e0bf58db8ee4bf33d06752b5d66090c32a6fd3e
   languageName: node
   linkType: hard
 

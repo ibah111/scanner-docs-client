@@ -1,8 +1,8 @@
 import { Button } from '@mui/material';
 import React from 'react';
-import Link from '../Link';
+import Link from '../Linker';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-
+/**@deprecated */
 export default function OpenAdminPage() {
   return (
     <>

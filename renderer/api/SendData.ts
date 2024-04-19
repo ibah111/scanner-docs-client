@@ -7,7 +7,7 @@ import { transformError } from '../utils/processError';
 
 export default async function SendData() {
   const data = store.getState().Send;
-  const id = store.getState().Data[0].id;
+  const id = store.getState().DocArray[0].id;
 
   const url = of('/send');
   return lastValueFrom(

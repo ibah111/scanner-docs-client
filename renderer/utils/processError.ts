@@ -45,7 +45,7 @@ export default function processError(e: unknown, name?: string) {
             }
             store.dispatch(
               addMessage({
-                message: t(
+                text: t(
                   `form${
                     name ? `.${name}.errors_popup` : '.errors'
                   }.${errorName}`,
@@ -55,7 +55,7 @@ export default function processError(e: unknown, name?: string) {
                     ...options,
                   },
                 ),
-                options: { variant: 'error' },
+                params: { variant: 'error' },
               }),
             );
           }
@@ -69,8 +69,8 @@ export default function processError(e: unknown, name?: string) {
           }
           store.dispatch(
             addMessage({
-              message: `${e.message}`,
-              options: {
+              text: `${e.message}`,
+              params: {
                 variant: 'error',
                 autoHideDuration: 3500,
               },
@@ -82,8 +82,8 @@ export default function processError(e: unknown, name?: string) {
           if (error) {
             store.dispatch(
               addMessage({
-                message: error,
-                options: {
+                text: error,
+                params: {
                   variant: 'error',
                   autoHideDuration: 3500,
                 },
@@ -92,9 +92,8 @@ export default function processError(e: unknown, name?: string) {
           } else {
             store.dispatch(
               addMessage({
-                message:
-                  'Произошла непредвиденная ошибка, обратитесь к администратору',
-                options: {
+                text: 'Произошла непредвиденная ошибка, обратитесь к администратору',
+                params: {
                   variant: 'error',
                   autoHideDuration: 7500,
                 },

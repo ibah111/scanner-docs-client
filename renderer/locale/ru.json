@@ -1,0 +1,205 @@
+{
+  "system": {
+    "none": "Ничего"
+  },
+  "form": {
+    "search": {
+      "submit": "Отправить",
+      "find": "Поиск",
+      "name": "ФИО",
+      "port": "Портфель",
+      "contract": "Договор",
+      "create_exec": "Создать ИП",
+      "comments": "Коментарии",
+      "debt_calc": "Платежи",
+      "documents": "Документы",
+      "reset": "Сброс"
+    },
+    "address": {
+      "name": "Адрес",
+      "id": "ID",
+      "create": "Создать",
+      "typ": "Тип",
+      "full_adr": "Адрес",
+      "dsc": "Коментарий",
+      "save": "Сохранить",
+      "errors_popup": {
+        "length>=": "Значение должно быть больше или равно {{constraint1}}",
+        "length<=": "Значение должно быть меньше или равно {{constraint2}}",
+        "length<>": "Значение должно быть между {{constraint1}} и {{constraint2}}",
+        "isNotEmpty": "Поле \"$t(form.address.{{property}})\" должно быть заполнено",
+        "isEmail": "В поле \"$t(form.address.{{property}})\" введена не почта",
+        "isInn": "Значение в поле \"$t(form.address.{{property}})\" не является 10 или 12",
+        "isInnNotValid": "Значение в поле \"$t(form.address.{{property}})\" не является ИНН",
+        "isValidDateTime": "Дата в поле \"$t(form.address.{{property}})\" занесена не правильно"
+      }
+    },
+    "debt_guarantor": {
+      "name": "Редактирование поручителя",
+      "id": "ID",
+      "fio": "ФИО",
+      "typ": "Тип",
+      "kind": "Роль",
+      "ext_id": "ID Клиента",
+      "birth_date": "Дата рождения",
+      "sex": "Пол",
+      "family_status": "Семейное положение",
+      "id_card": "№ Уд. личн",
+      "contract": "Договор",
+      "start_date": "Дата заключения",
+      "end_date": "Дата окончания",
+      "finish_date": "Дата завершения",
+      "string_value_1": "Email",
+      "string_value_2": "Гражданство",
+      "company_name": "Компания",
+      "position": "Должность",
+      "education": "Образование",
+      "tin": "РНН",
+      "inn": "ИНН",
+      "birth_place": "Место рождения",
+      "passport": "Паспорт",
+      "sum": "Залоговая стоимость",
+      "real_sum": "Рыночная стоимость",
+      "fair_sum": "Справедливая стоимость",
+      "quality_coeff": "Коефф. кач-ва",
+      "number_value_1": "Доход",
+      "save": "Сохранить",
+      "errors_popup": {
+        "length>=": "Значение должно быть больше или равно {{constraint1}}",
+        "length<=": "Значение должно быть меньше или равно {{constraint2}}",
+        "length<>": "Значение должно быть между {{constraint1}} и {{constraint2}}",
+        "isNotEmpty": "Поле \"$t(form.debt_guarantor.{{property}})\" должно быть заполнено",
+        "isEmail": "В поле \"$t(form.debt_guarantor.{{property}})\" введена не почта",
+        "isInn": "Значение в поле \"$t(form.debt_guarantor.{{property}})\" не является 10 или 12",
+        "isInnNotValid": "Значение в поле \"$t(form.debt_guarantor.{{property}})\" не является ИНН",
+        "isValidDateTime": "Дата в поле \"$t(form.debt_guarantor.{{property}})\" занесена не правильно"
+      }
+    },
+    "debt_calc": {
+      "title": "Платежи",
+      "close": "Закрыть",
+      "table": {
+        "dt": "Дата регистрации",
+        "calc_date": "Дата в банке",
+        "sum": "Сумма платежа",
+        "purpose": "Назначение платежа",
+        "dsc": "Коментарий"
+      }
+    },
+    "documents": {
+      "title": "Документы",
+      "close": "Закрыть",
+      "table": {
+        "name": "Имя документа",
+        "dt": "Дата документа",
+        "user": "Пользователь",
+        "actions": {
+          "name": "Действия"
+        }
+      }
+    },
+    "comments": {
+      "title": "Коментарии",
+      "law_act": "Судебное дело",
+      "law_exec": "Исполнительное производство",
+      "close": "Закрыть"
+    },
+    "errors_popup": {
+      "empty": "Не заполнено поле \"$t(form.send.{{value}})\"",
+      "invalid_date": "Неправильно введена дата в поле \"$t(form.send.{{value}})\"",
+      "number_0": "\"$t(form.send.{{value}})\" не может быть равна 0"
+    },
+    "errors": {
+      "length>=": "Значение должно быть больше или равно {{constraint1}}",
+      "length<=": "Значение должно быть меньше или равно {{constraint2}}",
+      "length<>": "Значение должно быть между {{constraint1}} и {{constraint2}}",
+      "isNotEmpty": "Не заполнено поле",
+      "isEmail": "Введеное значение не является почтой",
+      "isInn": "Значение не является 10 или 12",
+      "isInnNotValid": "Значение не является ИНН",
+      "isValidDateTime": "Дата занесена не правильно",
+      "empty": "Не заполнено поле",
+      "number_0": "Не может быть равна 0",
+      "invalid_date": "Неправильно введена дата"
+    },
+    "send": {
+      "id": "ID дела ИД",
+      "total_sum": "Общая сумма",
+      "debt_guarantor": "Поручитель",
+      "load_dt": "Дата создания ИП",
+      "court_doc_num": "№ Испол. док-та",
+      "executive_typ": "Тип исполнительного документа",
+      "court_date": "Дата вынесения",
+      "DELIVERY_TYP": "Способ подачи",
+      "entry_force_dt": "Дата вступления в силу",
+      "receipt_recover_dt": "Дата получения ИП на взыскание",
+      "fssp_date": "Дата подачи в фссп",
+      "r_court_id": "Наименование ФССП",
+      "template_typ": "Тип заявления",
+      "dsc": "Коментарий",
+      "law_court": { "address": "Адрес ФССП" },
+      "add_interests": "Проценты",
+      "person_property": "Имущество",
+      "appeal_typ": "Параметр для заявления"
+    },
+    "yes_or_no": {
+      "title": "Выберите действие",
+      "description_old": "Этот исполнительный документ имеет заполненное поле \"Номер ИП\" со значением \"{{value}}\". Рекомендуем создать новое ИП на основе старого, а старое отправить в Архив.",
+      "description": "Выберите какое взаимодействие с этим документом вы хотите осуществить",
+      "cancel": "Отмена",
+      "create": "Создать ИП",
+      "create_with_delete": "Создать ИП и старое отправить в Архив",
+      "update": "Использовать",
+      "update_old": "Использовать старое",
+      "comment": "Оставить комментарий"
+    },
+    "canceled": {
+      "title": "Выберите действие",
+      "description": "Долг привязанный к этой карточке анулирован, рекомендуем осуществить перепривязку",
+      "cancel": "Отмена",
+      "skip": "Пропустить",
+      "debt": "Перепривязять"
+    },
+    "set_comment": {
+      "title": "Введите коментарий",
+      "text": "Комментарий",
+      "instruction": "Введите коментарий который вы хотите оставить в карточке",
+      "cancel": "Отмена",
+      "checkbox_law_act": "Судебное дело",
+      "checkbox_law_exec": "Исполнительное производство",
+      "submit": "Отправить"
+    },
+    "results": {
+      "person": { "id": "ID должника", "fio": "ФИО" },
+      "debt": {
+        "id": "ID долга",
+        "debt_sum": "Остаток долга",
+        "contract": "Договор",
+        "status": "Статус долга",
+        "name": "Название продукта"
+      },
+      "debt_guarantor": { "fio": "Поручитель" },
+      "portfolio": { "name": "Портфель" },
+      "address": "Адрес регистрации",
+      "law_act": {
+        "id": "ID юр. дела",
+        "typ": "Тип юр.дела",
+        "status": "Статус юр. дела"
+      },
+      "law_exec": {
+        "id": "ID ИД",
+        "court_doc_num": "№ ИД",
+        "executive_typ": "Тип ИД",
+        "fssp_doc_num": "№ ИП",
+        "court_date": "Дата вынесения",
+        "state": "Статус ИП"
+      }
+    }
+  },
+  "menu": {
+    "title": "ПОДАЧА",
+    "main": "Главная",
+    "send": "Отправить",
+    "notfound": "Ошибка"
+  }
+}

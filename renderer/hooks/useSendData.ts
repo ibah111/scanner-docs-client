@@ -2,25 +2,25 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '../Reducer';
 import checker from './Validation/checker';
 import { ResultData } from './Validation/ResultData';
-import { SendInstance, setSendProperty } from '../Reducer/Send';
+import { SendDocInstance, setSendDocProperty } from '../Reducer/SendDoc';
 
-export default function useSendData<T extends keyof SendInstance>(
+export default function useSendData<T extends keyof SendDocInstance>(
   name: T,
-  additional?: Partial<SendInstance>,
-): ResultData<SendInstance, T> {
+  additional?: Partial<SendDocInstance>,
+): ResultData<SendDocInstance, T> {
   const dispatch = useAppDispatch();
   const value = useAppSelector((state) =>
-    state.Send?.[name] === undefined || state.Send?.[name] === null
+    state.SendDoc?.[name] === undefined || state.SendDoc?.[name] === null
       ? ''
-      : state.Send?.[name],
+      : state.SendDoc?.[name],
   );
 
   const setValue = React.useCallback(
-    (value: SendInstance[T] | null | undefined) => {
+    (value: SendDocInstance[T] | null | undefined) => {
       if (value === undefined || value == null) {
-        dispatch(setSendProperty([name, undefined]));
+        dispatch(setSendDocProperty([name, undefined]));
       } else {
-        dispatch(setSendProperty([name, value]));
+        dispatch(setSendDocProperty([name, value]));
       }
     },
     [dispatch, name],
@@ -28,12 +28,12 @@ export default function useSendData<T extends keyof SendInstance>(
 
   React.useEffect(() => {
     if (value === '') {
-      dispatch(setSendProperty([name, undefined]));
+      dispatch(setSendDocProperty([name, undefined]));
     }
   }, [dispatch, name, value]);
 
   const { required, error, helperText } = React.useMemo(
-    () => checker(SendInstance, name, value, additional),
+    () => checker(SendDocInstance, name, value, additional),
     [name, value, additional],
   );
   return { value, onChange: setValue, required, error, helperText };
