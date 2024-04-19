@@ -1,10 +1,6 @@
 import { App, dialog, ipcMain, WebContents } from 'electron';
 import { autoUpdater } from 'electron-updater';
-import gitSemverTags from 'git-semver-tags';
-
-export const lastAvailableVersion = await gitSemverTags().then(
-  (tags) => tags[0],
-);
+import { LastAvailableVersion } from './utils';
 
 export default function autoUpdaters(app: App, webContents: WebContents) {
   autoUpdater.autoDownload = false;
@@ -38,7 +34,7 @@ export default function autoUpdaters(app: App, webContents: WebContents) {
      */
     const currentVersion = getVersion();
     console.log(
-      `CurrentVersion = ${currentVersion},\n LastAvailable = ${lastAvailableVersion}`,
+      `CurrentVersion = ${currentVersion},\n LastAvailable = ${LastAvailableVersion}`,
     );
 
     webContents.send('version', getVersion());
@@ -49,7 +45,7 @@ export default function autoUpdaters(app: App, webContents: WebContents) {
     });
     if (
       process.env.NODE_ENV === 'production' &&
-      currentVersion != lastAvailableVersion
+      currentVersion != LastAvailableVersion
     ) {
       /**Here must be notification dialogs of downloading new version */
       dialog
@@ -63,7 +59,7 @@ export default function autoUpdaters(app: App, webContents: WebContents) {
       autoUpdater.quitAndInstall();
     } else if (
       process.env.NODE_ENV === 'production' &&
-      currentVersion === lastAvailableVersion
+      currentVersion === LastAvailableVersion
     ) {
       dialog.showMessageBox({
         title: 'Version message',
