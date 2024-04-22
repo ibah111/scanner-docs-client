@@ -3,7 +3,7 @@ import Store from 'electron-store';
 import serve from 'electron-serve';
 import { createWindow } from './helpers';
 import events from './events';
-import autoUpdaters, { lastAvailableVersion } from './autoUpdaters';
+import autoUpdaters from './autoUpdaters';
 import { singleEvents } from './singleEvents';
 import { document_electron_main } from '@tools/bpac/electron_main';
 import path from 'path';
@@ -14,7 +14,6 @@ import install, {
   REDUX_DEVTOOLS,
 } from 'electron-devtools-installer';
 import gitSemverTags from 'git-semver-tags';
-import { autoUpdater } from 'electron-updater';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('@electron/remote/main').initialize();
@@ -52,7 +51,6 @@ if (isProd) {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       devTools: process.env.NODE_ENV === 'production' ? false : true,
-      // devTools: true,
     },
   });
   document_electron_main(mainWindow.webContents);
@@ -64,18 +62,7 @@ if (isProd) {
   singleEvents(mainWindow.webContents);
 
   if (isProd) {
-    const releaseUrl = `https://git.usb.ru/scanner-docs/client/-/releases/${lastAvailableVersion}`;
-    autoUpdater.setFeedURL({
-      provider: 'generic',
-      url: releaseUrl,
-    });
     await mainWindow.loadURL('app://./MainPage.html');
-    setInterval(() => {
-      console.log('checking for updates');
-      autoUpdater.checkForUpdates().then((res) => {
-        if (!res) console.log('No updates right now');
-      });
-    }, 30 * 1000);
   } else {
     const port = process.argv[2];
     //8888
