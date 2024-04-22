@@ -1,5 +1,20 @@
 
 
+## [1.2.1](https://git.usb.ru/scanner-docs/client/compare/v1.2.0...v1.2.1) (2024-04-22)
+
+
+### Features
+
+* **autoUpdate:** remaking auto update ([532c1df](https://git.usb.ru/scanner-docs/client/commit/532c1df6a08d42930bc4a922936b86a14922d8e1))
+* **autoUpdate:** return old auto-update events ([a5ed887](https://git.usb.ru/scanner-docs/client/commit/a5ed8875c60a981b4e2adc2c337402c78e57f4c7))
+* delete auto update events ([fd28dcd](https://git.usb.ru/scanner-docs/client/commit/fd28dcddbc82629f10bfa3f78b1fb247ad56ac68))
+* **package:** changed config, version and publish electrion variables ([30fb24f](https://git.usb.ru/scanner-docs/client/commit/30fb24f6867f9241daab111eb9aa863166d5ae7a))
+
+
+### Bug Fixes
+
+* **gitlab:** cat command file format missed ([e6f723d](https://git.usb.ru/scanner-docs/client/commit/e6f723dba29697d0fabb6631de3981e6ca769d26))
+
 ## [1.2.0](https://git.usb.ru/scanner-docs/client/compare/v1.1.0...v1.2.0) (2024-04-17)
 
 
