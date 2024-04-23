@@ -74,15 +74,7 @@ export default function Update() {
   return (
     <div>
       <>
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          PaperProps={{
-            style: {
-              backgroundColor: '#cfe8fc',
-            },
-          }}
-        >
+        <Dialog open={open} onClose={handleClose}>
           <DialogTitle>{message}</DialogTitle>
           <DialogContent>
             {downloading && (
