@@ -1,5 +1,4 @@
 import {
-  Box,
   CssBaseline,
   PaletteMode,
   ThemeProvider as ThemeProviderOrigin,
@@ -34,8 +33,8 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProviderOrigin theme={theme}>
-        <CssBaseline />
-        <Box sx={{ padding: 1 }}>{children}</Box>
+        <CssBaseline enableColorScheme />
+        {children}
       </ThemeProviderOrigin>
     </ColorModeContext.Provider>
   );

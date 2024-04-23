@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import type { AppProps } from 'next/app';
 import { LocalizationProvider } from '@mui/x-date-pickers-pro';
@@ -19,10 +18,10 @@ import Login from '../components/Login/Login';
 import MenuBar from '../components/menuBar';
 import NavBar from '../components/NavBar/NavBar';
 import { Grid } from '@mui/material';
-import { createTheme } from '../lib/theme';
 import '../locale';
 import moment from 'moment';
 import getStore from '../lib/store';
+import ThemeProvider from '../Providers/ThemeProvider';
 export default function App(props: AppProps) {
   const [versionApp, setVersionApp] = React.useState<string>('');
   const { Component, pageProps } = props;
@@ -54,7 +53,7 @@ export default function App(props: AppProps) {
         {/**
          * @TODO доделать
          */}
-        <ThemeProvider theme={createTheme('dark')}>
+        <ThemeProvider>
           <LocalizationProvider adapterLocale={'ru'} dateAdapter={AdapterLuxon}>
             <SnackbarProvider maxSnack={3}>
               <Grid
