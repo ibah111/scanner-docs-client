@@ -6,6 +6,8 @@ import getCourt, {
   getCourtPromise,
 } from '../../../../../../../apiSend/Court/getCourt';
 import getData from '../../../../../../../utils/getData';
+import { useAppDispatch, useAppSelector } from '../../../../../../../Reducer';
+import { setSendDocProperty } from '../../../../../../../Reducer/SendDoc';
 
 export default function RCourtId() {
   const { t } = useTranslation();
@@ -13,6 +15,11 @@ export default function RCourtId() {
   const [type, setType] = React.useState<'' | LawCourt>('');
   const [name, setName] = React.useState('');
   const data = getData('r_court_id', 'null');
+  /** */
+  const dispatch = useAppDispatch();
+  const scannerSendData = useAppSelector((state) => state.SendDoc);
+
+  /** */
 
   const [count, setCount] = React.useState<number>(0);
   React.useEffect(() => {
@@ -54,8 +61,24 @@ export default function RCourtId() {
           }
           inputValue={name}
           onChange={(_, value) => {
+            console.log('Наименование ФССП', value);
             if (value) {
               data.setValue(value.id);
+
+              dispatch(
+                setSendDocProperty([
+                  'WhereSend',
+                  `${
+                    `(${value.id})` +
+                    ' ' +
+                    value.name +
+                    value.address +
+                    ' ' +
+                    value.district
+                  }`,
+                ]),
+              );
+              console.log('ScannerSendData', scannerSendData.WhereSend);
             } else {
               data.setValue('');
             }
