@@ -6,7 +6,7 @@ import getCourt, {
   getCourtPromise,
 } from '../../../../../../../apiSend/Court/getCourt';
 import getData from '../../../../../../../utils/getData';
-import { useAppDispatch, useAppSelector } from '../../../../../../../Reducer';
+import { useAppDispatch } from '../../../../../../../Reducer';
 import { setSendDocProperty } from '../../../../../../../Reducer/SendDoc';
 
 export default function RCourtId() {
@@ -15,11 +15,7 @@ export default function RCourtId() {
   const [type, setType] = React.useState<'' | LawCourt>('');
   const [name, setName] = React.useState('');
   const data = getData('r_court_id', 'null');
-  /** */
   const dispatch = useAppDispatch();
-  const scannerSendData = useAppSelector((state) => state.SendDoc);
-
-  /** */
 
   const [count, setCount] = React.useState<number>(0);
   React.useEffect(() => {
@@ -39,6 +35,9 @@ export default function RCourtId() {
       const sub = getCourt({ id: data.value as number }).subscribe((court) => {
         setTypes(['', ...court]);
         setType(court[0]);
+        const o = court[0];
+        const whereSendString = `(${o.id}), ${o.name}, ${o.address}, ${o.district}`;
+        dispatch(setSendDocProperty(['WhereSend', whereSendString]));
       });
       return sub.unsubscribe.bind(sub);
     } else {
@@ -64,21 +63,6 @@ export default function RCourtId() {
             console.log('Наименование ФССП', value);
             if (value) {
               data.setValue(value.id);
-
-              dispatch(
-                setSendDocProperty([
-                  'WhereSend',
-                  `${
-                    `(${value.id})` +
-                    ' ' +
-                    value.name +
-                    value.address +
-                    ' ' +
-                    value.district
-                  }`,
-                ]),
-              );
-              console.log('ScannerSendData', scannerSendData.WhereSend);
             } else {
               data.setValue('');
             }
