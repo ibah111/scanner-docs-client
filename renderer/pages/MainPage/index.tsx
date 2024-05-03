@@ -17,7 +17,6 @@ import { setContract, setName } from '../../Reducer/Search';
 
 export default function Main() {
   const dispatch = useAppDispatch();
-  const allReduxState = useAppSelector((state) => state);
   const data = useAppSelector((state) => state.DocArray);
   const boxId = data[0]?.Box?.id;
   const boxUserName =
@@ -42,13 +41,10 @@ export default function Main() {
     dispatch(resetDoc());
     dispatch(resetSend());
     getData(code).subscribe((res) => {
-      console.log(res[0]);
       dispatch(setDoc(res));
       const resObj = res[0].DocData.Result;
-      console.log('resObj === ', resObj);
       dispatch(setName(resObj.fio_dol));
       dispatch(setContract(resObj.kd));
-      console.log('docArray', allReduxState.DocArray);
     });
   };
   const buttonCondition = (value: string): boolean => {
