@@ -3,13 +3,19 @@ import { t } from 'i18next';
 import { useSnackbar, VariantType } from 'notistack';
 import React from 'react';
 import updateExec from '../../../../../../apiSend/Exec/updateExec';
-import { useAppDispatch, useAppSelector } from '../../../../../../Reducer';
+import {
+  store,
+  useAppDispatch,
+  useAppSelector,
+} from '../../../../../../Reducer';
 import { saveAs } from 'file-saver';
 import { LoadingButton } from '@mui/lab';
 import { useTranslation } from 'react-i18next';
 import { ErrorTypes } from '../../../../../../Reducer/Error';
 import ResetSendData from '../../../../../../utils/ResetSendData';
 import { callError } from '../../../../../../Reducer/Message';
+import SendData from '../../../../../../api/SendData';
+import moment from 'moment';
 
 function toArrayBuffer(buf: number[]) {
   const ab = new ArrayBuffer(buf.length);
@@ -49,9 +55,16 @@ export default function Submit() {
     },
     [enqueueSnackbar],
   );
+  const scannerSendData = useAppSelector((state) => state.SendDoc);
+  const fssp_date = store.getState().Send.fssp_date;
+
   const Click = React.useCallback(() => {
     if (check(Error, AddAlert)) {
       setLoading(true);
+      SendData({
+        DateSend: moment(fssp_date),
+        WhereSend: scannerSendData.WhereSend,
+      });
       updateExec().subscribe({
         next: (res) => {
           if (res) {
