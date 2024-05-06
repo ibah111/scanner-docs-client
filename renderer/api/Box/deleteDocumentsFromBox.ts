@@ -5,8 +5,8 @@ import { transformError } from '../../utils/processError';
 
 const url = of('Box/deleteDocumentsFromBox');
 
-export default function deleteDocumentsFromBox() {
-  return forkJoin([baseRequest, url]).pipe(
+export default function DeleteDocumentsFromBox(list: number[]) {
+  return forkJoin([baseRequest, url, of(list)]).pipe(
     remove(),
     transformAxios(),
     transformError(),
