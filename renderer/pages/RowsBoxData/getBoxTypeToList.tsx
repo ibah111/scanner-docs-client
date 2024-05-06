@@ -1,6 +1,4 @@
 import {
-  Autocomplete,
-  AutocompleteRenderInputParams,
   Button,
   Dialog,
   DialogActions,
@@ -13,23 +11,19 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  SelectChangeEvent,
-  TextField,
+  Tooltip,
   Typography,
 } from '@mui/material';
 import { useAppDispatch } from '../../Reducer';
-import { setBox } from '../../Reducer/Box';
-import createCode from '../../api/createCode';
 import { useGridApiContext, useGridSelector } from '@mui/x-data-grid-premium';
 import { GridStatePremium } from '@mui/x-data-grid-premium/models/gridStatePremium';
 import React from 'react';
-import InfoAdornment from './addons/InfoAdornment';
 import getAllBoxTypes, { BoxType } from '../../api/Box/getAllBoxTypes';
 import { enqueueSnackbar } from 'notistack';
-import Typ from '../../components/MainPage/SendComponents/Components/DebtGuarantor/Address/Form/Typ';
+import DeleteDocumentsFromBox from '../../api/Box/deleteDocumentsFromBox';
 import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteBoxType from '../../api/Box/deleteBoxType';
 
-const falseHelper = `Наименование должно превышать длину в 10 символов`;
 interface PrintCodesButtonProps {
   refresh: VoidFunction;
 }
@@ -52,7 +46,7 @@ export default function GetBoxTypeToList({ refresh }: PrintCodesButtonProps) {
 
   const [boxTypes, setBoxTypes] = React.useState<BoxType[]>([]);
 
-  React.useEffect(() => {
+  const callback = React.useCallback(() => {
     getAllBoxTypes().subscribe({
       next(value) {
         setBoxTypes(value);
@@ -64,6 +58,10 @@ export default function GetBoxTypeToList({ refresh }: PrintCodesButtonProps) {
         });
       },
     });
+  }, []);
+
+  React.useEffect(() => {
+    callback();
   }, []);
   return (
     <>
@@ -87,24 +85,71 @@ export default function GetBoxTypeToList({ refresh }: PrintCodesButtonProps) {
           <DialogContent>
             <Grid>
               <FormControl fullWidth>
+                <InputLabel id="box-id">{'Тип'}</InputLabel>
                 <Select
+                  labelId="box-id"
+                  label={'Тип'}
                   value={boxId}
                   onChange={(params) => {
                     console.log('params.target.value', params.target.value);
+                    setBoxId(params.target.value as number);
                   }}
                 >
                   <MenuItem>
                     <em>Не выбрано</em>
                   </MenuItem>
-                  {boxTypes.map((item) => (
-                    <>
-                      <MenuItem key={item.id} value={item.title}>
-                        {item.title}
-                        <IconButton size="small">
-                          <DeleteIcon />
-                        </IconButton>
-                      </MenuItem>
-                    </>
+                  {boxTypes.map((type) => (
+                    <MenuItem key={type.id} value={type.title}>
+                      <Grid item container>
+                        <Grid item xs={11}>
+                          <Tooltip
+                            title={`Тип: ${type.title}, Кем добавлен: ${type.who_added_type}`}
+                          >
+                            <Typography>{type.title}</Typography>
+                          </Tooltip>
+                        </Grid>
+                        <Grid xs={1} item alignItems={'flex-end'}>
+                          <Tooltip title={'Удалить тип'}>
+                            <IconButton
+                              size="small"
+                              onClick={() =>
+                                DeleteBoxType(type.id).subscribe({
+                                  next(value) {
+                                    console.log(
+                                      'DeleteBoxType, next(value) => ',
+                                      value,
+                                    );
+                                    enqueueSnackbar('Тип удален', {
+                                      variant: 'warning',
+                                    });
+                                  },
+                                  complete() {
+                                    console.log('DeleteBoxType, complete');
+                                    enqueueSnackbar(
+                                      'Complete, type was deleted',
+                                      {
+                                        variant: 'success',
+                                      },
+                                    );
+                                  },
+                                  error(err) {
+                                    console.log(
+                                      'DeleteBoxType, error(err) => ',
+                                      err,
+                                    );
+                                    enqueueSnackbar('Произошла ошибка', {
+                                      variant: 'error',
+                                    });
+                                  },
+                                })
+                              }
+                            >
+                              <DeleteIcon />
+                            </IconButton>
+                          </Tooltip>
+                        </Grid>
+                      </Grid>
+                    </MenuItem>
                   ))}
                 </Select>
               </FormControl>
@@ -113,7 +158,21 @@ export default function GetBoxTypeToList({ refresh }: PrintCodesButtonProps) {
           <Divider />
           <DialogActions>
             <Grid>
-              <Button>Присвоить</Button>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  DeleteDocumentsFromBox(rows).subscribe({
+                    next: () => {
+                      handleClose();
+                      enqueueSnackbar('Документы присвоены к коробу', {
+                        variant: 'success',
+                      });
+                    },
+                  });
+                }}
+              >
+                Присвоить
+              </Button>
             </Grid>
           </DialogActions>
         </DialogContent>
