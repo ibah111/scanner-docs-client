@@ -3,7 +3,7 @@ import { DataGridPremium } from '@mui/x-data-grid-premium';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../Reducer';
 import SendingForm from '../../components/MainPage/sendingForm';
-import columns from '../../components/MainPage/columns';
+import MainPageColumns from '../../components/MainPage/MainPageColumns';
 import CustomPagination from '../../components/Pagination/CustomPagination';
 import { Can } from '../../casl/casl.factory';
 import { Action, Subject } from '../../casl/casl';
@@ -82,7 +82,7 @@ export default function Main() {
               }}
               autoHeight={data.length === 1}
               rows={data}
-              columns={columns}
+              columns={MainPageColumns}
               slots={{
                 toolbar: MainPageToolbar,
                 pagination: CustomPagination,
