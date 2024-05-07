@@ -10,7 +10,7 @@ interface AddDocumentToBox {
 
 const url = of('Box/addDocumentToBox');
 
-export default function addDocumentToBox(data: AddDocumentToBox) {
+export default function AddDocumentToBox(data: AddDocumentToBox) {
   return forkJoin([baseRequest, url, of(data)]).pipe(
     post(),
     transformAxios(),
