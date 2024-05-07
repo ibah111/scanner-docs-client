@@ -1,16 +1,17 @@
 import { Type } from 'class-transformer';
-import { Box } from './Box.model';
 import { Depart } from './Depart.model';
 import { Doc } from './Doc.model';
 import { DocData } from './DocData.model';
 import { Result } from './Result.model';
 import { User } from './User.model';
+import { BoxTypes } from './BoxTypes.model';
 
 export class Barcode {
   id: number;
   code: string;
-  @Type(() => Box)
-  Box: Box;
+  box_type_id: number;
+  @Type(() => BoxTypes)
+  BoxType: BoxTypes;
   @Type(() => Doc)
   Doc: Doc;
   @Type(() => Result)
