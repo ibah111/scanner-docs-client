@@ -29,6 +29,9 @@ export default function documentColumns(
       headerName: 'Название документа',
       type: 'string',
       width: 200,
+      valueGetter(params) {
+        return params.row.title;
+      },
     },
     {
       field: 'code',
