@@ -4,7 +4,7 @@ import { generateName } from '../../utils/generateName';
 import OpenDocuments from './OpenDocuments';
 import { GridColDef } from '@mui/x-data-grid-premium';
 
-export const columnsDoc: GridColDef<Doc>[] = [
+export const DocColumns: GridColDef<Doc>[] = [
   {
     field: 'Doc.id',
     headerName: '№',
@@ -17,7 +17,15 @@ export const columnsDoc: GridColDef<Doc>[] = [
     field: 'Barcode.code',
     headerName: 'Номер штрихкода',
     valueGetter(params) {
-      return params.row.Barcode?.code;
+      return params.row.Barcode.code;
+    },
+    width: 130,
+  },
+  {
+    field: 'BoxType.title',
+    headerName: 'Короб',
+    valueGetter(params) {
+      return params.row.Barcode.BoxType.title || 'Не в коробе';
     },
     width: 130,
   },
