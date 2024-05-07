@@ -23,6 +23,9 @@ import { enqueueSnackbar } from 'notistack';
 import DeleteDocumentsFromBox from '../../api/Box/deleteDocumentsFromBox';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DeleteBoxType from '../../api/Box/deleteBoxType';
+import { Div } from '../../utils/Div';
+import { Can } from '../../casl/casl.factory';
+import { Action, Subject } from '../../casl/casl';
 
 interface PrintCodesButtonProps {
   refresh: VoidFunction;
@@ -101,52 +104,54 @@ export default function GetBoxTypeToList({ refresh }: PrintCodesButtonProps) {
                   {boxTypes.map((type) => (
                     <MenuItem key={type.id} value={type.title}>
                       <Grid item container>
-                        <Grid item xs={11}>
+                        <Grid item xs={11} alignContent={'center'}>
                           <Tooltip
                             title={`Тип: ${type.title}, Кем добавлен: ${type.who_added_type}`}
                           >
-                            <Typography>{type.title}</Typography>
+                            <Div>{type.title}</Div>
                           </Tooltip>
                         </Grid>
                         <Grid xs={1} item alignItems={'flex-end'}>
-                          <Tooltip title={'Удалить тип'}>
-                            <IconButton
-                              size="small"
-                              onClick={() =>
-                                DeleteBoxType(type.id).subscribe({
-                                  next(value) {
-                                    console.log(
-                                      'DeleteBoxType, next(value) => ',
-                                      value,
-                                    );
-                                    enqueueSnackbar('Тип удален', {
-                                      variant: 'warning',
-                                    });
-                                  },
-                                  complete() {
-                                    console.log('DeleteBoxType, complete');
-                                    enqueueSnackbar(
-                                      'Complete, type was deleted',
-                                      {
-                                        variant: 'success',
-                                      },
-                                    );
-                                  },
-                                  error(err) {
-                                    console.log(
-                                      'DeleteBoxType, error(err) => ',
-                                      err,
-                                    );
-                                    enqueueSnackbar('Произошла ошибка', {
-                                      variant: 'error',
-                                    });
-                                  },
-                                })
-                              }
-                            >
-                              <DeleteIcon />
-                            </IconButton>
-                          </Tooltip>
+                          <Can I={Action.Manage} a={Subject.Box}>
+                            <Tooltip title={'Удалить тип'}>
+                              <IconButton
+                                size="small"
+                                onClick={() =>
+                                  DeleteBoxType(type.id).subscribe({
+                                    next(value) {
+                                      console.log(
+                                        'DeleteBoxType, next(value) => ',
+                                        value,
+                                      );
+                                      enqueueSnackbar('Тип удален', {
+                                        variant: 'warning',
+                                      });
+                                    },
+                                    complete() {
+                                      console.log('DeleteBoxType, complete');
+                                      enqueueSnackbar(
+                                        'Complete, type was deleted',
+                                        {
+                                          variant: 'success',
+                                        },
+                                      );
+                                    },
+                                    error(err) {
+                                      console.log(
+                                        'DeleteBoxType, error(err) => ',
+                                        err,
+                                      );
+                                      enqueueSnackbar('Произошла ошибка', {
+                                        variant: 'error',
+                                      });
+                                    },
+                                  })
+                                }
+                              >
+                                <DeleteIcon />
+                              </IconButton>
+                            </Tooltip>
+                          </Can>
                         </Grid>
                       </Grid>
                     </MenuItem>
