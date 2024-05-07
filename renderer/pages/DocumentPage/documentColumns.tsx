@@ -8,8 +8,12 @@ import { Action, Subject } from '../../casl/casl';
 import PrintButton from './DocumentComponents/PrintButton';
 import { DocumentEvents, EventDocumentDialog } from '.';
 import { EventDialogInterface } from '../../utils/EventDialogInterface';
+import { BoxTypes } from '../../Schemas/BoxTypes.model';
 
-export default function documentColumns({ EventTarget }: EventDialogInterface) {
+export default function documentColumns(
+  { EventTarget }: EventDialogInterface,
+  BoxTypes: BoxTypes[],
+) {
   const documentColumns: GridColDef<Doc>[] = [
     {
       field: 'id',
@@ -33,6 +37,19 @@ export default function documentColumns({ EventTarget }: EventDialogInterface) {
         return params.row.Barcode?.code;
       },
       width: 130,
+    },
+    {
+      field: 'BoxType.title',
+      headerName: 'Короб',
+      width: 130,
+      type: 'singleSelect',
+      valueOptions: BoxTypes.map((item) => ({
+        value: item.id,
+        label: item.title,
+      })),
+      renderCell: (params) => {
+        return params.row.Barcode.BoxType.title;
+      },
     },
     {
       type: 'number',
