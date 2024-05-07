@@ -26,6 +26,7 @@ import DeleteBoxType from '../../api/Box/deleteBoxType';
 import { Div } from '../../utils/Div';
 import { Can } from '../../casl/casl.factory';
 import { Action, Subject } from '../../casl/casl';
+import AddDocumentToBox from '../../api/Box/addDocumentToBox';
 
 interface PrintCodesButtonProps {
   refresh: VoidFunction;
@@ -94,15 +95,14 @@ export default function GetBoxTypeToList({ refresh }: PrintCodesButtonProps) {
                   label={'Тип'}
                   value={boxId}
                   onChange={(params) => {
-                    console.log('params.target.value', params.target.value);
                     setBoxId(params.target.value as number);
                   }}
                 >
-                  <MenuItem>
+                  <MenuItem key={0} value={0}>
                     <em>Не выбрано</em>
                   </MenuItem>
                   {boxTypes.map((type) => (
-                    <MenuItem key={type.id} value={type.title}>
+                    <MenuItem key={type.id} value={type.id}>
                       <Grid item container>
                         <Grid item xs={11} alignContent={'center'}>
                           <Tooltip
@@ -166,7 +166,10 @@ export default function GetBoxTypeToList({ refresh }: PrintCodesButtonProps) {
               <Button
                 variant="contained"
                 onClick={() => {
-                  DeleteDocumentsFromBox(rows).subscribe({
+                  AddDocumentToBox({
+                    list: rows,
+                    box_type_id: boxId,
+                  }).subscribe({
                     next: () => {
                       handleClose();
                       enqueueSnackbar('Документы присвоены к коробу', {
