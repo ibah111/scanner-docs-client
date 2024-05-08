@@ -14,7 +14,7 @@ const MainPageColumns: GridColDef<Doc>[] = [
     field: 'BoxType.title',
     headerName: 'Короб',
     valueGetter(params) {
-      return params.row.Barcode.BoxType.title || 'Не в коробе';
+      return params.row.BoxType?.title || 'Не в коробе';
     },
     width: 130,
   },
