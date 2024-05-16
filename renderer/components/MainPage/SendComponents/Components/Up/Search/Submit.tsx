@@ -12,7 +12,10 @@ import ResetSendData from '../../../../../../utils/ResetSendData';
 import { callError } from '../../../../../../Reducer/Message';
 import SendData from '../../../../../../api/SendData';
 import moment from 'moment';
-import useError from '../../../../../../utils/getData';
+/**
+ * default export useError as getData
+ */
+import getData from '../../../../../../utils/getData';
 import getCourt from '../../../../../../apiSend/Court/getCourt';
 
 function toArrayBuffer(buf: number[]) {
@@ -53,42 +56,47 @@ export default function Submit() {
     },
     [enqueueSnackbar],
   );
-  const date_send = useError('fssp_date', 'date');
-  const where_send = useError('r_court_id', 'null');
-  const [ws, setWs] = React.useState<string>('');
-  console.log('SendData === ', date_send.value, where_send.value);
+  const date_send = getData('fssp_date', 'date');
+  const r_court_id = getData('r_court_id', 'null');
   const Click = React.useCallback(() => {
     if (check(Error, AddAlert)) {
       setLoading(true);
-      getCourt({ id: where_send.value as number }).subscribe((court) => {
+      getCourt({ id: r_court_id.value as number }).subscribe((court) => {
         const o = court[0];
-        const whereSendString = `(${o.id}), ${o.name}, ${o.address}, ${o.district}`;
-        setWs(whereSendString);
-      });
-      SendData({
-        DateSend: moment(date_send.value),
-        WhereSend: ws,
-      });
-      updateExec().subscribe({
-        next: (res) => {
+        const where_send_court = `(${o.id}), ${o.name}, ${o.address}, ${o.district}`;
+        SendData({
+          DateSend: moment(date_send.value),
+          WhereSend: where_send_court,
+        }).then((res) => {
+          enqueueSnackbar('Отправлено!', {
+            variant: 'success',
+          });
           if (res) {
-            const file = new Blob([toArrayBuffer(res.file.data)], {
-              type: 'application/pdf',
+            updateExec().subscribe({
+              next: (res) => {
+                if (res) {
+                  const file = new Blob([toArrayBuffer(res.file.data)], {
+                    type: 'application/pdf',
+                  });
+                  saveAs(file, res.name);
+                  ResetSendData();
+                  setLoading(false);
+                } else {
+                  setLoading(false);
+                  if (res === null) {
+                    dispatch(callError('Дело не имеет изменений'));
+                  }
+                  if (res === false) {
+                    dispatch(
+                      callError('Вас нет в Контакте, обратитесь в IT отдел'),
+                    );
+                  }
+                }
+              },
+              error: () => setLoading(false),
             });
-            saveAs(file, res.name);
-            ResetSendData();
-            setLoading(false);
-          } else {
-            setLoading(false);
-            if (res === null) {
-              dispatch(callError('Дело не имеет изменений'));
-            }
-            if (res === false) {
-              dispatch(callError('Вас нет в Контакте, обратитесь в IT отдел'));
-            }
           }
-        },
-        error: () => setLoading(false),
+        });
       });
     }
   }, [AddAlert, Error, dispatch]);
