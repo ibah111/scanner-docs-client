@@ -77,6 +77,10 @@ export default function Main() {
         >
           {data.length > 0 ? (
             <DataGridPremium
+              pinnedColumns={{
+                left: ['id'],
+                right: ['actions'],
+              }}
               sx={{
                 width: '100%',
               }}
