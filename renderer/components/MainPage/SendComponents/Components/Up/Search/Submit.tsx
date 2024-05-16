@@ -3,11 +3,7 @@ import { t } from 'i18next';
 import { useSnackbar, VariantType } from 'notistack';
 import React from 'react';
 import updateExec from '../../../../../../apiSend/Exec/updateExec';
-import {
-  store,
-  useAppDispatch,
-  useAppSelector,
-} from '../../../../../../Reducer';
+import { useAppDispatch, useAppSelector } from '../../../../../../Reducer';
 import { saveAs } from 'file-saver';
 import { LoadingButton } from '@mui/lab';
 import { useTranslation } from 'react-i18next';
@@ -16,6 +12,8 @@ import ResetSendData from '../../../../../../utils/ResetSendData';
 import { callError } from '../../../../../../Reducer/Message';
 import SendData from '../../../../../../api/SendData';
 import moment from 'moment';
+import useError from '../../../../../../utils/getData';
+import getCourt from '../../../../../../apiSend/Court/getCourt';
 
 function toArrayBuffer(buf: number[]) {
   const ab = new ArrayBuffer(buf.length);
@@ -55,15 +53,21 @@ export default function Submit() {
     },
     [enqueueSnackbar],
   );
-  const scannerSendData = useAppSelector((state) => state.SendDoc);
-  const fssp_date = store.getState().Send.fssp_date;
-
+  const date_send = useError('fssp_date', 'date');
+  const where_send = useError('r_court_id', 'null');
+  const [ws, setWs] = React.useState<string>('');
+  console.log('SendData === ', date_send.value, where_send.value);
   const Click = React.useCallback(() => {
     if (check(Error, AddAlert)) {
       setLoading(true);
+      getCourt({ id: where_send.value as number }).subscribe((court) => {
+        const o = court[0];
+        const whereSendString = `(${o.id}), ${o.name}, ${o.address}, ${o.district}`;
+        setWs(whereSendString);
+      });
       SendData({
-        DateSend: moment(fssp_date),
-        WhereSend: scannerSendData.WhereSend,
+        DateSend: moment(date_send.value),
+        WhereSend: ws,
       });
       updateExec().subscribe({
         next: (res) => {
