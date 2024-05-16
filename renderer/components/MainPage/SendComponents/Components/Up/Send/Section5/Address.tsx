@@ -3,7 +3,10 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import getCourt from '../../../../../../../apiSend/Court/getCourt';
 import { useAppSelector } from '../../../../../../../Reducer';
-
+/**
+ *
+ * @returns Адресс ФССП
+ */
 export default function Address() {
   const { t } = useTranslation();
   const [address, setAddress] = React.useState('');

@@ -12,7 +12,6 @@ export default async function SendData(data: {
 }) {
   const id = store.getState().DocArray[0].id;
   const url = of('/send');
-  console.log('SendData: => ', data);
   return lastValueFrom(
     forkJoin([
       baseRequest,

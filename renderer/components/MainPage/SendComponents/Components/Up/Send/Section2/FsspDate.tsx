@@ -6,7 +6,10 @@ import getData from '../../../../../../../utils/getData';
 import { useAppDispatch } from '../../../../../../../Reducer';
 import { setSendDocProperty } from '../../../../../../../Reducer/SendDoc';
 import moment from 'moment';
-
+/**
+ *
+ * @returns Дата подачи в ФССП
+ */
 export default function FsspDate() {
   const { t } = useTranslation();
   const data = getData('fssp_date', 'date');

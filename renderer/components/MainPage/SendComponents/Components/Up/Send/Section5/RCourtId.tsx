@@ -8,7 +8,10 @@ import getCourt, {
 import getData from '../../../../../../../utils/getData';
 import { useAppDispatch } from '../../../../../../../Reducer';
 import { setSendDocProperty } from '../../../../../../../Reducer/SendDoc';
-
+/**
+ *
+ * @returns Наименование ФССП
+ */
 export default function RCourtId() {
   const { t } = useTranslation();
   const [types, setTypes] = React.useState<('' | LawCourt)[]>(['']);
@@ -60,7 +63,6 @@ export default function RCourtId() {
           }
           inputValue={name}
           onChange={(_, value) => {
-            console.log('Наименование ФССП', value);
             if (value) {
               data.setValue(value.id);
             } else {
