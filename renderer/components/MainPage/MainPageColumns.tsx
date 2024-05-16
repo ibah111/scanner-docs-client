@@ -19,6 +19,8 @@ const MainPageColumns: GridColDef<Doc>[] = [
     width: 130,
   },
   {
+    align: 'center',
+    width: 130,
     field: 'actions',
     type: 'actions',
     headerName: 'Документ',
@@ -31,8 +33,6 @@ const MainPageColumns: GridColDef<Doc>[] = [
         />,
       ];
     },
-
-    width: 50,
   },
   {
     field: 'date',

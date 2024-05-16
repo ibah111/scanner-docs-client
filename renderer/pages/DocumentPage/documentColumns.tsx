@@ -51,7 +51,7 @@ export default function documentColumns(
         label: item.title,
       })),
       renderCell: (params) => {
-        return params.row.Barcode.BoxType.title;
+        return params.row.Barcode?.BoxType?.title || 'Не распределен в короб';
       },
     },
     {
