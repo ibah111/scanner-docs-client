@@ -3,6 +3,7 @@ import moment from 'moment';
 import { Log } from '../../../Schemas/Log.model';
 import { generateName } from '../../../utils/generateName';
 import { disableGridUtils } from '../../../utils/disableGridUtils';
+import getTimeFromDate from '../../../utils/getTimeFromDate';
 export default function columnsTransmit(): GridColDef<Log>[] {
   const columnsTransmit: GridColDef<Log>[] = [
     {
@@ -21,12 +22,15 @@ export default function columnsTransmit(): GridColDef<Log>[] {
       },
     },
     {
+      /**
+       * Вместо этого можно было просто прописат disableColumnMenu: true
+       */
       ...disableGridUtils,
       field: 'time',
       headerName: 'Время',
       renderCell(params) {
         const date = moment(params.row.date).toDate();
-        const time = date.getHours() + ':' + date.getMinutes();
+        const time = getTimeFromDate(date);
         return <>{time}</>;
       },
     },
@@ -66,17 +70,26 @@ export default function columnsTransmit(): GridColDef<Log>[] {
       },
       width: 200,
     },
-
     {
       type: 'date',
       field: 'date_return',
       headerName: 'Дата возврата',
       valueGetter: (params) => {
-        if (params.row.Transmit?.date_return !== null)
-          return moment(params.row.Transmit?.date_return).toDate();
-        else return '';
+        const date_return = params.row.Transmit?.date_return;
+        if (!date_return) return '';
+        if (date_return) return moment(date_return).toDate();
       },
       width: 200,
+    },
+    {
+      width: 200,
+      disableColumnMenu: true,
+      field: 'time_return',
+      headerName: 'Время возврата',
+      valueGetter(params) {
+        const date = params.row.Transmit?.date_return;
+        if (date) return getTimeFromDate(date);
+      },
     },
   ];
   return columnsTransmit.map((item) => ({
