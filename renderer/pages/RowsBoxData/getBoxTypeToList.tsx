@@ -14,13 +14,11 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
-import { useAppDispatch } from '../../Reducer';
 import { useGridApiContext, useGridSelector } from '@mui/x-data-grid-premium';
 import { GridStatePremium } from '@mui/x-data-grid-premium/models/gridStatePremium';
 import React from 'react';
 import getAllBoxTypes, { BoxType } from '../../api/Box/getAllBoxTypes';
 import { enqueueSnackbar } from 'notistack';
-import DeleteDocumentsFromBox from '../../api/Box/deleteDocumentsFromBox';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DeleteBoxType from '../../api/Box/deleteBoxType';
 import { Div } from '../../utils/Div';
@@ -33,7 +31,6 @@ interface PrintCodesButtonProps {
 }
 
 export default function GetBoxTypeToList({ refresh }: PrintCodesButtonProps) {
-  const dispatch = useAppDispatch();
   const gridApi = useGridApiContext();
   const rows = useGridSelector(
     gridApi,
@@ -50,7 +47,7 @@ export default function GetBoxTypeToList({ refresh }: PrintCodesButtonProps) {
 
   const [boxTypes, setBoxTypes] = React.useState<BoxType[]>([]);
 
-  const callback = React.useCallback(() => {
+  const GetTypes = React.useCallback(() => {
     getAllBoxTypes().subscribe({
       next(value) {
         setBoxTypes(value);
@@ -65,7 +62,7 @@ export default function GetBoxTypeToList({ refresh }: PrintCodesButtonProps) {
   }, []);
 
   React.useEffect(() => {
-    callback();
+    GetTypes();
   }, []);
   return (
     <>
@@ -117,7 +114,9 @@ export default function GetBoxTypeToList({ refresh }: PrintCodesButtonProps) {
                               <IconButton
                                 size="small"
                                 onClick={() =>
-                                  DeleteBoxType(type.id).subscribe({
+                                  DeleteBoxType({
+                                    id: type.id,
+                                  }).subscribe({
                                     next(value) {
                                       console.log(
                                         'DeleteBoxType, next(value) => ',
@@ -126,6 +125,7 @@ export default function GetBoxTypeToList({ refresh }: PrintCodesButtonProps) {
                                       enqueueSnackbar('Тип удален', {
                                         variant: 'warning',
                                       });
+                                      GetTypes();
                                     },
                                     complete() {
                                       console.log('DeleteBoxType, complete');
@@ -175,6 +175,7 @@ export default function GetBoxTypeToList({ refresh }: PrintCodesButtonProps) {
                       enqueueSnackbar('Документы присвоены к коробу', {
                         variant: 'success',
                       });
+                      refresh();
                     },
                   });
                 }}
