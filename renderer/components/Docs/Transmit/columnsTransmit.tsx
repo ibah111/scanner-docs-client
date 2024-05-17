@@ -2,15 +2,40 @@ import { GridColDef } from '@mui/x-data-grid-premium';
 import moment from 'moment';
 import { Log } from '../../../Schemas/Log.model';
 import { generateName } from '../../../utils/generateName';
+import { disableGridUtils } from '../../../utils/disableGridUtils';
 export default function columnsTransmit(): GridColDef<Log>[] {
   const columnsTransmit: GridColDef<Log>[] = [
     {
-      field: 'date_send',
-      headerName: 'Дата отправки в банк/ОСП',
-      valueGetter: (params) => {
-        return moment(params.row.Transmit?.date_send).toDate() || '';
+      field: 'id',
+      headerName: 'ID Лога',
+      valueGetter(params) {
+        return params.row.id;
       },
+    },
+    {
+      field: 'date',
       type: 'date',
+      headerName: 'Дата лога',
+      valueGetter(params) {
+        return moment(params.row.date).toDate();
+      },
+    },
+    {
+      ...disableGridUtils,
+      field: 'time',
+      headerName: 'Время',
+      renderCell(params) {
+        const date = moment(params.row.date).toDate();
+        const time = date.getHours() + ':' + date.getMinutes();
+        return <>{time}</>;
+      },
+    },
+    {
+      field: 'status',
+      headerName: 'Статус',
+      valueGetter: (params) => {
+        return params.row.Status.title;
+      },
       width: 200,
     },
     {
@@ -23,7 +48,8 @@ export default function columnsTransmit(): GridColDef<Log>[] {
     },
     {
       field: 'sender',
-      headerName: 'Пользователь',
+      headerName: 'Кем сгенерирован лог',
+      width: 200,
       valueGetter: (params) => {
         return generateName(
           params.row.User.f,
@@ -31,7 +57,6 @@ export default function columnsTransmit(): GridColDef<Log>[] {
           params.row.User.o,
         );
       },
-      width: 200,
     },
     {
       field: 'depart',
@@ -41,14 +66,7 @@ export default function columnsTransmit(): GridColDef<Log>[] {
       },
       width: 200,
     },
-    {
-      field: 'status',
-      headerName: 'Статус',
-      valueGetter: (params) => {
-        return params.row.Status.title;
-      },
-      width: 200,
-    },
+
     {
       type: 'date',
       field: 'date_return',
