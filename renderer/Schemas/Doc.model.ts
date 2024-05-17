@@ -19,6 +19,8 @@ export class Doc extends Model<
   mail_id: number;
   law_act_id: number;
   law_exec_id: number;
+  declare createdAt?: Date;
+  declare updatedAt?: Date;
 
   @Default(moment())
   @Type(() => Date)
