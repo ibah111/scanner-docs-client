@@ -1,14 +1,14 @@
 import { forkJoin, of } from 'rxjs';
 import { baseRequest } from '../../utils/baseRequest';
-import { authRetry, remove, transformAxios } from '@tools/rxjs-pipes';
+import { authRetry, put, transformAxios } from '@tools/rxjs-pipes';
 import { transformError } from '../../utils/processError';
 import { IdBoxTypeInput } from './BoxUtils/IdBoxTypeInput';
 
-const url = of('Box/deleteBoxType');
+const url = of('Box/restoreBoxType');
 
 export default function DeleteBoxType(data: IdBoxTypeInput) {
   return forkJoin([baseRequest, url, of(data)]).pipe(
-    remove(),
+    put(),
     transformAxios(),
     transformError(),
     authRetry(),
