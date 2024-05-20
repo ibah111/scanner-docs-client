@@ -8,6 +8,8 @@ import {
   GridSortModel,
 } from '@mui/x-data-grid-premium';
 import { GridInitialStatePremium } from '@mui/x-data-grid-premium/models/gridStatePremium';
+import getAllBoxTypes from '../../api/Box/getAllBoxTypes';
+import { BoxTypes } from '../../Schemas/BoxTypes.model';
 
 export default function useDocumentPage(EventTarget: EventTarget) {
   const [rows, setRows] = React.useState<Doc[]>([]);
@@ -19,6 +21,7 @@ export default function useDocumentPage(EventTarget: EventTarget) {
   const [filterModel, onFilterModelChange] = React.useState<GridFilterModel>({
     items: [],
   });
+  const [boxTypes, setBoxTypes] = React.useState<BoxTypes[]>([]);
   const refresh = React.useCallback(() => {
     setLoading(true);
     getDocs({
@@ -28,12 +31,20 @@ export default function useDocumentPage(EventTarget: EventTarget) {
     }).then((res) => {
       setRows(res.rows), setRowCount(res.count), setLoading(false);
     });
+    getAllBoxTypes().subscribe({
+      next(value) {
+        setBoxTypes(value);
+      },
+    });
   }, [filterModel, sortModel, paginationModel]);
 
-  const columns = documentColumns({
-    EventTarget,
-    refresh,
-  });
+  const columns = documentColumns(
+    {
+      EventTarget,
+      refresh,
+    },
+    boxTypes,
+  );
   const initialState: GridInitialStatePremium = {
     pinnedColumns: {
       left: [],

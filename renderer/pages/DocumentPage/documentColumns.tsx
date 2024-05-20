@@ -8,8 +8,12 @@ import { Action, Subject } from '../../casl/casl';
 import PrintButton from './DocumentComponents/PrintButton';
 import { DocumentEvents, EventDocumentDialog } from '.';
 import { EventDialogInterface } from '../../utils/EventDialogInterface';
+import { BoxTypes } from '../../Schemas/BoxTypes.model';
 
-export default function documentColumns({ EventTarget }: EventDialogInterface) {
+export default function documentColumns(
+  { EventTarget }: EventDialogInterface,
+  BoxTypes: BoxTypes[],
+) {
   const documentColumns: GridColDef<Doc>[] = [
     {
       field: 'id',
@@ -25,6 +29,9 @@ export default function documentColumns({ EventTarget }: EventDialogInterface) {
       headerName: 'Название документа',
       type: 'string',
       width: 200,
+      valueGetter(params) {
+        return params.row.title;
+      },
     },
     {
       field: 'code',
@@ -33,6 +40,19 @@ export default function documentColumns({ EventTarget }: EventDialogInterface) {
         return params.row.Barcode?.code;
       },
       width: 130,
+    },
+    {
+      field: 'BoxType.title',
+      headerName: 'Короб',
+      width: 130,
+      type: 'singleSelect',
+      valueOptions: BoxTypes.map((item) => ({
+        value: item.id,
+        label: item.title,
+      })),
+      renderCell: (params) => {
+        return params.row.Barcode?.BoxType?.title || 'Не распределен в короб';
+      },
     },
     {
       type: 'number',
@@ -116,6 +136,7 @@ export default function documentColumns({ EventTarget }: EventDialogInterface) {
       type: 'number',
       field: 'law_act_id',
       headerName: 'Юридическое дело',
+      description: 'Приказ, иск, правопреемство, банкротство',
       valueGetter(params) {
         return params.row.law_act_id;
       },
@@ -124,7 +145,7 @@ export default function documentColumns({ EventTarget }: EventDialogInterface) {
     {
       type: 'number',
       field: 'law_exec_id',
-      headerName: 'Исполнительное дело',
+      headerName: 'Исполнительное производство',
       valueGetter: (params) => {
         return params.row.law_exec_id;
       },

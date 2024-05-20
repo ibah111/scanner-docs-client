@@ -4,7 +4,7 @@ import {
   GridToolbarDensitySelector,
   GridToolbarFilterButton,
 } from '@mui/x-data-grid-premium';
-import PrintCodesButton from './PrintCodesButton';
+import GetBoxTypeToList from './getBoxTypeToList';
 import { Can } from '../../casl/casl.factory';
 import { Action, Subject } from '../../casl/casl';
 interface RowBoxToolbarProps {
@@ -17,7 +17,7 @@ export default function RowBoxToolbar({ refresh }: RowBoxToolbarProps) {
       <GridToolbarFilterButton />
       <GridToolbarDensitySelector />
       <Can I={Action.Manage} a={Subject.Barcode}>
-        <PrintCodesButton refresh={refresh} />
+        <GetBoxTypeToList refresh={refresh} />
       </Can>
     </GridToolbarContainer>
   );

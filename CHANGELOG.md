@@ -1,5 +1,94 @@
 
 
+## [1.3.0](https://git.usb.ru/scanner-docs/client/compare/v1.2.0...v1.3.0) (2024-05-20)
+
+
+### Features
+
+* added some parameter to models ([9e86a4e](https://git.usb.ru/scanner-docs/client/commit/9e86a4e71c865c2e5b622eec35757efc53e98016))
+* adding documents to box ([748b450](https://git.usb.ru/scanner-docs/client/commit/748b450a9f80f148c0de29cde418c42a2e76a10f))
+* api add new box type ([043deec](https://git.usb.ru/scanner-docs/client/commit/043deecd464e77aad33686b1dd8a264efbbca418))
+* **api-box:** box api methods ([def4426](https://git.usb.ru/scanner-docs/client/commit/def4426bc628b8b2db5ac8b863153c0670201362))
+* **autoUpdate:** download paper delete color ([76bf11f](https://git.usb.ru/scanner-docs/client/commit/76bf11fe2d657cd767829a943348d7e51b8f51b0))
+* **autoUpdate:** remaking auto update ([532c1df](https://git.usb.ru/scanner-docs/client/commit/532c1df6a08d42930bc4a922936b86a14922d8e1))
+* **autoUpdate:** return old auto-update events ([a5ed887](https://git.usb.ru/scanner-docs/client/commit/a5ed8875c60a981b4e2adc2c337402c78e57f4c7))
+* box types model ([e709890](https://git.usb.ru/scanner-docs/client/commit/e7098908430eb2009c9aded7fc9adcec0fa9f013))
+* **box-api:** changed box api interface ([357e124](https://git.usb.ru/scanner-docs/client/commit/357e124599b66318fce974efab2537718f5501ef))
+* **box-api:** delete box type api ([04ecc16](https://git.usb.ru/scanner-docs/client/commit/04ecc166395431e756d1517b29b347fc5469b244))
+* **box:** select component ([6766139](https://git.usb.ru/scanner-docs/client/commit/6766139d174caa2d1564a6416657fc83c2976c12))
+* **box:** select component style ([71f7890](https://git.usb.ru/scanner-docs/client/commit/71f7890d28056f2a91e85f5924a75d1424e2eeb6))
+* **box:** type select component ([bdbd378](https://git.usb.ru/scanner-docs/client/commit/bdbd378f0c2edf7fe8b4e382a2cd9e9158a86061))
+* boxTypes to doc model for response from server ([fdaf113](https://git.usb.ru/scanner-docs/client/commit/fdaf11374daf584ac21d7dcf83dd37de7ea2f041))
+* **boxTypes:** api box types ([dd0e13c](https://git.usb.ru/scanner-docs/client/commit/dd0e13c15dd8609fb66732152a6a76e5b8f7fde0))
+* changed detailt panel columns ([61c2538](https://git.usb.ru/scanner-docs/client/commit/61c2538f8b28d57b8852929cd5f4d4649a3794ec))
+* changed dialog ([6d7894a](https://git.usb.ru/scanner-docs/client/commit/6d7894a29e79e0893da8ed6a6daa6b30f88f6baa))
+* changing detail panel columns ([4a1095d](https://git.usb.ru/scanner-docs/client/commit/4a1095db48e89f7a84409613657c24fe38bb06e4))
+* columns params ([4f4ad45](https://git.usb.ru/scanner-docs/client/commit/4f4ad4597f9aee4715fd15dfd60c0e6572b8ae5d))
+* delete auto update events ([fd28dcd](https://git.usb.ru/scanner-docs/client/commit/fd28dcddbc82629f10bfa3f78b1fb247ad56ac68))
+* disable DataGrid utils ([7e51ccd](https://git.usb.ru/scanner-docs/client/commit/7e51ccd546b9591a0486e7c725135c7e971780ca))
+* doc title ([2999b4b](https://git.usb.ru/scanner-docs/client/commit/2999b4b34f026efdfdc084174e32d746e4cc53dd))
+* **doc:** through use hook giving valueOptions box types ([6e41b4c](https://git.usb.ru/scanner-docs/client/commit/6e41b4c43bc3f7d5a515f04c60baa4d74913f7a8))
+* **electronWindow:** changed initial resolution ([442f327](https://git.usb.ru/scanner-docs/client/commit/442f327d4373ca66ac3b5e3461d8f255ac11dba2))
+* function for getting HH:MM from type date variable ([75c04f9](https://git.usb.ru/scanner-docs/client/commit/75c04f919855cb75091c09f724d2902c3458f4ad))
+* getting types after deleting one of them ([2560144](https://git.usb.ru/scanner-docs/client/commit/25601444b7fb7901ca140238bfcfbae8e1e9a6f6))
+* include box types ([5bfef73](https://git.usb.ru/scanner-docs/client/commit/5bfef73a4dc0cd19b8c81c4b3e55a038db4384f9))
+* **package:** changed config, version and publish electrion variables ([30fb24f](https://git.usb.ru/scanner-docs/client/commit/30fb24f6867f9241daab111eb9aa863166d5ae7a))
+* pinned columns to scan state ([5c344a2](https://git.usb.ru/scanner-docs/client/commit/5c344a21e3240928b44f6982f8566286bf0441d5))
+* **redux-states:** added resetSearch redux function ([f767b33](https://git.usb.ru/scanner-docs/client/commit/f767b3317f9c0d2eba5bba91880d4994b2427744))
+* renamed columns files ([30f8da8](https://git.usb.ru/scanner-docs/client/commit/30f8da855439a47462251a8a1e7f095f4675f57f))
+* renamed function ([6e46503](https://git.usb.ru/scanner-docs/client/commit/6e465037673f4588958e9605ea464006528d6bd0))
+* render value options ([ff6de76](https://git.usb.ru/scanner-docs/client/commit/ff6de768c23ef012de9467e569c140384056658f))
+* restore and delete box types ([57fd9e5](https://git.usb.ru/scanner-docs/client/commit/57fd9e574a836f662e1ca1924497eda16e7f88e4))
+* **scanner-send-api:** "where_send" variable on fssp adress ([1b6195a](https://git.usb.ru/scanner-docs/client/commit/1b6195a71241b076bb89489a6a0d93997eb95ef5))
+* **scanner-send-api:** scanner send api ([449123d](https://git.usb.ru/scanner-docs/client/commit/449123d90cadc8b9a86ccaf932794ca7c3161f89))
+* **scanner-send:** date send equal fssp date ([6b565cf](https://git.usb.ru/scanner-docs/client/commit/6b565cf4430a9abe5d38876629704dd8c8433d7e))
+* **scanner-send:** whereSend field changed ([bb6de91](https://git.usb.ru/scanner-docs/client/commit/bb6de91970eb07ee38550b06fd489ca6f28c2c7d))
+* select component for list of documents ([1fb32c8](https://git.usb.ru/scanner-docs/client/commit/1fb32c8e7fae58861eb8b42c9df2c3721669ca20))
+* **send-api:** send while creating pdf ([ce512d6](https://git.usb.ru/scanner-docs/client/commit/ce512d6f6af733c0d44c83e0bd4f4b4aa8c70f2c))
+* **table-columns:** added columns description ([9ba9973](https://git.usb.ru/scanner-docs/client/commit/9ba99739986181fc2e69c8e4015f59c6b8d6c5d9))
+* **theme:** switch theme provider ([ceaa965](https://git.usb.ru/scanner-docs/client/commit/ceaa9651a3f0e7161e80f82a795829e889c8665d))
+
+
+### Bug Fixes
+
+* **api:** fixed sended body api ([f7a2a6b](https://git.usb.ru/scanner-docs/client/commit/f7a2a6b6e335934514f50847005e1c277979a6ec))
+* **autoUpdate:** not in time called functions ([75094cb](https://git.usb.ru/scanner-docs/client/commit/75094cb254391d298139ceb0d17f82eb58488350))
+* **gitlab:** cat command file format missed ([e6f723d](https://git.usb.ru/scanner-docs/client/commit/e6f723dba29697d0fabb6631de3981e6ca769d26))
+* submit - scanner send method states ([fca0492](https://git.usb.ru/scanner-docs/client/commit/fca049205d38e2d440831dc05ed077ced24e59c6))
+* **theme:** switch theme fixed ([e4fc529](https://git.usb.ru/scanner-docs/client/commit/e4fc5297f3e47b35886b716f73eeeeadc48910f5))
+* where_send variable state fixed, also made it work sequentially (in a row) ([959ba3a](https://git.usb.ru/scanner-docs/client/commit/959ba3a122f375345b907ced3e08fdad07b88d44))
+
+## [1.3.0](https://git.usb.ru/scanner-docs/client/compare/v1.2.0...v1.3.0) (2024-04-22)
+
+
+### Features
+
+* **autoUpdate:** remaking auto update ([532c1df](https://git.usb.ru/scanner-docs/client/commit/532c1df6a08d42930bc4a922936b86a14922d8e1))
+* **autoUpdate:** return old auto-update events ([a5ed887](https://git.usb.ru/scanner-docs/client/commit/a5ed8875c60a981b4e2adc2c337402c78e57f4c7))
+* delete auto update events ([fd28dcd](https://git.usb.ru/scanner-docs/client/commit/fd28dcddbc82629f10bfa3f78b1fb247ad56ac68))
+* **package:** changed config, version and publish electrion variables ([30fb24f](https://git.usb.ru/scanner-docs/client/commit/30fb24f6867f9241daab111eb9aa863166d5ae7a))
+
+
+### Bug Fixes
+
+* **autoUpdate:** not in time called functions ([75094cb](https://git.usb.ru/scanner-docs/client/commit/75094cb254391d298139ceb0d17f82eb58488350))
+* **gitlab:** cat command file format missed ([e6f723d](https://git.usb.ru/scanner-docs/client/commit/e6f723dba29697d0fabb6631de3981e6ca769d26))
+
+## [1.2.1](https://git.usb.ru/scanner-docs/client/compare/v1.2.0...v1.2.1) (2024-04-22)
+
+
+### Features
+
+* **autoUpdate:** remaking auto update ([532c1df](https://git.usb.ru/scanner-docs/client/commit/532c1df6a08d42930bc4a922936b86a14922d8e1))
+* **autoUpdate:** return old auto-update events ([a5ed887](https://git.usb.ru/scanner-docs/client/commit/a5ed8875c60a981b4e2adc2c337402c78e57f4c7))
+* delete auto update events ([fd28dcd](https://git.usb.ru/scanner-docs/client/commit/fd28dcddbc82629f10bfa3f78b1fb247ad56ac68))
+* **package:** changed config, version and publish electrion variables ([30fb24f](https://git.usb.ru/scanner-docs/client/commit/30fb24f6867f9241daab111eb9aa863166d5ae7a))
+
+
+### Bug Fixes
+
+* **gitlab:** cat command file format missed ([e6f723d](https://git.usb.ru/scanner-docs/client/commit/e6f723dba29697d0fabb6631de3981e6ca769d26))
+
 ## [1.2.0](https://git.usb.ru/scanner-docs/client/compare/v1.1.0...v1.2.0) (2024-04-17)
 
 

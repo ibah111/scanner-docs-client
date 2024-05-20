@@ -2,15 +2,44 @@ import { GridColDef } from '@mui/x-data-grid-premium';
 import moment from 'moment';
 import { Log } from '../../../Schemas/Log.model';
 import { generateName } from '../../../utils/generateName';
+import { disableGridUtils } from '../../../utils/disableGridUtils';
+import getTimeFromDate from '../../../utils/getTimeFromDate';
 export default function columnsTransmit(): GridColDef<Log>[] {
   const columnsTransmit: GridColDef<Log>[] = [
     {
-      field: 'date_send',
-      headerName: 'Дата отправки в банк/ОСП',
-      valueGetter: (params) => {
-        return moment(params.row.Transmit?.date_send).toDate() || '';
+      field: 'id',
+      headerName: 'ID Лога',
+      valueGetter(params) {
+        return params.row.id;
       },
+    },
+    {
+      field: 'date',
       type: 'date',
+      headerName: 'Дата лога',
+      valueGetter(params) {
+        return moment(params.row.date).toDate();
+      },
+    },
+    {
+      /**
+       * Вместо этого можно было просто прописат disableColumnMenu: true
+       */
+      ...disableGridUtils,
+      field: 'time',
+      headerName: 'Время',
+      renderCell(params) {
+        const date = moment(params.row.date).toDate();
+        const time = getTimeFromDate(date);
+        return <>{time}</>;
+      },
+    },
+    {
+      field: 'status',
+      headerName: 'Статус',
+      valueGetter: (params) => {
+        return params.row.Status.title;
+      },
       width: 200,
     },
     {
@@ -23,7 +52,8 @@ export default function columnsTransmit(): GridColDef<Log>[] {
     },
     {
       field: 'sender',
-      headerName: 'Пользователь',
+      headerName: 'Кем сгенерирован лог',
+      width: 200,
       valueGetter: (params) => {
         return generateName(
           params.row.User.f,
@@ -31,7 +61,6 @@ export default function columnsTransmit(): GridColDef<Log>[] {
           params.row.User.o,
         );
       },
-      width: 200,
     },
     {
       field: 'depart',
@@ -42,23 +71,25 @@ export default function columnsTransmit(): GridColDef<Log>[] {
       width: 200,
     },
     {
-      field: 'status',
-      headerName: 'Статус',
-      valueGetter: (params) => {
-        return params.row.Status.title;
-      },
-      width: 200,
-    },
-    {
       type: 'date',
       field: 'date_return',
       headerName: 'Дата возврата',
       valueGetter: (params) => {
-        if (params.row.Transmit?.date_return !== null)
-          return moment(params.row.Transmit?.date_return).toDate();
-        else return '';
+        const date_return = params.row.Transmit?.date_return;
+        if (!date_return) return '';
+        if (date_return) return moment(date_return).toDate();
       },
       width: 200,
+    },
+    {
+      width: 200,
+      disableColumnMenu: true,
+      field: 'time_return',
+      headerName: 'Время возврата',
+      valueGetter(params) {
+        const date = params.row.Transmit?.date_return;
+        if (date) return getTimeFromDate(date);
+      },
     },
   ];
   return columnsTransmit.map((item) => ({

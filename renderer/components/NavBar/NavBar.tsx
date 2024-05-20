@@ -9,6 +9,7 @@ import { Action, Subject } from '../../casl/casl';
 import { Can } from '../../casl/casl.factory';
 import NavigationLinkButton from './NavigationLinkButton';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import SwitchTheme from '../../Providers/SwitchTheme';
 
 export default function NavBar() {
   const dispatch = useAppDispatch();
@@ -88,7 +89,9 @@ export default function NavBar() {
                 />
                 <Scan />
               </Grid>
-              <Grid item></Grid>
+              <Grid item>
+                <SwitchTheme />
+              </Grid>
             </Grid>
           </Grid>
         </Toolbar>

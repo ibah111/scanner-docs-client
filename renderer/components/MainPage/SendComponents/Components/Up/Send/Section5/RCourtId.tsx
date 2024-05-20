@@ -6,13 +6,19 @@ import getCourt, {
   getCourtPromise,
 } from '../../../../../../../apiSend/Court/getCourt';
 import getData from '../../../../../../../utils/getData';
-
+import { useAppDispatch } from '../../../../../../../Reducer';
+import { setSendDocProperty } from '../../../../../../../Reducer/SendDoc';
+/**
+ *
+ * @returns Наименование ФССП
+ */
 export default function RCourtId() {
   const { t } = useTranslation();
   const [types, setTypes] = React.useState<('' | LawCourt)[]>(['']);
   const [type, setType] = React.useState<'' | LawCourt>('');
   const [name, setName] = React.useState('');
   const data = getData('r_court_id', 'null');
+  const dispatch = useAppDispatch();
 
   const [count, setCount] = React.useState<number>(0);
   React.useEffect(() => {
@@ -32,6 +38,9 @@ export default function RCourtId() {
       const sub = getCourt({ id: data.value as number }).subscribe((court) => {
         setTypes(['', ...court]);
         setType(court[0]);
+        const o = court[0];
+        const whereSendString = `(${o.id}), ${o.name}, ${o.address}, ${o.district}`;
+        dispatch(setSendDocProperty(['WhereSend', whereSendString]));
       });
       return sub.unsubscribe.bind(sub);
     } else {

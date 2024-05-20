@@ -2,7 +2,7 @@
   "private": true,
   "name": "scanner-docs",
   "description": "Приложение преднозначено для сканирования документов",
-  "version": "v1.1.0",
+  "version": "v1.3.0",
   "author": "Ivan Balezin <ggeforcet@gmail.com>",
   "main": "app/background.js",
   "scripts": {
@@ -106,6 +106,21 @@
     "react-app/jest"
   ],
   "build": {
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "nsis": {
+      "deleteAppDataOnUninstall": true
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "https://chat.nbkfinance.ru/apps/scanner-docs/"
+      }
+    ],
     "appId": "ru.usb.scanner",
     "productName": "Scanner Docs",
     "copyright": "Copyright © 2022 Ibah",
@@ -125,16 +140,6 @@
         ]
       }
     ]
-  },
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-zip"
-        }
-      ]
-    }
   },
   "packageManager": "yarn@4.1.1"
 }

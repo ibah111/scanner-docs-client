@@ -85,6 +85,7 @@ export default function rowBoxColumns() {
       type: 'number',
       field: 'law_act_id',
       headerName: 'Юридическое дело',
+      description: 'Приказ, иск, правопреемство, банкротство',
       valueGetter(params) {
         return params.row.law_act_id;
       },
@@ -93,7 +94,7 @@ export default function rowBoxColumns() {
     {
       type: 'number',
       field: 'law_exec_id',
-      headerName: 'Исполнительное дело',
+      headerName: 'Исполнительное производство',
       valueGetter: (params) => {
         return params.row.law_exec_id;
       },

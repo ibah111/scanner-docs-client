@@ -7,6 +7,7 @@ import { Default, Model } from '@sql-tools/sequelize-typescript';
 import moment from 'moment';
 import { CreateLiteralAssociation } from '@sql-tools/association-literal';
 import { InferAttributes, InferCreationAttributes } from '@sql-tools/sequelize';
+import { BoxTypes } from './BoxTypes.model';
 
 export class Doc extends Model<
   InferAttributes<Doc>,
@@ -18,6 +19,8 @@ export class Doc extends Model<
   mail_id: number;
   law_act_id: number;
   law_exec_id: number;
+  declare createdAt?: Date;
+  declare updatedAt?: Date;
 
   @Default(moment())
   @Type(() => Date)
@@ -34,4 +37,7 @@ export class Doc extends Model<
 
   @Type(() => Box)
   Box: Box;
+
+  @Type(() => BoxTypes)
+  BoxType: BoxTypes;
 }

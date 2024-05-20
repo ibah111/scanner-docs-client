@@ -1,4 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+const initialState = {
+  name: '',
+  contract: '',
+};
 export const search = createSlice({
   name: 'Search',
   initialState: { name: '', contract: '' },
@@ -8,6 +12,9 @@ export const search = createSlice({
     },
     setContract: (state, action) => {
       state.contract = action.payload;
+    },
+    resetSearch: () => {
+      return initialState;
     },
   },
 });

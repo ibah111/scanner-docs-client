@@ -4,13 +4,23 @@ import { Doc } from '../../Schemas/Doc.model';
 import { generateName } from '../../utils/generateName';
 import OpenDocuments from '../Docs/OpenDocuments';
 
-const columns: GridColDef<Doc>[] = [
+const MainPageColumns: GridColDef<Doc>[] = [
   {
     field: 'id',
     headerName: '№',
     width: 5,
   },
   {
+    field: 'BoxType.title',
+    headerName: 'Короб',
+    valueGetter(params) {
+      return params.row.BoxType?.title || 'Не в коробе';
+    },
+    width: 130,
+  },
+  {
+    align: 'center',
+    width: 130,
     field: 'actions',
     type: 'actions',
     headerName: 'Документ',
@@ -23,8 +33,6 @@ const columns: GridColDef<Doc>[] = [
         />,
       ];
     },
-
-    width: 50,
   },
   {
     field: 'date',
@@ -110,4 +118,4 @@ const columns: GridColDef<Doc>[] = [
   },
 ];
 
-export default columns;
+export default MainPageColumns;

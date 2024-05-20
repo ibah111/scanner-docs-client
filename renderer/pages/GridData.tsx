@@ -10,7 +10,7 @@ import { CustomToolbar } from '../components/CustomToolbar';
 import { useAppDispatch, useAppSelector } from '../Reducer';
 import { setDocs } from '../Reducer/Docs';
 import { setComponents } from '../Reducer/DocsComponent';
-import { columnsDoc } from '../components/Docs/columns';
+import { DocColumns } from '../components/Docs/DocColumns';
 import CustomPagination from '../components/Pagination/CustomPagination';
 import PrevTransmit from '../components/Docs/Transmit/PrevTransmit';
 export default function Docs() {
@@ -42,7 +42,7 @@ export default function Docs() {
       <Grid item xs sx={{ height: '100%', width: '100vw' }}>
         <DataGridPremium
           sx={{ pl: 2 }}
-          columns={columnsDoc}
+          columns={DocColumns}
           rows={data.rows}
           pagination
           rowCount={data.count}
