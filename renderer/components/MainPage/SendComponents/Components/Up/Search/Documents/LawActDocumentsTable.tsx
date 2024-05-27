@@ -1,29 +1,38 @@
 import { DocAttach } from '@contact/models';
 import { DataGridPremium, useGridApiRef } from '@mui/x-data-grid-premium';
 import React from 'react';
-import getDocuments from '../../../../../../../apiSend/Documents/getDocuments';
 import { useAppDispatch, useAppSelector } from '../../../../../../../Reducer';
-import { setDocumentsState } from '../../../../../../../Reducer/StateResult';
 import BackDrop from './BackDrop';
 import DialogFile from './DialogFile';
-import getColumns from './getColumns';
+import { enqueueSnackbar } from 'notistack';
+import getLawActDocuments from '../../../../../../../apiSend/Documents/getLawActDocuments';
+import { getLawActColumns } from './getColumns';
+import { setDocumentsState } from '../../../../../../../Reducer/StateResult';
 interface DocumentsTableProps {
-  id: number;
+  law_act_id: number;
 }
-export default function DocumentsTable({ id }: DocumentsTableProps) {
+/**
+ * Документы law_act
+ */
+export default function LawActDocumentsTable({
+  law_act_id,
+}: DocumentsTableProps) {
   const refresh = React.useCallback(() => {
-    const sub = getDocuments(id, 'law_exec').subscribe((res) => {
+    const sub = getLawActDocuments(law_act_id).subscribe((res) => {
+      enqueueSnackbar('Поиск по law_act успешен', {
+        variant: 'success',
+      });
       setRows(res);
     });
     return sub.unsubscribe.bind(sub);
-  }, [id]);
-  const [columns] = React.useState(getColumns(refresh));
+  }, [law_act_id]);
+  const [columns] = React.useState(getLawActColumns(refresh));
   const [open, setOpen] = React.useState(false);
   const [file, setFile] = React.useState<number | null>(null);
-  const stateGrid = useAppSelector((state) => state.StateResult.documents);
   const apiRef = useGridApiRef();
   const dispatch = useAppDispatch();
   const [rows, setRows] = React.useState<DocAttach[]>([]);
+  const stateGrid = useAppSelector((state) => state.StateResult.documents);
   React.useEffect(() => {
     apiRef.current.restoreState(stateGrid);
     return refresh();
@@ -38,7 +47,7 @@ export default function DocumentsTable({ id }: DocumentsTableProps) {
           setFile(null);
         }}
       />
-      <BackDrop id={id} refresh={refresh}>
+      <BackDrop id={law_act_id} refresh={refresh}>
         <DataGridPremium
           apiRef={apiRef}
           onStateChange={() => {
@@ -61,7 +70,8 @@ export default function DocumentsTable({ id }: DocumentsTableProps) {
           disableRowSelectionOnClick
           onCellDoubleClick={(params, event) => {
             event.defaultMuiPrevented = true;
-            setFile(params.id as number);
+            const law_act_doc_attach_id = params.id as number;
+            setFile(law_act_doc_attach_id);
             setOpen(true);
           }}
           rows={rows}
