@@ -42,7 +42,10 @@ export default function Canceled({
         </DialogContent>
         <DialogActions>
           <DebtCalc id={Number(row.id)} />
-          <Documents id={Number(row.id)} />
+          <Documents
+            law_exec_id={Number(row.id)}
+            law_act_id={Number(row['LawAct.id'])}
+          />
           <Button onClick={() => setOpenDebt(true)}>
             {t('form.canceled.debt')}
           </Button>

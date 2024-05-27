@@ -12,6 +12,7 @@ import DebtCalcTable from './DebtCalcTable';
 interface DebtCalcProps {
   id: number;
 }
+//Платежи
 export default function DebtCalc({ id }: DebtCalcProps) {
   const [open, setOpen] = React.useState(false);
   const { t } = useTranslation();

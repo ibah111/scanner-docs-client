@@ -115,7 +115,10 @@ export default function YesOrNo({
         </DialogContent>
         <DialogActions>
           <DebtCalc id={Number(row.id)} />
-          <Documents id={Number(row.id)} />
+          <Documents
+            law_exec_id={Number(row.id)}
+            law_act_id={Number(row['LawAct.id'])}
+          />
           {new_row && (
             <Button onClick={Create}>{t('form.yes_or_no.create')}</Button>
           )}

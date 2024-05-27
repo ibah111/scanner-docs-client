@@ -7,8 +7,11 @@ import { sendApiRequestInstanceObservable } from '../../utils/sendUtils/requests
 import { storeToken } from '../token';
 type types = 'doc' | 'law_exec';
 type results<T extends types> = T extends 'doc' ? Blob : DocAttach[];
-const url = of('/documents/get');
-export default function getDocuments<T extends types>(id: number, type: T) {
+const url = of('/documents/getLawExec');
+export default function getLawExecDocuments<T extends types>(
+  id: number,
+  type: T,
+) {
   const token = storeToken();
   return forkJoin([
     sendApiRequestInstanceObservable,

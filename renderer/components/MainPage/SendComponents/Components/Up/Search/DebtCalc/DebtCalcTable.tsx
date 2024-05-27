@@ -35,7 +35,12 @@ const getColumns = () => {
     },
     { field: 'dsc', headerName: t('form.debt_calc.table.dsc') },
   ];
-  return columns;
+  return columns.map<GridColDef<DebtCalc>>((items) => ({
+    align: 'center',
+    headerAlign: 'center',
+    width: 150,
+    ...items,
+  }));
 };
 interface DebtCalcTableProps {
   id: number;
@@ -61,6 +66,13 @@ export default function DebtCalcTable({ id }: DebtCalcTableProps) {
           }}
           columns={columns}
           rows={rows}
+          initialState={{
+            aggregation: {
+              model: {
+                sum: 'sum',
+              },
+            },
+          }}
         />
       </Box>
     </>
