@@ -23,6 +23,7 @@ import Reset from './Reset';
 export default function Search() {
   const dispatch = useAppDispatch();
   const id = useAppSelector((state) => state.Send.id);
+  const la_id = useAppSelector((state) => state.LawExec.r_act_id);
   const loading = useAppSelector((state) => state.Results.loading);
   const reload = useAppSelector((state) => state.Results.reload);
   const Click = React.useCallback(() => {
@@ -74,7 +75,7 @@ export default function Search() {
         <Submit />
         <Comments />
         <DebtCalc id={Number(id)} />
-        <Documents id={Number(id)} />
+        <Documents law_exec_id={Number(id)} law_act_id={la_id} />
         <Reset />
       </Grid>
     </>
