@@ -17,6 +17,11 @@ import { resetSend } from '../../../../../../Reducer/SendDoc';
 import getData from '../../../../../../api/getData';
 import { setContract, setName } from '../../../../../../Reducer/Search';
 import { CodeFormatCustom } from '../../../../../../utils/NumberFormatMask';
+import search from '../../../../../../apiSend/Search/search';
+import {
+  setLoadingResults,
+  setResults,
+} from '../../../../../../Reducer/Results';
 
 export default function Barcode() {
   const dispatch = useAppDispatch();
@@ -36,6 +41,15 @@ export default function Barcode() {
         const resObj = res[0].DocData.Result;
         dispatch(setName(resObj.fio_dol));
         dispatch(setContract(resObj.kd));
+        search().subscribe({
+          next: (res) => {
+            dispatch(setResults(res));
+            dispatch(setLoadingResults(false));
+          },
+          error: () => {
+            setLoadingResults(false);
+          },
+        });
       },
     });
   };
