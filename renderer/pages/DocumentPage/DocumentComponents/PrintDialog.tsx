@@ -4,7 +4,6 @@ import {
   DialogContent,
   DialogTitle,
   Grid,
-  Tooltip,
 } from '@mui/material';
 import printBarcode from '../../../lib/printBarcode';
 import React from 'react';
@@ -14,29 +13,23 @@ interface PrintDialogInterface {
   onClose: VoidFunction;
   docId: number;
   docCode: string;
-  boxCode: string;
   titleCode: string;
 }
 export default function PrindDialog({
   onClose,
   open,
   docId,
-  boxCode,
   docCode,
   titleCode,
 }: PrintDialogInterface) {
-  const condition = (box: string): boolean => {
-    if (box) return false;
-    return true;
-  };
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth={'md'}>
       <DialogTitle align="center">
-        Документ: {docId}, Печать кода документа: {titleCode}
+        Документ: {docId}, Имя документа: {titleCode}
       </DialogTitle>
       <DialogContent>
         <Grid container columnSpacing={2}>
-          <Grid xs item>
+          <Grid xs={12} item>
             <Button
               fullWidth
               color="success"
@@ -60,39 +53,8 @@ export default function PrindDialog({
                 });
               }}
             >
-              <Grid>Документ: {docCode}</Grid>
+              <Grid>Код документа: {docCode}</Grid>
             </Button>
-          </Grid>
-          <Grid xs item>
-            <Tooltip title="Если кнопка деактивирована, то клиент не получил код короба">
-              <Button
-                disabled={condition(boxCode)}
-                fullWidth
-                variant="contained"
-                onClick={() => {
-                  printBarcode(
-                    String(boxCode),
-                    `Короб:\n${titleCode}`,
-                  ).subscribe({
-                    complete() {
-                      onClose();
-                      enqueueSnackbar('Распечатано', {
-                        variant: 'success',
-                      });
-                    },
-                    error() {
-                      enqueueSnackbar('Подключите принтер', {
-                        variant: 'warning',
-                      });
-                    },
-                  });
-                }}
-              >
-                <Grid>
-                  {boxCode ? `Короб: ${boxCode}` : 'Док. не в коробе'}
-                </Grid>
-              </Button>
-            </Tooltip>
           </Grid>
         </Grid>
       </DialogContent>
