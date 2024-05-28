@@ -3,6 +3,7 @@ import { forkJoin, of } from 'rxjs';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
 import { transformError } from '../../utils/processError';
 import { sendApiRequestInstanceObservable } from '../../utils/sendUtils/send_server';
+import { axiosConfig } from '../token';
 const url = of('/documents/getLawAct');
 export default function getLawActDocuments(law_act_id: number) {
   return forkJoin([
@@ -11,5 +12,6 @@ export default function getLawActDocuments(law_act_id: number) {
     of({
       law_act_id,
     }),
+    axiosConfig(),
   ]).pipe(post<DocAttach[]>(), transformAxios(), transformError(), authRetry());
 }
