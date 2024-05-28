@@ -4,7 +4,7 @@ import { forkJoin, of } from 'rxjs';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
 import { transformError } from '../../utils/processError';
 import { validateData } from '@tools/rxjs-pipes/validator';
-import { sendApiRequestInstanceObservable } from '../../utils/sendUtils/requests';
+import { sendApiRequestInstanceObservable } from '../../utils/sendUtils/send_server';
 import { AddressInstance } from '../../Models/AdressIntance';
 import { axiosConfig } from '../token';
 const url = of('/create_or_update_debt_guarantor/address');

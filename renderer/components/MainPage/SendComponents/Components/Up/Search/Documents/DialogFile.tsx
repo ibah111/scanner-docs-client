@@ -1,7 +1,7 @@
 import { AppBar, Dialog, IconButton, Toolbar } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import React from 'react';
-import server from '../../../../../../../utils/server';
+import { send_server } from '../../../../../../../utils/sendUtils/send_server';
 
 interface DialogFileProps {
   open: boolean;
@@ -11,7 +11,9 @@ interface DialogFileProps {
 export default function DialogFile({ open, onClose, file }: DialogFileProps) {
   const data = React.useMemo(
     () =>
-      file ? new URL('documents/' + file.toString(), server()).toString() : '',
+      file
+        ? new URL('documents/' + file.toString(), send_server()).toString()
+        : '',
     [file],
   );
   return (

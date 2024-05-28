@@ -3,7 +3,7 @@ import { forkJoin, map, of } from 'rxjs';
 import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
 import { transformError } from '../../utils/processError';
 import { transformInstance } from '@tools/rxjs-pipes/transformer';
-import { sendApiRequestInstanceObservable } from '../../utils/sendUtils/requests';
+import { sendApiRequestInstanceObservable } from '../../utils/sendUtils/send_server';
 import { DebtGuarantorInstance } from '../../Models/DebtGuarantorInstance';
 import { axiosConfig } from '../token';
 const url = of('/get_debt_guarantor');

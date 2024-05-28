@@ -5,7 +5,7 @@ import { transformError } from '../../utils/processError';
 import {
   sendApiRequestInstanceObservable,
   sendApiRequestInstancePromise,
-} from '../../utils/sendUtils/requests';
+} from '../../utils/sendUtils/send_server';
 import { axiosConfig } from '../token';
 const urlObservable = of('/court');
 export default function getCourt(
