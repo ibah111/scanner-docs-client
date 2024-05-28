@@ -19,6 +19,7 @@ import Comments from './Comments';
 import DebtCalc from './DebtCalc';
 import Documents from './Documents';
 import Reset from './Reset';
+import Barcode from './Barcode';
 
 export default function Search() {
   const dispatch = useAppDispatch();
@@ -67,6 +68,7 @@ export default function Search() {
         justifyContent="center"
         alignItems="center"
       >
+        <Barcode />
         <Name onEnter={Click} />
         <Contract onEnter={Click} />
         <Find onClick={Click} loading={loading} />
