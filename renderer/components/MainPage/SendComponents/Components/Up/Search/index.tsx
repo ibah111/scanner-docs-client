@@ -23,7 +23,7 @@ import Reset from './Reset';
 export default function Search() {
   const dispatch = useAppDispatch();
   const id = useAppSelector((state) => state.Send.id);
-  const la_id = useAppSelector((state) => state.LawExec.r_act_id);
+  const la_id = useAppSelector((state) => state.LawExec?.r_act_id);
   const loading = useAppSelector((state) => state.Results.loading);
   const reload = useAppSelector((state) => state.Results.reload);
   const Click = React.useCallback(() => {
@@ -40,7 +40,6 @@ export default function Search() {
     return sub.unsubscribe.bind(sub);
   }, [dispatch]);
   React.useEffect(() => {
-    //POSSIBLE REDUX RESET HAPPENED HERE
     dispatch(reset());
     if (id) {
       const sub = getLawExec(id).subscribe((res) => {
