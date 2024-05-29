@@ -22,6 +22,7 @@ import {
   setLoadingResults,
   setResults,
 } from '../../../../../../Reducer/Results';
+import BarcodeDialog from './Barcode/BarcodeDialog';
 
 export default function Barcode() {
   const dispatch = useAppDispatch();
@@ -57,6 +58,11 @@ export default function Barcode() {
     if (value.length === 12) return false;
     return true;
   };
+
+  const [open, setOpen] = React.useState(false);
+  const handleClose = React.useCallback(() => {
+    setOpen(false);
+  }, []);
   return (
     <>
       <Grid item>
@@ -99,7 +105,11 @@ export default function Barcode() {
                   </IconButton>
                   {code_results.length > 0 ? (
                     <>
-                      <IconButton>
+                      <IconButton
+                        onClick={() => {
+                          setOpen(true);
+                        }}
+                      >
                         <ViewListIcon color="success" />
                       </IconButton>
                     </>
@@ -115,6 +125,7 @@ export default function Barcode() {
             }}
           />
         </Tooltip>
+        {open && <BarcodeDialog open={open} closeFunction={handleClose} />}
       </Grid>
     </>
   );
