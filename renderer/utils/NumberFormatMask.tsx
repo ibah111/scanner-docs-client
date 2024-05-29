@@ -38,6 +38,7 @@ export const CodeFormatCustom = React.forwardRef<
 
   return (
     <NumericFormat
+      allowLeadingZeros
       maxLength={12}
       {...other}
       getInputRef={ref}
