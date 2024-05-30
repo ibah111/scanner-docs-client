@@ -18,5 +18,5 @@ export const search = createSlice({
     },
   },
 });
-export const { setName, setContract } = search.actions;
+export const { setName, setContract, resetSearch } = search.actions;
 export default search.reducer;
