@@ -79,6 +79,9 @@ export default function Barcode() {
         >
           <TextField
             label={'Штрихкод'}
+            InputLabelProps={{
+              shrink: true,
+            }}
             onKeyDown={(event) => {
               if (event.key === 'Enter') handleScanBarcode();
             }}
