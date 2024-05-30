@@ -5,7 +5,9 @@ export class Barcode {
   @IsString()
   code: string;
 }
-const initialState = {} as Barcode;
+const initialState = {
+  code: '',
+} as Barcode;
 const BarcodeSlice = createSlice({
   name: 'Barcode',
   initialState,
