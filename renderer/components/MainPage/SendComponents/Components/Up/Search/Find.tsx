@@ -2,7 +2,7 @@ import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import React from 'react';
-
+//Поиск
 export default function Find({
   onClick,
   loading,

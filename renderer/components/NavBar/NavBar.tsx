@@ -9,7 +9,8 @@ import { Action, Subject } from '../../casl/casl';
 import { Can } from '../../casl/casl.factory';
 import NavigationLinkButton from './NavigationLinkButton';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import SwitchTheme from '../../Providers/SwitchTheme';
+import SwitchThemeIconButton from '../../Providers/SwitchTheme';
+import LocationReloadButton from './LocationReloadButton';
 
 export default function NavBar() {
   const dispatch = useAppDispatch();
@@ -18,12 +19,15 @@ export default function NavBar() {
       <AppBar position="static">
         <Toolbar disableGutters>
           <Grid container direction="row" flexWrap="wrap">
+            {/**
+             * Левая часть тулбара занимающшая 60% области
+             */}
             <Grid
               item
               container
               direction="row"
               flexWrap="wrap"
-              sx={{ flexBasis: '75%', mt: 0.5 }}
+              sx={{ flexBasis: '60%', mt: 0.5 }}
             >
               <Grid item sx={{ ml: 2 }}>
                 <NavigationLinkButton
@@ -63,12 +67,15 @@ export default function NavBar() {
                 </Can>
               </Grid>
             </Grid>
+            {/**
+             * Правая часть тулбара занимающая 40% области
+             */}
             <Grid
               item
               container
               direction="row-reverse"
               flexWrap="wrap"
-              sx={{ flexBasis: '25%' }}
+              sx={{ flexBasis: '40%' }}
             >
               <Grid item>
                 <Button
@@ -90,7 +97,10 @@ export default function NavBar() {
                 <Scan />
               </Grid>
               <Grid item>
-                <SwitchTheme />
+                <SwitchThemeIconButton />
+              </Grid>
+              <Grid item>
+                <LocationReloadButton />
               </Grid>
             </Grid>
           </Grid>

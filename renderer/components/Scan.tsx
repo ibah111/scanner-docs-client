@@ -7,6 +7,10 @@ import getData from '../api/getData';
 import { resetSend } from '../Reducer/SendDoc';
 import PowerIcon from '@mui/icons-material/Power';
 import PowerOffIcon from '@mui/icons-material/PowerOff';
+import { setBarcodeState } from '../Reducer/Barcode';
+import { setContract, setName } from '../Reducer/Search';
+import search from '../apiSend/Search/search';
+import { setLoadingResults, setResults } from '../Reducer/Results';
 
 export default function Scan() {
   const [ports, setPorts] = React.useState<PortInfo[]>([]);
@@ -22,10 +26,28 @@ export default function Scan() {
     );
     unsubscribe.push(
       window.ipc.on('content', (_, args: string) => {
+        const code = args.replace('\r', '');
         dispatch(resetDoc());
         dispatch(resetSend());
-        getData(args.replace('\r', '')).subscribe((res) => {
+        dispatch(
+          setBarcodeState({
+            code,
+          }),
+        );
+        getData(code).subscribe((res) => {
           dispatch(setDoc(res));
+          const resObj = res[0].DocData.Result;
+          dispatch(setName(resObj.fio_dol));
+          dispatch(setContract(resObj.kd));
+          search().subscribe({
+            next: (res) => {
+              dispatch(setResults(res));
+              dispatch(setLoadingResults(false));
+            },
+            error: () => {
+              setLoadingResults(false);
+            },
+          });
         });
       }),
     );

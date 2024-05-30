@@ -7,16 +7,13 @@ import {
   transformAxios,
 } from '@tools/rxjs-pipes';
 import { transformError } from '../../utils/processError';
-class getCodesResponse {
-  doc_code: string;
-  box_code: string;
-}
+
 const url = of('/codes/%1$s');
 const format = createFormat<[string]>();
 export default function getCodes(id: number) {
   return lastValueFrom(
     forkJoin([baseRequest, url.pipe(format(String(id)))]).pipe(
-      get<getCodesResponse>(),
+      get<string>(),
       transformAxios(),
       transformError(),
       authRetry(),

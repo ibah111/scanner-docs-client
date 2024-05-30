@@ -26,6 +26,7 @@ import Error from './Error';
 import LawExec from './LawExec';
 import Results from './Results';
 import Version from './Version';
+import Barcode from './Barcode';
 import React from 'react';
 
 export const store = configureStore({
@@ -41,6 +42,7 @@ export const store = configureStore({
     Box,
     RowDoc,
     Doc,
+    Barcode,
     /**
      * start of Send reducers
      */
