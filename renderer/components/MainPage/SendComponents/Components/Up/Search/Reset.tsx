@@ -4,6 +4,7 @@ import ResetSendData from '../../../../../../utils/ResetSendData';
 import { useAppDispatch } from '../../../../../../Reducer';
 import { resetBarcodeState } from '../../../../../../Reducer/Barcode';
 import { resetSearch } from '../../../../../../Reducer/Search';
+import { enqueueSnackbar } from 'notistack';
 
 export default function Reset() {
   const { t } = useTranslation();
@@ -13,6 +14,9 @@ export default function Reset() {
       <Grid item>
         <Button
           onClick={() => {
+            enqueueSnackbar('Сбрасываю поля', {
+              variant: 'info',
+            });
             ResetSendData();
             dispatch(resetBarcodeState());
             dispatch(resetSearch());
