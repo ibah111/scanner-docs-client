@@ -5,38 +5,36 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
-import { enqueueSnackbar } from 'notistack';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../../../Reducer';
 import SendIcon from '@mui/icons-material/Send';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import CloseIcon from '@mui/icons-material/Close';
-import { reset } from '../../../../../../Reducer/Send';
+import { CodeFormatCustom } from '../../../../../../utils/NumberFormatMask';
+import BarcodeDialog from './Barcode/BarcodeDialog';
+import { setBarcodeState } from '../../../../../../Reducer/Barcode';
 import { resetDoc, setDoc } from '../../../../../../Reducer/DocArray';
+import { reset } from '../../../../../../Reducer/Error';
+import {
+  setResults,
+  setLoadingResults,
+} from '../../../../../../Reducer/Results';
+import { setName, setContract } from '../../../../../../Reducer/Search';
 import { resetSend } from '../../../../../../Reducer/SendDoc';
 import getData from '../../../../../../api/getData';
-import { setContract, setName } from '../../../../../../Reducer/Search';
-import { CodeFormatCustom } from '../../../../../../utils/NumberFormatMask';
 import search from '../../../../../../apiSend/Search/search';
-import {
-  setLoadingResults,
-  setResults,
-} from '../../../../../../Reducer/Results';
-import BarcodeDialog from './Barcode/BarcodeDialog';
 
 export default function Barcode() {
   const dispatch = useAppDispatch();
+  const stateСode = useAppSelector((state) => state.Barcode.code);
   const code_results = useAppSelector((state) => state.DocArray);
-  const [code, setCode] = React.useState<string>('');
-  const handleScan = () => {
-    enqueueSnackbar('Searching with barcode', {
-      variant: 'info',
-    });
-    //chain of functions
+
+  const handleScanBarcode = React.useCallback(() => {
+    console.log('handleScanBarcode', stateСode);
     dispatch(reset());
     dispatch(resetDoc());
     dispatch(resetSend());
-    getData(code).subscribe({
+    getData(stateСode).subscribe({
       next: (res) => {
         dispatch(setDoc(res));
         const resObj = res[0].DocData.Result;
@@ -53,9 +51,11 @@ export default function Barcode() {
         });
       },
     });
-  };
+  }, []);
   const buttonCondition = (value: string): boolean => {
-    if (value.length === 12) return false;
+    if (value) {
+      if (value.length === 12) return false;
+    }
     return true;
   };
 
@@ -80,11 +80,16 @@ export default function Barcode() {
           <TextField
             label={'Штрихкод'}
             onKeyDown={(event) => {
-              if (event.key === 'Enter') handleScan();
+              if (event.key === 'Enter') handleScanBarcode();
             }}
-            value={code}
+            value={stateСode}
             onChange={(event) => {
-              setCode(event.target.value);
+              const textFieldValue = event.target.value;
+              dispatch(
+                setBarcodeState({
+                  code: textFieldValue,
+                }),
+              );
             }}
             InputProps={{
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -92,14 +97,16 @@ export default function Barcode() {
               endAdornment: (
                 <>
                   <IconButton
-                    disabled={buttonCondition(code)}
+                    disabled={buttonCondition(stateСode)}
                     onClick={() => {
-                      handleScan();
+                      handleScanBarcode();
                     }}
                   >
                     <SendIcon
                       color={
-                        buttonCondition(code) === false ? 'success' : 'action'
+                        buttonCondition(stateСode) === false
+                          ? 'success'
+                          : 'action'
                       }
                     />
                   </IconButton>
