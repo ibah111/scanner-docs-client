@@ -74,7 +74,6 @@ export default function RCourtId() {
             if (value) {
               data.setValue(value.id);
               const txtValue = `(${value.id}) ${value.name} (${value.district})`;
-              console.log('txtValue', txtValue);
               changeWhereSend(txtValue);
             } else {
               data.setValue('');

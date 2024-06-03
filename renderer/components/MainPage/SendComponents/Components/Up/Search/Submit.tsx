@@ -103,7 +103,7 @@ export default function Submit({ docArray }: SubmitProps) {
           variant: 'info',
         });
         alert(
-          `Send data: ID:${doc_id}, DateSend: ${DateSend}, WhereSend: ${WhereSend}`,
+          `Документ отправлен с отслеживанием. Данные отслеживаемого документа: \nID: ${doc_id}, \nДата отправки: ${DateSend}, \nКуда отправлено: ${WhereSend}`,
         );
         SendData({
           id: doc_id,
