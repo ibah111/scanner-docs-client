@@ -34,8 +34,8 @@ const Root = styled(Grid)(({ theme }) => ({
   },
 }));
 export default function Results() {
-  const [columns] = React.useState(getColumns());
   const dispatch = useAppDispatch();
+  const [columns] = React.useState(getColumns());
   const [dialog, setDialog] = React.useState(false);
   const [row, setRow] = React.useState<LawExecPlain>();
   const apiRef = useGridApiRef();
@@ -46,7 +46,7 @@ export default function Results() {
   );
   React.useEffect(() => {
     apiRef.current.restoreState(stateGrid);
-  }, [apiRef]);
+  }, [apiRef, stateGrid]);
   return (
     <>
       <Root sx={{ width: '100%' }} xs minHeight={0} item>

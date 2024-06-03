@@ -13,7 +13,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { CodeFormatCustom } from '../../../../../../utils/NumberFormatMask';
 import BarcodeDialog from './Barcode/BarcodeDialog';
 import { setBarcodeState } from '../../../../../../Reducer/Barcode';
-import { resetDocArray, setDocArray } from '../../../../../../Reducer/DocArray';
+import { setDocArray } from '../../../../../../Reducer/DocArray';
 import { reset } from '../../../../../../Reducer/Error';
 import {
   setResults,
@@ -31,7 +31,6 @@ export default function Barcode() {
 
   const handleScanBarcode = React.useCallback(() => {
     dispatch(reset());
-    dispatch(resetDocArray());
     dispatch(resetSend());
     getData(stateСode).subscribe({
       next: (res) => {
@@ -50,7 +49,7 @@ export default function Barcode() {
         });
       },
     });
-  }, [stateСode]);
+  }, [dispatch, stateСode]);
   const buttonCondition = (value: string): boolean => {
     if (value) {
       if (value.length === 12) return false;

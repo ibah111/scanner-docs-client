@@ -21,7 +21,6 @@ export default function Reset() {
             ResetSendData();
             dispatch(resetBarcodeState());
             dispatch(resetSearch());
-            dispatch(resetDoc());
             dispatch(resetDocArray());
           }}
         >
