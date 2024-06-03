@@ -8,13 +8,15 @@ const DataSlice = createSlice({
   name: 'doc',
   initialState,
   reducers: {
-    setDoc(state, action: PayloadAction<Doc[]>) {
+    setDocArray(_, action: PayloadAction<Doc[]>) {
+      console.log('action.payload: ', action.payload);
       return action.payload;
     },
-    resetDoc() {
+    resetDocArray() {
+      console.log('DocArray reset');
       return initialState;
     },
   },
 });
-export const { setDoc, resetDoc } = DataSlice.actions;
+export const { setDocArray, resetDocArray } = DataSlice.actions;
 export default DataSlice.reducer;

@@ -5,20 +5,27 @@ import { authRetry, post, transformAxios } from '@tools/rxjs-pipes';
 import { transformError } from '../utils/processError';
 import moment from 'moment';
 
-export default async function SendData(data: {
+class SendDataClass {
   id: number;
   WhereSend: string;
   DateSend: moment.Moment;
-}) {
+}
+
+export default async function SendData({
+  id,
+  WhereSend,
+  DateSend,
+}: SendDataClass) {
   const url = of('/send');
+  console.log(id, WhereSend, DateSend);
   return lastValueFrom(
     forkJoin([
       baseRequest,
       url,
       of({
-        id: data.id,
-        DateSend: data.DateSend,
-        WhereSend: data.WhereSend,
+        id,
+        WhereSend,
+        DateSend,
       }),
     ]).pipe(post<Transmit>(), transformAxios(), transformError(), authRetry()),
   );

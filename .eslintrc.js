@@ -19,6 +19,7 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:@next/next/recommended',
     'prettier',
+    'plugin:react-hooks/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -28,9 +29,11 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['react', '@typescript-eslint', 'react-hooks'],
   rules: {
     'no-setter-return': 'off',
     'react/react-in-jsx-scope': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
 };

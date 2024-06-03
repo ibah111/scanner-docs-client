@@ -13,7 +13,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { CodeFormatCustom } from '../../../../../../utils/NumberFormatMask';
 import BarcodeDialog from './Barcode/BarcodeDialog';
 import { setBarcodeState } from '../../../../../../Reducer/Barcode';
-import { resetDoc, setDoc } from '../../../../../../Reducer/DocArray';
+import { setDocArray } from '../../../../../../Reducer/DocArray';
 import { reset } from '../../../../../../Reducer/Error';
 import {
   setResults,
@@ -30,13 +30,11 @@ export default function Barcode() {
   const code_results = useAppSelector((state) => state.DocArray);
 
   const handleScanBarcode = React.useCallback(() => {
-    console.log('handleScanBarcode', stateСode);
     dispatch(reset());
-    dispatch(resetDoc());
     dispatch(resetSend());
     getData(stateСode).subscribe({
       next: (res) => {
-        dispatch(setDoc(res));
+        dispatch(setDocArray(res));
         const resObj = res[0].DocData.Result;
         dispatch(setName(resObj.fio_dol));
         dispatch(setContract(resObj.kd));
@@ -51,7 +49,7 @@ export default function Barcode() {
         });
       },
     });
-  }, []);
+  }, [dispatch, stateСode]);
   const buttonCondition = (value: string): boolean => {
     if (value) {
       if (value.length === 12) return false;

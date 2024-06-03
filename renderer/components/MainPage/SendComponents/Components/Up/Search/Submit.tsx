@@ -3,11 +3,7 @@ import { t } from 'i18next';
 import { useSnackbar, VariantType } from 'notistack';
 import React from 'react';
 import updateExec from '../../../../../../apiSend/Exec/updateExec';
-import {
-  store,
-  useAppDispatch,
-  useAppSelector,
-} from '../../../../../../Reducer';
+import { useAppDispatch, useAppSelector } from '../../../../../../Reducer';
 import { saveAs } from 'file-saver';
 import { LoadingButton } from '@mui/lab';
 import { useTranslation } from 'react-i18next';
@@ -15,11 +11,10 @@ import { ErrorTypes } from '../../../../../../Reducer/Error';
 import ResetSendData from '../../../../../../utils/ResetSendData';
 import { callError } from '../../../../../../Reducer/Message';
 import SendData from '../../../../../../api/SendData';
-import moment from 'moment';
 /**
  * default export useError as getData
  */
-import getData from '../../../../../../utils/getData';
+import { Doc } from '../../../../../../Schemas/Doc.model';
 
 function toArrayBuffer(buf: number[]) {
   const ab = new ArrayBuffer(buf.length);
@@ -46,7 +41,12 @@ const check = (
     return false;
   }
 };
-export default function Submit() {
+
+class SubmitProps {
+  docArray?: Doc[];
+}
+
+export default function Submit({ docArray }: SubmitProps) {
   const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
   const [loading, setLoading] = React.useState(false);
@@ -59,21 +59,6 @@ export default function Submit() {
     },
     [enqueueSnackbar],
   );
-  const date_send = getData('fssp_date', 'date');
-  const where = getData('r_court_id', 'null');
-
-  const state_id = store.getState().DocArray[0]?.id;
-  const WhereSend = where.value as string;
-  const DateSend = moment(date_send.value);
-
-  //Tracking document callback
-  const SendTrackingDocument = React.useCallback(async () => {
-    return SendData({
-      id: state_id,
-      DateSend,
-      WhereSend,
-    });
-  }, []);
 
   //LawExec callback
   const UpdateLawExec = React.useCallback(
@@ -100,32 +85,50 @@ export default function Submit() {
         error: () => setLoading(false),
         complete: () => setLoading(false),
       }),
-    [],
+    [dispatch],
   );
+  const WhereSend = useAppSelector((state) => state.SendDoc.WhereSend);
+  const DateSend = useAppSelector((state) => state.SendDoc.DateSend);
 
   //Click callback function
   const Click = React.useCallback(() => {
     if (check(Error, AddAlert)) {
+      console.log('doc_id');
       setLoading(true);
       //
-      if (state_id && DateSend && WhereSend) {
-        enqueueSnackbar('Отправляю отслеживаемый документ', {
+      console.log('docArray', docArray);
+      if (docArray.length > 0) {
+        const doc_id = docArray[0].id;
+        enqueueSnackbar(`Отправляю отслеживаемый документ с id: ${doc_id}`, {
           variant: 'info',
         });
-        SendTrackingDocument().then((res) => {
-          if (res) {
-            console.log('Sended tracking document, Transmit Results: ', res);
-            UpdateLawExec();
-          }
+        alert(
+          `Документ отправлен с отслеживанием. Данные отслеживаемого документа: \nID: ${doc_id}, \nДата отправки: ${DateSend}, \nКуда отправлено: ${WhereSend}`,
+        );
+        SendData({
+          id: doc_id,
+          DateSend,
+          WhereSend,
         });
+        UpdateLawExec();
       }
       //
-      enqueueSnackbar('Отправлено, без отслеживания', {
-        variant: 'warning',
-      });
-      UpdateLawExec();
+      if (docArray.length === 0) {
+        enqueueSnackbar('Отправлено, без отслеживания', {
+          variant: 'warning',
+        });
+        UpdateLawExec();
+      }
     }
-  }, [AddAlert, Error, dispatch]);
+  }, [
+    AddAlert,
+    Error,
+    UpdateLawExec,
+    DateSend,
+    WhereSend,
+    docArray,
+    enqueueSnackbar,
+  ]);
 
   return (
     <>

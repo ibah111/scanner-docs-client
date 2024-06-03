@@ -5,6 +5,7 @@ import { useAppDispatch } from '../../../../../../Reducer';
 import { resetBarcodeState } from '../../../../../../Reducer/Barcode';
 import { resetSearch } from '../../../../../../Reducer/Search';
 import { enqueueSnackbar } from 'notistack';
+import { resetDocArray } from '../../../../../../Reducer/DocArray';
 
 export default function Reset() {
   const { t } = useTranslation();
@@ -20,6 +21,7 @@ export default function Reset() {
             ResetSendData();
             dispatch(resetBarcodeState());
             dispatch(resetSearch());
+            dispatch(resetDocArray());
           }}
         >
           {t('form.search.reset')}

@@ -2,7 +2,7 @@ import { Button, Menu, MenuItem } from '@mui/material';
 import React from 'react';
 import { PortInfo } from '@serialport/bindings-cpp';
 import { useAppDispatch } from '../Reducer';
-import { setDoc, resetDoc } from '../Reducer/DocArray';
+import { setDocArray, resetDocArray } from '../Reducer/DocArray';
 import getData from '../api/getData';
 import { resetSend } from '../Reducer/SendDoc';
 import PowerIcon from '@mui/icons-material/Power';
@@ -27,7 +27,8 @@ export default function Scan() {
     unsubscribe.push(
       window.ipc.on('content', (_, args: string) => {
         const code = args.replace('\r', '');
-        dispatch(resetDoc());
+        console.log('ResetDocArray while using scan');
+        dispatch(resetDocArray());
         dispatch(resetSend());
         dispatch(
           setBarcodeState({
@@ -35,7 +36,7 @@ export default function Scan() {
           }),
         );
         getData(code).subscribe((res) => {
-          dispatch(setDoc(res));
+          dispatch(setDocArray(res));
           const resObj = res[0].DocData.Result;
           dispatch(setName(resObj.fio_dol));
           dispatch(setContract(resObj.kd));

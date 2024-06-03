@@ -23,6 +23,8 @@ import {
   ResetComment,
 } from '../../../../../Reducer/Comment';
 import { setId } from '../../../../../Reducer/Send';
+import { setSendDocProperty } from '../../../../../Reducer/SendDoc';
+import moment from 'moment';
 
 export default function YesOrNo({
   open,
@@ -96,9 +98,10 @@ export default function YesOrNo({
       dispatch(setLawExecComment(res.dsc));
       onClose();
     });
+    dispatch(setSendDocProperty(['DateSend', moment()]));
     dispatch(setId(row.id));
     onClose();
-  }, [dispatch, onClose, row.id]);
+  }, [dispatch, onClose, row]);
   return (
     <>
       <Dialog open={open} maxWidth="md" onClose={onClose}>
