@@ -51,7 +51,7 @@ export default function Barcode() {
         });
       },
     });
-  }, []);
+  }, [stateСode]);
   const buttonCondition = (value: string): boolean => {
     if (value) {
       if (value.length === 12) return false;
