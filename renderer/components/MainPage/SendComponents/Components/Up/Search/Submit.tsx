@@ -11,11 +11,9 @@ import { ErrorTypes } from '../../../../../../Reducer/Error';
 import ResetSendData from '../../../../../../utils/ResetSendData';
 import { callError } from '../../../../../../Reducer/Message';
 import SendData from '../../../../../../api/SendData';
-import moment from 'moment';
 /**
  * default export useError as getData
  */
-import getData from '../../../../../../utils/getData';
 import { Doc } from '../../../../../../Schemas/Doc.model';
 
 function toArrayBuffer(buf: number[]) {
@@ -87,8 +85,10 @@ export default function Submit({ docArray }: SubmitProps) {
         error: () => setLoading(false),
         complete: () => setLoading(false),
       }),
-    [],
+    [dispatch],
   );
+  const WhereSend = useAppSelector((state) => state.SendDoc.WhereSend);
+  const DateSend = useAppSelector((state) => state.SendDoc.DateSend);
 
   //Click callback function
   const Click = React.useCallback(() => {
@@ -97,10 +97,8 @@ export default function Submit({ docArray }: SubmitProps) {
       setLoading(true);
       //
       console.log('docArray', docArray);
-      if (docArray) {
+      if (docArray.length > 0) {
         const doc_id = docArray[0].id;
-        const DateSend = moment(useError('fssp_date').value);
-        const WhereSend = useError('r_court_id', 'null').value as string;
         enqueueSnackbar(`Отправляю отслеживаемый документ с id: ${doc_id}`, {
           variant: 'info',
         });
@@ -115,14 +113,22 @@ export default function Submit({ docArray }: SubmitProps) {
         UpdateLawExec();
       }
       //
-      if (!docArray) {
+      if (docArray.length === 0) {
         enqueueSnackbar('Отправлено, без отслеживания', {
           variant: 'warning',
         });
-        // UpdateLawExec();
+        UpdateLawExec();
       }
     }
-  }, [AddAlert, Error, dispatch]);
+  }, [
+    AddAlert,
+    Error,
+    UpdateLawExec,
+    DateSend,
+    WhereSend,
+    docArray,
+    enqueueSnackbar,
+  ]);
 
   return (
     <>
