@@ -32,7 +32,14 @@ export default function RCourtId() {
      * В hook зависимостях было [name, t]
      * Правило хуков советую избегать обьектов/функций в зависимостях
      */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name]);
+
+  const changeWhereSend = React.useCallback(
+    (value: string) => dispatch(setSendDocProperty(['WhereSend', value])),
+    [dispatch],
+  );
+
   React.useEffect(() => {
     if (data.value !== '') {
       const sub = getCourt({ id: data.value as number }).subscribe((court) => {
@@ -40,14 +47,14 @@ export default function RCourtId() {
         setType(court[0]);
         const o = court[0];
         const whereSendString = `(${o.id}), ${o.name}, ${o.address}, ${o.district}`;
-        dispatch(setSendDocProperty(['WhereSend', whereSendString]));
+        changeWhereSend(whereSendString);
       });
       return sub.unsubscribe.bind(sub);
     } else {
       setTypes(['']);
       setType('');
     }
-  }, [data.value]);
+  }, [changeWhereSend, data.value, dispatch]);
   return (
     <>
       <Grid sx={{ width: 410 }} item>
@@ -63,8 +70,12 @@ export default function RCourtId() {
           }
           inputValue={name}
           onChange={(_, value) => {
+            console.log(value);
             if (value) {
               data.setValue(value.id);
+              const txtValue = `(${value.id}) ${value.name} (${value.district})`;
+              console.log('txtValue', txtValue);
+              changeWhereSend(txtValue);
             } else {
               data.setValue('');
             }
