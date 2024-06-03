@@ -40,6 +40,7 @@ export default function Search() {
     });
     return sub.unsubscribe.bind(sub);
   }, [dispatch]);
+  const docArray = useAppSelector((state) => state.DocArray);
   React.useEffect(() => {
     dispatch(reset());
     if (id) {
@@ -73,7 +74,7 @@ export default function Search() {
         <Contract onEnter={Click} />
         <Find onClick={Click} loading={loading} />
         <CreateExec />
-        <Submit />
+        <Submit docArray={docArray} />
         <Comments />
         <DebtCalc id={Number(id)} />
         <Documents law_exec_id={Number(id)} law_act_id={la_id} />
