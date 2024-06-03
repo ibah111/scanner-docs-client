@@ -1,5 +1,58 @@
 
 
+## [1.5.0](https://git.usb.ru/scanner-docs/client/compare/v1.4.0...v1.5.0) (2024-06-03)
+
+
+### Features
+
+* add search function in chain of functions ([03e9327](https://git.usb.ru/scanner-docs/client/commit/03e9327bc39105f02cbff9a9fbcb2041240a61a7))
+* added eslint-plugin-react-hook ([4039c8a](https://git.usb.ru/scanner-docs/client/commit/4039c8ac85a27c26edd265451b3374bb7905ce10))
+* **api:** fixed api added a new one ([90c3ea5](https://git.usb.ru/scanner-docs/client/commit/90c3ea51721a2caebbee5a14b9022c995644f89a))
+* barcode dialog ([4b17a76](https://git.usb.ru/scanner-docs/client/commit/4b17a76764f02b6a578952c3edcaee2c09ede857))
+* **barcode:** new Barcode textfield ([e96b064](https://git.usb.ru/scanner-docs/client/commit/e96b064c24db200a0a4a8e48f3d4b1901df2645b))
+* change alert ([0919845](https://git.usb.ru/scanner-docs/client/commit/0919845d0faf4099b0060b6cdec229718f0294a9))
+* change request body ([7765272](https://git.usb.ru/scanner-docs/client/commit/776527230a5cb5677d03f470849cfbbcc29da41c))
+* changed icons ([c94635c](https://git.usb.ru/scanner-docs/client/commit/c94635cbf40681bf234c14856c2ce28a3c22d231))
+* changed name of function to "send_server" ([1641436](https://git.usb.ru/scanner-docs/client/commit/1641436c9ffb24093c40b7371ffe5eede2c711ae))
+* changed response type ([c245ff2](https://git.usb.ru/scanner-docs/client/commit/c245ff269993948746594455592f547dec4ea6cd))
+* changed submit button and input send data api variables ([92c4f61](https://git.usb.ru/scanner-docs/client/commit/92c4f6139e327888906b33abd239d7f57e03af95))
+* changing values with scanning ([b6f3dbc](https://git.usb.ru/scanner-docs/client/commit/b6f3dbc977fe1df503d75454606f2d0c24769e1e))
+* check doc array and sending with or without tracking ([f57c99b](https://git.usb.ru/scanner-docs/client/commit/f57c99ba66da3adf6e4b60dd5dd21ca65f7dd9a0))
+* Delete sending form ([8ec1ec3](https://git.usb.ru/scanner-docs/client/commit/8ec1ec3dbe8749f3335420be60318df8ce2c74d0))
+* delete unused component ([770bd4b](https://git.usb.ru/scanner-docs/client/commit/770bd4b19e67dbf5e60a359ac579e06712187bb4))
+* delete unused forms ([b123518](https://git.usb.ru/scanner-docs/client/commit/b123518341390c963d091ccdcf6777ef851fab02))
+* deleted opportunity to print box code ([02c7dda](https://git.usb.ru/scanner-docs/client/commit/02c7ddac65dd3959d7ea69da7a6175d5ebd7158d))
+* differents ids ([e5abd4a](https://git.usb.ru/scanner-docs/client/commit/e5abd4a08d2817529b2d13d9ebaf78d08df7771a))
+* dispatching date send on double row click ([e5942ea](https://git.usb.ru/scanner-docs/client/commit/e5942ea9d47a6ed4797940961834e7da3ffe8b87))
+* divide tables ([217f829](https://git.usb.ru/scanner-docs/client/commit/217f8293ef2dcdb2c3dc584e58ecfcb36412daf0))
+* drivers in recources ([c9763e4](https://git.usb.ru/scanner-docs/client/commit/c9763e4e01f3eff5094a9cb132d2d9b26cc483a5))
+* fixed ids ([a1d4d87](https://git.usb.ru/scanner-docs/client/commit/a1d4d871826816510a8af4dbf7165aa587bcb36d))
+* fixing submit button ([61d9c42](https://git.usb.ru/scanner-docs/client/commit/61d9c42caff5f28dc30d531e596ad12c9cbcc076))
+* handle change of barcode ([520863c](https://git.usb.ru/scanner-docs/client/commit/520863c689debada737382c4ba82bfe6660ca118))
+* location reload button ([54d678d](https://git.usb.ru/scanner-docs/client/commit/54d678dd847d97165d5f6c6ac05c19e9a69ad8ec))
+* **main:** changing main form ([e909f1a](https://git.usb.ru/scanner-docs/client/commit/e909f1a2884abf9d7af4c28626fc357ffd894d3f))
+* make initial state more correct ([281d9fe](https://git.usb.ru/scanner-docs/client/commit/281d9fe453ea257f944234dd338b1629582c51ea))
+* make variable possible undefined ([1bdbead](https://git.usb.ru/scanner-docs/client/commit/1bdbeadbc9377f89b9cd03eb35783f4e4a2ce9ca))
+* new barcode state manager reducer variable ([73c89c9](https://git.usb.ru/scanner-docs/client/commit/73c89c9453d8ce878449be644d4782ba43bd4218))
+* new eslint react rules ([8a7a420](https://git.usb.ru/scanner-docs/client/commit/8a7a42017f063377a8ce8944cf579588687e0b45))
+* new V prep ([2b33bdd](https://git.usb.ru/scanner-docs/client/commit/2b33bddabc9bac8c2e11025dbad25d05dec3abfa))
+* numeric leading zeros allowed ([0e3ba2a](https://git.usb.ru/scanner-docs/client/commit/0e3ba2a94d6af737b2376b025b2225b2aa51f40d))
+* reset doc ([8c0d498](https://git.usb.ru/scanner-docs/client/commit/8c0d498bac16c9067aa2fa3969b6b24ff8488de9))
+* reset search and barcode ([1feb1df](https://git.usb.ru/scanner-docs/client/commit/1feb1df1fed8b77c9fd002f3a983c00726258bbf))
+* reset search exported ([51e2877](https://git.usb.ru/scanner-docs/client/commit/51e28776df1eea641e8346c2a98294ae4f065c1b))
+* snackbar on reset ([c37cfc6](https://git.usb.ru/scanner-docs/client/commit/c37cfc67bc4ec08505e2f3555737913c689dec1c))
+* some changes ([aaca11d](https://git.usb.ru/scanner-docs/client/commit/aaca11d4b354e4f546e270d78f3dab663ab3bd97))
+* sum in details ([c76f8af](https://git.usb.ru/scanner-docs/client/commit/c76f8af65ba5247f5bc912f866f906e267d1e11d))
+* two array of columns ([dc39675](https://git.usb.ru/scanner-docs/client/commit/dc396758966a1c2c15b782340452f1d219525609))
+
+
+### Bug Fixes
+
+* fix function names ([265ec16](https://git.usb.ru/scanner-docs/client/commit/265ec16bb4cc5bcad70759e54732d410416f6d57))
+* get law_act documents with axios config ([3426847](https://git.usb.ru/scanner-docs/client/commit/34268472dbddddd00f0fac51d8c680a8d0888f1a))
+* text field interface fixed ([abb9379](https://git.usb.ru/scanner-docs/client/commit/abb9379c11ce3e9d7855b82291683fabe507f79d))
+* Where Send value fixed ([11ec87e](https://git.usb.ru/scanner-docs/client/commit/11ec87eafe711d668ec271ebea875fb9fe21c90e))
+
 ## [1.3.0](https://git.usb.ru/scanner-docs/client/compare/v1.2.0...v1.3.0) (2024-05-20)
 
 
