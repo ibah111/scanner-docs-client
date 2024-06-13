@@ -134,22 +134,32 @@ export default function documentColumns(
     },
     {
       type: 'number',
-      field: 'law_act_id',
-      headerName: 'Юридическое дело',
-      description: 'Приказ, иск, правопреемство, банкротство',
+      field: 'doc_type',
+      headerName: 'Тип дела/документа',
       valueGetter(params) {
-        return params.row.law_act_id;
+        const types = [
+          {
+            id: 1,
+            name: 'Судебная работа',
+          },
+          {
+            id: 2,
+            name: 'Исполнительное производство',
+          },
+        ];
+        const doc_type = params.row.doc_type;
+        const result = types.find((type) => type.id === doc_type);
+        return result.name;
       },
-      width: 150,
     },
+
     {
+      field: 'law_case_id',
+      headerName: 'ID дела',
       type: 'number',
-      field: 'law_exec_id',
-      headerName: 'Исполнительное производство',
-      valueGetter: (params) => {
-        return params.row.law_exec_id;
+      valueGetter(params) {
+        return params.row.law_case_id;
       },
-      width: 200,
     },
     {
       field: 'actions',
