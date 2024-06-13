@@ -5,7 +5,6 @@ import {
   GridToolbarFilterButton,
 } from '@mui/x-data-grid-premium';
 import SendForm from './SendToolbarButton';
-import ResetDataButton from './RestDataButton';
 interface MainPageToolbarInterface {
   handleOpen: VoidFunction;
 }
@@ -18,7 +17,6 @@ export default function MainPageToolbar({
       <GridToolbarFilterButton />
       <GridToolbarDensitySelector />
       <SendForm handleOpen={handleOpen} />
-      <ResetDataButton />
     </GridToolbarContainer>
   );
 }

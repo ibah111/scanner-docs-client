@@ -36,7 +36,7 @@ export default function Docs() {
         dispatch(setDocs(res));
       });
     }
-  }, [page, pageSize, filterModel, sortModel]);
+  }, [page, pageSize, filterModel, sortModel, dispatch]);
   return (
     <>
       <Grid item xs sx={{ height: '100%', width: '100vw' }}>

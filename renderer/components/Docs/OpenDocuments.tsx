@@ -14,7 +14,6 @@ import ru_RU from '@react-pdf-viewer/locales/lib/ru_RU.json';
 import { pageNavigationPlugin } from '@react-pdf-viewer/page-navigation';
 import { searchPlugin } from '@react-pdf-viewer/search';
 import { enqueueSnackbar } from 'notistack';
-import { useAppSelector } from '../../Reducer';
 import getStore from '../../lib/store';
 import { setVersion } from '../../Reducer/Version';
 
@@ -23,7 +22,6 @@ interface DialogFileProps {
   title: string;
 }
 export default function OpenDocuments({ id, title }: DialogFileProps) {
-  const reducerVersion = useAppSelector((state) => state.Version);
   const [open, setOpen] = React.useState(false);
   const [file, setFile] = React.useState<string>('');
   React.useEffect(() => {
@@ -41,7 +39,7 @@ export default function OpenDocuments({ id, title }: DialogFileProps) {
           if (error.response.request.status === 404)
             enqueueSnackbar('Документ не найден', { variant: 'error' });
         });
-  }, [open]);
+  }, [id, open, title]);
   const defaultLayoutPluginInstance = defaultLayoutPlugin({
     sidebarTabs: (defaultTabs) => [defaultTabs[0]],
   });
@@ -90,10 +88,7 @@ export default function OpenDocuments({ id, title }: DialogFileProps) {
           label="Открыть документы"
         />
         <Dialog open={open} fullScreen onClose={() => setOpen(false)}>
-          <MenuBar
-            back={() => setOpen(false)}
-            version={reducerVersion.version}
-          />
+          <MenuBar back={() => setOpen(false)} />
           <Grid item xs>
             {file && (
               <Viewer
