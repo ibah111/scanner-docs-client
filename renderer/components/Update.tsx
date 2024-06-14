@@ -66,7 +66,7 @@ export default function Update() {
       getStore().set('version', params);
     });
     window.ipc.send('check_version');
-  }, []);
+  }, [dispatch]);
 
   const handleClose = () => {
     setOpen(false);
