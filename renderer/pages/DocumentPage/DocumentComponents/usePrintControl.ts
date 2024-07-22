@@ -25,12 +25,12 @@ export default function usePrintControl({
       });
     }) as EventListener;
     EventTarget.addEventListener(DocumentEvents.openPrintDialog, callback);
-  }, []);
+  }, [EventTarget]);
   const closePrintDialog = React.useCallback(() => {
     setDocId(0);
     setOpen(false);
     refresh();
-  }, [refresh, EventTarget]);
+  }, [refresh]);
   return {
     open,
     docId,

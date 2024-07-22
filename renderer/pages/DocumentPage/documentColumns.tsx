@@ -175,7 +175,7 @@ export default function documentColumns(
                   new EventDocumentDialog(
                     DocumentEvents.openPrintDialog,
                     params.row.id,
-                    params.row.title,
+                    params.row.title + '\n' + params.row.DocData.Result.reestr,
                   ),
                 )
               }
