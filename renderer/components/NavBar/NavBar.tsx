@@ -32,7 +32,18 @@ export default function NavBar() {
               <Grid item sx={{ ml: 2 }}>
                 <NavigationLinkButton
                   path={'/MainPage'}
-                  name={'Главная страница'}
+                  name={'Подача'}
+                  props={{
+                    sx: {
+                      width: '180px',
+                    },
+                  }}
+                />
+              </Grid>
+              <Grid item sx={{ ml: 2 }}>
+                <NavigationLinkButton
+                  path={'/DocumentAdder'}
+                  name={'Документооборот'}
                   props={{
                     sx: {
                       width: '180px',
