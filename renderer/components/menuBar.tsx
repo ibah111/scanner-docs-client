@@ -5,10 +5,9 @@ import SettingsOverscanIcon from '@mui/icons-material/SettingsOverscan';
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 interface MenuBarProps {
-  version: string;
   back?: () => void;
 }
-export default function MenuBar({ back, version }: MenuBarProps) {
+export default function MenuBar({ back }: MenuBarProps) {
   return (
     <Grid item container direction="row" justifyContent="space-between">
       <Grid item sx={{ pt: 1 }}>
@@ -21,7 +20,7 @@ export default function MenuBar({ back, version }: MenuBarProps) {
             )}
           </Grid>
           <Grid item sx={{ ml: 2 }}>
-            <Typography>Scanner Docs {version}</Typography>
+            <Typography>Scanner Docs</Typography>
           </Grid>
         </Grid>
       </Grid>
