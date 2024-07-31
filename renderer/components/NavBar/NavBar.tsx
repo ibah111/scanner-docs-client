@@ -40,17 +40,20 @@ export default function NavBar() {
                   }}
                 />
               </Grid>
+              {/**
+                 * 
               <Grid item sx={{ ml: 2 }}>
-                <NavigationLinkButton
-                  path={'/DocumentAdder'}
-                  name={'Документооборот'}
-                  props={{
-                    sx: {
-                      width: '180px',
-                    },
-                  }}
-                />
+                  <NavigationLinkButton
+                    path={'/DocumentAdder'}
+                    name={'DocAdder (в разработке)'}
+                    props={{
+                      sx: {
+                        width: '180px',
+                      },
+                    }}
+                  />
               </Grid>
+                   */}
               <Grid item>
                 <Can I={Action.Manage} a={Subject.Doc}>
                   <NavigationLinkButton
