@@ -35,6 +35,8 @@ test_job:
     - wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bullseye/winehq-bullseye.sources
     - apt-get update -qq && apt-get install --install-recommends -qq winehq-stable
     - node -v
+    - corepack enable
+    - yarn install
     - yarn set version berry
     - yarn config set compressionLevel mixed
     - yarn config set -H enableImmutableInstalls false
