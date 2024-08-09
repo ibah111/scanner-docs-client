@@ -9,12 +9,14 @@ class SendDataClass {
   id: number;
   WhereSend: string;
   DateSend: moment.Moment;
+  BoxTypeId: number;
 }
 
 export default async function SendData({
   id,
   WhereSend,
   DateSend,
+  BoxTypeId,
 }: SendDataClass) {
   const url = of('/send');
   console.log(id, WhereSend, DateSend);
@@ -26,6 +28,7 @@ export default async function SendData({
         id,
         WhereSend,
         DateSend,
+        BoxTypeId,
       }),
     ]).pipe(post<Transmit>(), transformAxios(), transformError(), authRetry()),
   );

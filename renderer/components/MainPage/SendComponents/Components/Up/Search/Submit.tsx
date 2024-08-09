@@ -89,30 +89,29 @@ export default function Submit({ docArray }: SubmitProps) {
   );
   const WhereSend = useAppSelector((state) => state.SendDoc.WhereSend);
   const DateSend = useAppSelector((state) => state.SendDoc.DateSend);
-
+  const BoxTypeId = useAppSelector((state) => state.SendDoc.BoxTypeId);
   //Click callback function
   const Click = React.useCallback(() => {
     if (check(Error, AddAlert)) {
-      console.log('doc_id');
       setLoading(true);
-      //
-      console.log('docArray', docArray);
+
       if (docArray.length > 0) {
         const doc_id = docArray[0].id;
         enqueueSnackbar(`Отправляю отслеживаемый документ с id: ${doc_id}`, {
           variant: 'info',
         });
         alert(
-          `Документ отправлен с отслеживанием. Данные отслеживаемого документа: \nID: ${doc_id}, \nДата отправки: ${DateSend}, \nКуда отправлено: ${WhereSend}`,
+          `Документ отправлен с отслеживанием. Данные отслеживаемого документа: \nID: ${doc_id}, \nДата отправки: ${DateSend}, \nКуда отправлено: ${WhereSend} \nПомещено в короб #${BoxTypeId}`,
         );
         SendData({
           id: doc_id,
           DateSend,
           WhereSend,
+          BoxTypeId,
         });
         UpdateLawExec();
       }
-      //
+
       if (docArray.length === 0) {
         enqueueSnackbar('Отправлено, без отслеживания', {
           variant: 'warning',
@@ -121,13 +120,14 @@ export default function Submit({ docArray }: SubmitProps) {
       }
     }
   }, [
-    AddAlert,
     Error,
-    UpdateLawExec,
-    DateSend,
-    WhereSend,
+    AddAlert,
     docArray,
     enqueueSnackbar,
+    DateSend,
+    WhereSend,
+    BoxTypeId,
+    UpdateLawExec,
   ]);
 
   return (

@@ -1,6 +1,6 @@
 import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
 import { IsValidMoment } from '../hooks/Validation/IsValidMoment';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 import { DateType } from '../hooks/Validation/DateType';
 import { TransformDate } from '../hooks/Validation/TransformDate';
 import { Model } from '@sql-tools/sequelize-typescript';
@@ -17,6 +17,7 @@ export class SendDoc extends Model<
 > {
   DataSend: moment.Moment;
   WhereSend: string;
+  boxTypeId?: number | null;
 }
 export class SendDocInstance {
   @IsValidMoment()
@@ -28,6 +29,10 @@ export class SendDocInstance {
   @IsNotEmpty()
   @IsString()
   WhereSend: string;
+
+  @IsNotEmpty()
+  @IsNumber()
+  BoxTypeId: number | null;
 }
 export type SendData = CreationAttributes<SendDoc>;
 

@@ -34,9 +34,10 @@ export default function RCourtId() {
      */
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name]);
-
   const changeWhereSend = React.useCallback(
-    (value: string) => dispatch(setSendDocProperty(['WhereSend', value])),
+    (value: string) => {
+      dispatch(setSendDocProperty(['WhereSend', value]));
+    },
     [dispatch],
   );
 
