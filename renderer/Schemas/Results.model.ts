@@ -4,5 +4,5 @@ export class Results {
   kd: string;
   reestr: string;
   fio_dol: string;
-  date_post: Date;
+  date_post: Date | null;
 }

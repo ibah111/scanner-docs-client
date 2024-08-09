@@ -10,7 +10,7 @@ export class Result {
    * Дата поступления
    */
   @Type(() => Date)
-  date_post: Date;
+  date_post: Date | null;
 
   /**
    * Учет конвертов
