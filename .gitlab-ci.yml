@@ -48,7 +48,6 @@ test_job:
     - yarn config set npmScopes.motivation.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
     - yarn config set npmScopes.tools.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
   script:
-    - cat .yarnrc.yml
     - yarn
     - yarn build
   rules:
@@ -74,6 +73,7 @@ build_job:
     - wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bullseye/winehq-bullseye.sources
     - apt-get update -qq && apt-get install --install-recommends -qq winehq-stable
     - yarn set version berry
+    - corepack enable
     - yarn config set nodeLinker node-modules
     - yarn config set enableStrictSsl false
     - yarn config set "npmRegistries[\"//${CI_SERVER_HOST}/api/v4/packages/npm/\"].npmAlwaysAuth" true
