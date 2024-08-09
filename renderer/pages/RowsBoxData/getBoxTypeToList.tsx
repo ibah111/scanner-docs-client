@@ -69,7 +69,7 @@ export default function GetBoxTypeToList({ refresh }: PrintCodesButtonProps) {
   }, []);
   React.useEffect(() => {
     GetTypes();
-  }, []);
+  }, [GetTypes]);
   return (
     <>
       <Button

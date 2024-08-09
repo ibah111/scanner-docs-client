@@ -2,6 +2,9 @@ import { Grid } from '@mui/material';
 import React from 'react';
 import Address from './Address';
 import RCourtId from './RCourtId';
+import Requisits from './Requisuts';
+import RequisitsButton from './RequisitsDialog';
+import BoxTypeSelect from './BoxTypeSelect';
 
 export default function Section5() {
   return (
@@ -16,6 +19,9 @@ export default function Section5() {
       >
         <RCourtId />
         <Address />
+        <BoxTypeSelect />
+        <Requisits />
+        <RequisitsButton />
       </Grid>
     </>
   );

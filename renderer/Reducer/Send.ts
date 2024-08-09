@@ -21,9 +21,10 @@ export interface DataTypes {
   fssp_date: null | DateTime;
   r_court_id: string | number | null;
   dsc: null | string;
-  add_interests: boolean;
   appeal_typ: string | number | null;
   person_property: number | string | null;
+  add_interests: boolean;
+  custom_requisites_id: number;
 }
 type ValueOf<T> = T[keyof T];
 export type TypesData = ValueOf<DataTypes>;
@@ -48,6 +49,7 @@ export const initState: DataTypes = {
   add_interests: false,
   person_property: null,
   appeal_typ: null,
+  custom_requisites_id: 0,
 };
 export const send = createSlice({
   name: 'send',

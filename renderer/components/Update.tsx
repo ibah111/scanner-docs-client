@@ -66,6 +66,7 @@ export default function Update() {
       getStore().set('version', params);
     });
     window.ipc.send('check_version');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClose = () => {
@@ -74,7 +75,15 @@ export default function Update() {
   return (
     <div>
       <>
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          PaperProps={{
+            style: {
+              backgroundColor: '#cfe8fc',
+            },
+          }}
+        >
           <DialogTitle>{message}</DialogTitle>
           <DialogContent>
             {downloading && (

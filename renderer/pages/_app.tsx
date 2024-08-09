@@ -20,10 +20,8 @@ import NavBar from '../components/NavBar/NavBar';
 import { Grid } from '@mui/material';
 import '../locale';
 import moment from 'moment';
-import getStore from '../lib/store';
 import ThemeProvider from '../Providers/ThemeProvider';
 export default function App(props: AppProps) {
-  const [versionApp, setVersionApp] = React.useState<string>('');
   const { Component, pageProps } = props;
   React.useEffect(() => {
     /**
@@ -33,8 +31,6 @@ export default function App(props: AppProps) {
      * вызвать что либо связанное с контекстом, то будет выдаваться ошибка,
      * в контексте которой он не знает контекста и ругается на это
      */
-    const ver = getStore().get('version') as string;
-    setVersionApp(ver);
     moment.locale('ru');
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
@@ -63,7 +59,7 @@ export default function App(props: AppProps) {
                 justifyContent="flex-start"
                 alignItems="center"
               >
-                <MenuBar version={versionApp} />
+                <MenuBar />
                 <MessageShow />
                 <Update />
                 <CssBaseline />

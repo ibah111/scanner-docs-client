@@ -27,6 +27,7 @@ import LawExec from './LawExec';
 import Results from './Results';
 import Version from './Version';
 import Barcode from './Barcode';
+import Requisites from './Requisites';
 import React from 'react';
 
 export const store = configureStore({
@@ -55,6 +56,7 @@ export const store = configureStore({
     Error,
     LawExec,
     Results,
+    Requisites,
     /**
      * end of Send reducers
      * Just version

@@ -17,8 +17,15 @@ export class Doc extends Model<
   title: string;
   contact_doc_id: number;
   mail_id: number;
+  /**
+   * @deprecated
+   */
   law_act_id: number;
+  /**
+   * @deprecated
+   */
   law_exec_id: number;
+  law_case_id: number;
   declare createdAt?: Date;
   declare updatedAt?: Date;
 

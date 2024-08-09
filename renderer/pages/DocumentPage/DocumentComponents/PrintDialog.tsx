@@ -35,10 +35,7 @@ export default function PrindDialog({
               color="success"
               variant="contained"
               onClick={() => {
-                printBarcode(
-                  String(docCode),
-                  `Документ:\n${titleCode}`,
-                ).subscribe({
+                printBarcode(String(docCode), `${titleCode}`).subscribe({
                   complete() {
                     onClose();
                     enqueueSnackbar('Распечатано', {
