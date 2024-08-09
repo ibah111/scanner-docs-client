@@ -1,5 +1,35 @@
 
 
+## [1.6.0](https://git.usb.ru/scanner-docs/client/compare/v1.5.0...v1.6.0) (2024-08-09)
+
+
+### Features
+
+* вкладка документооборота ([910dc09](https://git.usb.ru/scanner-docs/client/commit/910dc09dd729695eaefe3b42ce279e25e86b36b3))
+* печать реестра ([37c59c4](https://git.usb.ru/scanner-docs/client/commit/37c59c4499ed7222dca29dcedf3d59f2884afb37))
+* удалил ненужное ([f3af219](https://git.usb.ru/scanner-docs/client/commit/f3af21985a808e1d01983d34a32575c1724ed818))
+* add template typ ([4dd4c24](https://git.usb.ru/scanner-docs/client/commit/4dd4c24ec6d0f9fa40337e9bad35637f6e2c6fdd))
+* allow date_post be null ([e6ce8a4](https://git.usb.ru/scanner-docs/client/commit/e6ce8a4132b0d0563e4ba067a02f87bd999508c2))
+* autoUpdaters logs ([e780840](https://git.usb.ru/scanner-docs/client/commit/e78084016513c862be7447f54f1fbda55a9eb662))
+* box type id add variable ([05222a4](https://git.usb.ru/scanner-docs/client/commit/05222a4010fdbf4f128a9780aa71549b568906bf))
+* comment button ([98d6b47](https://git.usb.ru/scanner-docs/client/commit/98d6b47f344036694f857cbd6f0d5eaf03b38f65))
+* delete version ([695741a](https://git.usb.ru/scanner-docs/client/commit/695741ac4297358ebdaca7d9aa8d296947efcce1))
+* dependencies ([6cd2022](https://git.usb.ru/scanner-docs/client/commit/6cd20221f74867a740aea2bcd21caecba0e27379))
+* deprecated variables ([3788a9b](https://git.usb.ru/scanner-docs/client/commit/3788a9b6dc0b1e33b4599ba009649e501c29841b))
+* downgrade yarn ([605460f](https://git.usb.ru/scanner-docs/client/commit/605460f0e6e2c9e8da8dc1a99655ce387a9388a9))
+* f ([454834c](https://git.usb.ru/scanner-docs/client/commit/454834c4d8b01a78a7bfdad033dcb37bc023527b))
+* low_case_id added ([5bf9bd8](https://git.usb.ru/scanner-docs/client/commit/5bf9bd847755edbc8da4e962395f29c26c2c952c))
+* new api for new templates pdf ([2d63b45](https://git.usb.ru/scanner-docs/client/commit/2d63b456bd34c2b60c6de7ba5ffb7d44b35e58cc))
+* **packages:** electron log and builder update ([234d545](https://git.usb.ru/scanner-docs/client/commit/234d5455db177185cb5e77ef8c797f51f8330b5a))
+* requisites form ([11cf796](https://git.usb.ru/scanner-docs/client/commit/11cf79698d6b40b5980d5d656579710d0cf3c3c7))
+* trying fix ci cd ([61e18af](https://git.usb.ru/scanner-docs/client/commit/61e18af2548a7fc1bcf3759c60f85acfb307323c))
+* trying to fix autoupdaters ([d2c87e5](https://git.usb.ru/scanner-docs/client/commit/d2c87e5e322b456ddc813e38526ed05451c3da74))
+
+
+### Bug Fixes
+
+* react dependency rule fix ([53af761](https://git.usb.ru/scanner-docs/client/commit/53af761cdc372d03bc871f009b2eea7b53c374f7))
+
 ## [1.5.0](https://git.usb.ru/scanner-docs/client/compare/v1.4.0...v1.5.0) (2024-06-03)
 
 
