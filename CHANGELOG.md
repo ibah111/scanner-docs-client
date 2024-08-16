@@ -1,5 +1,12 @@
 
 
+## [1.7.1](https://git.usb.ru/scanner-docs/client/compare/v1.7.0...v1.7.1) (2024-08-16)
+
+
+### Features
+
+* snackbaer to react deps ([6a9c004](https://git.usb.ru/scanner-docs/client/commit/6a9c0046c0159cf67dd324f1040d34936cef579d))
+
 ## [1.7.0](https://git.usb.ru/scanner-docs/client/compare/v1.6.0...v1.7.0) (2024-08-16)
 
 
