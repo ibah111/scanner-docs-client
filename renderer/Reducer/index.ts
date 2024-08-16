@@ -28,6 +28,7 @@ import Results from './Results';
 import Version from './Version';
 import Barcode from './Barcode';
 import Requisites from './Requisites';
+import ValidController from './ValidController';
 import React from 'react';
 
 export const store = configureStore({
@@ -62,6 +63,7 @@ export const store = configureStore({
      * Just version
      */
     Version,
+    ValidController,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;
