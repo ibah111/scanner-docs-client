@@ -93,7 +93,7 @@ export default function Submit({ docArray }: SubmitProps) {
         error: () => setLoading(false),
         complete: () => setLoading(false),
       }),
-    [dispatch],
+    [dispatch, enqueueSnackbar],
   );
   const WhereSend = useAppSelector((state) => state.SendDoc.WhereSend);
   const DateSend = useAppSelector((state) => state.SendDoc.DateSend);
