@@ -1,5 +1,13 @@
 
 
+## [1.7.0](https://git.usb.ru/scanner-docs/client/compare/v1.6.0...v1.7.0) (2024-08-16)
+
+
+### Features
+
+* change validation system for sberbank send ([add42aa](https://git.usb.ru/scanner-docs/client/commit/add42aa704a1175630a330c531e0f866ae064993))
+* valid controller reducer ([4ef52f2](https://git.usb.ru/scanner-docs/client/commit/4ef52f2818199d7ec0cce0cfaf30458a21a2e472))
+
 ## [1.6.0](https://git.usb.ru/scanner-docs/client/compare/v1.5.0...v1.6.0) (2024-08-09)
 
 
