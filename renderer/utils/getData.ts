@@ -35,7 +35,9 @@ export default function useError<K extends DataNames>(
     (newValue: DataTypes[K]) => {
       switch (type) {
         case 'date': {
-          dispatch(setData([name, (newValue as DateTime).startOf('day')]));
+          if (newValue !== null) {
+            dispatch(setData([name, (newValue as DateTime).startOf('day')]));
+          }
           break;
         }
         default:
@@ -52,11 +54,12 @@ export default function useError<K extends DataNames>(
         error = checkString(value, availableEmpty);
         break;
       case 'date':
-        error = checkDate(value, availableEmpty);
+        if (value !== null) {
+          error = checkDate(value, availableEmpty);
+        }
         break;
       case 'number':
         error = checkNumber(value, availableEmpty, availableZero);
-        console.log(name, value, error);
         break;
       case 'null':
         error = checkNull(value);

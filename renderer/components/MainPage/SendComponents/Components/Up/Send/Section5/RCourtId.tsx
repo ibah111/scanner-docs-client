@@ -8,6 +8,9 @@ import getCourt, {
 import getData from '../../../../../../../utils/getData';
 import { useAppDispatch } from '../../../../../../../Reducer';
 import { setSendDocProperty } from '../../../../../../../Reducer/SendDoc';
+import { DateTime } from 'luxon';
+import { setValidController } from '../../../../../../../Reducer/ValidController';
+import { setData } from '../../../../../../../Reducer/Send';
 /**
  *
  * @returns Наименование ФССП
@@ -18,6 +21,8 @@ export default function RCourtId() {
   const [type, setType] = React.useState<'' | LawCourt>('');
   const [name, setName] = React.useState('');
   const data = getData('r_court_id', 'null');
+  const load_dt = getData('load_dt', 'date');
+  const fssp_date = getData('fssp_date', 'date', true);
   const dispatch = useAppDispatch();
 
   const [count, setCount] = React.useState<number>(0);
@@ -55,7 +60,9 @@ export default function RCourtId() {
       setTypes(['']);
       setType('');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeWhereSend, data.value, dispatch]);
+
   return (
     <>
       <Grid sx={{ width: 410 }} item>
@@ -71,9 +78,20 @@ export default function RCourtId() {
           }
           inputValue={name}
           onChange={(_, value) => {
-            console.log(value);
             if (value) {
-              data.setValue(value.id);
+              if (value.name === 'Сбербанк') {
+                console.log('сбербанк действие');
+                data.setValue(value.id);
+                const todayDateTime = DateTime.now();
+                load_dt.setValue(todayDateTime);
+                dispatch(setData(['fssp_date', null]));
+                fssp_date.setValue(null);
+                dispatch(
+                  setValidController(['fssp_date_required_controller', false]),
+                );
+              } else {
+                data.setValue(value.id);
+              }
               const txtValue = `(${value.id}) ${value.name} (${value.district})`;
               changeWhereSend(txtValue);
             } else {

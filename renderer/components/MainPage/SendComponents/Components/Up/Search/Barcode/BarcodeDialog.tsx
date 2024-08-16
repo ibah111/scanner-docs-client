@@ -25,7 +25,7 @@ export default function BarcodeDialog({
   const code_results = useAppSelector((state) => state.DocArray);
   React.useEffect(() => {
     console.log('code_results', code_results);
-  }, []);
+  }, [code_results]);
   return (
     <>
       <Dialog open={open} onClose={closeFunction} fullWidth>

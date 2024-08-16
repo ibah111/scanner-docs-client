@@ -6,6 +6,7 @@ import { resetBarcodeState } from '../../../../../../Reducer/Barcode';
 import { resetSearch } from '../../../../../../Reducer/Search';
 import { enqueueSnackbar } from 'notistack';
 import { resetDocArray } from '../../../../../../Reducer/DocArray';
+import { resetValidController } from '../../../../../../Reducer/ValidController';
 
 export default function Reset() {
   const { t } = useTranslation();
@@ -22,6 +23,7 @@ export default function Reset() {
             dispatch(resetBarcodeState());
             dispatch(resetSearch());
             dispatch(resetDocArray());
+            dispatch(resetValidController());
           }}
         >
           {t('form.search.reset')}

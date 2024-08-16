@@ -13,7 +13,6 @@ const BarcodeSlice = createSlice({
   initialState,
   reducers: {
     setBarcodeState: (_, action: PayloadAction<Barcode>) => {
-      console.log('setBarcodeState', action.payload);
       const value = action.payload;
       return value;
     },

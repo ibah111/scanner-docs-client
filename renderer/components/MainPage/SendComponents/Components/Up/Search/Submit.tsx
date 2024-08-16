@@ -15,6 +15,7 @@ import SendData from '../../../../../../api/SendData';
  * default export useError as getData
  */
 import { Doc } from '../../../../../../Schemas/Doc.model';
+import { resetValidController } from '../../../../../../Reducer/ValidController';
 
 function toArrayBuffer(buf: number[]) {
   const ab = new ArrayBuffer(buf.length);
@@ -28,6 +29,7 @@ const check = (
   Error: ErrorTypes,
   error: (value: string, type: VariantType) => void,
 ) => {
+  console.log('check');
   let errors = 0;
   for (const value of Object.entries(Error)) {
     if (value[1] !== null) {
@@ -65,7 +67,13 @@ export default function Submit({ docArray }: SubmitProps) {
     () =>
       updateExec().subscribe({
         next: (res) => {
-          if (res) {
+          if (res === true) {
+            alert('Отправлено в СБЕРБАНК. Сопровод не формируется.');
+            enqueueSnackbar('Отправлено в СБЕРБАНК. Сопровод не формируется.', {
+              variant: 'success',
+              autoHideDuration: 5 * 1000,
+            });
+          } else if (res) {
             const file = new Blob([toArrayBuffer(res.file.data)], {
               type: 'application/pdf',
             });
@@ -92,9 +100,9 @@ export default function Submit({ docArray }: SubmitProps) {
   const BoxTypeId = useAppSelector((state) => state.SendDoc.BoxTypeId);
   //Click callback function
   const Click = React.useCallback(() => {
+    console.log('Error:', Error);
     if (check(Error, AddAlert)) {
       setLoading(true);
-
       if (docArray.length > 0) {
         const doc_id = docArray[0].id;
         enqueueSnackbar(`Отправляю отслеживаемый документ с id: ${doc_id}`, {
@@ -110,6 +118,7 @@ export default function Submit({ docArray }: SubmitProps) {
           BoxTypeId,
         });
         UpdateLawExec();
+        dispatch(resetValidController());
       }
 
       if (docArray.length === 0) {
@@ -117,6 +126,7 @@ export default function Submit({ docArray }: SubmitProps) {
           variant: 'warning',
         });
         UpdateLawExec();
+        dispatch(resetValidController());
       }
     }
   }, [
@@ -128,6 +138,7 @@ export default function Submit({ docArray }: SubmitProps) {
     WhereSend,
     BoxTypeId,
     UpdateLawExec,
+    dispatch,
   ]);
 
   return (

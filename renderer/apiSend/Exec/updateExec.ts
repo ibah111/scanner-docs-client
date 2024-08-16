@@ -20,5 +20,10 @@ export default function updateExec() {
     url,
     data,
     axiosConfig(),
-  ]).pipe(post<FileUpdate>(), transformAxios(), transformError(), authRetry());
+  ]).pipe(
+    post<FileUpdate | true>(),
+    transformAxios(),
+    transformError(),
+    authRetry(),
+  );
 }
