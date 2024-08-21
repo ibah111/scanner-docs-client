@@ -14,8 +14,6 @@ import ru_RU from '@react-pdf-viewer/locales/lib/ru_RU.json';
 import { pageNavigationPlugin } from '@react-pdf-viewer/page-navigation';
 import { searchPlugin } from '@react-pdf-viewer/search';
 import { enqueueSnackbar } from 'notistack';
-import getStore from '../../lib/store';
-import { setVersion } from '../../Reducer/Version';
 
 interface DialogFileProps {
   id: number;
@@ -25,8 +23,6 @@ export default function OpenDocuments({ id, title }: DialogFileProps) {
   const [open, setOpen] = React.useState(false);
   const [file, setFile] = React.useState<string>('');
   React.useEffect(() => {
-    const version = getStore().get('version');
-    setVersion(version);
     if (open)
       getDocuments(id)
         .then((res) => {

@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Box, Dialog, Grid, Typography } from '@mui/material';
 import { t } from 'i18next';
 import { useSnackbar, VariantType } from 'notistack';
 import React from 'react';
@@ -16,6 +16,12 @@ import SendData from '../../../../../../api/SendData';
  */
 import { Doc } from '../../../../../../Schemas/Doc.model';
 import { resetValidController } from '../../../../../../Reducer/ValidController';
+import { LoadError, Viewer, Worker } from '@react-pdf-viewer/core';
+import MenuBar from '../../../../../menuBar';
+import { pageNavigationPlugin } from '@react-pdf-viewer/page-navigation';
+import { searchPlugin } from '@react-pdf-viewer/search';
+import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
+import ru_RU from '@react-pdf-viewer/locales/lib/ru_RU.json';
 
 function toArrayBuffer(buf: number[]) {
   const ab = new ArrayBuffer(buf.length);
@@ -62,6 +68,17 @@ export default function Submit({ docArray }: SubmitProps) {
     [enqueueSnackbar],
   );
 
+  const [pdfFile, setPdfFile] = React.useState<string>('');
+
+  const [openPDFDialog, setOpenPDFDialog] = React.useState<boolean>(false);
+  const handleOpenPDFDialog = () => {
+    setOpenPDFDialog(true);
+  };
+  const handleClosePDFDialog = () => {
+    setOpenPDFDialog(false);
+    setPdfFile('');
+  };
+
   //LawExec callback
   const UpdateLawExec = React.useCallback(
     () =>
@@ -79,6 +96,9 @@ export default function Submit({ docArray }: SubmitProps) {
             });
             saveAs(file, res.name);
             ResetSendData();
+            const ads = URL.createObjectURL(file);
+            setPdfFile(ads);
+            handleOpenPDFDialog();
             setLoading(false);
           } else {
             setLoading(false);
@@ -141,6 +161,46 @@ export default function Submit({ docArray }: SubmitProps) {
     dispatch,
   ]);
 
+  const defaultLayoutPluginInstance = defaultLayoutPlugin({
+    sidebarTabs: (defaultTabs) => [defaultTabs[0]],
+  });
+  const searchPluginInstance = searchPlugin();
+  const pageNavigationPluginInstance = pageNavigationPlugin();
+  const renderError = (error: LoadError) => {
+    let message = '';
+    switch (error.name) {
+      case 'InvalidPDFException':
+        message = 'Документ недействителен или поврежден';
+        break;
+      case 'MissingPDFException':
+        message = 'Документ отсутствует';
+        break;
+      case 'UnexpectedResponseException':
+        message = 'Неожиданный ответ сервера';
+        break;
+      default:
+        message = 'Не удается загрузить документ';
+        break;
+    }
+    return (
+      <>
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          sx={{ pt: 10 }}
+        >
+          <Box sx={{ width: 600, height: 40, backgroundColor: '#e53e3e' }}>
+            <Typography sx={{ fontSize: 24 }} align={'center'}>
+              {message}
+            </Typography>
+          </Box>
+        </Grid>
+      </>
+    );
+  };
+
   return (
     <>
       <Grid item>
@@ -152,6 +212,30 @@ export default function Submit({ docArray }: SubmitProps) {
           {t('form.search.submit')}
         </LoadingButton>
       </Grid>
+      <Worker workerUrl="/build/pdf.worker.js">
+        <Dialog
+          open={openPDFDialog}
+          fullScreen
+          onClose={() => handleClosePDFDialog()}
+        >
+          <MenuBar back={() => handleClosePDFDialog()} />
+          <Grid item xs>
+            {pdfFile && (
+              <Viewer
+                fileUrl={pdfFile}
+                plugins={[
+                  defaultLayoutPluginInstance,
+                  pageNavigationPluginInstance,
+                  searchPluginInstance,
+                ]}
+                defaultScale={1.12}
+                localization={ru_RU}
+                renderError={renderError}
+              />
+            )}
+          </Grid>
+        </Dialog>
+      </Worker>
     </>
   );
 }
