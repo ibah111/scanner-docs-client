@@ -1,5 +1,13 @@
 
 
+## [1.7.2](https://git.usb.ru/scanner-docs/client/compare/v1.7.1...v1.7.2) (2024-08-21)
+
+
+### Features
+
+* открытие документа после генерации сопровода ([2292415](https://git.usb.ru/scanner-docs/client/commit/229241505a5a41557beb559d0cc8a9cabfa3437c))
+* v1.7.1 ([c6681da](https://git.usb.ru/scanner-docs/client/commit/c6681da5a0050d72ae431dae24b0955c2acb308d))
+
 ## [1.7.1](https://git.usb.ru/scanner-docs/client/compare/v1.7.0...v1.7.1) (2024-08-16)
 
 
