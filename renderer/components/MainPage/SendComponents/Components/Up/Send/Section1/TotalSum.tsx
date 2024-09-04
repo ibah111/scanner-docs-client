@@ -45,9 +45,14 @@ export default function TotalSum() {
   const { t } = useTranslation();
   const total_sum_data = getData('total_sum', 'number', true);
 
-  const court_sum_data = getData('court_sum', 'number');
+  const court_sum_data = getData('court_sum', 'number', true);
   const court_sum_value = court_sum_data.value;
-  const debt_payments_sum_data = getData('debt_payments_sum', 'number');
+  const debt_payments_sum_data = getData(
+    'debt_payments_sum',
+    'number',
+    true,
+    true,
+  );
   const debt_payments_sum_value = debt_payments_sum_data.value;
   React.useEffect(() => {
     if (court_sum_value && debt_payments_sum_value) {
