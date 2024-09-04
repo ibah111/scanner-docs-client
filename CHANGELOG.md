@@ -1,5 +1,18 @@
 
 
+## [1.7.3](https://git.usb.ru/scanner-docs/client/compare/v1.7.2...v1.7.3) (2024-09-04)
+
+
+### Features
+
+* добавил react-dom и обновил модели ([d5c8ed3](https://git.usb.ru/scanner-docs/client/commit/d5c8ed3b0f1c207b10fae69f9f2f16e303b0f23c))
+* добавляю функционал подачи с реквизитами ([16a4a39](https://git.usb.ru/scanner-docs/client/commit/16a4a39be4cad9f8cfcf51170cf089a5c3929d3b))
+* подбиваю функционал ([fa984b8](https://git.usb.ru/scanner-docs/client/commit/fa984b8d8735b239af7f32ad446139c8428a8ff6))
+* подбиваю функционал подачи ([e85408b](https://git.usb.ru/scanner-docs/client/commit/e85408b7228ee0eaeac34ebfd75bd6a317de17d2))
+* подбил функционал ([571a2fd](https://git.usb.ru/scanner-docs/client/commit/571a2fd17e7d4c556f7e52b17fa0345d6c11fcd3))
+* убрал реакт-дом ([9cdb394](https://git.usb.ru/scanner-docs/client/commit/9cdb394bca19bd1628b712d84d33f18e7d171603))
+* preparing release ([1c782aa](https://git.usb.ru/scanner-docs/client/commit/1c782aae88634287590afc44a636628a7432b89b))
+
 ## [1.7.2](https://git.usb.ru/scanner-docs/client/compare/v1.7.1...v1.7.2) (2024-08-21)
 
 
