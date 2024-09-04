@@ -1,5 +1,17 @@
 
 
+## [1.7.4](https://git.usb.ru/scanner-docs/client/compare/v1.7.3...v1.7.4) (2024-09-04)
+
+
+### Features
+
+* prepare release v1.7.4 ([d4b0ada](https://git.usb.ru/scanner-docs/client/commit/d4b0adaec4d1ac262ac01379170c1b221ca7856d))
+
+
+### Bug Fixes
+
+* фикс отправки ([880434b](https://git.usb.ru/scanner-docs/client/commit/880434b0844d7d64256d1bb13175d87e407f76a3))
+
 ## [1.7.3](https://git.usb.ru/scanner-docs/client/compare/v1.7.2...v1.7.3) (2024-09-04)
 
 
