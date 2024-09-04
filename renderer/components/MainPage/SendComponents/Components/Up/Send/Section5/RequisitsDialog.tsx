@@ -185,18 +185,6 @@ function RequisitsColumns(): GridColDef<BankRequisitesClass>[] {
       field: 'typ',
       headerName: 'Тип реквизита',
     },
-    {
-      field: 'kbe',
-      headerName: 'Unknown (kbe)',
-    },
-    {
-      field: 'knp',
-      headerName: 'Unknown (knp)',
-    },
-    {
-      field: 'kod',
-      headerName: 'Unkown (kod)',
-    },
   ];
   return columns.map((items) => ({
     ...items,
