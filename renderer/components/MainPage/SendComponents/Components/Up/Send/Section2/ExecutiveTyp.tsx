@@ -8,7 +8,7 @@ export default function ExecutiveTyp() {
   const data = getData('executive_typ', 'string');
   return (
     <>
-      <Grid sx={{ width: 555 }} item>
+      <Grid sx={{ width: 450 }} item>
         <FormControl error={data.isInvalid} fullWidth>
           <InputLabel id="executive_typ">
             {t('form.send.executive_typ')}

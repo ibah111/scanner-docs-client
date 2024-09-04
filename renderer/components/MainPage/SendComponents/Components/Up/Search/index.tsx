@@ -20,6 +20,7 @@ import DebtCalc from './DebtCalc';
 import Documents from './Documents';
 import Reset from './Reset';
 import Barcode from './Barcode';
+import OSPCalcs from './OSPCalcs';
 
 export default function Search() {
   const dispatch = useAppDispatch();
@@ -78,6 +79,7 @@ export default function Search() {
         <Comments />
         <DebtCalc id={Number(id)} />
         <Documents law_exec_id={Number(id)} law_act_id={la_id} />
+        <OSPCalcs />
         <Reset />
       </Grid>
     </>

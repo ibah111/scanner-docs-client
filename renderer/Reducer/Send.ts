@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
 import { LawExec } from '@contact/models';
+import { DateTime } from 'luxon';
 import getName from '../utils/sendUtils/getName';
 import datetimeNow from '../utils/sendUtils/datetimeNow';
-import { DateTime } from 'luxon';
 export interface DataTypes {
   debt_guarantor: null | string | number;
   fio: null | string;
@@ -25,6 +24,9 @@ export interface DataTypes {
   person_property: number | string | null;
   add_interests: boolean;
   custom_requisites_id: number;
+  court_sum: null | number;
+  exec_number: null | string;
+  debt_payments_sum: null | number;
 }
 type ValueOf<T> = T[keyof T];
 export type TypesData = ValueOf<DataTypes>;
@@ -46,10 +48,13 @@ export const initState: DataTypes = {
   fssp_date: null,
   r_court_id: '',
   dsc: null,
-  add_interests: false,
   person_property: null,
   appeal_typ: null,
+  add_interests: false,
   custom_requisites_id: 0,
+  court_sum: null,
+  exec_number: '',
+  debt_payments_sum: null,
 };
 export const send = createSlice({
   name: 'send',
@@ -65,13 +70,13 @@ export const send = createSlice({
       state.total_sum = data.total_sum;
       state.court_doc_num = data.court_doc_num;
       state.executive_typ = data.executive_typ;
-      //@ts-expect-error
+      //@ts-expect-error ///
       state.court_date = data.court_date;
       state.DELIVERY_TYP = 1;
       state.template_typ = 16;
-      //@ts-expect-error
+      //@ts-expect-error ///
       state.entry_force_dt = data.entry_force_dt;
-      //@ts-expect-error
+      //@ts-expect-error ///
       state.receipt_recover_dt = data.receipt_recover_dt;
       state.fssp_date = datetimeNow();
       state.r_court_id = data.r_court_id;
@@ -81,6 +86,14 @@ export const send = createSlice({
       state.person_property = data.deposit_typ
         ? data.Debt?.PersonProperties?.[0]?.id || null
         : null;
+      state.exec_number = data.LawAct ? data.LawAct.exec_number : '';
+      state.court_sum = data.LawAct!.court_sum ? data.LawAct!.court_sum : null;
+      state.debt_payments_sum =
+        data.Debt!.DebtCalcs!.length > 0
+          ? data
+              .Debt!.DebtCalcs!.map((item) => item.sum)
+              .reduce((prev, curr) => prev + curr)
+          : 0;
     },
     setData<K extends DataNames>(
       state: Draft<DataTypes>,

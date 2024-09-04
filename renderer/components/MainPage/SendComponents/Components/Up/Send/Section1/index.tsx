@@ -3,6 +3,8 @@ import React from 'react';
 import Info from './Info';
 import LoadDt from './LoadDt';
 import TotalSum from './TotalSum';
+import CourtSum from './CourtSum';
+import DebtPaymentsSum from './DebtPaymentsSum';
 
 export default function Section1() {
   return (
@@ -16,6 +18,8 @@ export default function Section1() {
         alignItems="center"
       >
         <Info />
+        <CourtSum />
+        <DebtPaymentsSum />
         <TotalSum />
         <LoadDt />
       </Grid>

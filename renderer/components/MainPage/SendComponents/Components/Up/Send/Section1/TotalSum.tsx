@@ -43,19 +43,33 @@ export const NumberFormatCustom = React.forwardRef<
 }) as unknown as React.ElementType<InputBaseComponentProps>;
 export default function TotalSum() {
   const { t } = useTranslation();
-  const data = getData('total_sum', 'number', true);
+  const total_sum_data = getData('total_sum', 'number', true);
+
+  const court_sum_data = getData('court_sum', 'number');
+  const court_sum_value = court_sum_data.value;
+  const debt_payments_sum_data = getData('debt_payments_sum', 'number');
+  const debt_payments_sum_value = debt_payments_sum_data.value;
+  React.useEffect(() => {
+    if (court_sum_value && debt_payments_sum_value) {
+      const newValue = court_sum_value - debt_payments_sum_value;
+      total_sum_data.setValue(newValue);
+    }
+  });
   return (
     <>
       <Grid item>
         <TextField
-          error={!data.value || data.isInvalid}
+          disabled
+          error={!total_sum_data.value || total_sum_data.isInvalid}
           label={t('form.send.total_sum')}
-          value={data.value}
+          value={total_sum_data.value}
           required
           InputProps={{
             inputComponent: NumberFormatCustom,
           }}
-          onChange={(event) => data.setValue(Number(event.target.value))}
+          onChange={(event) =>
+            total_sum_data.setValue(Number(event.target.value))
+          }
         />
       </Grid>
     </>

@@ -5,6 +5,7 @@ import ExecutiveTyp from './ExecutiveTyp';
 import FsspDate from './FsspDate';
 import Id from './Id';
 import DebtGuarantor from './DebtGuarantor';
+import ExecNumber from './ExecNumber';
 
 export default function Section2() {
   return (
@@ -19,6 +20,7 @@ export default function Section2() {
       >
         <DebtGuarantor />
         <Id />
+        <ExecNumber />
         <ExecutiveTyp />
         <CourtDocNum />
         <FsspDate />

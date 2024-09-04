@@ -8,7 +8,7 @@ export default function LoadDt() {
   const data = getData('load_dt', 'date');
   return (
     <>
-      <Grid sx={{ width: 600 }} item>
+      <Grid sx={{ width: 300 }} item>
         <DatePicker
           label={t('form.send.load_dt')}
           value={data.value}
