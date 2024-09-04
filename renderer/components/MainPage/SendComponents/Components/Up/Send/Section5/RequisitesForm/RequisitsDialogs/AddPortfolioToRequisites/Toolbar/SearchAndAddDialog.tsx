@@ -16,12 +16,12 @@ import {
   useGridApiRef,
 } from '@mui/x-data-grid-premium';
 import React from 'react';
-import getAllPortfolio from '../../../../../../../../../../../api/PortfoliosToRequisites/getAllPortfolio';
-import CustomPagination from '../../../../../../../../../../../components/CustomPagination';
 import moment from 'moment';
-import createPortfolioToRequisites from '../../../../../../../../../../../api/PortfoliosToRequisites/createPortfolioToRequisites';
 import { enqueueSnackbar } from 'notistack';
 import { LoadingButton } from '@mui/lab';
+import CustomPagination from '../../../../../../../../../../Pagination/CustomPagination';
+import createPortfolioToRequisites from '../../../../../../../../../../../apiSend/PortfoliosToRequisites/createPortfolioToRequisites';
+import getAllPortfolio from '../../../../../../../../../../../apiSend/PortfoliosToRequisites/getAllPortfolio';
 
 interface DialogProps {
   id: number;

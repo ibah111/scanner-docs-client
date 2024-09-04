@@ -2,8 +2,8 @@ import { Portfolio } from '@contact/models';
 import { IconButton, Tooltip } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid-premium';
 import DeleteIcon from '@mui/icons-material/Delete';
-import DeletePortfolioToRequisitesLink from '../../../../../../../../../../api/PortfoliosToRequisites/DeletePortfolioToRequisitesLink';
 import moment from 'moment';
+import DeletePortfolioToRequisitesLink from '../../../../../../../../../../apiSend/PortfoliosToRequisites/DeletePortfolioToRequisitesLink';
 
 interface PortfolioToRequisitesColumnsProps {
   id: number;
@@ -61,20 +61,22 @@ export default function PortfolioToRequisitesColumns({
       field: 'actions',
       type: 'actions',
       getActions: (params) => [
-        <Tooltip title={'Удалить связь'}>
-          <IconButton
-            color="error"
-            onClick={() => {
-              const r_portfolio_id = params.row.id;
-              DeletePortfolioToRequisitesLink({
-                r_portfolio_id,
-                r_requisites_id,
-              }).then(() => refresh());
-            }}
-          >
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>,
+        <>
+          <Tooltip title={'Удалить связь'}>
+            <IconButton
+              color="error"
+              onClick={() => {
+                const r_portfolio_id = params.row.id;
+                DeletePortfolioToRequisitesLink({
+                  r_portfolio_id,
+                  r_requisites_id,
+                }).then(() => refresh());
+              }}
+            >
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+        </>,
       ],
     },
   ];

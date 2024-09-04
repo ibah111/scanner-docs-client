@@ -38,6 +38,7 @@ export default function AddRoleDialog({
 
   React.useEffect(() => {
     refresh();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

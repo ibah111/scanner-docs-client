@@ -2,10 +2,10 @@ import { Portfolio } from '@contact/models';
 import { Dialog, DialogContent, DialogTitle } from '@mui/material';
 import { DataGridPremium } from '@mui/x-data-grid-premium';
 import React from 'react';
-import getAllLinksByRequisites from '../../../../../../../../../../api/PortfoliosToRequisites/getAllLinksByRequisites';
 import PortfolioToRequisitesColumns from './PortfolioToRequisitesColumns';
 import AddToolbar from './Toolbar/AddToolbar';
 import SearchAndAddDialog from './Toolbar/SearchAndAddDialog';
+import getAllLinksByRequisites from '../../../../../../../../../../apiSend/PortfoliosToRequisites/getAllLinksByRequisites';
 
 interface DialogProps {
   open: boolean;
