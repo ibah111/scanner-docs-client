@@ -1,4 +1,11 @@
-import { Box, Dialog, Grid, Typography } from '@mui/material';
+import {
+  Box,
+  Checkbox,
+  Dialog,
+  Grid,
+  Tooltip,
+  Typography,
+} from '@mui/material';
 import { t } from 'i18next';
 import { useSnackbar, VariantType } from 'notistack';
 import React from 'react';
@@ -11,9 +18,6 @@ import { ErrorTypes } from '../../../../../../Reducer/Error';
 import ResetSendData from '../../../../../../utils/ResetSendData';
 import { callError } from '../../../../../../Reducer/Message';
 import SendData from '../../../../../../api/SendData';
-/**
- * default export useError as getData
- */
 import { Doc } from '../../../../../../Schemas/Doc.model';
 import { resetValidController } from '../../../../../../Reducer/ValidController';
 import { LoadError, Viewer, Worker } from '@react-pdf-viewer/core';
@@ -21,7 +25,12 @@ import MenuBar from '../../../../../menuBar';
 import { pageNavigationPlugin } from '@react-pdf-viewer/page-navigation';
 import { searchPlugin } from '@react-pdf-viewer/search';
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
+import '@react-pdf-viewer/search/lib/styles/index.css';
+import '@react-pdf-viewer/core/lib/styles/index.css';
+import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import ru_RU from '@react-pdf-viewer/locales/lib/ru_RU.json';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 function toArrayBuffer(buf: number[]) {
   const ab = new ArrayBuffer(buf.length);
@@ -58,6 +67,7 @@ export default function Submit({ docArray }: SubmitProps) {
   const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
   const [loading, setLoading] = React.useState(false);
+  const [checked, setChecked] = React.useState<boolean>(false);
   const Send = useAppSelector((state) => state.Send);
   const Error = useAppSelector((state) => state.Error);
   const dispatch = useAppDispatch();
@@ -71,15 +81,17 @@ export default function Submit({ docArray }: SubmitProps) {
   const [pdfFile, setPdfFile] = React.useState<string>('');
 
   const [openPDFDialog, setOpenPDFDialog] = React.useState<boolean>(false);
-  const handleOpenPDFDialog = () => {
-    setOpenPDFDialog(true);
-  };
+  const handleOpenPDFDialog = React.useCallback(() => {
+    console.log('handleOpenPDFDialog, checked:', checked);
+    if (checked === true) {
+      setOpenPDFDialog(true);
+    }
+  }, [checked]);
   const handleClosePDFDialog = () => {
     setOpenPDFDialog(false);
     setPdfFile('');
   };
 
-  //LawExec callback
   const UpdateLawExec = React.useCallback(
     () =>
       updateExec().subscribe({
@@ -113,7 +125,7 @@ export default function Submit({ docArray }: SubmitProps) {
         error: () => setLoading(false),
         complete: () => setLoading(false),
       }),
-    [dispatch, enqueueSnackbar],
+    [dispatch, enqueueSnackbar, handleOpenPDFDialog],
   );
   const WhereSend = useAppSelector((state) => state.SendDoc.WhereSend);
   const DateSend = useAppSelector((state) => state.SendDoc.DateSend);
@@ -203,38 +215,52 @@ export default function Submit({ docArray }: SubmitProps) {
 
   return (
     <>
-      <Grid item>
-        <LoadingButton
-          disabled={Boolean(!Send.id)}
-          loading={loading}
-          onClick={Click}
-        >
-          {t('form.search.submit')}
-        </LoadingButton>
-      </Grid>
       <Worker workerUrl="/build/pdf.worker.js">
-        <Dialog
-          open={openPDFDialog}
-          fullScreen
-          onClose={() => handleClosePDFDialog()}
-        >
-          <MenuBar back={() => handleClosePDFDialog()} />
-          <Grid item xs>
-            {pdfFile && (
-              <Viewer
-                fileUrl={pdfFile}
-                plugins={[
-                  defaultLayoutPluginInstance,
-                  pageNavigationPluginInstance,
-                  searchPluginInstance,
-                ]}
-                defaultScale={1.12}
-                localization={ru_RU}
-                renderError={renderError}
-              />
-            )}
-          </Grid>
-        </Dialog>
+        <Grid item>
+          <LoadingButton
+            disabled={Boolean(!Send.id)}
+            loading={loading}
+            onClick={Click}
+          >
+            {t('form.search.submit')}
+          </LoadingButton>
+        </Grid>
+        <Grid item>
+          <Tooltip title="Просмотр после отправления">
+            <Checkbox
+              icon={<VisibilityOffIcon />}
+              checkedIcon={<RemoveRedEyeIcon />}
+              onChange={(event, checked) => {
+                console.log('checked', checked);
+                setChecked(checked);
+              }}
+            />
+          </Tooltip>
+        </Grid>
+        <>
+          <Dialog
+            open={openPDFDialog}
+            fullScreen
+            onClose={() => handleClosePDFDialog()}
+          >
+            <MenuBar back={() => handleClosePDFDialog()} />
+            <Grid item xs>
+              {pdfFile && (
+                <Viewer
+                  fileUrl={pdfFile}
+                  plugins={[
+                    defaultLayoutPluginInstance,
+                    pageNavigationPluginInstance,
+                    searchPluginInstance,
+                  ]}
+                  defaultScale={1.12}
+                  localization={ru_RU}
+                  renderError={renderError}
+                />
+              )}
+            </Grid>
+          </Dialog>
+        </>
       </Worker>
     </>
   );
