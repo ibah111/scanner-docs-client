@@ -1,5 +1,13 @@
 
 
+## [1.7.5](https://git.usb.ru/scanner-docs/client/compare/v1.7.4...v1.7.5) (2024-09-09)
+
+
+### Features
+
+* changed to required ([0407c40](https://git.usb.ru/scanner-docs/client/commit/0407c40a08d394d5c565d7eaf05e077a82666cf9))
+* fixed ui of pdfjs viewer + view checkbox ([7052ce1](https://git.usb.ru/scanner-docs/client/commit/7052ce1d5383e7f60fa6fc0afd58543fe1a30e05))
+
 ## [1.7.4](https://git.usb.ru/scanner-docs/client/compare/v1.7.3...v1.7.4) (2024-09-04)
 
 
