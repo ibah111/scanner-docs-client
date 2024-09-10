@@ -1,5 +1,18 @@
 
 
+## [1.7.7](https://git.usb.ru/scanner-docs/client/compare/v1.7.6...v1.7.7) (2024-09-10)
+
+
+### Features
+
+* prepare v1.7.7 ([265bec7](https://git.usb.ru/scanner-docs/client/commit/265bec79cadfc9f98d976b9775041bae0a805b07))
+* update deps ([5b2b321](https://git.usb.ru/scanner-docs/client/commit/5b2b321d71e66b60fcd18a853e472bcec9afb131))
+
+
+### Bug Fixes
+
+* фикс расчёта ([3fc7c74](https://git.usb.ru/scanner-docs/client/commit/3fc7c74fad2a1d2d20c3f474574390507b3655e0))
+
 ## [1.7.6](https://git.usb.ru/scanner-docs/client/compare/v1.7.5...v1.7.6) (2024-09-09)
 
 
