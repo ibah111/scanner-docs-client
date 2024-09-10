@@ -53,9 +53,9 @@ export default function TotalSum() {
     true,
     true,
   );
-  const debt_payments_sum_value = debt_payments_sum_data.value;
+  const debt_payments_sum_value = debt_payments_sum_data.value || 0;
   React.useEffect(() => {
-    if (court_sum_value && debt_payments_sum_value) {
+    if (court_sum_value) {
       const newValue = court_sum_value - debt_payments_sum_value;
       total_sum_data.setValue(newValue);
     }
