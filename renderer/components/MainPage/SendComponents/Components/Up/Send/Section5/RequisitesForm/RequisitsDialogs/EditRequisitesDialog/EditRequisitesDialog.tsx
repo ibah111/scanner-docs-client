@@ -17,12 +17,14 @@ interface EditDialogProps {
   open: boolean;
   onClose: VoidFunction;
   id: number;
+  refresh: VoidFunction;
 }
 
 export default function EditRequisitesDialog({
   open,
   onClose,
   id,
+  refresh,
 }: EditDialogProps) {
   const data = useAppSelector((state) => state.Requisites);
   //-----------------------------------------------------//
@@ -97,23 +99,8 @@ export default function EditRequisitesDialog({
         data_knp.onChange(result.knp);
       });
     }
-  }, [
-    data_bik,
-    data_br_address,
-    data_br_name,
-    data_inn,
-    data_k_account,
-    data_kbe,
-    data_knp,
-    data_kod,
-    data_kpp,
-    data_name,
-    data_pay_purpose,
-    data_r_account,
-    data_recipient,
-    data_typ,
-    id,
-  ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   //-----------------------------------------------------//
   return (
     <>
@@ -139,6 +126,9 @@ export default function EditRequisitesDialog({
             onClick={() => {
               updateBankRequisites(id, {
                 ...data,
+              }).subscribe(() => {
+                onClose();
+                refresh();
               });
             }}
           >

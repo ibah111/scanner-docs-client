@@ -33,6 +33,10 @@ export default function RequisitsColumns({
       headerName: 'Банк получателя',
     },
     {
+      field: 'br_address',
+      headerName: 'Юр.адресс',
+    },
+    {
       field: 'inn',
       headerName: 'ИНН',
     },

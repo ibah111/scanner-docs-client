@@ -97,6 +97,7 @@ export default function RequisitesTableDialog({ open, onClose }: TableDialog) {
             open={requisitesEditDialogControl.open}
             onClose={requisitesEditDialogControl.closeDialog}
             id={requisitesEditDialogControl.idValue}
+            refresh={callback}
           />
         )}
       </DialogContent>
