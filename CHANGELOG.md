@@ -1,5 +1,17 @@
 
 
+## [1.7.8](https://git.usb.ru/scanner-docs/client/compare/v1.7.7...v1.7.8) (2024-09-13)
+
+
+### Features
+
+* prepare v1.7.8 ([8d625b3](https://git.usb.ru/scanner-docs/client/commit/8d625b30402ab835e1cc2193c011eda79be365ee))
+
+
+### Bug Fixes
+
+* send functional ([1e9d630](https://git.usb.ru/scanner-docs/client/commit/1e9d6304b75777840dcf3f17e1dc7d21574ff45b))
+
 ## [1.7.7](https://git.usb.ru/scanner-docs/client/compare/v1.7.6...v1.7.7) (2024-09-10)
 
 
