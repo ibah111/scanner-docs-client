@@ -1,5 +1,13 @@
 
 
+## [1.7.9](https://git.usb.ru/scanner-docs/client/compare/v1.7.8...v1.7.9) (2024-09-16)
+
+
+### Features
+
+* prepare v1.7.9 ([356affb](https://git.usb.ru/scanner-docs/client/commit/356affb8b4c695b51e05f4634f00218bb1c195af))
+* send variables ([175d5b1](https://git.usb.ru/scanner-docs/client/commit/175d5b10c7d1f5b40a50f36c21ebcbf7663f0c59))
+
 ## [1.7.8](https://git.usb.ru/scanner-docs/client/compare/v1.7.7...v1.7.8) (2024-09-13)
 
 
