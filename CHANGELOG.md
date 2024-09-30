@@ -1,5 +1,12 @@
 
 
+## [1.7.10](https://git.usb.ru/scanner-docs/client/compare/v1.7.9...v1.7.10) (2024-09-30)
+
+
+### Features
+
+* do not drop value after send ([bc72ded](https://git.usb.ru/scanner-docs/client/commit/bc72dedb5ee947261aef087112aa4ebdd14103da))
+
 ## [1.7.9](https://git.usb.ru/scanner-docs/client/compare/v1.7.8...v1.7.9) (2024-09-16)
 
 
