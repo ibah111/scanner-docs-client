@@ -109,7 +109,34 @@ export const send = createSlice({
       state.id = action.payload;
     },
     reset: (state) => {
-      return { id: state.id, ...initState };
+      return {
+        id: state.id,
+        debt_guarantor: initState.debt_guarantor,
+        fio: initState.fio,
+        contract: initState.contract,
+        port: initState.port,
+        total_sum: initState.total_sum,
+        load_dt: initState.load_dt,
+        court_doc_num: initState.court_doc_num,
+        executive_typ: initState.executive_typ,
+        court_date: initState.court_date,
+        DELIVERY_TYP: initState.DELIVERY_TYP,
+        entry_force_dt: initState.entry_force_dt,
+        receipt_recover_dt: initState.receipt_recover_dt,
+        template_typ: initState.template_typ,
+        fssp_date: initState.fssp_date,
+        r_court_id: initState.r_court_id,
+        dsc: initState.dsc,
+        person_property: initState.person_property,
+        appeal_typ: initState.appeal_typ,
+        add_interests: initState.add_interests,
+        custom_requisites_id: initState.custom_requisites_id,
+        court_sum: initState.court_sum,
+        exec_number: initState.exec_number,
+        debt_payments_sum: initState.debt_payments_sum,
+        list_egrul: state.list_egrul,
+        rename_notification: state.rename_notification,
+      };
     },
   },
 });
