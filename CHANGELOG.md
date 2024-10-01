@@ -1,5 +1,12 @@
 
 
+## [1.7.14](https://git.usb.ru/scanner-docs/client/compare/v1.7.13...v1.7.14) (2024-10-01)
+
+
+### Features
+
+* clear unused hooks ([d6484c4](https://git.usb.ru/scanner-docs/client/commit/d6484c41cf642a6658c34616c5bf2e4e313066dd))
+
 ## [1.7.13](https://git.usb.ru/scanner-docs/client/compare/v1.7.12...v1.7.13) (2024-10-01)
 
 
