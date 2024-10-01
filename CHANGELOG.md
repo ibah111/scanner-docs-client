@@ -1,5 +1,12 @@
 
 
+## [1.7.13](https://git.usb.ru/scanner-docs/client/compare/v1.7.12...v1.7.13) (2024-10-01)
+
+
+### Features
+
+* trying to auto change version ([d1f68ae](https://git.usb.ru/scanner-docs/client/commit/d1f68ae3e2f1a08286db2f2de81c4eac63f55780))
+
 ## [1.7.12](https://git.usb.ru/scanner-docs/client/compare/v1.7.11...v1.7.12) (2024-10-01)
 
 
