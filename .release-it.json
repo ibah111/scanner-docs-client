@@ -1,8 +1,5 @@
 {
   "tagName": "v${version}",
-  "hooks": {
-    "before:init": ""
-  },
   "git": {
     "commitMessage": "chore: release v${version}"
   },
