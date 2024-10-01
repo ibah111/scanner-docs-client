@@ -1,5 +1,12 @@
 
 
+## [1.7.15](https://git.usb.ru/scanner-docs/client/compare/v1.7.14...v1.7.15) (2024-10-01)
+
+
+### Bug Fixes
+
+* **ci/cd:** fixing ci/cd || update .gitlab-ci.yml ([62a36a8](https://git.usb.ru/scanner-docs/client/commit/62a36a8711d0df67c721de9e018ff6a12e4650f8))
+
 ## [1.7.14](https://git.usb.ru/scanner-docs/client/compare/v1.7.13...v1.7.14) (2024-10-01)
 
 
