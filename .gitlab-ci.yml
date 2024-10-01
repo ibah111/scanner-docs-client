@@ -36,9 +36,9 @@ test_job:
     - apt-get update -qq && apt-get install --install-recommends -qq winehq-stable
     - node -v
     - corepack enable
+    - yarn config set -H enableImmutableInstalls false
     - yarn set version berry
     - yarn config set compressionLevel mixed
-    - yarn config set -H enableImmutableInstalls false
     - yarn config set nodeLinker node-modules
     - yarn config set enableStrictSsl false
     - yarn config set enableGlobalCache false
@@ -75,6 +75,7 @@ build_job:
     - apt-get update -qq && apt-get install --install-recommends -qq winehq-stable
     - yarn set version berry
     - corepack enable
+    - yarn config set -H enableImmutableInstalls false
     - yarn config set nodeLinker node-modules
     - yarn config set enableStrictSsl false
     - yarn config set "npmRegistries[\"//${CI_SERVER_HOST}/api/v4/packages/npm/\"].npmAlwaysAuth" true
