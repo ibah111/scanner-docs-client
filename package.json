@@ -67,6 +67,7 @@
     "@react-pdf-viewer/page-navigation": "^3.12.0",
     "@react-pdf-viewer/search": "^3.12.0",
     "@reduxjs/toolkit": "^1.9.7",
+    "@release-it/bumper": "^6.0.1",
     "@tools/bpac": "^2.0.1",
     "@types/file-saver": "^2",
     "@types/git-semver-tags": "^7",

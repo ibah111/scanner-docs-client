@@ -1,5 +1,8 @@
 {
   "tagName": "v${version}",
+  "hooks": {
+    "before:init": ""
+  },
   "git": {
     "commitMessage": "chore: release v${version}"
   },
@@ -7,13 +10,16 @@
     "origin": "https://git.usb.ru",
     "certificateAuthorityFile": "./https/ca.crt",
     "release": true,
-    "tokenHeader": "PRIVATE-TOKEN"    
+    "tokenHeader": "PRIVATE-TOKEN"
   },
   "npm": false,
   "plugins": {
     "@release-it/conventional-changelog": {
       "preset": "conventionalcommits",
       "infile": "CHANGELOG.md"
+    },
+    "@release-it/bumper": {
+      "out": "package.json"
     }
   }
 }
