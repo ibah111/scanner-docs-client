@@ -1,5 +1,12 @@
 
 
+## [1.7.16](https://git.usb.ru/scanner-docs/client/compare/v1.7.15...v1.7.16) (2024-10-01)
+
+
+### Bug Fixes
+
+* delete npm version ([6e75a17](https://git.usb.ru/scanner-docs/client/commit/6e75a1776081f338d94ae27d03b06987746ed634))
+
 ## [1.7.15](https://git.usb.ru/scanner-docs/client/compare/v1.7.14...v1.7.15) (2024-10-01)
 
 
