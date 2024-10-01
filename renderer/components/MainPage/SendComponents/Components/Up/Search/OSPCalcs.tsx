@@ -1,18 +1,13 @@
-import { Button, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
+import { LinkMenuItem } from './Links';
 
 export default function OSPCalcs() {
-  const link_url = 'https://chat.nbkfinance.ru/apps/forming/osp';
+  const url = 'https://chat.nbkfinance.ru/apps/forming/osp';
+  const menuItemName = 'Расчёт %';
   return (
     <>
       <Grid item>
-        <Button
-          variant="text"
-          onClick={() => {
-            window.ipc.send('OpenInBrowser', link_url);
-          }}
-        >
-          Расчёт %
-        </Button>
+        <LinkMenuItem menuItemName={menuItemName} url={url} />
       </Grid>
     </>
   );
