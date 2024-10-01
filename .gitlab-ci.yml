@@ -87,7 +87,6 @@ build_job:
     - yarn config set npmScopes.motivation.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
     - yarn config set npmScopes.tools.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
     - yarn config set npmScopes.sql-tools.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
-    - npm version --no-git-tag-version ${CI_COMMIT_TAG}
   script:
     - yarn
     - yarn build
