@@ -1,5 +1,13 @@
 
 
+## [1.7.12](https://git.usb.ru/scanner-docs/client/compare/v1.7.11...v1.7.12) (2024-10-01)
+
+
+### Features
+
+* add links ([d0d7eea](https://git.usb.ru/scanner-docs/client/commit/d0d7eea5cb16e1b9d446db793f8f8e19f4e9ebfe))
+* prepare v1.7.12 ([fbcd1a9](https://git.usb.ru/scanner-docs/client/commit/fbcd1a9d3fb929c93b342e84fad0e93d7152e2b0))
+
 ## [1.7.11](https://git.usb.ru/scanner-docs/client/compare/v1.7.10...v1.7.11) (2024-09-30)
 
 
