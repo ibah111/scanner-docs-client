@@ -73,15 +73,19 @@ build_job:
     - wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
     - wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bullseye/winehq-bullseye.sources
     - apt-get update -qq && apt-get install --install-recommends -qq winehq-stable
-    - yarn set version berry
+    - node -v
     - corepack enable
     - yarn config set -H enableImmutableInstalls false
+    - yarn set version berry
+    - yarn config set compressionLevel mixed
     - yarn config set nodeLinker node-modules
     - yarn config set enableStrictSsl false
+    - yarn config set enableGlobalCache false
     - yarn config set "npmRegistries[\"//${CI_SERVER_HOST}/api/v4/packages/npm/\"].npmAlwaysAuth" true
     - yarn config set "npmRegistries[\"//${CI_SERVER_HOST}/api/v4/packages/npm/\"].npmAuthToken" "${CI_JOB_TOKEN}"
     - yarn config set npmScopes.contact.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
     - yarn config set npmScopes.motivation.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
+    - yarn config set npmScopes.tools.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
     - yarn config set npmScopes.sql-tools.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
     - npm version --no-git-tag-version ${CI_COMMIT_TAG}
   script:
