@@ -22,8 +22,6 @@ variables:
     -----END CERTIFICATE-----
 stages:
   - test
-  - build
-  - deploy
 test_job:
   tags:
     - windows
@@ -34,21 +32,19 @@ test_job:
     - corepack enable
     - yarn config set -H enableImmutableInstalls false
     - yarn set version berry
-    - yarn config set compressionLevel mixed
-    - yarn config set nodeLinker node-modules
-    - yarn config set enableStrictSsl false
-    - yarn config set enableGlobalCache false
-    - yarn config set "npmRegistries[\"//${CI_SERVER_HOST}/api/v4/packages/npm/\"].npmAlwaysAuth" true
-    - yarn config set "npmRegistries[\"//${CI_SERVER_HOST}/api/v4/packages/npm/\"].npmAuthToken" "${CI_JOB_TOKEN}"
-    - yarn config set npmScopes.contact.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
-    - yarn config set npmScopes.motivation.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
-    - yarn config set npmScopes.tools.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
-    - yarn config set npmScopes.sql-tools.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
+    - yarn config set -H compressionLevel mixed
+    - yarn config set -H nodeLinker node-modules
+    - yarn config set -H enableStrictSsl false
+    - yarn config set -H enableGlobalCache false
+    - yarn config set -H 'npmRegistries["//git.usb.ru/api/v4/packages/npm/"].npmAlwaysAuth' true
+    - yarn config set -H 'npmRegistries["//git.usb.ru/api/v4/packages/npm/"].npmAuthToken' "${CI_JOB_TOKEN}"
+    - yarn config set -H npmScopes.contact.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
+    - yarn config set -H npmScopes.motivation.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
+    - yarn config set -H npmScopes.tools.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
+    - yarn config set -H npmScopes.sql-tools.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
   script:
     - yarn
     - yarn build
-  rules:
-    - if: '$CI_COMMIT_TAG == null'
   artifacts:
     paths:
       - dist/latest.yml
@@ -59,51 +55,3 @@ test_job:
     paths:
       - .yarn
       - node_modules
-build_job:
-  stage: build
-  image: node:lts
-  before_script:
-    - apt-get update -qq && apt-get install -y -qq wget
-    - dpkg --add-architecture i386
-    - mkdir -pm755 /etc/apt/keyrings
-    - wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-    - wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bullseye/winehq-bullseye.sources
-    - apt-get update -qq && apt-get install --install-recommends -qq winehq-stable
-    - node -v
-    - corepack enable
-    - yarn config set -H enableImmutableInstalls false
-    - yarn set version berry
-    - yarn config set compressionLevel mixed
-    - yarn config set nodeLinker node-modules
-    - yarn config set enableStrictSsl false
-    - yarn config set enableGlobalCache false
-    - yarn config set "npmRegistries[\"//${CI_SERVER_HOST}/api/v4/packages/npm/\"].npmAlwaysAuth" true
-    - yarn config set "npmRegistries[\"//${CI_SERVER_HOST}/api/v4/packages/npm/\"].npmAuthToken" "${CI_JOB_TOKEN}"
-    - yarn config set npmScopes.contact.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
-    - yarn config set npmScopes.motivation.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
-    - yarn config set npmScopes.tools.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
-    - yarn config set npmScopes.sql-tools.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
-  script:
-    - yarn
-    - yarn build
-  artifacts:
-    paths:
-      - dist/latest.yml
-      - dist/*.exe
-      - dist/*.exe.blockmap
-    expire_in: never
-  only:
-    - tags
-  cache:
-    paths:
-      - .yarn
-      - node_modules
-deploy_job:
-  stage: deploy
-  before_script:
-    - apt-get update -qq && apt-get install -y -qq sshpass
-  script:
-    - export SSHPASS=$HOST_PASSWORD
-    - sshpass -e scp -o stricthostkeychecking=no -r dist/* $HOST_USER@$HOST_NAME:$PATH_UPLOAD
-  only:
-    - tags
