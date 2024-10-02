@@ -7,7 +7,6 @@ module.exports = {
       rootDir: 'renderer',
     },
   },
-
   env: {
     browser: true,
     es2021: true,

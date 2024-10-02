@@ -10,7 +10,7 @@ export const TransformerDateTime = ({ value }: TransformFnParams) => {
   if (value === null) return null;
   if (DateTime.isDateTime(value)) return value;
   if (typeof value === 'string') return DateTime.fromISO(value);
-  //@ts-expect-error: unreachable
+  //@ts-ignore
   if (value instanceof Date) return DateTime.fromJSDate(value);
 };
 export function TransformDateTime() {
