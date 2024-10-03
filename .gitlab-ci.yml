@@ -63,3 +63,5 @@ deploy_job:
   script:
     - export SSHPASS=$HOST_PASSWORD
     - sshpass -e scp -o stricthostkeychecking=no -r dist/* $HOST_USER@$HOST_NAME:$PATH_UPLOAD
+  only: 
+    - tags
