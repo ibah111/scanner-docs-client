@@ -45,8 +45,6 @@ test_job:
   script:
     - yarn
     - yarn build
-    - export SSHPASS=$HOST_PASSWORD
-    - sshpass -e scp -o stricthostkeychecking=no -r dist/* $HOST_USER@$HOST_NAME:$PATH_UPLOAD
   artifacts:
     paths:
       - dist/latest.yml
@@ -57,3 +55,8 @@ test_job:
     paths:
       - .yarn
       - node_modules
+deploy_job:
+  stage: deploy
+  script:
+    - export SSHPASS=$HOST_PASSWORD
+    - sshpass -e scp -o stricthostkeychecking=no -r dist/* $HOST_USER@$HOST_NAME:$PATH_UPLOAD
