@@ -42,10 +42,11 @@ test_job:
     - yarn config set -H npmScopes.motivation.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
     - yarn config set -H npmScopes.tools.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
     - yarn config set -H npmScopes.sql-tools.npmRegistryServer "https://${CI_SERVER_HOST}/api/v4/packages/npm/"
-    - pscp -pw "${HOST_PASSWORD}" -ssh -r dist/* ${HOST_USER}@${HOST_NAME}:${PATH_UPLOAD}
   script:
     - yarn
     - yarn build
+    - export SSHPASS=$HOST_PASSWORD
+    - sshpass -e scp -o stricthostkeychecking=no -r dist/* $HOST_USER@$HOST_NAME:$PATH_UPLOAD
   artifacts:
     paths:
       - dist/latest.yml
