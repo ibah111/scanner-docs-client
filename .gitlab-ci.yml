@@ -58,6 +58,8 @@ test_job:
       - node_modules
 deploy_job:
   stage: deploy
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq sshpass
   script:
     - export SSHPASS=$HOST_PASSWORD
     - sshpass -e scp -o stricthostkeychecking=no -r dist/* $HOST_USER@$HOST_NAME:$PATH_UPLOAD
