@@ -25,5 +25,8 @@ export default function CustomIcon({ value = 25, icon }: IconsNames) {
     height: value,
     width: value,
   };
+  /**
+   * in case of error build you can add parameter "unoptimized "
+   */
   return <Image {...image_props} />;
 }
