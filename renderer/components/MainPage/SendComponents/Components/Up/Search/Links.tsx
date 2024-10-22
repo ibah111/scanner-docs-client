@@ -34,7 +34,7 @@ export default function Links() {
 
   return (
     <Grid item>
-      <Button onClick={handleClick} color={'warning'}>
+      <Button onClick={handleClick} color={'warning'} variant="outlined">
         Ссылки
       </Button>
       {open && (
