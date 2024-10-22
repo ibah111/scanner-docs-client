@@ -1,5 +1,5 @@
 import { LawCourt } from '@contact/models';
-import { Autocomplete, Grid, TextField } from '@mui/material';
+import { Autocomplete, Grid, IconButton, TextField } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import getCourt, {
@@ -9,8 +9,9 @@ import getData from '../../../../../../../utils/getData';
 import { useAppDispatch } from '../../../../../../../Reducer';
 import { setSendDocProperty } from '../../../../../../../Reducer/SendDoc';
 import { DateTime } from 'luxon';
-import { setValidController } from '../../../../../../../Reducer/ValidController';
 import { setData } from '../../../../../../../Reducer/Send';
+import { enqueueSnackbar } from 'notistack';
+import CustomIcon from '../../../../../../../resources';
 /**
  *
  * @returns Наименование ФССП
@@ -20,8 +21,8 @@ export default function RCourtId() {
   const [types, setTypes] = React.useState<('' | LawCourt)[]>(['']);
   const [type, setType] = React.useState<'' | LawCourt>('');
   const [name, setName] = React.useState('');
-  const data = getData('r_court_id', 'null');
-  const load_dt = getData('load_dt', 'date');
+  const r_court_id_data = getData('r_court_id', 'null');
+  const r_court_name_data = getData('r_court_name', 'string', true);
   const fssp_date = getData('fssp_date', 'date', true);
   const dispatch = useAppDispatch();
 
@@ -47,21 +48,68 @@ export default function RCourtId() {
   );
 
   React.useEffect(() => {
-    if (data.value !== '') {
-      const sub = getCourt({ id: data.value as number }).subscribe((court) => {
-        setTypes(['', ...court]);
-        setType(court[0]);
-        const o = court[0];
-        const whereSendString = `(${o.id}), ${o.name}, ${o.address}, ${o.district}`;
-        changeWhereSend(whereSendString);
-      });
+    if (r_court_id_data.value !== '') {
+      const sub = getCourt({ id: r_court_id_data.value as number }).subscribe(
+        (court) => {
+          setTypes(['', ...court]);
+          setType(court[0]);
+          const o = court[0];
+          const whereSendString = `(${o.id}), ${o.name}, ${o.address}, ${o.district}`;
+          changeWhereSend(whereSendString);
+        },
+      );
       return sub.unsubscribe.bind(sub);
     } else {
       setTypes(['']);
       setType('');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [changeWhereSend, data.value, dispatch]);
+  }, [changeWhereSend, r_court_id_data.value, dispatch]);
+
+  // const entry_force_dt_data = getData('entry_force_dt', 'date');
+  // const load_dt = getData('load_dt', 'date');
+
+  const todayDateTime = DateTime.now();
+  const sberbankAction = React.useCallback(
+    (value: number) => {
+      enqueueSnackbar('Выбран сбербанк', {
+        variant: 'success',
+        autoHideDuration: 2500,
+      });
+      r_court_id_data.setValue(value);
+      r_court_name_data.setValue('Сбербанк');
+      fssp_date.setValue(null);
+      dispatch(setData(['fssp_date', null]));
+      // entry_force_dt_data.setValue(todayDateTime);
+      // load_dt.setValue(todayDateTime);
+    },
+    [r_court_id_data, r_court_name_data, dispatch, fssp_date],
+  );
+  const resetSberbankAction = React.useCallback(() => {
+    r_court_id_data.setValue(null);
+    r_court_name_data.setValue('');
+    fssp_date.setValue(todayDateTime);
+  }, [fssp_date, todayDateTime]);
+
+  const sberClick = React.useCallback(async () => {
+    if (r_court_name_data.value !== 'Сбербанк') {
+      await getCourtPromise({
+        name: 'Сбербанк',
+      }).then((result) => {
+        const value = result[0];
+        if (value.name === 'Сбербанк') {
+          sberbankAction(value.id);
+          setType(value);
+        } else {
+          enqueueSnackbar('Произошла ошибка в автокомплите', {
+            variant: 'warning',
+          });
+        }
+      });
+    } else {
+      resetSberbankAction();
+    }
+  }, [r_court_name_data.value, resetSberbankAction, sberbankAction]);
 
   return (
     <>
@@ -80,22 +128,15 @@ export default function RCourtId() {
           onChange={(_, value) => {
             if (value) {
               if (value.name === 'Сбербанк') {
-                console.log('сбербанк действие');
-                data.setValue(value.id);
-                const todayDateTime = DateTime.now();
-                load_dt.setValue(todayDateTime);
-                dispatch(setData(['fssp_date', null]));
-                fssp_date.setValue(null);
-                dispatch(
-                  setValidController(['fssp_date_required_controller', false]),
-                );
+                sberbankAction(value.id);
               } else {
-                data.setValue(value.id);
+                r_court_id_data.setValue(value.id);
+                r_court_name_data.setValue(value.name);
               }
               const txtValue = `(${value.id}) ${value.name} (${value.district})`;
               changeWhereSend(txtValue);
             } else {
-              data.setValue('');
+              r_court_id_data.setValue('');
             }
           }}
           onInputChange={(_, newInputValue) => {
@@ -112,12 +153,21 @@ export default function RCourtId() {
                     ? ''
                     : params.inputProps.value,
               }}
-              error={data.isInvalid}
+              error={r_court_id_data.isInvalid}
               required
               label={t('form.send.r_court_id')}
             />
           )}
         />
+      </Grid>
+      <Grid item>
+        <IconButton onClick={() => sberClick()}>
+          {r_court_name_data.value === 'Сбербанк' ? (
+            <CustomIcon icon={'SBERBANK_GREEN'} />
+          ) : (
+            <CustomIcon icon={'SBERBANK_BLACK'} />
+          )}
+        </IconButton>
       </Grid>
     </>
   );
