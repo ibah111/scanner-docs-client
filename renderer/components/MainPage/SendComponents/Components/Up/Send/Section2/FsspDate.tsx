@@ -3,10 +3,15 @@ import { Grid } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import getData from '../../../../../../../utils/getData';
-
+/**
+ * Дата подачи в ФССП
+ */
 export default function FsspDate() {
   const { t } = useTranslation();
   const data = getData('fssp_date', 'date');
+
+  const r_court_name = getData('r_court_name', 'string', true);
+  const is_sberbank: boolean = r_court_name.value === 'Сбербанк' ? true : false;
   return (
     <>
       <Grid item>
@@ -19,6 +24,22 @@ export default function FsspDate() {
               fullWidth: true,
               required: true,
               error: data.isInvalid,
+              sx:
+                is_sberbank === true
+                  ? {
+                      '& .MuiOutlinedInput-root': {
+                        '& fieldset': {
+                          border: '2px green solid',
+                        },
+                        '&:hover fieldset': {
+                          borderColor: 'green',
+                        },
+                        '&.Mui-focused fieldset': {
+                          borderColor: 'green',
+                        },
+                      },
+                    }
+                  : {},
             },
           }}
         />

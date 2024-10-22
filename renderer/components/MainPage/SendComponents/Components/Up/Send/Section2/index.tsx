@@ -6,8 +6,11 @@ import FsspDate from './FsspDate';
 import Id from './Id';
 import DebtGuarantor from './DebtGuarantor';
 import ExecNumber from './ExecNumber';
+import getData from '../../../../../../../utils/getData';
+import StartDateLawExec from './StartDateLawExec';
 
 export default function Section2() {
+  const r_court_name_data = getData('r_court_name', 'string');
   return (
     <>
       <Grid
@@ -24,6 +27,7 @@ export default function Section2() {
         <ExecutiveTyp />
         <CourtDocNum />
         <FsspDate />
+        {r_court_name_data.value === 'Сбербанк' && <StartDateLawExec />}
       </Grid>
     </>
   );
