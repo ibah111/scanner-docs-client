@@ -140,7 +140,8 @@
       "law_court": { "address": "Адрес ФССП" },
       "add_interests": "Проценты",
       "person_property": "Имущество",
-      "appeal_typ": "Параметр для заявления"
+      "appeal_typ": "Параметр для заявления",
+      "court_sum": "Сумма по решению суда"
     },
     "yes_or_no": {
       "title": "Выберите действие",
