@@ -14,6 +14,8 @@ export type ErrorTypes = {
   receipt_recover_dt: null | string;
   fssp_date: null | string;
   r_court_id: null | string;
+  r_court_name: null | string;
+  start_date: null | string;
   dsc: null | string;
   debt_guarantor: null | string;
   person_property: null | string;
@@ -43,6 +45,8 @@ export const initState: ErrorTypes = {
   receipt_recover_dt: null,
   template_typ: null,
   fssp_date: null,
+  start_date: null,
+  r_court_name: null,
   r_court_id: null,
   dsc: null,
   debt_guarantor: null,

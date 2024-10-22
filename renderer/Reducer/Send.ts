@@ -18,6 +18,8 @@ export interface DataTypes {
   template_typ: string | number;
   receipt_recover_dt: null | DateTime;
   fssp_date: null | DateTime;
+  start_date: null | DateTime;
+  r_court_name: string | null;
   r_court_id: string | number | null;
   dsc: null | string;
   appeal_typ: string | number | null;
@@ -48,6 +50,8 @@ export const initState: DataTypes = {
   receipt_recover_dt: null,
   template_typ: '',
   fssp_date: null,
+  start_date: null,
+  r_court_name: '',
   r_court_id: '',
   dsc: null,
   person_property: null,
@@ -126,6 +130,8 @@ export const send = createSlice({
         template_typ: initState.template_typ,
         fssp_date: initState.fssp_date,
         r_court_id: initState.r_court_id,
+        r_court_name: initState.r_court_name,
+        start_date: initState.start_date,
         dsc: initState.dsc,
         person_property: initState.person_property,
         appeal_typ: initState.appeal_typ,
