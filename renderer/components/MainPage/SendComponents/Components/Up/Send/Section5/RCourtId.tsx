@@ -69,9 +69,22 @@ export default function RCourtId() {
   // const entry_force_dt_data = getData('entry_force_dt', 'date');
   // const load_dt = getData('load_dt', 'date');
 
+  //sber
+
   const todayDateTime = DateTime.now();
+  /**
+   * "cashed" value
+   */
+  //@ts-expect-error ///
+  const [previousValue, setPreviousValue] = React.useState<LawCourt>({});
   const sberbankAction = React.useCallback(
     (value: number) => {
+      if (type !== '') {
+        enqueueSnackbar('Пред.значение зарезервировано', {
+          variant: 'info',
+        });
+        setPreviousValue(type);
+      }
       enqueueSnackbar('Выбран сбербанк', {
         variant: 'success',
         autoHideDuration: 2500,
@@ -83,13 +96,20 @@ export default function RCourtId() {
       // entry_force_dt_data.setValue(todayDateTime);
       // load_dt.setValue(todayDateTime);
     },
-    [r_court_id_data, r_court_name_data, dispatch, fssp_date],
+    [type, r_court_id_data, r_court_name_data, fssp_date, dispatch],
   );
   const resetSberbankAction = React.useCallback(() => {
-    r_court_id_data.setValue(null);
-    r_court_name_data.setValue('');
+    setType(previousValue);
+    r_court_id_data.setValue(previousValue.id);
+    r_court_name_data.setValue(previousValue.name);
     fssp_date.setValue(todayDateTime);
-  }, [fssp_date, todayDateTime]);
+  }, [
+    fssp_date,
+    previousValue,
+    r_court_id_data,
+    r_court_name_data,
+    todayDateTime,
+  ]);
 
   const sberClick = React.useCallback(async () => {
     if (r_court_name_data.value !== 'Сбербанк') {
