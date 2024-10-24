@@ -102,6 +102,7 @@ export default function Submit({ docArray }: SubmitProps) {
               variant: 'success',
               autoHideDuration: 5 * 1000,
             });
+            ResetSendData();
           } else if (res) {
             const file = new Blob([toArrayBuffer(res.file.data)], {
               type: 'application/pdf',
