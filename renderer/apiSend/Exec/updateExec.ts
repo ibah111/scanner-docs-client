@@ -16,7 +16,7 @@ export default function updateExec() {
     of({
       ...store.getState().Send,
       options: { save_file: true },
-      total_sum: store.getState().Send.total_sum.toFixed(2),
+      total_sum: Number(store.getState().Send.total_sum.toFixed(2)),
     }),
   );
   return forkJoin([
