@@ -23,6 +23,7 @@ export default function RCourtId() {
   const [name, setName] = React.useState('');
   const r_court_id_data = getData('r_court_id', 'null');
   const r_court_name_data = getData('r_court_name', 'string', true);
+  const is_sberbank = r_court_name_data.value === 'Сбербанк';
   const fssp_date = getData('fssp_date', 'date', true);
   const dispatch = useAppDispatch();
 
@@ -56,6 +57,12 @@ export default function RCourtId() {
           const o = court[0];
           const whereSendString = `(${o.id}), ${o.name}, ${o.address}, ${o.district}`;
           changeWhereSend(whereSendString);
+          if (o.name === 'Сбербанк') {
+            enqueueSnackbar('Предыдущая отправка была в СБЕР', {
+              variant: 'info',
+            });
+            sberbankAction(o.id);
+          }
         },
       );
       return sub.unsubscribe.bind(sub);
@@ -182,7 +189,7 @@ export default function RCourtId() {
       </Grid>
       <Grid item>
         <IconButton onClick={() => sberClick()}>
-          {r_court_name_data.value === 'Сбербанк' ? (
+          {is_sberbank ? (
             <CustomIcon icon={'SBERBANK_GREEN'} />
           ) : (
             <CustomIcon icon={'SBERBANK_BLACK'} />
