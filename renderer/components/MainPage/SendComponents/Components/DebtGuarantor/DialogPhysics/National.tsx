@@ -18,7 +18,6 @@ export default function National() {
           onChange={(event) => data.setValue(event.target.value)}
         />
       </StyledHtmlTooltip>
-      ;
     </Grid>
   );
 }

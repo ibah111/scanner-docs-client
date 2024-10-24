@@ -19,7 +19,6 @@ export default function Position() {
           onChange={(event) => data.setValue(event.target.value)}
         />
       </StyledHtmlTooltip>
-      ;
     </Grid>
   );
 }
