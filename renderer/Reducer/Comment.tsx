@@ -1,23 +1,27 @@
-import { createSlice } from '@reduxjs/toolkit';
-const initialState: { LawAct: string; LawExec: string } = {
-  LawAct: '',
-  LawExec: '',
+import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
+class CommentInstance {
+  LawActComment: string;
+  LawExecComment: string;
+}
+
+const initialState: { LawActComment: string; LawExecComment: string } = {
+  LawActComment: '',
+  LawExecComment: '',
 };
 export const comment = createSlice({
   name: 'Comment',
   initialState,
   reducers: {
-    setLawActComment: (state, action) => {
-      state.LawAct = action.payload;
-    },
-    setLawExecComment: (state, action) => {
-      state.LawExec = action.payload;
+    setCommentProperty<T extends keyof CommentInstance>(
+      state: Draft<CommentInstance>,
+      action: PayloadAction<[T, CommentInstance[T]]>,
+    ) {
+      state[action.payload[0]] = action.payload[1];
     },
     ResetComment: () => {
       return initialState;
     },
   },
 });
-export const { setLawActComment, setLawExecComment, ResetComment } =
-  comment.actions;
+export const { setCommentProperty, ResetComment } = comment.actions;
 export default comment.reducer;
