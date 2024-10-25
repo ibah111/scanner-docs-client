@@ -18,8 +18,7 @@ import Documents from '../Up/Search/Documents';
 import ButtonComment from './ButtonComment';
 import { map, mergeMap, tap } from 'rxjs';
 import {
-  setLawActComment,
-  setLawExecComment,
+  setCommentProperty,
   ResetComment,
 } from '../../../../../Reducer/Comment';
 import { setId } from '../../../../../Reducer/Send';
@@ -49,8 +48,8 @@ export default function YesOrNo({
         mergeMap((value) =>
           getComment({ type: 'law_exec', id: row.id }).pipe(
             tap((res) => {
-              dispatch(setLawActComment(res.LawAct.dsc));
-              dispatch(setLawExecComment(res.dsc));
+              dispatch(setCommentProperty(['LawActComment', res.LawAct.dsc]));
+              dispatch(setCommentProperty(['LawExecComment', res.dsc]));
             }),
             map(() => value),
           ),
@@ -75,8 +74,8 @@ export default function YesOrNo({
         mergeMap((value) =>
           getComment({ type: 'law_exec', id: row.id }).pipe(
             tap((res) => {
-              dispatch(setLawActComment(res.LawAct.dsc));
-              dispatch(setLawExecComment(res.dsc));
+              dispatch(setCommentProperty(['LawActComment', res.LawAct.dsc]));
+              dispatch(setCommentProperty(['LawExecComment', res.dsc]));
             }),
             map(() => value),
           ),
@@ -94,8 +93,8 @@ export default function YesOrNo({
   const Update = React.useCallback(() => {
     dispatch(ResetComment());
     getComment({ type: 'law_exec', id: row.id }).subscribe((res) => {
-      dispatch(setLawActComment(res.LawAct.dsc));
-      dispatch(setLawExecComment(res.dsc));
+      dispatch(setCommentProperty(['LawActComment', res.LawAct.dsc]));
+      dispatch(setCommentProperty(['LawExecComment', res.dsc]));
       onClose();
     });
     dispatch(setSendDocProperty(['DateSend', moment()]));
