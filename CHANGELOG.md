@@ -1,5 +1,44 @@
 
 
+## [1.7.17](https://git.usb.ru/scanner-docs/client/compare/v1.7.16...v1.7.17) (2024-10-29)
+
+
+### Features
+
+* Add custom Tooltip ([355aab2](https://git.usb.ru/scanner-docs/client/commit/355aab298bb68c4bc7cee0dbfb9e797747ecabdb))
+* Add tooltip to helperText in DG form ([d1d65b7](https://git.usb.ru/scanner-docs/client/commit/d1d65b7c4bdedf473149f6ee96d90e6efd353f09))
+* add value i18 ([2b93a57](https://git.usb.ru/scanner-docs/client/commit/2b93a57ec77e0d572dae100697eb13b07cd6a320))
+* automated big logic with adding sber icon ([85eb1a5](https://git.usb.ru/scanner-docs/client/commit/85eb1a5090b33cda0c26fb7abb8e16523880bdfc))
+* **build:** making images per build unoptimized for fix build issues ([d0d299a](https://git.usb.ru/scanner-docs/client/commit/d0d299ace96b5d3548b0e3457d1227bb0b62aee3))
+* call new event dialog with control hook ([1068ed8](https://git.usb.ru/scanner-docs/client/commit/1068ed86f158885775bd46bfe5c65b27cdc2acf5))
+* change button variant ([554e46c](https://git.usb.ru/scanner-docs/client/commit/554e46c1e93795639f6f56a41cb97fcc4d870489))
+* change structure of comments reducer ([65fdd15](https://git.usb.ru/scanner-docs/client/commit/65fdd15e03a138ff1a75610b81e25b7821c002b1))
+* ci/cd for windows ([c91c678](https://git.usb.ru/scanner-docs/client/commit/c91c678c66cee33e76db7b99e5a238a9b1f00304))
+* **ci/cd:** only tags  ([80fff26](https://git.usb.ru/scanner-docs/client/commit/80fff26ad286193de1bb1a7cded3d8bb6f7301e8))
+* **ci/cd:** renamed test => build, build and release only on tags ([81808f2](https://git.usb.ru/scanner-docs/client/commit/81808f2ad2eebf65f75afe31e125ae4cd012880c))
+* **ci/cd:** ts-unreachable-error + fixed ci/cd ([81c25d9](https://git.usb.ru/scanner-docs/client/commit/81c25d96520b1a245e5adbfd1f3560398ba72c8f))
+* components border on sberbank condition ([9fdc8be](https://git.usb.ru/scanner-docs/client/commit/9fdc8bec3943017fbac4c5e6522bb1faffb33800))
+* **DEPRECATED:** visual update of old component ([228d4cd](https://git.usb.ru/scanner-docs/client/commit/228d4cd2fd55ae11d623e5e493e792fc8378719a))
+* Dialog props class ([9f31648](https://git.usb.ru/scanner-docs/client/commit/9f316489a9f2e07bfe910e51f15ae3172ea52a93))
+* **icons:** custom icons svg ([7cafbd5](https://git.usb.ru/scanner-docs/client/commit/7cafbd556ca6f2b6b5bc48050587b58db57b9d1f))
+* ignore ([59f1d45](https://git.usb.ru/scanner-docs/client/commit/59f1d45b3889acd085e516d1ddaca4a8f7757e52))
+* **reducer:** add values to reducer ([2924e4e](https://git.usb.ru/scanner-docs/client/commit/2924e4e19dcd1942b0aea4f217bd75075ac14b46))
+* **remaster:** new comments event dialog ([f64b89c](https://git.usb.ru/scanner-docs/client/commit/f64b89cbd0cadab1cea9e0342fde8f8596f200cf))
+* reset data after send ([2f6b982](https://git.usb.ru/scanner-docs/client/commit/2f6b982809bbbc5643dcb37b2a22875766544903))
+* **sber-chached-value:** saving previous value ([8b08cf5](https://git.usb.ru/scanner-docs/client/commit/8b08cf55252ed23dfa9857a7cabe5d01f00c0760))
+* two digits after decimal points ([be7f30a](https://git.usb.ru/scanner-docs/client/commit/be7f30a91ffecb9e54d037fe0fc2728e0c77daec))
+* update comment api ([3f013af](https://git.usb.ru/scanner-docs/client/commit/3f013af9d6cdad46c118d9f3ea0fda6d2cc6733f))
+* yes or no reducer update ([729d542](https://git.usb.ru/scanner-docs/client/commit/729d542233324a9adf145d7db6bce73a0231384f))
+
+
+### Bug Fixes
+
+* **ci/cd:** pscp send builds to server ([5a36940](https://git.usb.ru/scanner-docs/client/commit/5a369405e7f2a3658d587a3517666eda76060768))
+* css visual fix ([55dc376](https://git.usb.ru/scanner-docs/client/commit/55dc376e0d00c91c9b175d1334405e5ab4807184))
+* fixed an issue when last send was SBER and do not apllying sber send mode ([91078ac](https://git.usb.ru/scanner-docs/client/commit/91078accbd65d4bfed25ede8105f57285007578a))
+* number out of range ([e218d66](https://git.usb.ru/scanner-docs/client/commit/e218d66ca4523aa753716a9512b7ac0e2387545c))
+* **path:** path fix ([f7e013b](https://git.usb.ru/scanner-docs/client/commit/f7e013bc605ce6881f655775d0219fac4bd83d7e))
+
 ## [1.7.16](https://git.usb.ru/scanner-docs/client/compare/v1.7.15...v1.7.16) (2024-10-01)
 
 
