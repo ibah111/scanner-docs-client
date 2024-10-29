@@ -12,7 +12,7 @@ import { t } from 'i18next';
 import { setCommentProperty } from '../../../../../../Reducer/Comment';
 import DoneAllIcon from '@mui/icons-material/DoneAll';
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
-import { DialogProps } from './testInterface';
+import { DialogProps } from './DialogPropsClass';
 import { useAppDispatch, useAppSelector } from '../../../../../../Reducer';
 import React from 'react';
 import { enqueueSnackbar } from 'notistack';
