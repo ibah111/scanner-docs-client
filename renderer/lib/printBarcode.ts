@@ -3,7 +3,11 @@ import { bpac_electron } from '@tools/bpac/electron_renderer';
 import { from, mergeMap, of, tap } from 'rxjs';
 import isPrintOnline from './isPrintOnline';
 
-export default function printBarcode(barcode: string, title: string) {
+export default function printBarcode(
+  barcode: string,
+  title: string,
+  barcode_xy: string = '29x42mm',
+) {
   const bpac = bpac_electron();
   return of(title).pipe(
     isPrintOnline(),
@@ -12,7 +16,7 @@ export default function printBarcode(barcode: string, title: string) {
       const barcode_path = path.join(
         window.getCwd(),
         'extensions',
-        'test-barcode.lbx',
+        `${barcode_xy}.lbx`,
       );
 
       const opened = doc.Open(barcode_path);
