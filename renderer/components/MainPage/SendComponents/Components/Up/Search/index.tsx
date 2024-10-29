@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import React from 'react';
 import getLawExec from '../../../../../../apiSend/Exec/getLawExec';
 import Contract from './Contract';
@@ -15,14 +15,59 @@ import {
 import { reset, setSend } from '../../../../../../Reducer/Send';
 import CreateExec from './CreateExec';
 import Submit from './Submit';
-import Comments from './Comments';
 import DebtCalc from './DebtCalc';
 import Documents from './Documents';
 import Reset from './Reset';
 import Barcode from './Barcode';
 import Links from './Links';
+import CommentsDialog from './CommentsDialog';
+
+export enum SearchNameListEvents {
+  COMMENTS = 'COMMENTS',
+}
+export class SearchEventsDialog<
+  Value = number | string | object,
+> extends Event {
+  constructor(type: SearchNameListEvents, value: Value) {
+    super(type);
+    this.value = value;
+  }
+  value: Value;
+}
+
+interface ControlProps {
+  DialogTarget: EventTarget;
+}
+
+function useSearchControl({ DialogTarget }: ControlProps) {
+  const [open, setOpen] = React.useState(false);
+  const [LawExecId, setLawExecId] = React.useState<number>(0);
+
+  React.useEffect(() => {
+    const callback = ((e: SearchEventsDialog) => {
+      setLawExecId(e.value as number);
+      setOpen(true);
+    }) as EventListener;
+    DialogTarget.addEventListener(SearchNameListEvents.COMMENTS, callback);
+    return () =>
+      DialogTarget.removeEventListener(SearchNameListEvents.COMMENTS, callback);
+  }, [DialogTarget]);
+  const closeSearchDialog = React.useCallback(() => {
+    setLawExecId(0);
+    setOpen(false);
+  }, []);
+  return {
+    open,
+    LawExecId,
+    closeSearchDialog,
+  };
+}
 
 export default function Search() {
+  const DialogTarget = React.useMemo(() => new EventTarget(), []);
+  const SearchControl = useSearchControl({
+    DialogTarget,
+  });
   const dispatch = useAppDispatch();
   const id = useAppSelector((state) => state.Send.id);
   const la_id = useAppSelector((state) => state.LawExec?.r_act_id);
@@ -60,6 +105,17 @@ export default function Search() {
       return Click();
     }
   }, [Click, dispatch, reload]);
+
+  const LawActComment = useAppSelector((state) => state.Comment.LawActComment);
+  const LawExecComment = useAppSelector(
+    (state) => state.Comment.LawExecComment,
+  );
+
+  const handleOpen = () =>
+    DialogTarget.dispatchEvent(
+      new SearchEventsDialog(SearchNameListEvents.COMMENTS, id),
+    );
+
   return (
     <>
       <Grid
@@ -76,7 +132,23 @@ export default function Search() {
         <Find onClick={Click} loading={loading} />
         <CreateExec />
         <Submit docArray={docArray} />
-        <Comments />
+        {/* <Comments /> */}
+        <>
+          <Grid item>
+            <Button disabled={Boolean(!id)} onClick={handleOpen}>
+              {'Комментарии'}
+            </Button>
+          </Grid>
+        </>
+        {SearchControl.open && (
+          <CommentsDialog
+            id={SearchControl.LawExecId}
+            open={SearchControl.open}
+            onClose={SearchControl.closeSearchDialog}
+            LawActComment={LawActComment}
+            LawExecComment={LawExecComment}
+          />
+        )}
         <DebtCalc id={Number(id)} />
         <Documents law_exec_id={Number(id)} law_act_id={la_id} />
         <Reset />
