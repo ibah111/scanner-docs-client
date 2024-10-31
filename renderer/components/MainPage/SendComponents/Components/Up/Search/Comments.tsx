@@ -12,10 +12,10 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../../../../../Reducer';
 import { setCommentProperty } from '../../../../../../Reducer/Comment';
-import UpdateComment from '../../../../../../apiSend/Comment/updateComments';
 import { enqueueSnackbar } from 'notistack';
 import DoneAllIcon from '@mui/icons-material/DoneAll';
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
+import UpdateComment from '../../../../../../apiSend/Comment/UpdateComments';
 
 export default function Comments() {
   const dispatch = useAppDispatch();

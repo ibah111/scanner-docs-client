@@ -12,7 +12,10 @@ import Canceled from './Canceled';
 import getColumns from './getColumns';
 import { map, mergeMap, tap } from 'rxjs';
 import { useAppDispatch, useAppSelector } from '../../../../../Reducer';
-import { ResetComment, setLawActComment } from '../../../../../Reducer/Comment';
+import {
+  ResetComment,
+  setCommentProperty,
+} from '../../../../../Reducer/Comment';
 import { setId } from '../../../../../Reducer/Send';
 import { setCreateState } from '../../../../../Reducer/StateResult';
 
@@ -66,6 +69,7 @@ export default function Table({ handleClose }: { handleClose: () => void }) {
   }, [search]);
   React.useEffect(() => {
     apiRef.current.restoreState(stateGrid);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [apiRef]);
   return (
     <>
@@ -100,7 +104,9 @@ export default function Table({ handleClose }: { handleClose: () => void }) {
                     mergeMap((value) =>
                       getComment({ type: 'law_act', id: params.row.id }).pipe(
                         tap((res) => {
-                          dispatch(setLawActComment(res.dsc));
+                          dispatch(
+                            setCommentProperty(['LawActComment', res.dsc]),
+                          );
                         }),
                         map(() => value),
                       ),
