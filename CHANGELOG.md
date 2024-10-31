@@ -1,5 +1,17 @@
 
 
+## [1.7.18](https://git.usb.ru/scanner-docs/client/compare/v1.7.17...v1.7.18) (2024-10-31)
+
+
+### Features
+
+* add new types of barcode ([1b9bed5](https://git.usb.ru/scanner-docs/client/commit/1b9bed566e807f18c4c1f8d47a7dd7dfb654889a))
+
+
+### Bug Fixes
+
+* build fixes ([6884fdf](https://git.usb.ru/scanner-docs/client/commit/6884fdf8cce7abf17c445bcfacb2d571178c2f06))
+
 ## [1.7.17](https://git.usb.ru/scanner-docs/client/compare/v1.7.16...v1.7.17) (2024-10-29)
 
 
