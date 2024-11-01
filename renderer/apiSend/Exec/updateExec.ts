@@ -11,12 +11,20 @@ type FileUpdate =
       name: string;
     };
 const url = of('/update_exec');
+
+function getPrecision(num: number): number {
+  const value = (Math.round(num * 100) / 100).toFixed(2);
+  return Number(value);
+}
+
 export default function updateExec() {
   const data = defer(() =>
     of({
       ...store.getState().Send,
+      court_sum: getPrecision(store.getState().Send.court_sum),
+      debt_payments_sum: getPrecision(store.getState().Send.debt_payments_sum),
+      total_sum: getPrecision(store.getState().Send.total_sum),
       options: { save_file: true },
-      total_sum: Number(store.getState().Send.total_sum.toFixed(2)),
     }),
   );
   return forkJoin([
