@@ -1,5 +1,12 @@
 
 
+## [1.7.19](https://git.usb.ru/scanner-docs/client/compare/v1.7.18...v1.7.19) (2024-11-01)
+
+
+### Bug Fixes
+
+* **sums:** added getPrecision function for correct 2 decimals after point ([682f70d](https://git.usb.ru/scanner-docs/client/commit/682f70dd629344bfd9974cafb4ed82ef457b9fb7))
+
 ## [1.7.18](https://git.usb.ru/scanner-docs/client/compare/v1.7.17...v1.7.18) (2024-10-31)
 
 
