@@ -1,5 +1,13 @@
 
 
+## [1.7.20](https://git.usb.ru/scanner-docs/client/compare/v1.7.19...v1.7.20) (2024-11-11)
+
+
+### Features
+
+* barcode print type ([23590fb](https://git.usb.ru/scanner-docs/client/commit/23590fb53643d80c37fc17c51f8ff15eee94e48e))
+* new files ([69c4ed5](https://git.usb.ru/scanner-docs/client/commit/69c4ed53888c411141425d20ffe417e2e7601c57))
+
 ## [1.7.19](https://git.usb.ru/scanner-docs/client/compare/v1.7.18...v1.7.19) (2024-11-01)
 
 
