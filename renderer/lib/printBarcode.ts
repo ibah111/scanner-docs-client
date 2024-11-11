@@ -6,7 +6,7 @@ import isPrintOnline from './isPrintOnline';
 export default function printBarcode(
   barcode: string,
   title: string,
-  barcode_xy: string = '29x42mm',
+  barcodeType: string,
 ) {
   const bpac = bpac_electron();
   return of(title).pipe(
@@ -16,7 +16,7 @@ export default function printBarcode(
       const barcode_path = path.join(
         window.getCwd(),
         'extensions',
-        `${barcode_xy}.lbx`,
+        `${barcodeType}.lbx`,
       );
 
       const opened = doc.Open(barcode_path);
