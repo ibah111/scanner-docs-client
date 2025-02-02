@@ -21,6 +21,7 @@ import Reset from './Reset';
 import Barcode from './Barcode';
 import Links from './Links';
 import CommentsDialog from './CommentsDialog';
+import AdditionalMenu from './Menu/Menu';
 
 export enum SearchNameListEvents {
   COMMENTS = 'COMMENTS',
@@ -130,6 +131,7 @@ export default function Search() {
         <Name onEnter={Click} />
         <Contract onEnter={Click} />
         <Find onClick={Click} loading={loading} />
+        <AdditionalMenu disabled={Boolean(id)} />
         <CreateExec />
         <Submit docArray={docArray} />
         {/* <Comments /> */}
