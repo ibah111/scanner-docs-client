@@ -9,6 +9,8 @@ import { useAppDispatch } from '../../../../../../../Reducer';
 import { reset } from '../../../../../../../Reducer/Send';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
+import ResetSendData from '../../../../../../../utils/ResetSendData';
+import { enqueueSnackbar } from 'notistack';
 
 class Props {
   disabled: boolean;
@@ -52,8 +54,18 @@ export default function AdditionalMenu({ disabled }: Props) {
          */}
         <MenuItem
           onClick={() =>
-            saveId().subscribe(() => {
-              dispatch(reset());
+            saveId().subscribe((result) => {
+              console.log(result);
+              if (result === true) {
+                ResetSendData();
+                enqueueSnackbar('Данные изменены', {
+                  variant: 'success',
+                });
+              } else {
+                enqueueSnackbar('Данные не были изменены', {
+                  variant: 'info',
+                });
+              }
             })
           }
         >
@@ -65,7 +77,7 @@ export default function AdditionalMenu({ disabled }: Props) {
         <MenuItem
           onClick={() =>
             createIp().subscribe(() => {
-              dispatch(reset());
+              ResetSendData();
             })
           }
         >
