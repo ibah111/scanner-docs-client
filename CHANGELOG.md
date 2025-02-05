@@ -1,5 +1,12 @@
 
 
+## [1.7.22](https://git.usb.ru/scanner-docs/client/compare/v1.7.21...v1.7.22) (2025-02-05)
+
+
+### Features
+
+* added r_person_id to state send ([7446f83](https://git.usb.ru/scanner-docs/client/commit/7446f83a6c79722d0e7e01b2f6484993749b9b6e))
+
 ## [1.7.21](https://git.usb.ru/scanner-docs/client/compare/v1.7.20...v1.7.21) (2025-02-05)
 
 
