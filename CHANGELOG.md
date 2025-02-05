@@ -1,5 +1,15 @@
 
 
+## [1.7.21](https://git.usb.ru/scanner-docs/client/compare/v1.7.20...v1.7.21) (2025-02-05)
+
+
+### Features
+
+* add save, create law_exec ([7f4abe9](https://git.usb.ru/scanner-docs/client/commit/7f4abe9e8efb08a352e18da49c63bd685c33d84b))
+* added snackbars ([e845a70](https://git.usb.ru/scanner-docs/client/commit/e845a706c7f4757c1ec49540784244864a811166))
+* lock file rand https ([5da6242](https://git.usb.ru/scanner-docs/client/commit/5da624247468008b3084a41070b2cbe82a5a2491))
+* new menu + new api ([2a94eb1](https://git.usb.ru/scanner-docs/client/commit/2a94eb1feffb375ae74fe68d70bd09aaf3d41a04))
+
 ## [1.7.20](https://git.usb.ru/scanner-docs/client/compare/v1.7.19...v1.7.20) (2024-11-11)
 
 
