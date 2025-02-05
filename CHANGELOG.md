@@ -1,3 +1,12 @@
+
+
+## [1.7.23](https://git.usb.ru/scanner-docs/client/compare/v1.7.22...v1.7.23) (2025-02-05)
+
+
+### Bug Fixes
+
+* comment barcode types ([37b7bc4](https://git.usb.ru/scanner-docs/client/commit/37b7bc4e95cd73da81e10ac8265d6ddb85d2e46d))
+
 ## [1.7.22](https://git.usb.ru/scanner-docs/client/compare/v1.7.21...v1.7.22) (2025-02-05)
 
 ### Features
