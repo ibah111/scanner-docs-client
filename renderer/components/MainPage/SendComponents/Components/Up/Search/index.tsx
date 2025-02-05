@@ -22,6 +22,8 @@ import Barcode from './Barcode';
 import Links from './Links';
 import CommentsDialog from './CommentsDialog';
 import AdditionalMenu from './Menu/Menu';
+import { socketConnect } from '../../../../../../lib/socket';
+import { enqueueSnackbar } from 'notistack';
 
 export enum SearchNameListEvents {
   COMMENTS = 'COMMENTS',
@@ -63,7 +65,13 @@ function useSearchControl({ DialogTarget }: ControlProps) {
     closeSearchDialog,
   };
 }
-
+const socket_events = () => {
+  const socket = socketConnect();
+  socket.on('server_event', (args) => {
+    console.log(args);
+    enqueueSnackbar('socket server event');
+  });
+};
 export default function Search() {
   const DialogTarget = React.useMemo(() => new EventTarget(), []);
   const SearchControl = useSearchControl({
@@ -116,7 +124,9 @@ export default function Search() {
     DialogTarget.dispatchEvent(
       new SearchEventsDialog(SearchNameListEvents.COMMENTS, id),
     );
-
+  React.useEffect(() => {
+    socket_events();
+  });
   return (
     <>
       <Grid

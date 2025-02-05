@@ -2,9 +2,13 @@ import * as React from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Grid, IconButton } from '@mui/material';
-import ListIcon from '@mui/icons-material/List';
+import SaveAsIcon from '@mui/icons-material/SaveAs';
 import createIp from '../../../../../../../apiSend/createIp';
 import saveId from '../../../../../../../apiSend/saveId';
+import { useAppDispatch } from '../../../../../../../Reducer';
+import { reset } from '../../../../../../../Reducer/Send';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 
 class Props {
   disabled: boolean;
@@ -19,6 +23,7 @@ export default function AdditionalMenu({ disabled }: Props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const dispatch = useAppDispatch();
 
   return (
     <Grid item>
@@ -31,7 +36,7 @@ export default function AdditionalMenu({ disabled }: Props) {
         onClick={handleClick}
         size="small"
       >
-        <ListIcon color={!disabled ? 'inherit' : 'info'} />
+        <SaveAsIcon color={!disabled ? 'inherit' : 'info'} />
       </IconButton>
       <Menu
         id="basic-menu"
@@ -43,21 +48,30 @@ export default function AdditionalMenu({ disabled }: Props) {
         }}
       >
         {/**
-         * save pdf
+         * сохранить
          */}
         <MenuItem
-          onClick={async () => {
-            createIp().subscribe(() => {
-              console.log('after sub');
-            });
-          }}
+          onClick={() =>
+            saveId().subscribe(() => {
+              dispatch(reset());
+            })
+          }
         >
-          Создать ИП
+          <SaveOutlinedIcon fontSize="small" /> {'Сохранить ИД'}
         </MenuItem>
         {/**
-         * send without pdf
+         * создать ип
          */}
-        <MenuItem onClick={() => saveId().subscribe()}>Сохранить ИД</MenuItem>
+        <MenuItem
+          onClick={() =>
+            createIp().subscribe(() => {
+              dispatch(reset());
+            })
+          }
+        >
+          <EditOutlinedIcon fontSize="small" />
+          {'Создать ИД'}
+        </MenuItem>
       </Menu>
     </Grid>
   );

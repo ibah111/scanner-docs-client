@@ -15,6 +15,8 @@ export default function Reset() {
     <>
       <Grid item>
         <Button
+          color="error"
+          variant="contained"
           onClick={() => {
             enqueueSnackbar('Сбрасываю поля', {
               variant: 'info',

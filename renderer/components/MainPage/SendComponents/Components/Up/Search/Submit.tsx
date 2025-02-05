@@ -82,7 +82,6 @@ export default function Submit({ docArray }: SubmitProps) {
 
   const [openPDFDialog, setOpenPDFDialog] = React.useState<boolean>(false);
   const handleOpenPDFDialog = React.useCallback(() => {
-    console.log('handleOpenPDFDialog, checked:', checked);
     if (checked === true) {
       setOpenPDFDialog(true);
     }
@@ -219,6 +218,7 @@ export default function Submit({ docArray }: SubmitProps) {
       <Worker workerUrl="/build/pdf.worker.js">
         <Grid item>
           <LoadingButton
+            variant="outlined"
             disabled={Boolean(!Send.id)}
             loading={loading}
             onClick={Click}
