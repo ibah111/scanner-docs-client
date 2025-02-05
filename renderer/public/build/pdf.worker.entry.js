@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-(typeof window !== "undefined"
+(typeof window !== 'undefined'
   ? window
   : {}
-).pdfjsWorker = require("./pdf.worker.js");
+).pdfjsWorker = require('./pdf.worker.js');

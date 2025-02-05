@@ -5,8 +5,6 @@ import { Grid, IconButton } from '@mui/material';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import createIp from '../../../../../../../apiSend/createIp';
 import saveId from '../../../../../../../apiSend/saveId';
-import { useAppDispatch } from '../../../../../../../Reducer';
-import { reset } from '../../../../../../../Reducer/Send';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import ResetSendData from '../../../../../../../utils/ResetSendData';
@@ -25,7 +23,6 @@ export default function AdditionalMenu({ disabled }: Props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const dispatch = useAppDispatch();
 
   return (
     <Grid item>
