@@ -3,9 +3,7 @@ import send_cfg from '../../config/server.json';
 import { of } from 'rxjs';
 
 export function send_server(): string {
-  return process.env.NODE_ENV === 'production'
-    ? send_cfg.send_api_prod
-    : send_cfg.send_api_dev;
+  return send_cfg.send_server;
 }
 export const sendApiRequestInstanceObservable = of(
   axios.create({
