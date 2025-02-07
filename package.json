@@ -2,7 +2,7 @@
   "private": true,
   "name": "scanner-docs",
   "description": "Приложение преднозначено для сканирования документов",
-  "version": "1.7.23",
+  "version": "1.7.24",
   "author": "Ivan Balezin <ggeforcet@gmail.com>",
   "main": "app/background.js",
   "scripts": {

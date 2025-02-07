@@ -1,5 +1,12 @@
 
 
+## [1.7.24](https://git.usb.ru/scanner-docs/client/compare/v1.7.23...v1.7.24) (2025-02-07)
+
+
+### Features
+
+* add r_person_id ([f8064c6](https://git.usb.ru/scanner-docs/client/commit/f8064c6d2a323d629f83c1064988b15f75d15b87))
+
 ## [1.7.23](https://git.usb.ru/scanner-docs/client/compare/v1.7.22...v1.7.23) (2025-02-05)
 
 
