@@ -118,6 +118,7 @@ export const send = createSlice({
     reset: (state) => {
       return {
         id: state.id,
+        r_person_id: initState.r_person_id,
         debt_guarantor: initState.debt_guarantor,
         fio: initState.fio,
         contract: initState.contract,
