@@ -1,5 +1,17 @@
 
 
+## [1.7.25](https://git.usb.ru/scanner-docs/client/compare/v1.7.24...v1.7.25) (2025-02-12)
+
+
+### Features
+
+* change response ([3bf4f16](https://git.usb.ru/scanner-docs/client/commit/3bf4f16acacd7fe46006da7a9347ee18c2f525fc))
+
+
+### Bug Fixes
+
+* config ([1064b94](https://git.usb.ru/scanner-docs/client/commit/1064b9430aded5bfe00996985dbd1fb0ac47b201))
+
 ## [1.7.24](https://git.usb.ru/scanner-docs/client/compare/v1.7.23...v1.7.24) (2025-02-07)
 
 
