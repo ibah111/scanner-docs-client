@@ -52,12 +52,24 @@ export default function AdditionalMenu({ disabled }: Props) {
         <MenuItem
           onClick={() =>
             saveId().subscribe((result) => {
-              console.log(result);
-              if (result === true) {
+              if (Object.keys(result).length > 0) {
                 ResetSendData();
-                enqueueSnackbar('Данные изменены', {
-                  variant: 'success',
-                });
+                if (result.law_act_response === true) {
+                  enqueueSnackbar(
+                    'Данные судебного иска/приказа были изменены',
+                    {
+                      variant: 'info',
+                    },
+                  );
+                }
+                if (result.law_exec_response === true) {
+                  enqueueSnackbar(
+                    'Данные исполнительного производства были изменены',
+                    {
+                      variant: 'info',
+                    },
+                  );
+                }
               } else {
                 enqueueSnackbar('Данные не были изменены', {
                   variant: 'info',
