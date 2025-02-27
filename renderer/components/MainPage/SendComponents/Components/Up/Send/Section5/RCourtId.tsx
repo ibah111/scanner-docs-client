@@ -187,15 +187,22 @@ export default function RCourtId() {
           )}
         />
       </Grid>
-      <Grid item>
-        <IconButton onClick={() => sberClick()}>
-          {is_sberbank ? (
-            <CustomIcon icon={'SBERBANK_GREEN'} />
-          ) : (
-            <CustomIcon icon={'SBERBANK_BLACK'} />
-          )}
-        </IconButton>
-      </Grid>
+      {
+        // eslint-disable-next-line prettier/prettier, no-constant-condition
+        false ? (
+          <Grid item>
+            <IconButton disabled onClick={() => sberClick()}>
+              {is_sberbank ? (
+                <CustomIcon icon={'SBERBANK_GREEN'} />
+              ) : (
+                <CustomIcon icon={'SBERBANK_BLACK'} />
+              )}
+            </IconButton>
+          </Grid>
+        ) : (
+          <></>
+        )
+      }
     </>
   );
 }
