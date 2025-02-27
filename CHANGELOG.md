@@ -1,30 +1,35 @@
+## [1.7.26](https://git.usb.ru/scanner-docs/client/compare/v1.7.25...v1.7.26) (2025-02-27)
 
+### Features
+
+- added init dockerfile ([72a8d63](https://git.usb.ru/scanner-docs/client/commit/72a8d63c78d8985ee826d1831df93391de2f5669))
+- change node_env config ([4a43318](https://git.usb.ru/scanner-docs/client/commit/4a43318ee4851956f3656730265b4a9866d5a4a4))
+- LinkType ([f989124](https://git.usb.ru/scanner-docs/client/commit/f98912429e5ec47a11d1c42d9777f34881d6b314))
+- making links available to add/delete and get from the array ([65a9ea2](https://git.usb.ru/scanner-docs/client/commit/65a9ea27ab2250c12cde59252f9f2d1885b7c3e4))
+- new api's ([9492b1e](https://git.usb.ru/scanner-docs/client/commit/9492b1ede7d9f19b5b5e54edac7fc80b68a79700))
+- reset sber icon button ([56ca0a2](https://git.usb.ru/scanner-docs/client/commit/56ca0a25b5241091b248542c2847c4480e2468df))
 
 ## [1.7.25](https://git.usb.ru/scanner-docs/client/compare/v1.7.24...v1.7.25) (2025-02-12)
 
-
 ### Features
 
-* change response ([3bf4f16](https://git.usb.ru/scanner-docs/client/commit/3bf4f16acacd7fe46006da7a9347ee18c2f525fc))
-
+- change response ([3bf4f16](https://git.usb.ru/scanner-docs/client/commit/3bf4f16acacd7fe46006da7a9347ee18c2f525fc))
 
 ### Bug Fixes
 
-* config ([1064b94](https://git.usb.ru/scanner-docs/client/commit/1064b9430aded5bfe00996985dbd1fb0ac47b201))
+- config ([1064b94](https://git.usb.ru/scanner-docs/client/commit/1064b9430aded5bfe00996985dbd1fb0ac47b201))
 
 ## [1.7.24](https://git.usb.ru/scanner-docs/client/compare/v1.7.23...v1.7.24) (2025-02-07)
 
-
 ### Features
 
-* add r_person_id ([f8064c6](https://git.usb.ru/scanner-docs/client/commit/f8064c6d2a323d629f83c1064988b15f75d15b87))
+- add r_person_id ([f8064c6](https://git.usb.ru/scanner-docs/client/commit/f8064c6d2a323d629f83c1064988b15f75d15b87))
 
 ## [1.7.23](https://git.usb.ru/scanner-docs/client/compare/v1.7.22...v1.7.23) (2025-02-05)
 
-
 ### Bug Fixes
 
-* comment barcode types ([37b7bc4](https://git.usb.ru/scanner-docs/client/commit/37b7bc4e95cd73da81e10ac8265d6ddb85d2e46d))
+- comment barcode types ([37b7bc4](https://git.usb.ru/scanner-docs/client/commit/37b7bc4e95cd73da81e10ac8265d6ddb85d2e46d))
 
 ## [1.7.22](https://git.usb.ru/scanner-docs/client/compare/v1.7.21...v1.7.22) (2025-02-05)
 
