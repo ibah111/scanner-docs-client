@@ -120,69 +120,71 @@ export default function Links() {
           </MenuList>
         </Menu>
       )}
-      <Dialog open={dialogOpen} onClose={onClose} fullWidth maxWidth="md">
-        <DialogTitle align="center">{`Добавление ссылки`}</DialogTitle>
-        <Divider />
-        <DialogContent>
-          <Grid container spacing={1}>
-            <Grid item xs={4}>
-              {/**
-               * link name
-               */}
-              <TextField
-                error={!valid_name}
-                helperText={
-                  !valid_name
-                    ? 'Название ссылки должно быть блинне 5 символов'
-                    : 'Название валидно'
-                }
-                fullWidth
-                id="link_name"
-                label="Название ссылки"
-                value={linkName}
-                onChange={(event) => {
-                  const value = event.target.value as string;
-                  setLinkName(value);
-                }}
-              />
+      {dialogOpen && (
+        <Dialog open={dialogOpen} onClose={onClose} fullWidth maxWidth="md">
+          <DialogTitle align="center">{`Добавление ссылки`}</DialogTitle>
+          <Divider />
+          <DialogContent>
+            <Grid container spacing={1}>
+              <Grid item xs={4}>
+                {/**
+                 * link name
+                 */}
+                <TextField
+                  error={!valid_name}
+                  helperText={
+                    !valid_name
+                      ? 'Название ссылки должно быть блинне 5 символов'
+                      : 'Название валидно'
+                  }
+                  fullWidth
+                  id="link_name"
+                  label="Название ссылки"
+                  value={linkName}
+                  onChange={(event) => {
+                    const value = event.target.value as string;
+                    setLinkName(value);
+                  }}
+                />
+              </Grid>
+              <Grid item xs={8}>
+                {/**
+                 * link url
+                 */}
+                <TextField
+                  error={!valid_url}
+                  helperText={
+                    !valid_url ? 'Текст не является ссылкой' : 'Ссылка валидна'
+                  }
+                  fullWidth
+                  id="link_url"
+                  label="Ссылка"
+                  value={linkUrl}
+                  onChange={(event) => {
+                    const value = event.target.value as string;
+                    setLinkUrl(value);
+                  }}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={8}>
-              {/**
-               * link url
-               */}
-              <TextField
-                error={!valid_url}
-                helperText={
-                  !valid_url ? 'Текст не является ссылкой' : 'Ссылка валидна'
-                }
-                fullWidth
-                id="link_url"
-                label="Ссылка"
-                value={linkUrl}
-                onChange={(event) => {
-                  const value = event.target.value as string;
-                  setLinkUrl(value);
-                }}
-              />
+          </DialogContent>
+          <Divider />
+          <DialogActions>
+            <Grid container xs justifyContent={'flex-end'}>
+              <Grid item>
+                <Button
+                  disabled={disabled}
+                  onClick={handleClick_addLink}
+                  variant="contained"
+                  color="success"
+                >
+                  Добавить
+                </Button>
+              </Grid>
             </Grid>
-          </Grid>
-        </DialogContent>
-        <Divider />
-        <DialogActions>
-          <Grid container xs justifyContent={'flex-end'}>
-            <Grid item>
-              <Button
-                disabled={disabled}
-                onClick={handleClick_addLink}
-                variant="contained"
-                color="success"
-              >
-                Добавить
-              </Button>
-            </Grid>
-          </Grid>
-        </DialogActions>
-      </Dialog>
+          </DialogActions>
+        </Dialog>
+      )}
     </Grid>
   );
 }
