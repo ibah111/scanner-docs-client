@@ -17,6 +17,13 @@ export default function getColumns(): GridColDef[] {
       width: 200,
     },
     {
+      field: 'Person.birth_date',
+      headerName: 'Д.Р.',
+      width: 100,
+      type: 'date',
+      valueGetter: (params) => (params.value ? new Date(params.value) : null),
+    },
+    {
       field: 'LawExecPersonLink.DebtGuarantor.fio',
       headerName: t('form.results.debt_guarantor.fio'),
     },
