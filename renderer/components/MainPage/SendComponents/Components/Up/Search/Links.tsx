@@ -77,8 +77,12 @@ export default function Links() {
     });
   };
 
+  const onClose = React.useCallback(() => {
+    setDialogOpen(false);
+    close_reset();
+  }, []);
   React.useEffect(() => {
-    getLinks().subscribe((links) => setLinks(links)).unsubscribe;
+    getLinks().subscribe((links) => setLinks(links));
   }, []);
   return (
     <Grid item>
@@ -100,26 +104,34 @@ export default function Links() {
           </MenuList>
         </Menu>
       )}
-      <Dialog open={dialogOpen}>
-        <DialogTitle></DialogTitle>
+      <Dialog open={dialogOpen} onClose={onClose} fullWidth maxWidth="md">
+        <DialogTitle align="center">{`Добавление ссылки`}</DialogTitle>
         <Divider />
         <DialogContent>
-          <Grid container>
-            <Grid item>
+          <Grid container spacing={1}>
+            <Grid item xs={4}>
               {/**
                * link name
                */}
               <TextField
+                fullWidth
+                id="link_name"
+                label="Название ссылки"
                 value={linkName}
                 onChange={(event) => {
                   const value = event.target.value as string;
                   setLinkName(value);
                 }}
               />
+            </Grid>
+            <Grid item xs={8}>
               {/**
                * link url
                */}
               <TextField
+                fullWidth
+                id="link_url"
+                label="Ссылка"
                 value={linkUrl}
                 onChange={(event) => {
                   const value = event.target.value as string;
@@ -127,13 +139,19 @@ export default function Links() {
                 }}
               />
             </Grid>
-            <Grid item></Grid>
           </Grid>
         </DialogContent>
+        <Divider />
         <DialogActions>
-          <Grid container xs>
+          <Grid container xs justifyContent={'flex-end'}>
             <Grid item>
-              <Button onClick={handleClick_addLink}>Добавить</Button>
+              <Button
+                onClick={handleClick_addLink}
+                variant="contained"
+                color="success"
+              >
+                Добавить
+              </Button>
             </Grid>
           </Grid>
         </DialogActions>
