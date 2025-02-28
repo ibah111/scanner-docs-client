@@ -5,7 +5,7 @@ import { axiosConfig } from '../token';
 import { authRetry, post, transformAxios } from '@tools/rxjs-pipes';
 import { transformError } from '../../utils/processError';
 
-export default async function deleteLink(data: LinkType) {
+export default function deleteLink(data: LinkType) {
   const url = of('/Links/deleteLink');
   return forkJoin([
     sendApiRequestInstanceObservable,
