@@ -1,3 +1,31 @@
+
+
+## [1.7.26](https://git.usb.ru/scanner-docs/client/compare/v1.7.25...v1.7.26) (2025-02-28)
+
+
+### Features
+
+* add "sure" dialog  when deleting links ([451f6b3](https://git.usb.ru/scanner-docs/client/commit/451f6b38cb78b0bd737060f1b4732827d59c5879))
+* add birth date ([08091d7](https://git.usb.ru/scanner-docs/client/commit/08091d7ec1dc322edb15cde6b46eaaa3038434d2))
+* add crx3 ([1c41fd8](https://git.usb.ru/scanner-docs/client/commit/1c41fd8e3696507cc2e22b62e58279f60fdd95fa))
+* added init dockerfile ([72a8d63](https://git.usb.ru/scanner-docs/client/commit/72a8d63c78d8985ee826d1831df93391de2f5669))
+* added statuses ([78648c5](https://git.usb.ru/scanner-docs/client/commit/78648c55682d256148001713e34f2194538a51d4))
+* added validation to textfields + regexp for link + fixed api send_body ([7919c68](https://git.usb.ru/scanner-docs/client/commit/7919c6859aca2d7325e2787d91b9e298fd82cfd0))
+* change node_env config ([4a43318](https://git.usb.ru/scanner-docs/client/commit/4a43318ee4851956f3656730265b4a9866d5a4a4))
+* LinkType ([f989124](https://git.usb.ru/scanner-docs/client/commit/f98912429e5ec47a11d1c42d9777f34881d6b314))
+* making links available to add/delete and get from the array ([65a9ea2](https://git.usb.ru/scanner-docs/client/commit/65a9ea27ab2250c12cde59252f9f2d1885b7c3e4))
+* new api's ([9492b1e](https://git.usb.ru/scanner-docs/client/commit/9492b1ede7d9f19b5b5e54edac7fc80b68a79700))
+* onClose add + removed "unsub" ([6074fda](https://git.usb.ru/scanner-docs/client/commit/6074fdafa7b7934f7de648d5e468dbb719be964f))
+* optimization ([257d935](https://git.usb.ru/scanner-docs/client/commit/257d93571ce3330bc999cbaf3268ce390461461b))
+* removed getData function to callback because of reusable ([5b46bc4](https://git.usb.ru/scanner-docs/client/commit/5b46bc4d0f596a2614fc2e95a423f7790b040e05))
+* reset sber icon button ([56ca0a2](https://git.usb.ru/scanner-docs/client/commit/56ca0a25b5241091b248542c2847c4480e2468df))
+* statuses red css class ([8a50513](https://git.usb.ru/scanner-docs/client/commit/8a505138f5c53bee323f7c4e40aa7f07edbdcc91))
+
+
+### Bug Fixes
+
+* removed async because of rxjs observable ([3669b35](https://git.usb.ru/scanner-docs/client/commit/3669b35923c4be349522d6b7216cffd73ebee69f))
+
 ## [1.7.26](https://git.usb.ru/scanner-docs/client/compare/v1.7.25...v1.7.26) (2025-02-27)
 
 ### Features
