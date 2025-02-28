@@ -4,7 +4,7 @@ import { axiosConfig } from '../token';
 import { authRetry, post, transformAxios } from '@tools/rxjs-pipes';
 import { transformError } from '../../utils/processError';
 
-export default function addLink(data: { linkName: string; linkUrl: string }) {
+export default function addLink(data: { item_name: string; item_url: string }) {
   const url = of('/Links/addLink');
   return forkJoin([
     sendApiRequestInstanceObservable,

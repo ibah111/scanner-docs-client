@@ -56,7 +56,17 @@ export default function Links() {
   }, []);
 
   const [linkName, setLinkName] = React.useState<string>('');
+
   const [linkUrl, setLinkUrl] = React.useState<string>('');
+
+  const isValidUrl = (url: string) => {
+    const pattern = /^(https?:\/\/)?([\w.-]+)\.([a-z]{2,6})(\/[\w.-]*)*\/?$/i;
+    return pattern.test(url);
+  };
+
+  const valid_name = linkName.length > 5;
+  const valid_url = isValidUrl(linkUrl);
+  const disabled = valid_name === true && valid_url === true ? false : true;
 
   const close_reset = () => {
     setDialogOpen(false);
@@ -65,14 +75,15 @@ export default function Links() {
   };
   const handleClick_addLink = () => {
     addLink({
-      linkName,
-      linkUrl,
+      item_name: linkName,
+      item_url: linkUrl,
     }).subscribe((res) => {
       if (res) {
         enqueueSnackbar('Ссылка создана', {
           variant: 'success',
         });
-        close_reset();
+        onClose();
+        getData();
       }
     });
   };
@@ -119,6 +130,12 @@ export default function Links() {
                * link name
                */}
               <TextField
+                error={!valid_name}
+                helperText={
+                  !valid_name
+                    ? 'Название ссылки должно быть блинне 5 символов'
+                    : 'Название валидно'
+                }
                 fullWidth
                 id="link_name"
                 label="Название ссылки"
@@ -134,6 +151,10 @@ export default function Links() {
                * link url
                */}
               <TextField
+                error={!valid_url}
+                helperText={
+                  !valid_url ? 'Текст не является ссылкой' : 'Ссылка валидна'
+                }
                 fullWidth
                 id="link_url"
                 label="Ссылка"
@@ -151,6 +172,7 @@ export default function Links() {
           <Grid container xs justifyContent={'flex-end'}>
             <Grid item>
               <Button
+                disabled={disabled}
                 onClick={handleClick_addLink}
                 variant="contained"
                 color="success"
