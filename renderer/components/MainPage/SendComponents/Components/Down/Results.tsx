@@ -19,6 +19,7 @@ const classes = {
   rejected: `${PREFIX}-rejected`,
 };
 const status_rejected = version.rejected;
+const law_act_status_rejected = version.rejected_law_act;
 const Root = styled(Grid)(({ theme }) => ({
   [`& .${classes.rejected}`]: {
     backgroundColor: getBackgroundColor(
@@ -66,11 +67,32 @@ export default function Results() {
           }}
           disableRowSelectionOnClick
           disableColumnSelector
-          getRowClassName={(params) =>
-            status_rejected.includes(params.row['Debt.status'])
+          getRowClassName={(params) => {
+            /**
+             * Решил "поговнокодить"
+             * т.к. это единтсвенный способ
+             * выполнить то что от меня требуется
+             * Сделал
+             */
+            const debt_reject = status_rejected.includes(
+              params.row['Debt.status'],
+            )
               ? classes.rejected
-              : ''
-          }
+              : '';
+            const law_act_reject = law_act_status_rejected.includes(
+              params.row['LawAct.StatusDict.name'],
+            )
+              ? classes.rejected
+              : '';
+            if (debt_reject && law_act_reject) {
+              return classes.rejected;
+            } else if (debt_reject) {
+              return classes.rejected;
+            } else if (law_act_reject) {
+              return classes.rejected;
+            }
+            return '';
+          }}
           onCellDoubleClick={(params) => {
             setRow(params.row);
             setDialog(true);
