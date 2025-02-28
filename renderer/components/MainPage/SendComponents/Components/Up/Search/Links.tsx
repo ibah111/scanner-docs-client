@@ -81,9 +81,14 @@ export default function Links() {
     setDialogOpen(false);
     close_reset();
   }, []);
-  React.useEffect(() => {
+
+  const getData = React.useCallback(() => {
     getLinks().subscribe((links) => setLinks(links));
   }, []);
+
+  React.useEffect(() => {
+    getData();
+  }, [getData]);
   return (
     <Grid item>
       <Button onClick={handleClick} color={'warning'} variant="outlined">
