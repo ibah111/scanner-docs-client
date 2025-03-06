@@ -95,7 +95,7 @@ export default function Links() {
 
   const [sureOpen, setSureOpen] = React.useState<boolean>(false);
 
-  const [link, setLink] = React.useState<LinkType | object>({});
+  const [link, setLink] = React.useState<LinkType>();
   const handleClick_deleteLink = React.useCallback((link: LinkType) => {
     setSureOpen(true);
     setLink(link);
@@ -238,7 +238,7 @@ export default function Links() {
           </DialogActions>
         </Dialog>
       )}
-      {sureOpen && (
+      {sureOpen && link && (
         <SureDialog open={sureOpen} onClose={onClose_deleteLink} link={link} />
       )}
     </Grid>
