@@ -1,3 +1,13 @@
+
+
+## [1.7.29](https://git.usb.ru/scanner-docs/client/compare/v1.7.28...v1.7.29) (2025-03-06)
+
+
+### Features
+
+* **crx3:** yarn remove crx3 ([44c5dbf](https://git.usb.ru/scanner-docs/client/commit/44c5dbffdebb7e0b85548c1da72f091a6c85faaa))
+* **yarn:** version berry ([bff5fa0](https://git.usb.ru/scanner-docs/client/commit/bff5fa0d68a9e2c7ef5cc9b01d7142bca917d284))
+
 ## [1.7.28](https://git.usb.ru/scanner-docs/client/compare/v1.7.27...v1.7.28) (2025-03-06)
 
 ## [1.7.27](https://git.usb.ru/scanner-docs/client/compare/v1.7.26...v1.7.27) (2025-03-06)
