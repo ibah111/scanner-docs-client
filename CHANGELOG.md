@@ -1,5 +1,12 @@
 
 
+## [1.7.27](https://git.usb.ru/scanner-docs/client/compare/v1.7.26...v1.7.27) (2025-03-06)
+
+
+### Bug Fixes
+
+* undefined link fix ([31af5b2](https://git.usb.ru/scanner-docs/client/commit/31af5b2b2fecddd7411ca6763e28332b187aee1a))
+
 ## [1.7.26](https://git.usb.ru/scanner-docs/client/compare/v1.7.25...v1.7.26) (2025-02-28)
 
 
