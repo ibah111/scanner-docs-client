@@ -18,15 +18,23 @@ function getPrecision(num: number): number {
 }
 
 export default function updateExec() {
-  const data = defer(() =>
-    of({
-      ...store.getState().Send,
-      court_sum: getPrecision(store.getState().Send.court_sum),
-      debt_payments_sum: getPrecision(store.getState().Send.debt_payments_sum),
-      total_sum: getPrecision(store.getState().Send.total_sum),
+  const data = defer(() => {
+    const state = store.getState().Send;
+    const totalSum = getPrecision(state.total_sum);
+
+    if (totalSum <= 0) {
+      throw new Error('Общая сумма должна быть больше 0');
+    }
+
+    return of({
+      ...state,
+      court_sum: getPrecision(state.court_sum),
+      debt_payments_sum: getPrecision(state.debt_payments_sum),
+      total_sum: totalSum,
       options: { save_file: true },
-    }),
-  );
+    });
+  });
+
   return forkJoin([
     sendApiRequestInstanceObservable,
     url,

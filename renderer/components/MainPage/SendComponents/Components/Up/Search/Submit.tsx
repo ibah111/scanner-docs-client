@@ -96,10 +96,8 @@ export default function Submit({ docArray }: SubmitProps) {
       updateExec().subscribe({
         next: (res) => {
           if (res === true) {
-            alert('Отправлено в СБЕРБАНК. Сопровод не формируется.');
-            enqueueSnackbar('Отправлено в СБЕРБАНК. Сопровод не формируется.', {
+            enqueueSnackbar('Документ успешно отправлен в Сбербанк', {
               variant: 'success',
-              autoHideDuration: 5 * 1000,
             });
             ResetSendData();
           } else if (res) {
@@ -107,6 +105,9 @@ export default function Submit({ docArray }: SubmitProps) {
               type: 'application/pdf',
             });
             saveAs(file, res.name);
+            enqueueSnackbar('Документ успешно сформирован и сохранен', {
+              variant: 'success',
+            });
             ResetSendData();
             const ads = URL.createObjectURL(file);
             setPdfFile(ads);
@@ -122,8 +123,15 @@ export default function Submit({ docArray }: SubmitProps) {
             }
           }
         },
-        error: () => setLoading(false),
-        complete: () => setLoading(false),
+        error: (error) => {
+          setLoading(false);
+          enqueueSnackbar(
+            error.message || 'Произошла ошибка при отправке документа',
+            {
+              variant: 'error',
+            },
+          );
+        },
       }),
     [dispatch, enqueueSnackbar, handleOpenPDFDialog],
   );
