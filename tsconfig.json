@@ -17,5 +17,6 @@
     "experimentalDecorators": true,
     "jsx": "preserve"
   },
+  "include": ["renderer/**/*"],
   "exclude": ["node_modules", "renderer/next.config.js", "app", "dist"]
 }

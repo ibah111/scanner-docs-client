@@ -32,12 +32,18 @@ export default function PersonProperty() {
               (property) =>
                 new Vehicle(
                   property.PersonPropertyParams!,
-                  property.StatusDict!.name,
+                  property.StatusDict?.name ?? 'Имя имущества не указано',
                 ),
             )
             .map((property) => (
               <MenuItem key={property.id} value={property.id}>
-                {property.status} {property.model} {property.vin}
+                {property.status === 'Имя имущества не указано' ? (
+                  <em>
+                    {property.status} {property.model} {property.vin}
+                  </em>
+                ) : (
+                  `${property.status} ${property.model} ${property.vin}`
+                )}
               </MenuItem>
             ))}
         </Select>

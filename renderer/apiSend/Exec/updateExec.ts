@@ -4,6 +4,8 @@ import { post, transformAxios, authRetry } from '@tools/rxjs-pipes/axios';
 import { transformError } from '../../utils/processError';
 import { sendApiRequestInstanceObservable } from '../../utils/sendUtils/send_server';
 import { axiosConfig } from '../token';
+import { getPrecision } from '../../utils/getPrecision';
+
 type FileUpdate =
   | false
   | {
@@ -12,17 +14,12 @@ type FileUpdate =
     };
 const url = of('/update_exec');
 
-function getPrecision(num: number): number {
-  const value = (Math.round(num * 100) / 100).toFixed(2);
-  return Number(value);
-}
-
 export default function updateExec() {
   const data = defer(() => {
     const state = store.getState().Send;
     const totalSum = getPrecision(state.total_sum);
 
-    if (totalSum <= 0) {
+    if (totalSum === null || totalSum <= 0) {
       throw new Error('Общая сумма должна быть больше 0');
     }
 

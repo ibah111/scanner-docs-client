@@ -3,6 +3,7 @@ import { LawExec } from '@contact/models';
 import { DateTime } from 'luxon';
 import getName from '../utils/sendUtils/getName';
 import datetimeNow from '../utils/sendUtils/datetimeNow';
+import { getPrecision } from '../utils/getPrecision';
 export interface DataTypes {
   r_person_id: null | number;
   debt_guarantor: null | string | number;
@@ -78,7 +79,7 @@ export const send = createSlice({
       state.port = data.Portfolio!.name;
       state.contract = data.Debt!.contract;
       state.load_dt = datetimeNow();
-      state.total_sum = data.total_sum;
+      state.total_sum = getPrecision(data.total_sum);
       state.court_doc_num = data.court_doc_num;
       state.executive_typ = data.executive_typ;
       //@ts-expect-error ///
@@ -98,13 +99,16 @@ export const send = createSlice({
         ? data.Debt?.PersonProperties?.[0]?.id || null
         : null;
       state.exec_number = data.LawAct ? data.LawAct.exec_number : '';
-      state.court_sum = data.LawAct!.court_sum ? data.LawAct!.court_sum : null;
-      state.debt_payments_sum =
+      state.court_sum = getPrecision(
+        data.LawAct!.court_sum ? data.LawAct!.court_sum : null,
+      );
+      state.debt_payments_sum = getPrecision(
         data.Debt!.DebtCalcs!.length > 0
           ? data
               .Debt!.DebtCalcs!.map((item) => item.sum)
               .reduce((prev, curr) => prev + curr)
-          : 0;
+          : 0,
+      );
     },
     setData<K extends DataNames>(
       state: Draft<DataTypes>,

@@ -4,24 +4,25 @@ import { authRetry, post, transformAxios } from '@tools/rxjs-pipes';
 import { transformError } from '../utils/processError';
 import { sendApiRequestInstanceObservable } from '../utils/sendUtils/send_server';
 import { axiosConfig } from './token';
+import { getPrecision } from '../utils/getPrecision';
 
-interface saveResponse {
-  law_act_response: boolean;
-  law_exec_response: boolean;
-}
+const url = of('/Exec/saveId');
 
 export default function saveId() {
   const data = of({
     ...store.getState().Send,
+    court_sum: getPrecision(store.getState().Send.court_sum),
+    debt_payments_sum: getPrecision(store.getState().Send.debt_payments_sum),
+    total_sum: getPrecision(store.getState().Send.total_sum),
   });
-  const url = of('/Exec/saveId');
+
   return forkJoin([
     sendApiRequestInstanceObservable,
     url,
     data,
     axiosConfig(),
   ]).pipe(
-    post<saveResponse>(),
+    post<number | false>(),
     transformAxios(),
     transformError(),
     authRetry(),
