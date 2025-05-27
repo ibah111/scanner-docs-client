@@ -1,5 +1,13 @@
 
 
+## [1.7.30](https://git.usb.ru/scanner-docs/client/compare/v1.7.29...v1.7.30) (2025-05-27)
+
+
+### Features
+
+* add changes + fix ([9cb94e1](https://git.usb.ru/scanner-docs/client/commit/9cb94e144f40547f4a497ccbfbbfcd3144c0b2b5))
+* if total sum = 0 does not send ([254df64](https://git.usb.ru/scanner-docs/client/commit/254df644b43608b55a44e03db696aeb46b2c566a))
+
 ## [1.7.29](https://git.usb.ru/scanner-docs/client/compare/v1.7.28...v1.7.29) (2025-03-06)
 
 
