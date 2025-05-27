@@ -71,6 +71,7 @@ export default function Scan() {
     return () => {
       unsubscribe.forEach((func) => func());
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const open = Boolean(anchorEl);

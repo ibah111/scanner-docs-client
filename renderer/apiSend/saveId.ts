@@ -8,6 +8,11 @@ import { getPrecision } from '../utils/getPrecision';
 
 const url = of('/Exec/saveId');
 
+interface saveResponse {
+  law_act_response: boolean;
+  law_exec_response: boolean;
+}
+
 export default function saveId() {
   const data = of({
     ...store.getState().Send,
@@ -22,7 +27,7 @@ export default function saveId() {
     data,
     axiosConfig(),
   ]).pipe(
-    post<number | false>(),
+    post<saveResponse>(),
     transformAxios(),
     transformError(),
     authRetry(),

@@ -18,6 +18,7 @@ export default function MessageShow() {
       }
       dispatch(resetMessage());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages]);
   return <></>;
 }
